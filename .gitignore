@@ -1,0 +1,9 @@
+doc
+pkg
+tmp/*
+scripts/*_wordlist.txt
+.DS_Store
+*.db
+*.log
+*.swp
+*~
