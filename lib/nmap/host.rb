@@ -21,7 +21,7 @@ module Nmap
     #   If a block is given, it will be passed the newly created Host
     #   object.
     #
-    # @yieldpaarm [Host] host
+    # @yieldparam [Host] host
     #   The newly created Host object.
     #
     def initialize(node,&block)
