@@ -37,9 +37,6 @@ module Nmap
     #     nmap.verbose = true
     #   end
     #
-    # @see Task
-    # @see #scan
-    #
     def self.scan(options={},&block)
       self.find.scan(options,&block)
     end
@@ -59,8 +56,6 @@ module Nmap
     #
     # @return [Boolean]
     #   Specifies whether the command exited normally.
-    #
-    # @see Task
     #
     def scan(options={},&block)
       run_task(Task.new(options,&block))
