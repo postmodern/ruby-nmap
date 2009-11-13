@@ -42,6 +42,12 @@ module Nmap
       @service = service
     end
 
+    #
+    # Converts the port to an Integer.
+    #
+    # @return [Integer]
+    #   The port number.
+    #
     def to_i
       @number.to_i
     end
