@@ -23,6 +23,20 @@ module Nmap
     # @return [Boolean]
     #   Specifies whether the command exited normally.
     #
+    # @example
+    #   Nmap::Program.scan(
+    #     :targets => '192.168.1.1',
+    #     :ports => [22,80,443],
+    #     :verbose => true
+    #   )
+    #
+    # @example
+    #   Nmap::Program.scan do |nmap|
+    #     nmap.targets = '192.168.1.1'
+    #     nmap.ports = [22,80,443]
+    #     nmap.verbose = true
+    #   end
+    #
     # @see Task
     # @see #scan
     #
