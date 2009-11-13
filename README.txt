@@ -30,7 +30,7 @@ A Ruby interface to Nmap, the exploration tool and security / port scanner.
       nmap.targets = '192.168.1.*'
     end
 
-* Parse Nmap XML files:
+* Parse Nmap XML scan files:
 
     require 'nmap/xml'
 
