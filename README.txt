@@ -46,6 +46,7 @@ A Ruby interface to Nmap, the exploration tool and security / port scanner.
 
 == REQUIREMENTS:
 
+* {nmap}[http://www.insecure.org/]
 * {nokogiri}[http://nokogiri.rubyforge.org/] >= 1.4.0
 * {rprogram}[http://rprogram.rubyforge.org/] >= 0.1.7
 
