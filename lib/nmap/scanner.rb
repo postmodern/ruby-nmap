@@ -7,7 +7,7 @@ module Nmap
 
     attr_reader :arguments
 
-    def initialize(name,version,arguments=[])
+    def initialize(name,version,arguments)
       @name = name
       @version = version
       @arguments = arguments
