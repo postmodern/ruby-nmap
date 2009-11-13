@@ -142,7 +142,7 @@ module Nmap
     #
     def each_up_host(&block)
       @doc.xpath("/nmaprun/host[status[@state='up']]").each do |host|
-        block.call(Host.new(host)) if block
+        Host.new(host,&block)
       end
 
       return self
