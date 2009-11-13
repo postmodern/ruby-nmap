@@ -24,6 +24,10 @@ module Nmap
       @service = service
     end
 
+    def to_i
+      @number.to_i
+    end
+
     def to_s
       @number.to_s
     end
