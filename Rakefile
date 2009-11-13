@@ -3,6 +3,7 @@
 require 'rubygems'
 require 'hoe'
 require './tasks/spec.rb'
+require './tasks/yard.rb'
 
 Hoe.spec 'ruby-nmap' do
   self.developer('Postmodern', 'postmodern.mod3@gmail.com')
@@ -14,6 +15,8 @@ Hoe.spec 'ruby-nmap' do
   self.extra_dev_deps = [
     ['rspec', '>=1.1.12']
   ]
+
+  self.spec_extras = {:has_rdoc => 'yard'}
 end
 
 # vim: syntax=ruby
