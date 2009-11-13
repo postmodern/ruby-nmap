@@ -350,7 +350,10 @@ module Nmap
     #
     def create_port(node)
       state = node.at('state')
-      service = node.at('service/@name').inner_text
+
+      if (service = node.at('service/@name'))
+        service = service.inner_text
+      end
 
       return Port.new(
         node['protocol'].to_sym,
