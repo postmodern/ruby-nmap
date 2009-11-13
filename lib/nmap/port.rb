@@ -16,6 +16,24 @@ module Nmap
     # The service the port runs
     attr_reader :service
 
+    #
+    # Creates a new Port object.
+    #
+    # @param [Integer] protocol
+    #   The protocol the port runs on.
+    #
+    # @param [Integer] number
+    #   The port number.
+    #
+    # @param [Symbol] state
+    #   The state the port is in.
+    #
+    # @param [String] reason
+    #   The reason for the ports state.
+    #
+    # @param [String] service
+    #   The name of the service that runs on the port.
+    #
     def initialize(protocol,number,state,reason,service=nil)
       @protocol = protocol
       @number = number
@@ -28,6 +46,12 @@ module Nmap
       @number.to_i
     end
 
+    #
+    # Converts the port to a String.
+    #
+    # @return [String]
+    #   The port number.
+    #
     def to_s
       @number.to_s
     end
