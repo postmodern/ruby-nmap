@@ -79,7 +79,7 @@ module Nmap
     end
 
     def each(&block)
-      up_hosts(&block)
+      each_up_hosts(&block)
     end
 
     def to_s
