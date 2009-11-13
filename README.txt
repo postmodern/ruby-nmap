@@ -5,12 +5,13 @@
 
 == DESCRIPTION:
 
-A Rubyful interface to the Nmap exploration tool and security / port scanner.
+A Rubyful interface to Nmap, the exploration tool and security / port
+scanner.
 
 == FEATURES:
 
-* Provides a Rubyful interface for running nmap.
-* Provides a Parser for parsing Nmap XML output.
+* Provides a Rubyful interface for running Nmap.
+* Provides a Parser for enumerating Nmap XML scan files.
 
 == REQUIREMENTS:
 
