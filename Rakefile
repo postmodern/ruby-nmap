@@ -13,7 +13,8 @@ Hoe.spec 'ruby-nmap' do
   ]
 
   self.extra_dev_deps = [
-    ['rspec', '>=1.1.12']
+    ['rspec', '>=1.1.12'],
+    ['yard', '>=0.2.3.5']
   ]
 
   self.spec_extras = {:has_rdoc => 'yard'}
