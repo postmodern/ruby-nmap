@@ -4,7 +4,7 @@ module Nmap
     # The state of a host
     attr_reader :state
 
-    # The reason of the state
+    # The reason for the state
     attr_reader :reason
 
     #

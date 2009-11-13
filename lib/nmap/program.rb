@@ -8,14 +8,14 @@ module Nmap
     name_program 'nmap'
 
     #
-    # Perform an Nmap scan.
+    # Finds the +nmap+ program and performs a scan.
     #
     # @param [Hash{Symbol => Object}] options
     #   Additional options for nmap.
     #
     # @yield [task]
     #   If a block is given, it will be passed a task object
-    #   used for specifying options for nmap.
+    #   used to specify options for nmap.
     #
     # @yieldparam [Task] task
     #   The nmap task object.
@@ -23,14 +23,14 @@ module Nmap
     # @return [Boolean]
     #   Specifies whether the command exited normally.
     #
-    # @example Specifying nmap options via a Hash.
+    # @example Specifying Nmap options via a Hash.
     #   Nmap::Program.scan(
     #     :targets => '192.168.1.1',
     #     :ports => [22,80,443],
     #     :verbose => true
     #   )
     #
-    # @example Specifying nmap options via a {Task} object.
+    # @example Specifying Nmap options via a {Task} object.
     #   Nmap::Program.scan do |nmap|
     #     nmap.targets = '192.168.1.1'
     #     nmap.ports = [22,80,443]
@@ -42,14 +42,14 @@ module Nmap
     end
 
     #
-    # Perform an Nmap scan.
+    # Performs a scan.
     #
     # @param [Hash{Symbol => Object}] options
     #   Additional options for nmap.
     #
     # @yield [task]
     #   If a block is given, it will be passed a task object
-    #   used for specifying options for nmap.
+    #   used to specify options for nmap.
     #
     # @yieldparam [Task] task
     #   The nmap task object.

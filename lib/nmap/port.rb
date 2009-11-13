@@ -13,7 +13,7 @@ module Nmap
     # The reason the port was discovered
     attr_reader :reason
 
-    # The service the port runs
+    # The service the port provides
     attr_reader :service
 
     #

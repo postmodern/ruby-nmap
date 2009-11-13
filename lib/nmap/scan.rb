@@ -4,7 +4,7 @@ module Nmap
     # The type of scan
     attr_reader :type
 
-    # The protocol the scan entailed
+    # The protocol used for the scan
     attr_reader :protocol
 
     # The port numbers that were scanned
@@ -17,7 +17,7 @@ module Nmap
     #   The type of the scan.
     #
     # @param [Symbol] protocol
-    #   The protocol the scan used.
+    #   The protocol used for the scan.
     #
     # @param [Array<Integer, Rage>] services
     #   The port numbers scanned.
