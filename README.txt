@@ -1,6 +1,7 @@
 = ruby-nmap
 
 * http://github.com/sophsec/ruby-nmap
+* http://github.com/sophsec/ruby-nmap/issues
 * Postmodern (postmodern.mod3 at gmail.com)
 
 == DESCRIPTION:
