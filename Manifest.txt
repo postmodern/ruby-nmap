@@ -20,4 +20,7 @@ tasks/spec.rb
 spec/spec_helper.rb
 spec/helpers/scan.xml
 spec/helpers/xml.rb
+spec/os_spec.rb
+spec/host_spec.rb
 spec/xml_spec.rb
+spec/nmap_spec.rb

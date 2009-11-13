@@ -1,0 +1,241 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet href="/usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 4.68 scan initiated Sat Aug 16 17:50:49 2008 as: nmap -v -oX samples/backspace.xml -O -P0 -sS 192.168.5.* -->
+<nmaprun scanner="nmap" args="nmap -v -oX samples/backspace.xml -O -P0 -sS 192.168.5.*" start="1218934249" startstr="Sat Aug 16 17:50:49 2008" version="4.68" xmloutputversion="1.02">
+<scaninfo type="syn" protocol="tcp" numservices="1715" services="1-1027,1029-1033,1040,1043,1050,1058-1059,1067-1068,1076,1080,1083-1084,1103,1109-1110,1112,1127,1139,1155,1158,1178,1212,1214,1220,1222,1234,1241,1248,1270,1337,1346-1381,1383-1552,1600,1650-1652,1661-1672,1680,1720,1723,1755,1761-1764,1827,1900,1935,1984,1986-2028,2030,2032-2035,2038,2040-2049,2053,2064-2065,2067-2068,2105-2106,2108,2111-2112,2120-2121,2201,2232,2241,2301,2307,2401,2430-2433,2500-2501,2564,2600-2605,2627-2628,2638,2766,2784,2809,2903,2998,3000-3001,3005-3006,3025,3045,3049,3052,3064,3086,3128,3141,3264,3268-3269,3292,3299,3306,3333,3372,3389,3397-3399,3421,3455-3457,3462,3531,3632,3689,3900,3984-3986,3999-4000,4002,4008,4045,4125,4132-4133,4144,4199,4224,4321,4333,4343,4444,4480,4500,4557,4559,4660,4662,4672,4899,4987,4998,5000-5003,5009-5011,5050,5060,5100-5102,5145,5190-5193,5232,5236,5300-5305,5308,5400,5405,5432,5490,5500,5510,5520,5530,5540,5550,5555,5560,5631-5632,5679-5680,5713-5717,5800-5803,5900-5903,5977-5979,5997-6009,6017,6050,6101,6103,6105-6106,6110-6112,6141-6148,6222,6346-6347,6400-6401,6502,6543-6544,6547-6548,6558,6588,6662,6665-6670,6699-6701,6881,6969,7000-7010,7070,7100,7200-7201,7273,7326,7464,7597,7634,7937-7938,8000,8007,8009,8021,8076,8080-8082,8118,8123,8443,8770,8888,8892,9040,9050-9051,9090,9100-9107,9111,9152,9535,9876,9991-9992,9999-10000,10005,10082-10083,11371,12000,12345-12346,13701-13702,13705-13706,13708-13718,13720-13722,13782-13783,14141,15126,15151,16080,16444,16959,17007,17300,18000,18181-18185,18187,19150,20005,22273,22289,22305,22321,22370,26208,27000-27010,27374,27665,31337,31416,32770-32780,32786-32787,38037,38292,43188,44334,44442-44443,47557,49400,50000,50002,54320,61439-61441,65301" />
+<verbose level="1" />
+<debugging level="0" />
+<taskbegin task="ARP Ping Scan" time="1218934249" />
+<taskend task="ARP Ping Scan" time="1218934250" extrainfo="107 total hosts" />
+<taskbegin task="Parallel DNS resolution of 107 hosts." time="1218934250" />
+<taskend task="Parallel DNS resolution of 107 hosts." time="1218934253" />
+<taskbegin task="SYN Stealth Scan" time="1218934253" />
+<taskend task="SYN Stealth Scan" time="1218934274" extrainfo="8575 total ports" />
+<host starttime="1218934249" endtime="1218934276"><status state="up" reason="arp-response"/>
+<address addr="192.168.5.1" addrtype="ipv4" />
+<address addr="00:1D:7E:EF:2A:E5" addrtype="mac" vendor="Cisco-Linksys" />
+<hostnames />
+<ports><extraports state="filtered" count="1712">
+<extrareasons reason="no-responses" count="1712"/>
+</extraports>
+<port protocol="tcp" portid="21"><state state="closed" reason="reset" reason_ttl="64"/><service name="ftp" method="table" conf="3" /></port>
+<port protocol="tcp" portid="23"><state state="closed" reason="reset" reason_ttl="64"/><service name="telnet" method="table" conf="3" /></port>
+<port protocol="tcp" portid="443"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="https" method="table" conf="3" /></port>
+</ports>
+<os><portused state="open" proto="tcp" portid="443" />
+<portused state="closed" proto="tcp" portid="21" />
+<osclass type="WAP" vendor="Netgear" osfamily="embedded" accuracy="100" />
+<osmatch name="Netgear WGR614v6 wireless broadband router" accuracy="100" line="18703" />
+<osmatch name="Netgear WGR614v7 or WPN824v2 wireless broadband router" accuracy="100" line="18721" />
+<osfingerprint fingerprint="SCAN(V=4.68%D=8/16%OT=443%CT=21%CU=%PV=Y%DS=1%G=N%M=001D7E%TM=48A77607%P=i686-pc-linux-gnu)&#xa;SEQ(SP=19%GCD=FA00%ISR=9E%TI=I%TS=1)&#xa;OPS(O1=M5B4NW0NNT11%O2=M5B4NW0NNT11%O3=M5B4NW0NNT11%O4=M5B4NW0NNT11%O5=M5B4NW0NNT11%O6=M5B4NNT11)&#xa;WIN(W1=2000%W2=2000%W3=2000%W4=2000%W5=2000%W6=2000)&#xa;ECN(R=Y%DF=N%TG=40%W=2000%O=M5B4NW0%CC=N%Q=)&#xa;T1(R=Y%DF=N%TG=40%S=O%A=S+%F=AS%RD=0%Q=)&#xa;T2(R=N)&#xa;T3(R=N)&#xa;T4(R=N)&#xa;T5(R=Y%DF=N%TG=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)&#xa;T6(R=N)&#xa;T7(R=N)&#xa;U1(R=N)&#xa;IE(R=N)&#xa;" />
+</os>
+<uptime seconds="3121" lastboot="Sat Aug 16 16:59:18 2008" />
+<distance value="1" />
+<tcpsequence index="25" difficulty="Good luck!" values="AF1B39BD,AF1C33BD,AF1F21BD,AF201BBD,AF2115BD,AF220FBD" />
+<ipidsequence class="Incremental" values="1FB0,1FB2,1FB4,1FB6,1FB8,1FBA" />
+<tcptssequence class="2HZ" values="1858,1858,1859,1859,1859,1859" />
+<times srtt="12972" rttvar="9000" to="100000" />
+</host>
+<host starttime="1218934249" endtime="1218934278"><status state="up" reason="arp-response"/>
+<address addr="192.168.5.102" addrtype="ipv4" />
+<address addr="00:13:02:55:4A:F5" addrtype="mac" vendor="Intel Corporate" />
+<hostnames />
+<ports><extraports state="filtered" count="1715">
+<extrareasons reason="no-responses" count="1715"/>
+</extraports>
+</ports>
+<os><osfingerprint fingerprint="SCAN(V=4.68%D=8/16%OT=%CT=%CU=%PV=Y%DS=1%G=N%M=001302%TM=48A77607%P=i686-pc-linux-gnu)&#xa;U1(R=N)&#xa;IE(R=N)&#xa;" />
+</os>
+<distance value="1" />
+<times srtt="40386" rttvar="40386" to="201930" />
+</host>
+<host starttime="1218934249" endtime="1218934276"><status state="up" reason="arp-response"/>
+<address addr="192.168.5.104" addrtype="ipv4" />
+<address addr="00:1E:52:74:1E:F9" addrtype="mac" vendor="Apple" />
+<hostnames />
+<ports><extraports state="closed" count="1714">
+<extrareasons reason="resets" count="1714"/>
+</extraports>
+<port protocol="tcp" portid="80"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="http" method="table" conf="3" /></port>
+</ports>
+<os><portused state="open" proto="tcp" portid="80" />
+<portused state="closed" proto="tcp" portid="1" />
+<portused state="closed" proto="udp" portid="44491" />
+<osclass type="general purpose" vendor="Apple" osfamily="Mac OS X" osgen="10.5.X" accuracy="100" />
+<osmatch name="Apple Mac OS X 10.5 - 10.5.2 (Leopard) (Darwin 9.0.0b5 - 9.2.0)" accuracy="100" line="1589" />
+<osfingerprint fingerprint="OS:SCAN(V=4.68%D=8/16%OT=80%CT=1%CU=44491%PV=Y%DS=1%G=Y%M=001E52%TM=48A7760&#xa;OS:7%P=i686-pc-linux-gnu)SEQ(SP=105%GCD=1%ISR=106%TI=RD%II=RI%TS=3)OPS(O1=M&#xa;OS:5B4NW3NNT11SLL%O2=M5B4NW3NNT11SLL%O3=M5B4NW3NNT11%O4=M5B4NW3NNT11SLL%O5=&#xa;OS:M5B4NW3NNT11SLL%O6=M5B4NNT11SLL)WIN(W1=FFFF%W2=FFFF%W3=FFFF%W4=FFFF%W5=F&#xa;OS:FFF%W6=FFFF)ECN(R=Y%DF=Y%T=40%W=FFFF%O=M5B4NW3SLL%CC=N%Q=)T1(R=Y%DF=Y%T=&#xa;OS:40%S=O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%&#xa;OS:O=%RD=0%Q=)T5(R=Y%DF=N%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=4&#xa;OS:0%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=N%T=40%W=0%S=Z%A=S%F=AR%O=%RD=0%Q&#xa;OS:=)U1(R=Y%DF=N%T=40%TOS=0%IPL=38%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=0%RUL=G%R&#xa;OS:UD=G)IE(R=Y%DFI=S%T=40%TOSI=S%CD=S%SI=S%DLI=S)&#xa;" />
+</os>
+<uptime seconds="5259159" lastboot="Mon Jun 16 20:58:40 2008" />
+<distance value="1" />
+<tcpsequence index="261" difficulty="Good luck!" values="5167B935,1670334E,17968186,CFACE9C,778429A0,473647B3" />
+<ipidsequence class="Randomized" values="9B17,8200,5228,C13A,435D,BF65" />
+<tcptssequence class="other" values="3227BBD,3227BBE,3227BBF,3227BC0,3227BC1,3227BC2" />
+<times srtt="14271" rttvar="10952" to="100000" />
+</host>
+<host starttime="1218934249" endtime="1218934276"><status state="up" reason="arp-response"/>
+<address addr="192.168.5.105" addrtype="ipv4" />
+<address addr="00:1B:63:C5:CB:CE" addrtype="mac" vendor="Apple" />
+<hostnames />
+<ports><extraports state="closed" count="1713">
+<extrareasons reason="resets" count="1713"/>
+</extraports>
+<port protocol="tcp" portid="3689"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="rendezvous" method="table" conf="3" /></port>
+<port protocol="tcp" portid="5101"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="admdog" method="table" conf="3" /></port>
+</ports>
+<os><portused state="open" proto="tcp" portid="3689" />
+<portused state="closed" proto="tcp" portid="1" />
+<portused state="closed" proto="udp" portid="36784" />
+<osclass type="general purpose" vendor="Apple" osfamily="Mac OS X" osgen="10.4.X" accuracy="100" />
+<osmatch name="Apple Mac OS X 10.4.10 (Tiger) (Darwin 8.10.0 - 8.11.1)" accuracy="100" line="1212" />
+<osfingerprint fingerprint="OS:SCAN(V=4.68%D=8/16%OT=3689%CT=1%CU=36784%PV=Y%DS=1%G=Y%M=001B63%TM=48A77&#xa;OS:607%P=i686-pc-linux-gnu)SEQ(SP=11%GCD=57BA4C61%ISR=FB%TI=I%II=I%SS=S%TS=&#xa;OS:1)OPS(O1=M5B4NW0NNT11SLL%O2=M5B4NW0NNT11SLL%O3=M5B4NW0NNT11%O4=M5B4NW0NN&#xa;OS:T11SLL%O5=M5B4NW0NNT11SLL%O6=M5B4NNT11SLL)WIN(W1=FFFF%W2=FFFF%W3=FFFF%W4&#xa;OS:=FFFF%W5=FFFF%W6=FFFF)ECN(R=Y%DF=Y%T=40%W=FFFF%O=M5B4NW0SLL%CC=N%Q=)T1(R&#xa;OS:=Y%DF=Y%T=40%S=O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=&#xa;OS:A%A=Z%F=R%O=%RD=0%Q=)T5(R=Y%DF=N%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=&#xa;OS:Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=N%T=40%W=0%S=Z%A=S%F=AR&#xa;OS:%O=%RD=0%Q=)U1(R=Y%DF=N%T=40%TOS=0%IPL=38%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK&#xa;OS:=0%RUL=G%RUD=G)IE(R=Y%DFI=S%T=40%TOSI=S%CD=S%SI=S%DLI=S)&#xa;" />
+</os>
+<distance value="1" />
+<tcpsequence index="17" difficulty="Good luck!" values="9848B4F4,9848B4F4,408E6893,408E6893,408E6893,408E6893" />
+<ipidsequence class="Incremental" values="B6CB,B6CC,B6CD,B6CE,B6CF,B6D0" />
+<tcptssequence class="2HZ" values="39637A11,39637A11,39637A11,39637A12,39637A12,39637A12" />
+<times srtt="16409" rttvar="11292" to="100000" />
+</host>
+<host starttime="1218934249" endtime="1218934276"><status state="up" reason="arp-response"/>
+<address addr="192.168.5.106" addrtype="ipv4" />
+<address addr="00:1D:60:15:4B:45" addrtype="mac" vendor="Asustek Computer" />
+<hostnames />
+<ports><extraports state="closed" count="1710">
+<extrareasons reason="resets" count="1710"/>
+</extraports>
+<port protocol="tcp" portid="135"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="msrpc" method="table" conf="3" /></port>
+<port protocol="tcp" portid="139"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="netbios-ssn" method="table" conf="3" /></port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="microsoft-ds" method="table" conf="3" /></port>
+<port protocol="tcp" portid="554"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="rtsp" method="table" conf="3" /></port>
+<port protocol="tcp" portid="3389"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="ms-term-serv" method="table" conf="3" /></port>
+</ports>
+<os><portused state="open" proto="tcp" portid="135" />
+<portused state="closed" proto="tcp" portid="1" />
+<portused state="closed" proto="udp" portid="34311" />
+<osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="Vista" accuracy="100" />
+<osmatch name="Microsoft Windows Vista" accuracy="100" line="16393" />
+<osfingerprint fingerprint="OS:SCAN(V=4.68%D=8/16%OT=135%CT=1%CU=34311%PV=Y%DS=1%G=Y%M=001D60%TM=48A776&#xa;OS:07%P=i686-pc-linux-gnu)SEQ(SP=105%GCD=1%ISR=10E%TI=I%II=I%SS=S%TS=7)OPS(&#xa;OS:O1=M5B4NW8ST11%O2=M5B4NW8ST11%O3=M5B4NW8NNT11%O4=M5B4NW8ST11%O5=M5B4NW8S&#xa;OS:T11%O6=M5B4ST11)WIN(W1=2000%W2=2000%W3=2000%W4=2000%W5=2000%W6=2000)ECN(&#xa;OS:R=Y%DF=Y%T=80%W=2000%O=M5B4NW8NNS%CC=N%Q=)T1(R=Y%DF=Y%T=80%S=O%A=S+%F=AS&#xa;OS:%RD=0%Q=)T2(R=Y%DF=Y%T=80%W=0%S=Z%A=S%F=AR%O=%RD=0%Q=)T3(R=Y%DF=Y%T=80%W&#xa;OS:=0%S=Z%A=O%F=AR%O=%RD=0%Q=)T4(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)T&#xa;OS:5(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=80%W=0%S=A%A=&#xa;OS:O%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF&#xa;OS:=N%T=80%TOS=0%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUL=G%RUD=G)IE(R=&#xa;OS:Y%DFI=N%T=80%TOSI=Z%CD=Z%SI=S%DLI=S)&#xa;" />
+</os>
+<uptime seconds="1384" lastboot="Sat Aug 16 17:28:15 2008" />
+<distance value="1" />
+<tcpsequence index="261" difficulty="Good luck!" values="CD9C6B65,410AED23,9A27457B,84D9FFE4,3270D8D3,AB2AE7C3" />
+<ipidsequence class="Incremental" values="33FC,33FD,33FE,3400,3403,3404" />
+<tcptssequence class="100HZ" values="21AF6,21B01,21B0B,21B15,21B20,21B2A" />
+<times srtt="11462" rttvar="4510" to="100000" />
+</host>
+<taskbegin task="Parallel DNS resolution of 1 host." time="1218934279" />
+<taskend task="Parallel DNS resolution of 1 host." time="1218934279" />
+<taskbegin task="ARP Ping Scan" time="1218934279" />
+<taskend task="ARP Ping Scan" time="1218934281" extrainfo="148 total hosts" />
+<taskbegin task="Parallel DNS resolution of 148 hosts." time="1218934281" />
+<taskend task="Parallel DNS resolution of 148 hosts." time="1218934283" />
+<taskbegin task="SYN Stealth Scan" time="1218934283" />
+<taskend task="SYN Stealth Scan" time="1218934283" extrainfo="1715 total ports" />
+<host starttime="1218934283" endtime="1218934285"><status state="up" reason="localhost-response"/>
+<address addr="192.168.5.107" addrtype="ipv4" />
+<hostnames />
+<ports><extraports state="closed" count="1715">
+<extrareasons reason="resets" count="1715"/>
+</extraports>
+</ports>
+<os><portused state="closed" proto="tcp" portid="1" />
+<portused state="closed" proto="udp" portid="37912" />
+<osfingerprint fingerprint="SCAN(V=4.68%D=8/16%OT=%CT=1%CU=37912%PV=Y%DS=0%G=N%TM=48A7760D%P=i686-pc-linux-gnu)&#xa;T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)&#xa;T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)&#xa;T7(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)&#xa;U1(R=Y%DF=N%T=40%TOS=C0%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUL=G%RUD=G)&#xa;IE(R=Y%DFI=N%T=40%TOSI=S%CD=S%SI=S%DLI=S)&#xa;" />
+</os>
+<distance value="0" />
+<times srtt="28" rttvar="9" to="100000" />
+</host>
+<taskbegin task="SYN Stealth Scan" time="1218934285" />
+<taskend task="SYN Stealth Scan" time="1218934323" extrainfo="6860 total ports" />
+<host starttime="1218934279" endtime="1218934325"><status state="up" reason="arp-response"/>
+<address addr="192.168.5.111" addrtype="ipv4" />
+<address addr="00:11:24:25:FF:D5" addrtype="mac" vendor="Apple Computer" />
+<hostnames />
+<ports><extraports state="closed" count="1714">
+<extrareasons reason="resets" count="1714"/>
+</extraports>
+<port protocol="tcp" portid="5000"><state state="open" reason="syn-ack" reason_ttl="64"/><service name="upnp" method="table" conf="3" /></port>
+</ports>
+<os><portused state="open" proto="tcp" portid="5000" />
+<portused state="closed" proto="tcp" portid="1" />
+<portused state="closed" proto="udp" portid="30609" />
+<osclass type="general purpose" vendor="Apple" osfamily="Mac OS X" osgen="10.4.X" accuracy="100" />
+<osmatch name="Apple Mac OS X 10.4.10 (Tiger) (Darwin 8.10.0 - 8.11.1)" accuracy="100" line="1212" />
+<osfingerprint fingerprint="OS:SCAN(V=4.68%D=8/16%OT=5000%CT=1%CU=30609%PV=Y%DS=1%G=Y%M=001124%TM=48A77&#xa;OS:636%P=i686-pc-linux-gnu)SEQ(SP=11%GCD=74852FB0%ISR=FF%TI=I%II=I%SS=S%TS=&#xa;OS:1)OPS(O1=M5B4NW0NNT11SLL%O2=M5B4NW0NNT11SLL%O3=M5B4NW0NNT11%O4=M5B4NW0NN&#xa;OS:T11SLL%O5=M5B4NW0NNT11SLL%O6=M5B4NNT11SLL)WIN(W1=FFFF%W2=FFFF%W3=FFFF%W4&#xa;OS:=FFFF%W5=FFFF%W6=FFFF)ECN(R=Y%DF=Y%T=40%W=FFFF%O=M5B4NW0SLL%CC=N%Q=)T1(R&#xa;OS:=Y%DF=Y%T=40%S=O%A=S+%F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=&#xa;OS:A%A=Z%F=R%O=%RD=0%Q=)T5(R=Y%DF=N%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=&#xa;OS:Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=N%T=40%W=0%S=Z%A=S%F=AR&#xa;OS:%O=%RD=0%Q=)U1(R=Y%DF=N%T=40%TOS=0%IPL=38%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK&#xa;OS:=0%RUL=G%RUD=G)IE(R=Y%DFI=S%T=40%TOSI=S%CD=S%SI=S%DLI=S)&#xa;" />
+</os>
+<uptime seconds="54768855" lastboot="Tue Nov 21 19:17:51 2006" />
+<distance value="1" />
+<tcpsequence index="17" difficulty="Good luck!" values="CA35BC58,55B08CA8,55B08CA8,55B08CA8,55B08CA8,55B08CA8" />
+<ipidsequence class="Incremental" values="221C,221D,221E,221F,2220,2221" />
+<tcptssequence class="2HZ" values="68769AB,68769AB,68769AB,68769AB,68769AB,68769AC" />
+<times srtt="22425" rttvar="32215" to="151285" />
+</host>
+<host starttime="1218934279" endtime="1218934325"><status state="up" reason="arp-response"/>
+<address addr="192.168.5.125" addrtype="ipv4" />
+<address addr="00:1F:5B:CF:0A:9C" addrtype="mac" vendor="Apple" />
+<hostnames />
+<ports><extraports state="closed" count="1715">
+<extrareasons reason="resets" count="1715"/>
+</extraports>
+</ports>
+<os><portused state="closed" proto="tcp" portid="1" />
+<portused state="closed" proto="udp" portid="31277" />
+<osclass type="phone" vendor="Apple" osfamily="embedded" accuracy="100" />
+<osclass type="media device" vendor="Apple" osfamily="embedded" accuracy="100" />
+<osclass type="general purpose" vendor="Apple" osfamily="Mac OS X" osgen="10.2.X" accuracy="100" />
+<osclass type="general purpose" vendor="Apple" osfamily="Mac OS X" osgen="10.3.X" accuracy="100" />
+<osclass type="general purpose" vendor="Apple" osfamily="Mac OS X" osgen="10.4.X" accuracy="100" />
+<osclass type="general purpose" vendor="Apple" osfamily="Mac OS X" osgen="10.5.X" accuracy="100" />
+<osclass type="web proxy" vendor="Blue Coat" osfamily="SGOS" osgen="5.X" accuracy="100" />
+<osclass type="general purpose" vendor="FreeBSD" osfamily="FreeBSD" osgen="4.X" accuracy="100" />
+<osclass type="specialized" vendor="VMWare" osfamily="ESX Server" osgen="3.0.X" accuracy="100" />
+<osfingerprint fingerprint="SCAN(V=4.68%D=8/16%OT=%CT=1%CU=31277%PV=Y%DS=1%G=N%M=001F5B%TM=48A77636%P=i686-pc-linux-gnu)&#xa;T5(R=Y%DF=N%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)&#xa;T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)&#xa;T7(R=Y%DF=N%T=40%W=0%S=Z%A=S%F=AR%O=%RD=0%Q=)&#xa;U1(R=Y%DF=N%T=40%TOS=0%IPL=38%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=0%RUL=G%RUD=G)&#xa;IE(R=Y%DFI=S%T=40%TOSI=S%CD=S%SI=S%DLI=S)&#xa;" />
+</os>
+<distance value="1" />
+<times srtt="32472" rttvar="31983" to="160404" />
+</host>
+<host starttime="1218934279" endtime="1218934325"><status state="up" reason="arp-response"/>
+<address addr="192.168.5.148" addrtype="ipv4" />
+<address addr="00:1A:92:1C:72:64" addrtype="mac" vendor="Asustek Computer" />
+<hostnames />
+<ports><extraports state="closed" count="1710">
+<extrareasons reason="resets" count="1710"/>
+</extraports>
+<port protocol="tcp" portid="135"><state state="filtered" reason="no-response" reason_ttl="0"/><service name="msrpc" method="table" conf="3" /></port>
+<port protocol="tcp" portid="137"><state state="filtered" reason="no-response" reason_ttl="0"/><service name="netbios-ns" method="table" conf="3" /></port>
+<port protocol="tcp" portid="138"><state state="filtered" reason="no-response" reason_ttl="0"/><service name="netbios-dgm" method="table" conf="3" /></port>
+<port protocol="tcp" portid="139"><state state="filtered" reason="no-response" reason_ttl="0"/><service name="netbios-ssn" method="table" conf="3" /></port>
+<port protocol="tcp" portid="445"><state state="filtered" reason="no-response" reason_ttl="0"/><service name="microsoft-ds" method="table" conf="3" /></port>
+</ports>
+<os><portused state="closed" proto="tcp" portid="1" />
+<portused state="closed" proto="udp" portid="33395" />
+<osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="2003" accuracy="100" />
+<osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="XP" accuracy="100" />
+<osfingerprint fingerprint="SCAN(V=4.68%D=8/16%OT=%CT=1%CU=33395%PV=Y%DS=1%G=N%M=001A92%TM=48A77636%P=i686-pc-linux-gnu)&#xa;T5(R=Y%DF=N%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)&#xa;T6(R=Y%DF=N%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)&#xa;T7(R=Y%DF=N%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)&#xa;U1(R=Y%DF=N%T=80%TOS=0%IPL=B0%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%RUL=G%RUD=G)&#xa;IE(R=Y%DFI=S%T=80%TOSI=Z%CD=Z%SI=S%DLI=S)&#xa;" />
+</os>
+<distance value="1" />
+<times srtt="10282" rttvar="6908" to="100000" />
+</host>
+<host starttime="1218934279" endtime="1218934325"><status state="up" reason="arp-response"/>
+<address addr="192.168.5.166" addrtype="ipv4" />
+<address addr="00:90:4B:6F:12:38" addrtype="mac" vendor="GemTek Technology Co." />
+<hostnames />
+<ports><extraports state="filtered" count="1713">
+<extrareasons reason="no-responses" count="1713"/>
+</extraports>
+<port protocol="tcp" portid="139"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="netbios-ssn" method="table" conf="3" /></port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="128"/><service name="microsoft-ds" method="table" conf="3" /></port>
+</ports>
+<os><portused state="open" proto="tcp" portid="139" />
+<osclass type="general purpose" vendor="Microsoft" osfamily="Windows" osgen="2000" accuracy="100" />
+<osmatch name="Microsoft Windows 2000 SP4 or Windows XP SP2" accuracy="100" line="15285" />
+<osfingerprint fingerprint="SCAN(V=4.68%D=8/16%OT=139%CT=%CU=%PV=Y%DS=1%G=N%M=00904B%TM=48A77636%P=i686-pc-linux-gnu)&#xa;SEQ(SP=106%GCD=1%ISR=10B%TI=I%II=I%SS=S%TS=0)&#xa;OPS(O1=M5B4NW0NNT00NNS%O2=M5B4NW0NNT00NNS%O3=M5B4NW0NNT00%O4=M5B4NW0NNT00NNS%O5=M5B4NW0NNT00NNS%O6=M5B4NNT00NNS)&#xa;WIN(W1=4470%W2=41A0%W3=4100%W4=40E8%W5=40E8%W6=402E)&#xa;ECN(R=Y%DF=Y%TG=80%W=4470%O=M5B4NW0NNS%CC=N%Q=)&#xa;T1(R=Y%DF=Y%TG=80%S=O%A=S+%F=AS%RD=0%Q=)&#xa;T2(R=N)&#xa;T3(R=N)&#xa;T4(R=Y%DF=N%TG=80%W=0%S=A%A=O%F=R%O=%RD=0%Q=)&#xa;U1(R=N)&#xa;IE(R=Y%DFI=S%TG=80%TOSI=Z%CD=Z%SI=S%DLI=S)&#xa;" />
+</os>
+<distance value="1" />
+<tcpsequence index="262" difficulty="Good luck!" values="E268F991,62562AB6,20EF132D,5EE515F2,660E2BE6,23E04F2B" />
+<ipidsequence class="Incremental" values="79D4,79D5,79D6,79D7,79D8,79D9" />
+<tcptssequence class="zero timestamp" values="0,0,0,0,0,0" />
+<times srtt="25192" rttvar="36819" to="172468" />
+</host>
+<runstats><finished time="1218934326" timestr="Sat Aug 16 17:52:06 2008"/><hosts up="10" down="246" total="256" />
+<!-- Nmap done at Sat Aug 16 17:52:06 2008; 256 IP addresses (10 hosts up) scanned in 77.148 seconds -->
+</runstats></nmaprun>
