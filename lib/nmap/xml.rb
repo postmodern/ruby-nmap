@@ -19,9 +19,17 @@ module Nmap
     # @param [String] path
     #   The path to the Nmap XML scan file.
     #
-    def initialize(path)
+    # @yield [xml]
+    #   If a block is given, it will be passed the new XML object.
+    #
+    # @yieldparam [XML] xml
+    #   The newly created XML object.
+    #
+    def initialize(path,&block)
       @path = File.expand_path(path)
       @doc = Nokogiri::XML(File.new(@path))
+
+      block.call(self) if block
     end
 
     #
