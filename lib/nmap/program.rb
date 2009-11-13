@@ -23,14 +23,14 @@ module Nmap
     # @return [Boolean]
     #   Specifies whether the command exited normally.
     #
-    # @example
+    # @example Specifying nmap options via a Hash.
     #   Nmap::Program.scan(
     #     :targets => '192.168.1.1',
     #     :ports => [22,80,443],
     #     :verbose => true
     #   )
     #
-    # @example
+    # @example Specifying nmap options via a {Task} object.
     #   Nmap::Program.scan do |nmap|
     #     nmap.targets = '192.168.1.1'
     #     nmap.ports = [22,80,443]
