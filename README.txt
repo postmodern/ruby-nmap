@@ -13,15 +13,6 @@ scanner.
 * Provides a Rubyful interface for running Nmap.
 * Provides a Parser for enumerating Nmap XML scan files.
 
-== REQUIREMENTS:
-
-* {nokogiri}[http://nokogiri.rubyforge.org/] >= 1.4.0
-* {rprogram}[http://rprogram.rubyforge.org/] >= 0.1.7
-
-== INSTALL:
-
-  $ sudo gem install ruby-nmap
-
 == EXAMPLES:
 
 * Run Nmap from Ruby:
@@ -52,6 +43,15 @@ scanner.
 	end
       end
     end
+
+== REQUIREMENTS:
+
+* {nokogiri}[http://nokogiri.rubyforge.org/] >= 1.4.0
+* {rprogram}[http://rprogram.rubyforge.org/] >= 0.1.7
+
+== INSTALL:
+
+  $ sudo gem install ruby-nmap
 
 == LICENSE:
 
