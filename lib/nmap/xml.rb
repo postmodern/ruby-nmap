@@ -10,14 +10,26 @@ module Nmap
 
     include Enumerable
 
-    # Path of the Nmap XML file
+    # Path of the Nmap XML scan file
     attr_reader :path
 
+    #
+    # Creates a new XML object.
+    #
+    # @param [String] path
+    #   The path to the Nmap XML scan file.
+    #
     def initialize(path)
       @path = File.expand_path(path)
       @doc = Nokogiri::XML(File.new(@path))
     end
 
+    #
+    # Parses the scanner information.
+    #
+    # @return [Scanner]
+    #   The scanner that was used and generated the scan file.
+    #
     def scanner
       @scanner ||= Scanner.new(
         @doc.root['scanner'],
@@ -26,10 +38,22 @@ module Nmap
       )
     end
 
+    #
+    # Parses the XML scan file version.
+    #
+    # @return [String]
+    #   The version of the XML scan file.
+    #
     def version
       @version ||= @doc.root['xmloutputversion']
     end
 
+    #
+    # Parses the scan information.
+    #
+    # @return [Array<Scan>]
+    #   The scan information.
+    #
     def scan_info
       @doc.xpath("/nmaprun/scaninfo").map do |scaninfo|
         Scan.new(
@@ -46,14 +70,38 @@ module Nmap
       end
     end
 
+    #
+    # Parses the verbose level.
+    #
+    # @return [Integer]
+    #   The verbose level.
+    #
     def verbose
       @verbose ||= @doc.at("verbose/@level").inner_text.to_i
     end
 
+    #
+    # Parses the debugging level.
+    #
+    # @return [Integer]
+    #   The debugging level.
+    #
     def debugging
       @debugging ||= @doc.at("debugging/@level").inner_text.to_i
     end
 
+    #
+    # Parses the hosts in the scan.
+    #
+    # @yield [host]
+    #   Each host will be passed to a given block.
+    #
+    # @yieldparam [Host] host
+    #   A host in the scan.
+    #
+    # @return [XML]
+    #   The XML object.
+    #
     def each_host(&block)
       @doc.xpath("/nmaprun/host").each do |host|
         block.call(Host.new(host)) if block
@@ -62,10 +110,28 @@ module Nmap
       return self
     end
 
+    #
+    # Parses the hosts in the scan.
+    #
+    # @return [Array<Host>]
+    #   The hosts in the scan.
+    #
     def hosts
       Enumerator.new(self,:each_host).to_a
     end
 
+    #
+    # Parses the hosts that were found to be up during the scan.
+    #
+    # @yield [host]
+    #   Each host will be passed to a given block.
+    #
+    # @yieldparam [Host] host
+    #   A host in the scan.
+    #
+    # @return [XML]
+    #   The XML parser.
+    #
     def each_up_host(&block)
       @doc.xpath("/nmaprun/host[status[@state='up']]").each do |host|
         block.call(Host.new(host)) if block
@@ -74,14 +140,31 @@ module Nmap
       return self
     end
 
+    #
+    # Parses the hosts found to be up during the scan.
+    #
+    # @return [Array<Host>]
+    #   The hosts in the scan.
+    #
     def up_hosts
       Enumerator.new(self,:each_up_host).to_a
     end
 
+    #
+    # Parses the hosts that were found to be up during the scan.
+    #
+    # @see each_up_hosts
+    #
     def each(&block)
       each_up_hosts(&block)
     end
 
+    #
+    # Converts the XML parser to a String.
+    #
+    # @return [String]
+    #   The path of the XML scan file.
+    #
     def to_s
       @path.to_s
     end
