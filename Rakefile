@@ -7,6 +7,7 @@ require './tasks/yard.rb'
 
 Hoe.spec 'ruby-nmap' do
   self.developer('Postmodern', 'postmodern.mod3@gmail.com')
+  self.remote_rdoc_dir = '/'
   self.extra_deps = [
     ['nokogiri', '>=1.4.0'],
     ['rprogram', '>=0.1.7']
