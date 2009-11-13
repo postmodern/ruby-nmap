@@ -181,13 +181,19 @@ module Nmap
     #
     # Parses the OS guessing information of the host.
     #
+    # @yield [os]
+    #   If a block is given, it will be passed the OS guessing information.
+    #
+    # @yieldparam [OS] os
+    #   The OS guessing information.
+    #
     # @return [OS]
     #   The OS guessing information.
     #
-    def os
+    def os(&block)
       os = @node.at('os')
 
-      return OS.new(os) if os
+      return OS.new(os,&block) if os
     end
 
     #
