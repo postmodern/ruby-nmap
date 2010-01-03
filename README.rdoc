@@ -20,6 +20,8 @@ A Ruby interface to Nmap, the exploration tool and security / port scanner.
     require 'nmap/program'
     
     Nmap::Program.scan do |nmap|
+      nmap.sudo = true
+
       nmap.syn_scan = true
       nmap.service_scan = true
       nmap.os_fingerprint = true
@@ -48,7 +50,7 @@ A Ruby interface to Nmap, the exploration tool and security / port scanner.
 
 * {nmap}[http://www.insecure.org/]
 * {nokogiri}[http://nokogiri.rubyforge.org/] >= 1.4.0
-* {rprogram}[http://rprogram.rubyforge.org/] >= 0.1.7
+* {rprogram}[http://rprogram.rubyforge.org/] >= 0.1.8
 
 == INSTALL:
 
