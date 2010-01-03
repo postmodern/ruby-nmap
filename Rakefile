@@ -14,7 +14,7 @@ Hoe.spec 'ruby-nmap' do
 
   self.extra_deps = [
     ['nokogiri', '>=1.4.0'],
-    ['rprogram', '>=0.1.7']
+    ['rprogram', '>=0.1.8']
   ]
 
   self.extra_dev_deps = [
