@@ -38,6 +38,18 @@ module Nmap
     end
 
     #
+    # The duration of the scan task.
+    #
+    # @return [Integer]
+    #   The number of seconds it took the scan task to complete.
+    #
+    # @since 0.1.2
+    #
+    def duration
+      (@stop - @start)
+    end
+
+    #
     # Converts the scan task to a String.
     #
     # @return [String]
