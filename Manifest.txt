@@ -12,6 +12,7 @@ lib/nmap/os_match.rb
 lib/nmap/os.rb
 lib/nmap/port.rb
 lib/nmap/scanner.rb
+lib/nmap/scan_task.rb
 lib/nmap/scan.rb
 lib/nmap/status.rb
 lib/nmap/xml.rb
