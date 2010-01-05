@@ -26,6 +26,10 @@ describe XML do
     @xml.scanner.arguments.should == 'nmap -v -oX samples/backspace.xml -O -P0 -sS 192.168.5.*'
   end
 
+  it "should parse the scanner start time" do
+    @xml.scanner.start_time.should == Time.at(1218934249)
+  end
+
   it "should parse the scan information" do
     scan_info = @xml.scan_info
 
@@ -51,13 +55,10 @@ describe XML do
       task.name.should_not be_nil
       task.name.should_not be_empty
 
-      task.start.should > Time.at(0)
+      task.start_time.should > Time.at(0)
 
-      task.stop.should > Time.at(0)
-      task.stop.should > task.start
-
-      task.extrainfo.should_not be_nil
-      task.extrainfo.should_not be_empty
+      task.end_time.should > Time.at(0)
+      task.end_time.should >= task.start_time
     end
   end
 
