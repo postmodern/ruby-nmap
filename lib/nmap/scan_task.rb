@@ -8,7 +8,7 @@ module Nmap
     attr_reader :start_time
 
     # The time the scan task ended
-    attr_reader :stop_time
+    attr_reader :end_time
 
     # Extra information on the scan task
     attr_reader :extrainfo
