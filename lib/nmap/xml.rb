@@ -1,6 +1,7 @@
-require 'nmap/host'
 require 'nmap/scanner'
+require 'nmap/scan_task'
 require 'nmap/scan'
+require 'nmap/host'
 
 require 'nokogiri'
 require 'enumerator'
@@ -96,6 +97,27 @@ module Nmap
     #
     def debugging
       @debugging ||= @doc.at('debugging/@level').inner_text.to_i
+    end
+
+    #
+    # Parses the tasks of the scan.
+    #
+    # @return [Array<ScanTask>]
+    #   The tasks of the scan.
+    #
+    # @since 0.1.2
+    #
+    def tasks
+      @doc.xpath('/nmaprun/taskbegin').map do |task|
+        task.next['time']
+
+        ScanTask.new(
+          task['task'],
+          Time.at(task['time'].to_i),
+          Time.at(task.next['time'].to_i),
+          task['extrainfo']
+        )
+      end
     end
 
     #
