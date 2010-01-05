@@ -12,6 +12,15 @@ describe Host do
     @host = @xml.hosts.first
   end
 
+  it "should parse the start_time" do
+    @host.start_time.should > Time.at(0)
+  end
+
+  it "should parse the end_time" do
+    @host.end_time.should > Time.at(0)
+    @host.end_time.should > @host.start_time
+  end
+
   it "should parse the status" do
     status = @host.status
     
