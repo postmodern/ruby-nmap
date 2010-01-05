@@ -42,6 +42,25 @@ describe XML do
     @xml.debugging.should == 0
   end
 
+  it "should parse the scan tasks" do
+    tasks = @xml.tasks
+
+    tasks.should_not be_empty
+
+    tasks.each do |task|
+      task.name.should_not be_nil
+      task.name.should_not be_empty
+
+      task.start.should > Time.at(0)
+
+      task.stop.should > Time.at(0)
+      task.stop.should > task.start
+
+      task.extrainfo.should_not be_nil
+      task.extrainfo.should_not be_empty
+    end
+  end
+
   it "should parse the hosts" do
     @xml.hosts.length.should == 10
   end
