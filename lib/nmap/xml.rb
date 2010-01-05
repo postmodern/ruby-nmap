@@ -110,7 +110,7 @@ module Nmap
     #
     def tasks
       @doc.xpath('/nmaprun/taskbegin').map do |task_begin|
-        task_end = task_begin.next
+        task_end = task_begin.xpath('following-sibling::taskend').first
 
         ScanTask.new(
           task_begin['task'],
