@@ -31,6 +31,30 @@ module Nmap
     end
 
     #
+    # The time the host was first scanned.
+    #
+    # @return [Time]
+    #   The time the host was first scanned.
+    #
+    # @since 0.1.2
+    #
+    def start_time
+      Time.at(@node['starttime'].to_i)
+    end
+
+    #
+    # The time the host was last scanned.
+    #
+    # @return [Time]
+    #   The time the host was last scanned.
+    #
+    # @since 0.1.2
+    #
+    def end_time
+      Time.at(@node['endtime'].to_i)
+    end
+
+    #
     # Parses the status of the host.
     #
     # @return [Status]
