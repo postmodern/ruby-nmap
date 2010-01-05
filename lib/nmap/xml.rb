@@ -43,7 +43,8 @@ module Nmap
       @scanner ||= Scanner.new(
         @doc.root['scanner'],
         @doc.root['version'],
-        @doc.root['args']
+        @doc.root['args'],
+        Time.at(@doc.root['start'].to_i)
       )
     end
 
@@ -108,14 +109,14 @@ module Nmap
     # @since 0.1.2
     #
     def tasks
-      @doc.xpath('/nmaprun/taskbegin').map do |task|
-        task.next['time']
+      @doc.xpath('/nmaprun/taskbegin').map do |task_begin|
+        task_end = task_begin.next
 
         ScanTask.new(
-          task['task'],
-          Time.at(task['time'].to_i),
-          Time.at(task.next['time'].to_i),
-          task['extrainfo']
+          task_begin['task'],
+          Time.at(task_begin['time'].to_i),
+          Time.at(task_end['time'].to_i),
+          task_end['extrainfo']
         )
       end
     end
