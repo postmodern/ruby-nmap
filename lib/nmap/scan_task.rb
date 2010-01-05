@@ -5,10 +5,10 @@ module Nmap
     attr_reader :name
 
     # The time the scan task begun
-    attr_reader :start
+    attr_reader :start_time
 
     # The time the scan task ended
-    attr_reader :stop
+    attr_reader :stop_time
 
     # Extra information on the scan task
     attr_reader :extrainfo
