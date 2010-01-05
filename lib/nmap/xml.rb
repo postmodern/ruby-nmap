@@ -63,7 +63,7 @@ module Nmap
     #   The scan information.
     #
     def scan_info
-      @doc.xpath("/nmaprun/scaninfo").map do |scaninfo|
+      @doc.xpath('/nmaprun/scaninfo').map do |scaninfo|
         Scan.new(
           scaninfo['type'].to_sym,
           scaninfo['protocol'].to_sym,
@@ -85,7 +85,7 @@ module Nmap
     #   The verbose level.
     #
     def verbose
-      @verbose ||= @doc.at("verbose/@level").inner_text.to_i
+      @verbose ||= @doc.at('verbose/@level').inner_text.to_i
     end
 
     #
@@ -95,7 +95,7 @@ module Nmap
     #   The debugging level.
     #
     def debugging
-      @debugging ||= @doc.at("debugging/@level").inner_text.to_i
+      @debugging ||= @doc.at('debugging/@level').inner_text.to_i
     end
 
     #
@@ -111,7 +111,7 @@ module Nmap
     #   The XML object.
     #
     def each_host(&block)
-      @doc.xpath("/nmaprun/host").each do |host|
+      @doc.xpath('/nmaprun/host').each do |host|
         block.call(Host.new(host)) if block
       end
 
