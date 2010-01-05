@@ -11,7 +11,7 @@ module Nmap
     attr_reader :arguments
 
     # The time the scan begun
-    attr_reader :start
+    attr_reader :start_time
 
     #
     # Creates a new Scanner object.
@@ -25,14 +25,14 @@ module Nmap
     # @param [String] arguments
     #   The arguments used with the scanner.
     #
-    # @param [Time] start
+    # @param [Time] start_time
     #   The time the scan begun
     #
-    def initialize(name,version,arguments,start)
+    def initialize(name,version,arguments,start_time)
       @name = name
       @version = version
       @arguments = arguments
-      @start = start
+      @start_time = start_time
     end
 
     #
