@@ -19,10 +19,10 @@ module Nmap
     # @param [String] name
     #   The name of the scan task.
     #
-    # @param [Time] start
+    # @param [Time] start_time
     #   The time the scan task begun.
     #
-    # @param [Time] stop
+    # @param [Time] end_time
     #   The time the scan task ended.
     #
     # @param [String] extrainfo
@@ -30,10 +30,10 @@ module Nmap
     #
     # @since 0.1.2
     #
-    def initialize(name,start,stop,extrainfo=nil)
+    def initialize(name,start_time,end_time,extrainfo=nil)
       @name = name
-      @start = start
-      @stop = stop
+      @start_time = start_time
+      @end_time = end_time
       @extrainfo = extrainfo
     end
 
@@ -46,7 +46,7 @@ module Nmap
     # @since 0.1.2
     #
     def duration
-      (@stop - @start)
+      (@end_time - @start_time)
     end
 
     #
