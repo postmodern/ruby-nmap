@@ -2,11 +2,12 @@
 
 require 'rubygems'
 require 'hoe'
-require './tasks/spec.rb'
 require './tasks/yard.rb'
 
 Hoe.spec 'ruby-nmap' do
   self.developer('Postmodern', 'postmodern.mod3@gmail.com')
+
+  self.rspec_options += ['--colour', '--format', 'specdoc']
 
   self.readme_file = 'README.rdoc'
   self.history_file = 'History.rdoc'

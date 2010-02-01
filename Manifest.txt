@@ -17,7 +17,6 @@ lib/nmap/scan.rb
 lib/nmap/status.rb
 lib/nmap/xml.rb
 lib/nmap/version.rb
-tasks/spec.rb
 tasks/yard.rb
 spec/spec_helper.rb
 spec/helpers/scan.xml
