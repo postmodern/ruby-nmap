@@ -2,16 +2,16 @@
 
 require 'rubygems'
 require 'hoe'
-require './tasks/yard.rb'
+
+Hoe.plugin :yard
 
 Hoe.spec 'ruby-nmap' do
   self.developer('Postmodern', 'postmodern.mod3@gmail.com')
 
   self.rspec_options += ['--colour', '--format', 'specdoc']
 
-  self.readme_file = 'README.rdoc'
-  self.history_file = 'History.rdoc'
-  self.remote_rdoc_dir = '/'
+  self.yard_options += ['--protected']
+  self.remote_yard_dir = '/'
 
   self.extra_deps = [
     ['nokogiri', '>=1.4.0'],
@@ -22,8 +22,6 @@ Hoe.spec 'ruby-nmap' do
     ['rspec', '>=1.1.12'],
     ['yard', '>=0.2.3.5']
   ]
-
-  self.spec_extras = {:has_rdoc => 'yard'}
 end
 
 # vim: syntax=ruby
