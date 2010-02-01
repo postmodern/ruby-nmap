@@ -19,7 +19,7 @@ Hoe.spec 'ruby-nmap' do
   ]
 
   self.extra_dev_deps = [
-    ['rspec', '>=1.1.12'],
+    ['rspec', '>=1.3.0'],
     ['yard', '>=0.2.3.5']
   ]
 end
