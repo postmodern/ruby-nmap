@@ -5,7 +5,7 @@ require 'hoe'
 
 Hoe.plugin :yard
 
-Hoe.spec 'ruby-nmap' do
+Hoe.spec('ruby-nmap') do
   self.developer('Postmodern', 'postmodern.mod3@gmail.com')
 
   self.rspec_options += ['--colour', '--format', 'specdoc']
