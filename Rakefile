@@ -2,6 +2,7 @@
 
 require 'rubygems'
 require 'hoe'
+require 'hoe/signing'
 
 Hoe.plugin :yard
 
