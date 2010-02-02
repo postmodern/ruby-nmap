@@ -8,7 +8,7 @@ module Nmap
     name_program 'nmap'
 
     #
-    # Finds the +nmap+ program and performs a scan.
+    # Finds the `nmap` program and performs a scan.
     #
     # @param [Hash{Symbol => Object}] options
     #   Additional options for nmap.

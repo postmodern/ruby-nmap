@@ -1,9 +1,9 @@
-=== 0.1.1 / 2010-01-02
+### 0.1.1 / 2010-01-02
 
 * Require RProgram >= 0.1.8.
-  * Adds +sudo+ and +sudo=+ instance methods to {Nmap::Task}.
+  * Adds `sudo` and `sudo=` instance methods to {Nmap::Task}.
 
-=== 0.1.0 / 2009-11-13
+### 0.1.0 / 2009-11-13
 
 * Initial release.
   * Provides a Ruby interface for running Nmap.

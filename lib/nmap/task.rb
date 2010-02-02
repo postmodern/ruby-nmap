@@ -2,139 +2,139 @@ require 'rprogram/task'
 
 module Nmap
   #
-  # == Nmap options:
+  # ## Nmap options:
   #
-  # === Target Specifications:
+  # ### Target Specifications:
   #
-  # <tt>-iL</tt>:: <tt>nmap.target_file</tt>
-  # <tt>-iR</tt>:: <tt>nmap.random_targets</tt>
-  # <tt>--exclude</tt>:: <tt>nmap.exclude</tt>
-  # <tt>--excludefile</tt>:: <tt>nmap.exclude_file</tt>
+  # * `-iL` - `nmap.target_file`
+  # * `-iR` - `nmap.random_targets`
+  # * `--exclude` - `nmap.exclude`
+  # * `--excludefile` - `nmap.exclude_file`
   #
-  # === Host Discovery:
+  # ### Host Discovery:
   #
-  # <tt>-sL</tt>:: <tt>nmap.list</tt>
-  # <tt>-sP</tt>:: <tt>nmap.ping</tt>
-  # <tt>-PN</tt>:: <tt>nmap.skip_discovery</tt>
-  # <tt>-PS</tt>:: <tt>nmap.syn_discovery</tt>
-  # <tt>-PA</tt>:: <tt>nmap.ack_discovery</tt>
-  # <tt>-PU</tt>:: <tt>nmap.udp_discovery</tt>
-  # <tt>-PE</tt>:: <tt>nmap.icmp_echo_discovery</tt>
-  # <tt>-PP</tt>:: <tt>nmap.icmp_timestamp_discovery</tt>
-  # <tt>-PM</tt>:: <tt>nmap.icmp_netmask_discovery</tt>
-  # <tt>-PO</tt>:: <tt>nmap.ip_ping</tt>
-  # <tt>-n</tt>:: <tt>nmap.disable_dns</tt>
-  # <tt>-R</tt>:: <tt>nmap.enable_dns</tt>
-  # <tt>--dns-servers</tt>:: <tt>nmap.dns_servers</tt>
-  # <tt>--systems-dns</tt>:: <tt>nmap.systems_dns</tt>
+  # * `-sL` - `nmap.list`
+  # * `-sP` - `nmap.ping`
+  # * `-PN` - `nmap.skip_discovery`
+  # * `-PS` - `nmap.syn_discovery`
+  # * `-PA` - `nmap.ack_discovery`
+  # * `-PU` - `nmap.udp_discovery`
+  # * `-PE` - `nmap.icmp_echo_discovery`
+  # * `-PP` - `nmap.icmp_timestamp_discovery`
+  # * `-PM` - `nmap.icmp_netmask_discovery`
+  # * `-PO` - `nmap.ip_ping`
+  # * `-n` - `nmap.disable_dns`
+  # * `-R` - `nmap.enable_dns`
+  # * `--dns-servers` - `nmap.dns_servers`
+  # * `--systems-dns` - `nmap.systems_dns`
   #
-  # === Scan Techniques:
+  # ### Scan Techniques:
   #
-  # <tt>-sS</tt>:: <tt>nmap.syn_scan</tt>
-  # <tt>-sT</tt>:: <tt>nmap.connect_scan</tt>
-  # <tt>-sA</tt>:: <tt>nmap.ack_scan</tt>
-  # <tt>-sW</tt>:: <tt>nmap.window_scan</tt>
-  # <tt>-sM</tt>:: <tt>nmap.maimon_scan</tt>
-  # <tt>-sU</tt>:: <tt>nmap.udp_scan</tt>
-  # <tt>-sN</tt>:: <tt>nmap.null_scan</tt>
-  # <tt>-sF</tt>:: <tt>nmap.fin_scan</tt>
-  # <tt>-sX</tt>:: <tt>nmap.xmas_scan</tt>
-  # <tt>--scanflags</tt>:: <tt>nmap.tcp_scan_flags</tt>
-  # <tt>-sI</tt>:: <tt>nmap.idle_scan</tt>
-  # <tt>-s0</tt>:: <tt>nmap.ip_scan</tt>
-  # <tt>-b</tt>:: <tt>nmap.ftp_bounce_scan</tt>
-  # <tt>--traceroute</tt>:: <tt>nmap.traceroute</tt>
-  # <tt>--reason</tt>:: <tt>nmap.show_reason</tt>
+  # * `-sS` - `nmap.syn_scan`
+  # * `-sT` - `nmap.connect_scan`
+  # * `-sA` - `nmap.ack_scan`
+  # * `-sW` - `nmap.window_scan`
+  # * `-sM` - `nmap.maimon_scan`
+  # * `-sU` - `nmap.udp_scan`
+  # * `-sN` - `nmap.null_scan`
+  # * `-sF` - `nmap.fin_scan`
+  # * `-sX` - `nmap.xmas_scan`
+  # * `--scanflags` - `nmap.tcp_scan_flags`
+  # * `-sI` - `nmap.idle_scan`
+  # * `-s0` - `nmap.ip_scan`
+  # * `-b` - `nmap.ftp_bounce_scan`
+  # * `--traceroute` - `nmap.traceroute`
+  # * `--reason` - `nmap.show_reason`
   #
-  # === Port Specification and Scan Order:
+  # ### Port Specification and Scan Order:
   #
-  # <tt>-p</tt>:: <tt>nmap.ports</tt>
-  # <tt>-F</tt>:: <tt>nmap.fast</tt>
-  # <tt>-r</tt>:: <tt>nmap.consecutively</tt>
-  # <tt>--top-ports</tt>:: <tt>nmap.top_ports</tt>
-  # <tt>--port-ratio</tt>:: <tt>nmap.port_ratio</tt>
+  # * `-p` - `nmap.ports`
+  # * `-F` - `nmap.fast`
+  # * `-r` - `nmap.consecutively`
+  # * `--top-ports` - `nmap.top_ports`
+  # * `--port-ratio` - `nmap.port_ratio`
   #
-  # === Service/Version Detection:
+  # ### Service/Version Detection:
   #
-  # <tt>-sV</tt>:: <tt>nmap.service_scan</tt>
-  # <tt>--version-intensity</tt>:: <tt>nmap.version_intensity</tt>
-  # <tt>--version-light</tt>:: <tt>nmap.version_light</tt>
-  # <tt>--version-all</tt>:: <tt>nmap.version_all</tt>
-  # <tt>--version-trace</tt>:: <tt>nmap.version_trace</tt>
+  # * `-sV` - `nmap.service_scan`
+  # * `--version-intensity` - `nmap.version_intensity`
+  # * `--version-light` - `nmap.version_light`
+  # * `--version-all` - `nmap.version_all`
+  # * `--version-trace` - `nmap.version_trace`
   #
-  # === Script Scan:
+  # ### Script Scan:
   #
-  # <tt>-sC</tt>:: <tt>nmap.default_script</tt>
-  # <tt>--script</tt>:: <tt>nmap.script</tt>
-  # <tt>--script-args</tt>:: <tt>nmap.script_params</tt>
-  # <tt>--script-trace</tt>:: <tt>nmap.script_trace</tt>
-  # <tt>--script-updatedb</tt>:: <tt>nmap.update_scriptdb</tt>
+  # * `-sC` - `nmap.default_script`
+  # * `--script` - `nmap.script`
+  # * `--script-args` - `nmap.script_params`
+  # * `--script-trace` - `nmap.script_trace`
+  # * `--script-updatedb` - `nmap.update_scriptdb`
   #
-  # === OS Detection:
+  # ### OS Detection:
   #
-  # <tt>-O</tt>:: <tt>nmap.os_fingerprint</tt>
-  # <tt>--osscan_limit</tt>:: <tt>nmap.limit_os_scan</tt>
-  # <tt>--osscan_guess</tt>:: <tt>nmap.max_os_scan</tt>
+  # * `-O` - `nmap.os_fingerprint`
+  # * `--osscan_limit` - `nmap.limit_os_scan`
+  # * `--osscan_guess` - `nmap.max_os_scan`
   #
-  # === Timing and Performance:
+  # ### Timing and Performance:
   #
-  # <tt>--min-hostgroup</tt>:: <tt>nmap.min_host_group</tt>
-  # <tt>--max-hostgroup</tt>:: <tt>nmap.max_host_group</tt>
-  # <tt>--min-parallelism</tt>:: <tt>nmap.min_parallelism</tt>
-  # <tt>--max-parallelism</tt>:: <tt>nmap.max_parallelism</tt>
-  # <tt>--min-rtt-timeout</tt>:: <tt>nmap.min_rtt_timeout</tt>
-  # <tt>--max-rtt-timeout</tt>:: <tt>nmap.max_rtt_timeout</tt>
-  # <tt>--max-retries</tt>:: <tt>nmap.max_retries</tt>
-  # <tt>--host-timeout</tt>:: <tt>nmap.host_timeout</tt>
-  # <tt>--scan-delay</tt>:: <tt>nmap.scan_delay</tt>
-  # <tt>--max-scan-delay</tt>:: <tt>nmap.max_scan_delay</tt>
-  # <tt>--min-rate</tt>:: <tt>nmap.min_rate</tt>
-  # <tt>--max-rate</tt>:: <tt>nmap.max_rate</tt>
+  # * `--min-hostgroup` - `nmap.min_host_group`
+  # * `--max-hostgroup` - `nmap.max_host_group`
+  # * `--min-parallelism` - `nmap.min_parallelism`
+  # * `--max-parallelism` - `nmap.max_parallelism`
+  # * `--min-rtt-timeout` - `nmap.min_rtt_timeout`
+  # * `--max-rtt-timeout` - `nmap.max_rtt_timeout`
+  # * `--max-retries` - `nmap.max_retries`
+  # * `--host-timeout` - `nmap.host_timeout`
+  # * `--scan-delay` - `nmap.scan_delay`
+  # * `--max-scan-delay` - `nmap.max_scan_delay`
+  # * `--min-rate` - `nmap.min_rate`
+  # * `--max-rate` - `nmap.max_rate`
   #
-  # === Firewall/IDS Evasion and Spoofing:
+  # ### Firewall/IDS Evasion and Spoofing:
   #
-  # <tt>-f</tt>:: <tt>nmap.packet_fragments</tt>
-  # <tt>--mtu</tt>:: <tt>nmap.mtu</tt>
-  # <tt>-D</tt>:: <tt>nmap.decoys</tt>
-  # <tt>-S</tt>:: <tt>nmap.spoof</tt>
-  # <tt>-e</tt>:: <tt>nmap.interface</tt>
-  # <tt>-g</tt>:: <tt>nmap.source_port</tt>
-  # <tt>--data-length</tt>:: <tt>nmap.data_length</tt>
-  # <tt>--ip-options</tt>:: <tt>nmap.ip_options</tt>
-  # <tt>--ttl</tt>:: <tt>nmap.ttl</tt>
-  # <tt>--spoof-mac</tt>:: <tt>nmap.spoof_mac</tt>
-  # <tt>--badsum</tt>:: <tt>nmap.bad_checksum</tt>
+  # * `-f` - `nmap.packet_fragments`
+  # * `--mtu` - `nmap.mtu`
+  # * `-D` - `nmap.decoys`
+  # * `-S` - `nmap.spoof`
+  # * `-e` - `nmap.interface`
+  # * `-g` - `nmap.source_port`
+  # * `--data-length` - `nmap.data_length`
+  # * `--ip-options` - `nmap.ip_options`
+  # * `--ttl` - `nmap.ttl`
+  # * `--spoof-mac` - `nmap.spoof_mac`
+  # * `--badsum` - `nmap.bad_checksum`
   #
-  # === Output:
+  # ### Output:
   #
-  # <tt>-oN</tt>:: <tt>nmap.save</tt>
-  # <tt>-oX</tt>:: <tt>nmap.xml</tt>
-  # <tt>-oS</tt>:: <tt>nmap.skiddie</tt>
-  # <tt>-oG</tt>:: <tt>nmap.grepable</tt>
-  # <tt>-v</tt>:: <tt>nmap.verbose</tt>
-  # <tt>--open</tt>:: <tt>nmap.show_open_ports</tt>
-  # <tt>--packet-trace</tt>:: <tt>nmap.show_packets</tt>
-  # <tt>--iflist</tt>:: <tt>nmap.show_interfaces</tt>
-  # <tt>--log-errors</tt>:: <tt>nmap.show_log_errors</tt>
-  # <tt>--append-output</tt>:: <tt>nmap.append</tt>
-  # <tt>--resume</tt>:: <tt>nmap.resume</tt>
-  # <tt>--stylesheet</tt>:: <tt>nmap.stylesheet</tt>
-  # <tt>--webxml</tt>:: <tt>nmap.nmap_stylesheet</tt>
-  # <tt>--no-stylesheet</tt>:: <tt>nmap.disable_stylesheet</tt>
+  # * `-oN` - `nmap.save`
+  # * `-oX` - `nmap.xml`
+  # * `-oS` - `nmap.skiddie`
+  # * `-oG` - `nmap.grepable`
+  # * `-v` - `nmap.verbose`
+  # * `--open` - `nmap.show_open_ports`
+  # * `--packet-trace` - `nmap.show_packets`
+  # * `--iflist` - `nmap.show_interfaces`
+  # * `--log-errors` - `nmap.show_log_errors`
+  # * `--append-output` - `nmap.append`
+  # * `--resume` - `nmap.resume`
+  # * `--stylesheet` - `nmap.stylesheet`
+  # * `--webxml` - `nmap.nmap_stylesheet`
+  # * `--no-stylesheet` - `nmap.disable_stylesheet`
   #
-  # === Misc:
+  # ### Misc:
   #
-  # <tt>-6</tt>:: <tt>nmap.ipv6</tt>
-  # <tt>-A</tt>:: <tt>nmap.all</tt>
-  # <tt>--datadir</tt>:: <tt>nmap.nmap_datadir</tt>
-  # <tt>--send-eth</tt>:: <tt>nmap.raw_ethernet</tt>
-  # <tt>--send-ip</tt>:: <tt>nmap.raw_ip</tt>
-  # <tt>--privledged</tt>:: <tt>nmap.privledged</tt>
-  # <tt>--unprivledged</tt>:: <tt>nmap.unprivledged</tt>
-  # <tt>-V</tt>:: <tt>nmap.version</tt>
-  # <tt>-h</tt>:: <tt>nmap.help</tt>
+  # * `-6` - `nmap.ipv6`
+  # * `-A` - `nmap.all`
+  # * `--datadir` - `nmap.nmap_datadir`
+  # * `--send-eth` - `nmap.raw_ethernet`
+  # * `--send-ip` - `nmap.raw_ip`
+  # * `--privledged` - `nmap.privledged`
+  # * `--unprivledged` - `nmap.unprivledged`
+  # * `-V` - `nmap.version`
+  # * `-h` - `nmap.help`
   #
-  # <tt>target specification</tt>:: <tt>nmap.targets</tt>
+  # * `target specification` - `nmap.targets`
   #
   # @see http://nmap.org/book/man.html
   #

@@ -11,7 +11,7 @@ Hoe.spec('ruby-nmap') do
 
   self.rspec_options += ['--colour', '--format', 'specdoc']
 
-  self.yard_options += ['--protected']
+  self.yard_options += ['--markup', 'markdown', '--protected']
   self.remote_yard_dir = '/'
 
   self.extra_deps = [

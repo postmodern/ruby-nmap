@@ -1,22 +1,22 @@
-= ruby-nmap
+# ruby-nmap
 
 * http://ruby-nmap.rubyforge.org/
 * http://github.com/sophsec/ruby-nmap
 * http://github.com/sophsec/ruby-nmap/issues
 * Postmodern (postmodern.mod3 at gmail.com)
 
-== DESCRIPTION:
+## DESCRIPTION:
 
 A Ruby interface to Nmap, the exploration tool and security / port scanner.
 
-== FEATURES:
+## FEATURES:
 
 * Provides a Ruby interface for running Nmap.
 * Provides a Parser for enumerating Nmap XML scan files.
 
-== EXAMPLES:
+## EXAMPLES:
 
-* Run Nmap from Ruby:
+Run Nmap from Ruby:
 
     require 'nmap/program'
     
@@ -33,7 +33,7 @@ A Ruby interface to Nmap, the exploration tool and security / port scanner.
       nmap.targets = '192.168.1.*'
     end
 
-* Parse Nmap XML scan files:
+Parse Nmap XML scan files:
 
     require 'nmap/xml'
 
@@ -47,17 +47,17 @@ A Ruby interface to Nmap, the exploration tool and security / port scanner.
       end
     end
 
-== REQUIREMENTS:
+## REQUIREMENTS:
 
-* {nmap}[http://www.insecure.org/]
-* {nokogiri}[http://nokogiri.rubyforge.org/] >= 1.4.0
-* {rprogram}[http://rprogram.rubyforge.org/] >= 0.1.8
+* [nmap](http://www.insecure.org/)
+* [nokogiri](http://nokogiri.rubyforge.org/) >= 1.4.0
+* [rprogram](http://rprogram.rubyforge.org/) >= 0.1.8
 
-== INSTALL:
+## INSTALL:
 
-  $ sudo gem install ruby-nmap
+    $ sudo gem install ruby-nmap
 
-== LICENSE:
+## LICENSE:
 
 The MIT License
 
