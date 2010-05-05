@@ -12,8 +12,8 @@ begin
     gem.email = 'postmodern.mod3@gmail.com'
     gem.homepage = 'http://github.com/sophsec/ruby-nmap'
     gem.authors = ['Postmodern']
-    gem.add_dependency 'nokogiri', '>=1.4.0'
-    gem.add_dependency 'rprogram', '>=0.1.8'
+    gem.add_dependency 'nokogiri', '>= 1.3.0'
+    gem.add_dependency 'rprogram', '>= 0.1.8'
     gem.add_development_dependency 'rspec', '>= 1.3.0'
     gem.add_development_dependency 'yard', '>= 0.5.3'
     gem.requirements = ['nmap, 4.xx or greater']
