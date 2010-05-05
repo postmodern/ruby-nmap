@@ -9,58 +9,60 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Postmodern"]
-  s.date = %q{2010-02-11}
+  s.date = %q{2010-05-05}
   s.description = %q{A Ruby interface to Nmap, the exploration tool and security / port scanner.}
   s.email = %q{postmodern.mod3@gmail.com}
   s.extra_rdoc_files = [
     "ChangeLog.md",
-    "LICENSE.txt",
-    "README.md"
+     "LICENSE.txt",
+     "README.md"
   ]
   s.files = [
     ".gitignore",
-    ".specopts",
-    ".yardopts",
-    "ChangeLog.md",
-    "LICENSE.txt",
-    "README.md",
-    "Rakefile",
-    "lib/nmap.rb",
-    "lib/nmap/address.rb",
-    "lib/nmap/host.rb",
-    "lib/nmap/os.rb",
-    "lib/nmap/os_class.rb",
-    "lib/nmap/os_match.rb",
-    "lib/nmap/port.rb",
-    "lib/nmap/program.rb",
-    "lib/nmap/scan.rb",
-    "lib/nmap/scan_task.rb",
-    "lib/nmap/scanner.rb",
-    "lib/nmap/status.rb",
-    "lib/nmap/task.rb",
-    "lib/nmap/version.rb",
-    "lib/nmap/xml.rb",
-    "spec/helpers/scan.xml",
-    "spec/helpers/xml.rb",
-    "spec/host_spec.rb",
-    "spec/nmap_spec.rb",
-    "spec/os_spec.rb",
-    "spec/spec_helper.rb",
-    "spec/xml_spec.rb"
+     ".specopts",
+     ".yardopts",
+     "ChangeLog.md",
+     "LICENSE.txt",
+     "README.md",
+     "Rakefile",
+     "lib/nmap.rb",
+     "lib/nmap/address.rb",
+     "lib/nmap/host.rb",
+     "lib/nmap/os.rb",
+     "lib/nmap/os_class.rb",
+     "lib/nmap/os_match.rb",
+     "lib/nmap/port.rb",
+     "lib/nmap/program.rb",
+     "lib/nmap/scan.rb",
+     "lib/nmap/scan_task.rb",
+     "lib/nmap/scanner.rb",
+     "lib/nmap/status.rb",
+     "lib/nmap/task.rb",
+     "lib/nmap/version.rb",
+     "lib/nmap/xml.rb",
+     "ruby-nmap.gemspec",
+     "spec/helpers/scan.xml",
+     "spec/helpers/xml.rb",
+     "spec/host_spec.rb",
+     "spec/nmap_spec.rb",
+     "spec/os_spec.rb",
+     "spec/spec_helper.rb",
+     "spec/xml_spec.rb"
   ]
   s.has_rdoc = %q{yard}
   s.homepage = %q{http://github.com/sophsec/ruby-nmap}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.5}
+  s.requirements = ["nmap, 4.xx or greater"]
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{A Ruby interface to Nmap.}
   s.test_files = [
-    "spec/spec_helper.rb",
     "spec/nmap_spec.rb",
-    "spec/helpers/xml.rb",
-    "spec/xml_spec.rb",
-    "spec/host_spec.rb",
-    "spec/os_spec.rb"
+     "spec/os_spec.rb",
+     "spec/spec_helper.rb",
+     "spec/helpers/xml.rb",
+     "spec/xml_spec.rb",
+     "spec/host_spec.rb"
   ]
 
   if s.respond_to? :specification_version then
