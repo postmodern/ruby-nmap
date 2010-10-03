@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 group(:runtime) do
   gem 'nokogiri',	'>= 1.3.0'
-  gem 'rprogram',	'>= 0.1.8'
+  gem 'rprogram',	'~> 0.2.0'
 end
 
 group(:development) do
