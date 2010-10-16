@@ -207,8 +207,8 @@ module Nmap
     short_option :flag => '-sC', :name => :default_script
     long_option :flag => '--script'
     long_option :flag => '--script-args',
-      :name => :script_params,
-      :separator => ','
+                :name => :script_params,
+                :separator => ','
     long_option :flag => '--script-trace'
     long_option :flag => '--script-updatedb', :name => :update_scriptdb
 
