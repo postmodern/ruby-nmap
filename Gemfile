@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 group(:runtime) do
   gem 'nokogiri',	'>= 1.3.0'
-  gem 'rprogram',	'~> 0.2.0'
+  gem 'rprogram',	'~> 0.2.0', :git => 'http://github.com/postmodern/rprogram.git'
 end
 
 group(:development) do

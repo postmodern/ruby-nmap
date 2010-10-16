@@ -190,8 +190,6 @@ module Nmap
             port.to_s
           end
         }.join(',')]
-      else
-        []
       end
     end
 
