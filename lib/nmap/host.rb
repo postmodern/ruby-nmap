@@ -78,17 +78,20 @@ module Nmap
     # @yieldparam [Address] addr
     #   A address of the host.
     #
-    # @return [Host]
+    # @return [Host, Enumerator]
     #   The host.
+    #   If no block was given, an enumerator will be returned.
     #
-    def each_address(&block)
+    def each_address
+      return enum_for(:each_address) unless block_given?
+
       @node.xpath("address[@addr]").each do |addr|
         address = Address.new(
           addr['addrtype'].to_sym,
           addr['addr']
         )
 
-        block.call(address) if block
+        yield address
       end
 
       return self
@@ -101,7 +104,7 @@ module Nmap
     #   The addresses of the host.
     #
     def addresses
-      Enumerator.new(self,:each_address).to_a
+      each_address.to_a
     end
 
     #
@@ -181,12 +184,15 @@ module Nmap
     # @yieldparam [String] host
     #   A hostname of the host.
     #
-    # @return [Host]
+    # @return [Host, Enumerator]
     #   The host.
+    #   If no block was given, an enumerator will be returned.
     #
-    def each_hostname(&block)
+    def each_hostname
+      return enum_for(:each_hostname) unless block_given?
+
       @node.xpath("hostnames/hostname[@name]").each do |host|
-        block.call(host['name']) if block
+        yield host['name']
       end
 
       return self
@@ -199,7 +205,7 @@ module Nmap
     #   The hostnames of the host.
     #
     def hostnames
-      Enumerator.new(self,:each_hostname).to_a
+      each_hostname.to_a
     end
 
     #
@@ -229,12 +235,15 @@ module Nmap
     # @yieldparam [Port] port
     #   A scanned port of the host.
     #
-    # @return [Host]
+    # @return [Host, Enumerator]
     #   The host.
+    #   If no block was given, an enumerator will be returned.
     #
-    def each_port(&block)
+    def each_port
+      return enum_for(:each_port) unless block_given?
+
       @node.xpath("ports/port").each do |port|
-        block.call(create_port(port)) if block
+        yield create_port(port)
       end
 
       return self
@@ -247,7 +256,7 @@ module Nmap
     #   The scanned ports of the host.
     #
     def ports
-      Enumerator.new(self,:each_port).to_a
+      each_port.to_a
     end
 
     #
@@ -259,12 +268,15 @@ module Nmap
     # @yieldparam [Port] port
     #   An open scanned port of the host.
     #
-    # @return [Host]
+    # @return [Host, Enumerator]
     #   The host.
+    #   If no block was given, an enumerator will be returned.
     #
     def each_open_port(&block)
+      return enum_for(:each_open_port) unless block_given?
+
       @node.xpath("ports/port[state/@state='open']").each do |port|
-        block.call(create_port(port)) if block
+        yield create_port(port)
       end
 
       return self
@@ -277,7 +289,7 @@ module Nmap
     #   The open ports of the host.
     #
     def open_ports
-      Enumerator.new(self,:each_open_port).to_a
+      each_open_port.to_a
     end
 
     #
@@ -289,12 +301,15 @@ module Nmap
     # @yieldparam [Port] port
     #   An TCP scanned port of the host.
     #
-    # @return [Host]
+    # @return [Host, Enumerator]
     #   The host.
+    #   If no block was given, an enumerator will be returned.
     #
-    def each_tcp_port(&block)
+    def each_tcp_port
+      return enum_for(:each_tcp_port) unless block_given?
+
       @node.xpath("ports/port[@protocol='tcp']").each do |port|
-        block.call(create_port(port)) if block
+        yield create_port(port)
       end
 
       return self
@@ -307,7 +322,7 @@ module Nmap
     #   The TCP ports of the host.
     #
     def tcp_ports
-      Enumerator.new(self,:each_tcp_port).to_a
+      each_tcp_port.to_a
     end
 
     #
@@ -319,12 +334,15 @@ module Nmap
     # @yieldparam [Port] port
     #   An UDP scanned port of the host.
     #
-    # @return [Host]
+    # @return [Host, Enumerator]
     #   The host.
+    #   If no block was given, an enumerator will be returned.
     #
-    def each_udp_port(&block)
+    def each_udp_port
+      return enum_for(:each_udp_port) unless block_given?
+
       @node.xpath("ports/port[@protocol='udp']").each do |port|
-        block.call(create_port(port)) if block
+        yield create_port(port)
       end
 
       return self
@@ -337,7 +355,7 @@ module Nmap
     #   The UDP ports of the host.
     #
     def udp_ports
-      Enumerator.new(self,:each_udp_port).to_a
+      each_udp_port.to_a
     end
 
     #
