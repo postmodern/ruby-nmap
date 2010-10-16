@@ -1,9 +1,9 @@
+require 'spec_helper'
+require 'helpers/xml'
+
 require 'nmap/os'
 require 'nmap/xml'
 require 'cgi'
-
-require 'spec_helper'
-require 'helpers/xml'
 
 describe OS do
   include Helpers

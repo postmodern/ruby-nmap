@@ -1,8 +1,8 @@
-require 'nmap/xml'
-require 'nmap/host'
-
 require 'spec_helper'
 require 'helpers/xml'
+
+require 'nmap/xml'
+require 'nmap/host'
 
 describe Host do
   include Helpers

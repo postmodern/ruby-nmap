@@ -1,6 +1,6 @@
-require 'nmap/version'
-
 require 'spec_helper'
+
+require 'nmap/version'
 
 describe Nmap do
   it "should have a VERSION constant" do

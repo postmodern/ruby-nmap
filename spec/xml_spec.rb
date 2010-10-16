@@ -1,7 +1,7 @@
-require 'nmap/xml'
-
 require 'spec_helper'
 require 'helpers/xml'
+
+require 'nmap/xml'
 
 describe XML do
   include Helpers
