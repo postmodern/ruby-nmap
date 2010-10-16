@@ -5,6 +5,12 @@ describe Task do
   subject { Task.new }
 
   describe "ports" do
+    it "should ignore empty port Arrays" do
+      subject.ports = []
+
+      subject.arguments.should == []
+    end
+
     it "should format a String of ports" do
       subject.ports = '80,21,25'
 

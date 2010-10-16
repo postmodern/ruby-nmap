@@ -181,14 +181,18 @@ module Nmap
 
     # PORT SPECIFICATION AND SCAN ORDER:
     short_option :flag => '-p', :name => :ports do |opt,value|
-      [opt.flag, value.map { |port|
-        case port
-        when Range
-          "#{port.first}-#{port.last}"
-        else
-          port.to_s
-        end
-      }.join(',')]
+      unless value.empty?
+        [opt.flag, value.map { |port|
+          case port
+          when Range
+            "#{port.first}-#{port.last}"
+          else
+            port.to_s
+          end
+        }.join(',')]
+      else
+        []
+      end
     end
 
     short_option :flag => '-F', :name => :fast
