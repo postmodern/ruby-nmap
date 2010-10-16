@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Postmodern"]
-  s.date = %q{2010-10-03}
+  s.date = %q{2010-10-15}
   s.description = %q{A Ruby interface to Nmap, the exploration tool and security / port scanner.}
   s.email = %q{postmodern.mod3@gmail.com}
   s.extra_rdoc_files = [
@@ -49,6 +49,7 @@ Gem::Specification.new do |s|
     "spec/nmap_spec.rb",
     "spec/os_spec.rb",
     "spec/spec_helper.rb",
+    "spec/task_spec.rb",
     "spec/xml_spec.rb"
   ]
   s.has_rdoc = %q{yard}
@@ -63,6 +64,7 @@ Gem::Specification.new do |s|
     "spec/nmap_spec.rb",
     "spec/os_spec.rb",
     "spec/spec_helper.rb",
+    "spec/task_spec.rb",
     "spec/xml_spec.rb"
   ]
 

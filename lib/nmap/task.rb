@@ -180,7 +180,17 @@ module Nmap
     long_option :flag => '--reason', :name => :show_reason
 
     # PORT SPECIFICATION AND SCAN ORDER:
-    short_option :flag => '-p', :name => :ports, :separator => ','
+    short_option :flag => '-p', :name => :ports do |opt,value|
+      [opt.flag, value.map { |port|
+        case port
+        when Range
+          "#{port.first}-#{port.last}"
+        else
+          port.to_s
+        end
+      }.join(',')]
+    end
+
     short_option :flag => '-F', :name => :fast
     short_option :flag => '-r', :name => :consecutively
     long_option :flag => '--top-ports'

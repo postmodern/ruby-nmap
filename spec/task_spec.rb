@@ -1,0 +1,32 @@
+require 'spec_helper'
+require 'nmap/task'
+
+describe Task do
+  subject { Task.new }
+
+  describe "ports" do
+    it "should format a String of ports" do
+      subject.ports = '80,21,25'
+
+      subject.arguments.should == %w[-p 80,21,25]
+    end
+
+    it "should format an Array of String ports" do
+      subject.ports = %w[80 21 25]
+
+      subject.arguments.should == %w[-p 80,21,25]
+    end
+
+    it "should format an Array of Integer ports" do
+      subject.ports = [80, 21, 25]
+
+      subject.arguments.should == %w[-p 80,21,25]
+    end
+
+    it "should format a Range of ports" do
+      subject.ports = [80, 21..25]
+
+      subject.arguments.should == %w[-p 80,21-25]
+    end
+  end
+end
