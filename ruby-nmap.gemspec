@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Postmodern"]
-  s.date = %q{2010-10-15}
+  s.date = %q{2010-10-16}
   s.description = %q{A Ruby interface to Nmap, the exploration tool and security / port scanner.}
   s.email = %q{postmodern.mod3@gmail.com}
   s.extra_rdoc_files = [
@@ -18,8 +18,7 @@ Gem::Specification.new do |s|
     "README.md"
   ]
   s.files = [
-    ".gitignore",
-    ".specopts",
+    ".rspec",
     ".yardopts",
     "ChangeLog.md",
     "Gemfile",
@@ -74,16 +73,16 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<rake>, ["~> 0.8.7"])
-      s.add_development_dependency(%q<jeweler>, ["~> 1.4.0"])
-      s.add_development_dependency(%q<rspec>, ["~> 1.3.0"])
+      s.add_development_dependency(%q<jeweler>, ["~> 1.5.0.pre"])
+      s.add_development_dependency(%q<rspec>, ["~> 2.0.0"])
       s.add_runtime_dependency(%q<nokogiri>, [">= 1.3.0"])
       s.add_runtime_dependency(%q<rprogram>, [">= 0.1.8"])
       s.add_development_dependency(%q<rspec>, [">= 1.3.0"])
       s.add_development_dependency(%q<yard>, [">= 0.5.3"])
     else
       s.add_dependency(%q<rake>, ["~> 0.8.7"])
-      s.add_dependency(%q<jeweler>, ["~> 1.4.0"])
-      s.add_dependency(%q<rspec>, ["~> 1.3.0"])
+      s.add_dependency(%q<jeweler>, ["~> 1.5.0.pre"])
+      s.add_dependency(%q<rspec>, ["~> 2.0.0"])
       s.add_dependency(%q<nokogiri>, [">= 1.3.0"])
       s.add_dependency(%q<rprogram>, [">= 0.1.8"])
       s.add_dependency(%q<rspec>, [">= 1.3.0"])
@@ -91,8 +90,8 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<rake>, ["~> 0.8.7"])
-    s.add_dependency(%q<jeweler>, ["~> 1.4.0"])
-    s.add_dependency(%q<rspec>, ["~> 1.3.0"])
+    s.add_dependency(%q<jeweler>, ["~> 1.5.0.pre"])
+    s.add_dependency(%q<rspec>, ["~> 2.0.0"])
     s.add_dependency(%q<nokogiri>, [">= 1.3.0"])
     s.add_dependency(%q<rprogram>, [">= 0.1.8"])
     s.add_dependency(%q<rspec>, [">= 1.3.0"])
