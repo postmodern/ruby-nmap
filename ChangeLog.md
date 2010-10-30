@@ -1,3 +1,17 @@
+### 0.2.0 / 2010-10-29
+
+* Require nokogiri >= 1.3.0.
+* Require rprogram ~> 0.2.0.
+* Added {Nmap::XML#tasks}.
+* Added {Nmap::Scanner#start_time}.
+* Added {Nmap::ScanTask#duration}.
+* Added {Nmap::Host#start_time}.
+* Added {Nmap::Host#end_time}.
+* Allow `Nmap::Tasks#ports=` to accept port ranges.
+* Omit the `-p` option if no ports are given to {Nmap::Task}.
+* Have the `Nmap::Host#each_*` methods return an `Enumerator` object if no
+  block is given.
+
 ### 0.1.1 / 2010-01-02
 
 * Require RProgram >= 0.1.8.
