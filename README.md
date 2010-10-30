@@ -1,6 +1,5 @@
 # ruby-nmap
 
-* [ruby-nmap.rubyforge.org](http://ruby-nmap.rubyforge.org/)
 * [github.com/sophsec/ruby-nmap](http://github.com/sophsec/ruby-nmap/)
 * [github.com/sophsec/ruby-nmap/issues](http://github.com/sophsec/ruby-nmap/issues)
 * Postmodern (postmodern.mod3 at gmail.com)
