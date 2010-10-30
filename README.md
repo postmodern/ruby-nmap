@@ -1,7 +1,8 @@
 # ruby-nmap
 
-* [github.com/sophsec/ruby-nmap](http://github.com/sophsec/ruby-nmap/)
-* [github.com/sophsec/ruby-nmap/issues](http://github.com/sophsec/ruby-nmap/issues)
+* [Source](http://github.com/sophsec/ruby-nmap/)
+* [Issues](http://github.com/sophsec/ruby-nmap/issues)
+* [Documentation](http://rubydoc.info/gems/ruby-nmap/file/README.md)
 * Postmodern (postmodern.mod3 at gmail.com)
 
 ## Description
