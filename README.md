@@ -50,8 +50,8 @@ Parse Nmap XML scan files:
 ## Requirements
 
 * [nmap](http://www.insecure.org/)
-* [nokogiri](http://nokogiri.rubyforge.org/) >= 1.4.0
-* [rprogram](http://rprogram.rubyforge.org/) >= 0.1.8
+* [nokogiri](http://nokogiri.rubyforge.org/) >= 1.3.0
+* [rprogram](http://rprogram.rubyforge.org/) ~> 0.2.0
 
 ## Install
 
