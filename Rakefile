@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rake'
 
 begin
-  gem 'ore-tasks', '~> 0.1.2'
+  gem 'ore-tasks', '~> 0.2.0'
   require 'ore/tasks'
 
   Ore::Tasks.new
