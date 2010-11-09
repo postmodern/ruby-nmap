@@ -243,7 +243,7 @@ module Nmap
       return enum_for(:each_port) unless block_given?
 
       @node.xpath("ports/port").each do |port|
-        yield create_port(port)
+        yield Port.new(port)
       end
 
       return self
@@ -276,7 +276,7 @@ module Nmap
       return enum_for(:each_open_port) unless block_given?
 
       @node.xpath("ports/port[state/@state='open']").each do |port|
-        yield create_port(port)
+        yield Port.new(port)
       end
 
       return self
@@ -309,7 +309,7 @@ module Nmap
       return enum_for(:each_tcp_port) unless block_given?
 
       @node.xpath("ports/port[@protocol='tcp']").each do |port|
-        yield create_port(port)
+        yield Port.new(port)
       end
 
       return self
@@ -342,7 +342,7 @@ module Nmap
       return enum_for(:each_udp_port) unless block_given?
 
       @node.xpath("ports/port[@protocol='udp']").each do |port|
-        yield create_port(port)
+        yield Port.new(port)
       end
 
       return self
@@ -377,33 +377,6 @@ module Nmap
     #
     def to_s
       address.to_s
-    end
-
-    protected
-
-    #
-    # Creates a new Port object around a node.
-    #
-    # @param [Nokogiri::XML::Node] node
-    #   The node to create the Port object around.
-    #
-    # @return [Port]
-    #   The port object.
-    #
-    def create_port(node)
-      state = node.at('state')
-
-      if (service = node.at('service/@name'))
-        service = service.inner_text
-      end
-
-      return Port.new(
-        node['protocol'].to_sym,
-        node['portid'].to_i,
-        state['state'].to_sym,
-        state['reason'],
-        service
-      )
     end
 
   end

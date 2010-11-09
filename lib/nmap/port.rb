@@ -1,56 +1,44 @@
 module Nmap
   class Port
 
-    # The protocol the port runs on
-    attr_reader :protocol
-
-    # The port number
-    attr_reader :number
-
-    # The state of the port
-    attr_reader :state
-
-    # The reason the port was discovered
-    attr_reader :reason
-
-    # The service the port provides
-    attr_reader :service
-
     #
     # Creates a new Port object.
     #
-    # @param [Integer] protocol
-    #   The protocol the port runs on.
+    # @param [Nokogiri::XML::Element] node
+    #   The XML `port` element.
     #
-    # @param [Integer] number
-    #   The port number.
-    #
-    # @param [Symbol] state
-    #   The state the port is in.
-    #
-    # @param [String] reason
-    #   The reason for the ports state.
-    #
-    # @param [String] service
-    #   The name of the service that runs on the port.
-    #
-    def initialize(protocol,number,state,reason,service=nil)
-      @protocol = protocol
-      @number = number
-      @state = state
-      @reason = reason
-      @service = service
+    def initialize(node)
+      @node = node
     end
 
-    #
-    # Converts the port to an Integer.
-    #
-    # @return [Integer]
-    #   The port number.
-    #
-    def to_i
-      @number.to_i
+    # The protocol the port runs on
+    def protocol
+      @protocol ||= @node['protocol'].to_sym
     end
+
+    # The port number
+    def number
+      @number ||= @node['portid'].to_i
+    end
+
+    # The state of the port
+    def state
+      @state ||= @node.at('state/@state').inner_text.to_sym
+    end
+
+    # The reason the port was discovered
+    def reason
+      @reason ||= @node.at('state/@reason').inner_text
+    end
+
+    # The service the port provides
+    def service
+      @service ||= if (service = @node.at('service/@name'))
+                     service.inner_text
+                   end
+    end
+
+    alias to_i number
 
     #
     # Converts the port to a String.
@@ -59,7 +47,7 @@ module Nmap
     #   The port number.
     #
     def to_s
-      @number.to_s
+      self.number.to_s
     end
 
   end
