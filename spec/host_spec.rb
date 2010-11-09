@@ -9,7 +9,10 @@ describe Host do
 
   before(:all) do
     @xml = XML.new(Helpers::SCAN_FILE)
+    @nse_xml = XML.new(Helpers::NSE_FILE)
+
     @host = @xml.hosts.first
+    @nse_host = @nse_xml.hosts.first
   end
 
   it "should parse the start_time" do
@@ -72,23 +75,6 @@ describe Host do
     ports = @host.ports
     
     ports.length.should == 3
-    ports[0].protocol.should == :tcp
-    ports[0].number.should == 21
-    ports[0].state.should == :closed
-    ports[0].reason.should == 'reset'
-    ports[0].service.should == 'ftp'
-
-    ports[1].protocol.should == :tcp
-    ports[1].number.should == 23
-    ports[1].state.should == :closed
-    ports[1].reason.should == 'reset'
-    ports[1].service.should == 'telnet'
-
-    ports[2].protocol.should == :tcp
-    ports[2].number.should == 443
-    ports[2].state.should == :open
-    ports[2].reason.should == 'syn-ack'
-    ports[2].service.should == 'https'
   end
 
   it "should list the open ports" do
@@ -111,5 +97,12 @@ describe Host do
 
   it "should convert to a String" do
     @host.to_s.should == '192.168.5.1'
+  end
+
+  it "should list output of NSE scripts ran against the host" do
+    @nse_host.scripts.should_not be_empty
+
+    @nse_host.scripts.keys.should_not include(nil)
+    @nse_host.scripts.values.should_not include(nil)
   end
 end
