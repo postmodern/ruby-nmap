@@ -1,3 +1,8 @@
+### 0.3.0 / 2010-11-08
+
+* Added {Nmap::Host#scripts}.
+* Added {Nmap::Port#scripts}.
+
 ### 0.2.0 / 2010-10-29
 
 * Require nokogiri >= 1.3.0.
