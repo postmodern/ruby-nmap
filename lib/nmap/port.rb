@@ -38,6 +38,26 @@ module Nmap
                    end
     end
 
+    #
+    # The output from the NSE scripts ran against the open port.
+    #
+    # @return [Hash{String => String}]
+    #   The NSE script names and output.
+    #
+    # @since 0.3.0
+    #
+    def scripts
+      unless @scripts
+        @scripts = {}
+
+        @node.xpath('script').each do |script|
+          @scripts[script['id']] = script['output']
+        end
+      end
+
+      return @scripts
+    end
+
     alias to_i number
 
     #
