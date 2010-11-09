@@ -47,7 +47,7 @@ Parse Nmap XML scan files:
       end
     end
 
-Print out NSE script output from an XML scan file:
+Print NSE script output from an XML scan file:
 
     require 'nmap/xml'
 
