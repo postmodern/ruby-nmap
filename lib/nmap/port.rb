@@ -67,7 +67,7 @@ module Nmap
     #   The port number.
     #
     def to_s
-      self.number.to_s
+      number.to_s
     end
 
   end
