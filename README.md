@@ -47,6 +47,30 @@ Parse Nmap XML scan files:
       end
     end
 
+Print out NSE script output from an XML scan file:
+
+    require 'nmap/xml'
+
+    Nmap::XML.new('nse.xml') do |xml|
+      xml.each_host do |host|
+        puts "[#{host.ip}]"
+
+        host.scripts.each do |name,output|
+          output.each_line { |line| puts "  #{line}" }
+        end
+
+        host.each_port do |port|
+          puts "  [#{port.number}/#{port.protocol}]"
+
+          port.scripts.each do |name,output|
+            puts "    [#{name}]"
+
+            output.each_line { |line| puts "      #{line}" }
+          end
+        end
+      end
+    end
+
 ## Requirements
 
 * [nmap](http://www.insecure.org/)
