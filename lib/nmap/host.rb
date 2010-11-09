@@ -368,6 +368,26 @@ module Nmap
     end
 
     #
+    # The output from the NSE scripts ran against the host.
+    #
+    # @return [Hash{String => String}]
+    #   The NSE script names and output.
+    #
+    # @since 0.3.0
+    #
+    def scripts
+      unless @scripts
+        @scripts = {}
+
+        @node.xpath('hostscript/script').each do |script|
+          @scripts[script['id']] = script['output']
+        end
+      end
+
+      return @scripts
+    end
+
+    #
     # Converts the host to a String.
     #
     # @return [String]
