@@ -184,10 +184,10 @@ module Nmap
     #
     # Parses the hosts that were found to be up during the scan.
     #
-    # @see each_up_hosts
+    # @see each_up_host
     #
     def each(&block)
-      each_up_hosts(&block)
+      each_up_host(&block)
     end
 
     #
