@@ -39,7 +39,7 @@ module Nmap
     # @since 0.1.2
     #
     def start_time
-      Time.at(@node['starttime'].to_i)
+      @start_time ||= Time.at(@node['starttime'].to_i)
     end
 
     #
@@ -51,7 +51,7 @@ module Nmap
     # @since 0.1.2
     #
     def end_time
-      Time.at(@node['endtime'].to_i)
+      @end_time ||= Time.at(@node['endtime'].to_i)
     end
 
     #
@@ -61,12 +61,16 @@ module Nmap
     #   The status of the host.
     #
     def status
-      status = @node.at('status')
+      unless @status
+        status = @node.at('status')
 
-      return Status.new(
-        status['state'].to_sym,
-        status['reason']
-      )
+        @status = Status.new(
+          status['state'].to_sym,
+          status['reason']
+        )
+      end
+
+      return @status
     end
 
     #
@@ -221,9 +225,9 @@ module Nmap
     #   The OS guessing information.
     #
     def os(&block)
-      os = @node.at('os')
-
-      return OS.new(os,&block) if os
+      if (os = @node.at('os'))
+        @os = OS.new(os,&block)
+      end
     end
 
     #

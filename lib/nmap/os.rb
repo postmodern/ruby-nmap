@@ -105,7 +105,9 @@ module Nmap
     #   The ports used.
     #
     def ports_used
-      @node.xpath("portused/@portid").map { |port| port.inner_text.to_i }
+      @ports_used ||= @node.xpath("portused/@portid").map do |port|
+        port.inner_text.to_i
+      end
     end
 
     #
@@ -115,7 +117,7 @@ module Nmap
     #   The OS fingerprint.
     #
     def fingerprint
-      @node.at("osfingerprint/@fingerprint").inner_text
+      @fingerprint ||= @node.at("osfingerprint/@fingerprint").inner_text
     end
 
     #
