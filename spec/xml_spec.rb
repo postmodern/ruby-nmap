@@ -66,6 +66,10 @@ describe XML do
     @xml.hosts.length.should == 10
   end
 
+  it "should iterate over each up host" do
+    @xml.each.all? { |host| host.status.state == :up }.should == true
+  end
+
   it "should convert to a String" do
     @xml.to_s.should == Helpers::SCAN_FILE
   end
