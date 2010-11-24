@@ -25,11 +25,11 @@ module Nmap
     # @yieldparam [XML] xml
     #   The newly created XML object.
     #
-    def initialize(path,&block)
+    def initialize(path)
       @path = File.expand_path(path)
       @doc = Nokogiri::XML(File.new(@path))
 
-      block.call(self) if block
+      yield self if block_given?
     end
 
     #
@@ -132,9 +132,9 @@ module Nmap
     # @return [XML]
     #   The XML object.
     #
-    def each_host(&block)
+    def each_host
       @doc.xpath('/nmaprun/host').each do |host|
-        block.call(Host.new(host)) if block
+        yield Host.new(host) if block_given?
       end
 
       return self

@@ -18,10 +18,10 @@ module Nmap
     # @yieldparam [OS] os
     #   The newly created OS object.
     #
-    def initialize(node,&block)
+    def initialize(node)
       @node = node
 
-      block.call(self) if block
+      yield self if block_given?
     end
 
     #
@@ -36,7 +36,7 @@ module Nmap
     # @return [OS]
     #   The OS information.
     #
-    def each_class(&block)
+    def each_class
       @node.xpath("osclass").map do |osclass|
         os_class = OSClass.new(
           osclass['type'].to_sym,
@@ -45,7 +45,7 @@ module Nmap
           osclass['accuracy'].to_i
         )
 
-        block.call(os_class) if block
+        yield os_class if block_given?
       end
 
       return self
@@ -73,14 +73,14 @@ module Nmap
     # @return [OS]
     #   The OS information.
     #
-    def each_match(&block)
+    def each_match
       @node.xpath("osmatch").map do |osclass|
         os_match = OSMatch.new(
           osclass['name'],
           osclass['accuracy'].to_i
         )
 
-        block.call(os_match) if block
+        yield os_match if block_given?
       end
 
       return self

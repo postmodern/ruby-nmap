@@ -23,10 +23,10 @@ module Nmap
     # @yieldparam [Host] host
     #   The newly created Host object.
     #
-    def initialize(node,&block)
+    def initialize(node)
       @node = node
 
-      block.call(self) if block
+      yield self if block_given?
     end
 
     #
