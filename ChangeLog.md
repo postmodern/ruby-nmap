@@ -1,3 +1,8 @@
+### 0.4.1 / 2010-11-23
+
+* Fixed a bug in {Nmap::XML#each} where it was calling `each_up_hosts`,
+  and not {Nmap::XML#each_up_host}.
+
 ### 0.4.0 / 2010-11-17
 
 * Added new options to {Nmap::Task} based on nmap 5.21:
