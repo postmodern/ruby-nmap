@@ -33,10 +33,13 @@ module Nmap
     # @yieldparam [OSClass] class
     #   The OS class information.
     #
-    # @return [OS]
-    #   The OS information.
+    # @return [OS, Enumerator]
+    #   The OS information. If no block was given, an enumerator object
+    #   will be returned.
     #
     def each_class
+      return enum_for(:each_class) unless block_given?
+
       @node.xpath("osclass").map do |osclass|
         os_class = OSClass.new(
           osclass['type'].to_sym,
@@ -45,7 +48,7 @@ module Nmap
           osclass['accuracy'].to_i
         )
 
-        yield os_class if block_given?
+        yield os_class
       end
 
       return self
@@ -70,17 +73,20 @@ module Nmap
     # @yieldparam [OSMatch] class
     #   The OS match information.
     #
-    # @return [OS]
-    #   The OS information.
+    # @return [OS, Enumerator]
+    #   The OS information. If no block was given, an enumerator object
+    #   will be returned.
     #
     def each_match
+      return enum_for(:each_match) unless block_given?
+
       @node.xpath("osmatch").map do |osclass|
         os_match = OSMatch.new(
           osclass['name'],
           osclass['accuracy'].to_i
         )
 
-        yield os_match if block_given?
+        yield os_match
       end
 
       return self

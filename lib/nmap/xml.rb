@@ -129,12 +129,15 @@ module Nmap
     # @yieldparam [Host] host
     #   A host in the scan.
     #
-    # @return [XML]
-    #   The XML object.
+    # @return [XML, Enumerator]
+    #   The XML object. If no block was given, an enumerator object will
+    #   be returned.
     #
     def each_host
+      return enum_for(:each_host) unless block_given?
+
       @doc.xpath('/nmaprun/host').each do |host|
-        yield Host.new(host) if block_given?
+        yield Host.new(host)
       end
 
       return self
@@ -159,10 +162,13 @@ module Nmap
     # @yieldparam [Host] host
     #   A host in the scan.
     #
-    # @return [XML]
-    #   The XML parser.
+    # @return [XML, Enumerator]
+    #   The XML parser. If no block was given, an enumerator object will
+    #   be returned.
     #
     def each_up_host(&block)
+      return enum_for(:each_up_host) unless block
+
       @doc.xpath("/nmaprun/host[status[@state='up']]").each do |host|
         Host.new(host,&block)
       end
