@@ -4,7 +4,6 @@ require 'nmap/os'
 require 'nmap/port'
 
 require 'nokogiri'
-require 'enumerator'
 
 module Nmap
   class Host

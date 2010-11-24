@@ -4,7 +4,6 @@ require 'nmap/scan'
 require 'nmap/host'
 
 require 'nokogiri'
-require 'enumerator'
 
 module Nmap
   class XML
@@ -148,7 +147,7 @@ module Nmap
     #   The hosts in the scan.
     #
     def hosts
-      Enumerator.new(self,:each_host).to_a
+      enum_for(:each_host).to_a
     end
 
     #
@@ -178,7 +177,7 @@ module Nmap
     #   The hosts in the scan.
     #
     def up_hosts
-      Enumerator.new(self,:each_up_host).to_a
+      enum_for(:each_up_host).to_a
     end
 
     #

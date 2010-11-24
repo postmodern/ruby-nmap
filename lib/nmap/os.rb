@@ -1,8 +1,6 @@
 require 'nmap/os_class'
 require 'nmap/os_match'
 
-require 'enumerator'
-
 module Nmap
   class OS
 
@@ -60,7 +58,7 @@ module Nmap
     #   The OS class information.
     #
     def classes
-      Enumerator.new(self,:each_class).to_a
+      enum_for(:each_class).to_a
     end
 
     #
@@ -95,7 +93,7 @@ module Nmap
     #   The OS match information.
     #
     def matches
-      Enumerator.new(self,:each_match).to_a
+      enum_for(:each_match).to_a
     end
 
     #
