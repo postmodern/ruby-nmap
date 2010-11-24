@@ -2,6 +2,10 @@
 
 * Fixed a bug in {Nmap::XML#each} where it was calling `each_up_hosts`,
   and not {Nmap::XML#each_up_host}.
+* {Nmap::OS#each_class}, {Nmap::OS#each_match}, {Nmap::XML#each_host} and
+  {Nmap::XML#each_up_host} now return an Enumerator object if no block
+  is given.
+* Use `yield` instead of `block.call` for a slight performance improvement.
 
 ### 0.4.0 / 2010-11-17
 
