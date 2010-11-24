@@ -133,11 +133,11 @@ module Nmap
     #   The XML object. If no block was given, an enumerator object will
     #   be returned.
     #
-    def each_host
-      return enum_for(:each_host) unless block_given?
+    def each_host(&block)
+      return enum_for(:each_host) unless block
 
       @doc.xpath('/nmaprun/host').each do |host|
-        yield Host.new(host)
+        Host.new(host,&block)
       end
 
       return self
