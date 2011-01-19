@@ -2,6 +2,9 @@ require 'nmap/status'
 require 'nmap/address'
 require 'nmap/os'
 require 'nmap/port'
+require 'nmap/tcpsequence'
+require 'nmap/ipidsequence'
+require 'nmap/tcptssequence'
 
 require 'nokogiri'
 
@@ -226,6 +229,46 @@ module Nmap
     def os(&block)
       if (os = @node.at('os'))
         @os = OS.new(os,&block)
+      end
+    end
+
+    # Parses the Tcp Sequence number analysis of the host.
+    #
+    # @yield [os]
+    #   If a block is given, it will be passed the resulting object
+    #
+    # @yieldparam [TcpSequence] os
+    #   Tcp Sequence number analysis.
+    #
+    # @return [TcpSequence]
+    #   The parsed object.
+    #
+    def tcpsequence(&block)
+      if (seq = @node.at('tcpsequence'))
+        @tcpsequence = TcpSequence.new(seq,&block)
+      end
+    end
+
+    # Parses the Tcp Sequence number analysis of the host.
+    #
+    # @yield [os]
+    #   If a block is given, it will be passed the resulting object
+    #
+    # @yieldparam [TcpSequence] os
+    #   Tcp Sequence number analysis.
+    #
+    # @return [TcpSequence]
+    #   The parsed object.
+    #
+    def ipidsequence(&block)
+      if (seq = @node.at('ipidsequence'))
+        @ipidsequence = IpidSequence.new(seq,&block)
+      end
+    end
+
+    def tcptssequence(&block)
+      if (seq = @node.at('tcptssequence'))
+        @tcptssequence = TcpTsSequence.new(seq,&block)
       end
     end
 
