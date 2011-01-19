@@ -234,10 +234,10 @@ module Nmap
 
     # Parses the Tcp Sequence number analysis of the host.
     #
-    # @yield [os]
+    # @yield [tcpsequence]
     #   If a block is given, it will be passed the resulting object
     #
-    # @yieldparam [TcpSequence] os
+    # @yieldparam [TcpSequence] tcpsequence
     #   Tcp Sequence number analysis.
     #
     # @return [TcpSequence]
@@ -249,15 +249,15 @@ module Nmap
       end
     end
 
-    # Parses the Tcp Sequence number analysis of the host.
+    # Parses the IPID sequence number analysis of the host.
     #
-    # @yield [os]
+    # @yield [ipidsequence]
     #   If a block is given, it will be passed the resulting object
     #
-    # @yieldparam [TcpSequence] os
-    #   Tcp Sequence number analysis.
+    # @yieldparam [IpidSequence] ipidsequence
+    #   IPID Sequence number analysis.
     #
-    # @return [TcpSequence]
+    # @return [IpidSequence]
     #   The parsed object.
     #
     def ipidsequence(&block)
@@ -266,6 +266,17 @@ module Nmap
       end
     end
 
+    # Parses the TCP Timestamp sequence number analysis of the host.
+    #
+    # @yield [tcptssequence]
+    #   If a block is given, it will be passed the resulting object
+    #
+    # @yieldparam [TcpTsSequence] tcptssequence
+    #   TCP Timestamp Sequence number analysis.
+    #
+    # @return [TcpTsSequence]
+    #   The parsed object.
+    #
     def tcptssequence(&block)
       if (seq = @node.at('tcptssequence'))
         @tcptssequence = TcpTsSequence.new(seq,&block)
