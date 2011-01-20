@@ -22,6 +22,7 @@ rescue LoadError => e
   end
 end
 task :default => :spec
+task :test => :spec
 
 begin
   gem 'yard', '~> 0.6.0'
