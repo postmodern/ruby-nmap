@@ -1,12 +1,11 @@
 require 'spec_helper'
 require 'helpers/xml'
 
-require 'nmap/tcpsequence'
-require 'nmap/tcptssequence'
-require 'nmap/ipidsequence'
+require 'nmap/tcp_sequence'
+require 'nmap/tcp_ts_sequence'
+require 'nmap/ip_id_sequence'
 require 'nmap/xml'
 require 'cgi'
-
 
 describe TcpSequence do
   include Helpers
@@ -73,6 +72,4 @@ describe TcpTsSequence do
   it "should parse the values" do
     @tcptssequence.values.should == [0x1858,0x1858,0x1859,0x1859,0x1859,0x1859]
   end
-
 end
-

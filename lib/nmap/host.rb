@@ -2,9 +2,9 @@ require 'nmap/status'
 require 'nmap/address'
 require 'nmap/os'
 require 'nmap/port'
-require 'nmap/tcpsequence'
-require 'nmap/ipidsequence'
-require 'nmap/tcptssequence'
+require 'nmap/ip_id_sequence'
+require 'nmap/tcp_sequence'
+require 'nmap/tcp_ts_sequence'
 
 require 'nokogiri'
 
