@@ -42,7 +42,15 @@ module Nmap
     # @since 0.5.0
     #
     def values
-      (@node['values'] || "").split(/\s*,\s*/).map {|v| v.to_i(16) }
+      unless @values
+        @values = []
+
+        if (string = @node['values'])
+          string.scan(/[^\s,]+/) { |match| @values << match.to_i(16) }
+        end
+      end
+
+      return @values
     end
 
   end
