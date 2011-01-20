@@ -12,7 +12,7 @@ module Nmap
     # @since 0.5.0
     #
     def to_s
-      "description=#{self.description.inspect} values=#{self.values.inspect}"
+      "description=#{description.inspect} values=#{values.inspect}"
     end
 
   end

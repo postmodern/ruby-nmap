@@ -34,7 +34,7 @@ module Nmap
     # @since 0.5.0
     #
     def to_s
-      "index=#{self.index} difficulty=#{self.difficulty.inspect} values=#{self.values.inspect}"
+      "index=#{index} difficulty=#{difficulty.inspect} values=#{values.inspect}"
     end
 
   end
