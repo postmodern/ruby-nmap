@@ -10,9 +10,9 @@ module Nmap
     # @since 0.5.0
     #   
     def index
-      if idx = @node['index']
-        idx.to_i
-      end
+      @index ||= if (index_string = @node['index'])
+                   index_string.to_i
+                 end
     end
 
     #
