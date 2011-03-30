@@ -46,7 +46,7 @@ module Nmap
   # * `--scanflags` - `nmap.tcp_scan_flags`
   # * `-sZ` - `nmap.sctp_cookie_echo_scan`
   # * `-sI` - `nmap.idle_scan`
-  # * `-s0` - `nmap.ip_scan`
+  # * `-sO` - `nmap.ip_scan`
   # * `-b` - `nmap.ftp_bounce_scan`
   #
   # ### Port Specification and Scan Order:
@@ -208,7 +208,7 @@ module Nmap
     long_option :flag => '--scanflags', :name => :tcp_scan_flags
     short_option :flag => '-sZ', :name => :sctp_cookie_echo_scan
     short_option :flag => '-sI', :name => :idle_scan
-    short_option :flag => '-s0', :name => :ip_scan
+    short_option :flag => '-sO', :name => :ip_scan
     short_option :flag => '-b', :name => :ftp_bounce_scan
 
     # PORT SPECIFICATION AND SCAN ORDER:
