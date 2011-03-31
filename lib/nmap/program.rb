@@ -6,7 +6,6 @@ module Nmap
   class Program < RProgram::Program
 
     name_program 'nmap'
-    alias_program 'nmap.exe'
 
     #
     # Finds the `nmap` program and performs a scan.
