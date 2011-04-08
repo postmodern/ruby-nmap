@@ -13,6 +13,9 @@ module Nmap
     # @param [Hash{Symbol => Object}] options
     #   Additional options for nmap.
     #
+    # @param [Hash{Symbol => Object}] exec_options
+    #   Additional exec-options.
+    #
     # @yield [task]
     #   If a block is given, it will be passed a task object
     #   used to specify options for nmap.
@@ -37,8 +40,8 @@ module Nmap
     #     nmap.verbose = true
     #   end
     #
-    def self.scan(options={},&block)
-      self.find.scan(options,&block)
+    def self.scan(options={},exec_options={},&block)
+      self.find.scan(options,exec_options,&block)
     end
 
     #
@@ -46,6 +49,9 @@ module Nmap
     #
     # @param [Hash{Symbol => Object}] options
     #   Additional options for nmap.
+    #
+    # @param [Hash{Symbol => Object}] exec_options
+    #   Additional exec-options.
     #
     # @yield [task]
     #   If a block is given, it will be passed a task object
@@ -57,8 +63,8 @@ module Nmap
     # @return [Boolean]
     #   Specifies whether the command exited normally.
     #
-    def scan(options={},&block)
-      run_task(Task.new(options,&block))
+    def scan(options={},exec_options={},&block)
+      run_task(Task.new(options,&block),exec_options)
     end
 
   end
