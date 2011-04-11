@@ -40,6 +40,8 @@ module Nmap
     #     nmap.verbose = true
     #   end
     #
+    # @see #scan
+    #
     def self.scan(options={},exec_options={},&block)
       self.find.scan(options,exec_options,&block)
     end
@@ -62,6 +64,9 @@ module Nmap
     #
     # @return [Boolean]
     #   Specifies whether the command exited normally.
+    #
+    # @see http://rubydoc.info/gems/rprogram/0.3.0/RProgram/Program#run-instance_method
+    #   For additional exec-options.
     #
     def scan(options={},exec_options={},&block)
       run_task(Task.new(options,&block),exec_options)
