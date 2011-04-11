@@ -74,7 +74,7 @@ Print NSE script output from an XML scan file:
 ## Requirements
 
 * [nmap](http://www.insecure.org/) >= 5.00
-* [nokogiri](http://nokogiri.rubyforge.org/) >= 1.3.0
+* [nokogiri](http://nokogiri.rubyforge.org/) ~> 1.3
 * [rprogram](http://github.com/postmodern/rprogram) ~> 0.3
 
 ## Install

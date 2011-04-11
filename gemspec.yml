@@ -13,7 +13,7 @@ has_yard: true
 requirements: nmap >= 5.00
 
 dependencies:
-  nokogiri: >= 1.3.0
+  nokogiri: ~> 1.3
   rprogram: ~> 0.3
 
 development_dependencies:
