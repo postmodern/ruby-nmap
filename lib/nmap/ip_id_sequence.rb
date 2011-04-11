@@ -17,4 +17,3 @@ module Nmap
 
   end
 end
-

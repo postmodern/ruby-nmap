@@ -43,7 +43,7 @@ module Nmap
     # @see #scan
     #
     def self.scan(options={},exec_options={},&block)
-      self.find.scan(options,exec_options,&block)
+      find.scan(options,exec_options,&block)
     end
 
     #

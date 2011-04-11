@@ -61,7 +61,7 @@ module Nmap
     #   The OS class information.
     #
     def classes
-      enum_for(:each_class).to_a
+      each_class.to_a
     end
 
     #
@@ -99,7 +99,7 @@ module Nmap
     #   The OS match information.
     #
     def matches
-      enum_for(:each_match).to_a
+      each_match.to_a
     end
 
     #

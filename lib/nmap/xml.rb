@@ -150,7 +150,7 @@ module Nmap
     #   The hosts in the scan.
     #
     def hosts
-      enum_for(:each_host).to_a
+      each_host.to_a
     end
 
     #
@@ -183,7 +183,7 @@ module Nmap
     #   The hosts in the scan.
     #
     def up_hosts
-      enum_for(:each_up_host).to_a
+      each_up_host.to_a
     end
 
     #
