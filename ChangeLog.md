@@ -1,3 +1,9 @@
+### 0.5.0 / 2011-04-11
+
+* Require nokogiri ~> 1.3.
+* Require rprogram ~> 0.3.
+* `ip_scan` in {Nmap::Task} should map to `-sO` (thanks corvus).
+
 ### 0.4.1 / 2010-11-23
 
 * Fixed a bug in {Nmap::XML#each} where it was calling `each_up_hosts`,
