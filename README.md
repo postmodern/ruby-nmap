@@ -83,5 +83,6 @@ Print NSE script output from an XML scan file:
 
 ## License
 
-See {file:LICENSE.txt} for license information.
+Copyright (c) 2009-2011 Postmodern
 
+See {file:LICENSE.txt} for license information.
