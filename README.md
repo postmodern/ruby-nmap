@@ -3,7 +3,7 @@
 * [Source](http://github.com/sophsec/ruby-nmap/)
 * [Issues](http://github.com/sophsec/ruby-nmap/issues)
 * [Documentation](http://rubydoc.info/gems/ruby-nmap/frames)
-* Postmodern (postmodern.mod3 at gmail.com)
+* [Email](mailto:postmodern.mod3 at gmail.com)
 
 ## Description
 
