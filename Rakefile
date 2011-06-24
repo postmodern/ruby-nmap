@@ -7,8 +7,8 @@ begin
 
   Ore::Tasks.new
 rescue LoadError => e
-  STDERR.puts e.message
-  STDERR.puts "Run `gem install ore-tasks` to install 'ore/tasks'."
+  warn e.message
+  warn "Run `gem install ore-tasks` to install 'ore/tasks'."
 end
 
 begin
