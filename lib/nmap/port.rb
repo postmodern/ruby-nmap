@@ -1,3 +1,5 @@
+require 'nmap/service'
+
 module Nmap
   class Port
 
@@ -54,12 +56,12 @@ module Nmap
     #
     # The service the port provides.
     #
-    # @return [String]
+    # @return [Service]
     #   The service detected on the port.
     #
     def service
-      @service ||= if (service = @node.at('service/@name'))
-                     service.inner_text
+      @service ||= if (service = @node.at('service'))
+                     Service.new(service)
                    end
     end
 
