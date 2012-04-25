@@ -2,13 +2,13 @@ require 'rubygems'
 require 'rake'
 
 begin
-  gem 'ore-tasks', '~> 0.4'
-  require 'ore/tasks'
+  gem 'rubygems-tasks', '~> 0.1'
+  require 'rubygems/tasks'
 
-  Ore::Tasks.new
+  Gem::Tasks.new
 rescue LoadError => e
   warn e.message
-  warn "Run `gem install ore-tasks` to install 'ore/tasks'."
+  warn "Run `gem install rubygems-tasks` to install 'rubygems/tasks'."
 end
 
 begin
