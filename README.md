@@ -79,7 +79,7 @@ Print NSE script output from an XML scan file:
 
 ## Install
 
-    $ sudo gem install ruby-nmap
+    $ gem install ruby-nmap
 
 ## License
 
