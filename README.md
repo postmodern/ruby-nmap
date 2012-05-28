@@ -1,7 +1,7 @@
 # ruby-nmap
 
-* [Source](http://github.com/sophsec/ruby-nmap/)
-* [Issues](http://github.com/sophsec/ruby-nmap/issues)
+* [Source](https://github.com/sophsec/ruby-nmap/)
+* [Issues](https://github.com/sophsec/ruby-nmap/issues)
 * [Documentation](http://rubydoc.info/gems/ruby-nmap/frames)
 * [Email](mailto:postmodern.mod3 at gmail.com)
 
@@ -75,7 +75,7 @@ Print NSE script output from an XML scan file:
 
 * [nmap](http://www.insecure.org/) >= 5.00
 * [nokogiri](http://nokogiri.rubyforge.org/) ~> 1.3
-* [rprogram](http://github.com/postmodern/rprogram) ~> 0.3
+* [rprogram](https://github.com/postmodern/rprogram) ~> 0.3
 
 ## Install
 
