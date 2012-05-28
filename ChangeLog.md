@@ -1,3 +1,8 @@
+### 0.5.1 / 2012-05-27
+
+* Replaced ore-tasks with
+  [rubygems-tasks](https://github.com/postmodern/rubygems-tasks#readme).
+
 ### 0.5.0 / 2011-04-11
 
 * Require nokogiri ~> 1.3.
