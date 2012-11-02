@@ -61,20 +61,10 @@ module Nmap
     #
     # @since 0.6.0
     #
-    def service_info
+    def service
       @service_info ||= if (service = @node.at('service'))
                           Service.new(service)
                         end
-    end
-
-    #
-    # The service the port provides.
-    #
-    # @return [String]
-    #   The service detected on the port.
-    #
-    def service
-      service_info.name if service_info
     end
 
     #

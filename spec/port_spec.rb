@@ -23,7 +23,7 @@ describe Port do
   end
 
   it "should parse the detected service" do
-    subject.service.should == 'ftp'
+    subject.service.name.should == 'ftp'
   end
 
   context "when NSE scripts are ran" do

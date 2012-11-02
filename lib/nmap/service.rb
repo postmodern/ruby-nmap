@@ -74,12 +74,7 @@ module Nmap
       @confidence ||= @node.get_attribute('conf').to_i
     end
 
-    #
-    # @see #name
-    #
-    def to_s
-      name
-    end
+    alias to_s name
 
   end
 end
