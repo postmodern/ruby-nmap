@@ -1,37 +1,31 @@
 require 'spec_helper'
-require 'helpers/xml'
-
 require 'nmap/xml'
 
 describe XML do
-  include Helpers
-
-  before(:all) do
-    @xml = XML.new(Helpers::SCAN_FILE)
-  end
+  subject { XML.new(Helpers::SCAN_FILE) }
 
   it "should have a version" do
-    @xml.version.should == '1.02'
+    subject.version.should == '1.02'
   end
 
   it "should parse the scanner version" do
-    @xml.scanner.version == '4.68'
+    subject.scanner.version == '4.68'
   end
 
   it "should parse the scanner name" do
-    @xml.scanner.name.should == 'nmap'
+    subject.scanner.name.should == 'nmap'
   end
 
   it "should parse the scanner arguments" do
-    @xml.scanner.arguments.should == 'nmap -v -oX samples/backspace.xml -O -P0 -sS 192.168.5.*'
+    subject.scanner.arguments.should == 'nmap -v -oX samples/backspace.xml -O -P0 -sS 192.168.5.*'
   end
 
   it "should parse the scanner start time" do
-    @xml.scanner.start_time.should == Time.at(1218934249)
+    subject.scanner.start_time.should == Time.at(1218934249)
   end
 
   it "should parse the scan information" do
-    scan_info = @xml.scan_info
+    scan_info = subject.scan_info
 
     scan_info.length.should == 1
     scan_info.first.type.should == :syn
@@ -39,15 +33,15 @@ describe XML do
   end
 
   it "should parse the verbose level" do
-    @xml.verbose.should == 1
+    subject.verbose.should == 1
   end
 
   it "should parse the debugging level" do
-    @xml.debugging.should == 0
+    subject.debugging.should == 0
   end
 
   it "should parse the scan tasks" do
-    tasks = @xml.tasks
+    tasks = subject.tasks
 
     tasks.should_not be_empty
 
@@ -63,14 +57,14 @@ describe XML do
   end
 
   it "should parse the hosts" do
-    @xml.hosts.length.should == 10
+    subject.hosts.length.should == 10
   end
 
   it "should iterate over each up host" do
-    @xml.each.all? { |host| host.status.state == :up }.should == true
+    subject.each.all? { |host| host.status.state == :up }.should == true
   end
 
   it "should convert to a String" do
-    @xml.to_s.should == Helpers::SCAN_FILE
+    subject.to_s.should == Helpers::SCAN_FILE
   end
 end
