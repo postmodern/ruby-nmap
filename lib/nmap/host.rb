@@ -1,5 +1,6 @@
 require 'nmap/status'
 require 'nmap/address'
+require 'nmap/hostname'
 require 'nmap/os'
 require 'nmap/port'
 require 'nmap/ip_id_sequence'
@@ -179,7 +180,7 @@ module Nmap
     # @yield [host]
     #   Each parsed hostname will be passed to the given block.
     #
-    # @yieldparam [String] host
+    # @yieldparam [Hostname] host
     #   A hostname of the host.
     #
     # @return [Host, Enumerator]
@@ -190,7 +191,7 @@ module Nmap
       return enum_for(__method__) unless block_given?
 
       @node.xpath("hostnames/hostname[@name]").each do |host|
-        yield host['name']
+        yield Hostname.new(host['type'],host['name'])
       end
 
       return self
@@ -199,7 +200,7 @@ module Nmap
     #
     # Parses the hostnames of the host.
     #
-    # @return [Array<String>]
+    # @return [Array<Hostname>]
     #   The hostnames of the host.
     #
     def hostnames
