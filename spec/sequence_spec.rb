@@ -8,7 +8,7 @@ require 'cgi'
 describe TcpSequence do
   let(:xml) { XML.new(Helpers::SCAN_FILE) }
 
-  subject { xml.hosts.first.tcpsequence }
+  subject { xml.hosts.first.tcp_sequence }
 
   it "should be accessible from host objects" do
     subject.should be_kind_of(TcpSequence)
@@ -37,7 +37,7 @@ end
 describe IpidSequence do
   let(:xml) { XML.new(Helpers::SCAN_FILE) }
 
-  subject { xml.hosts.first.ipidsequence }
+  subject { xml.hosts.first.ip_id_sequence }
 
   it "should be accessible from host objects" do
     subject.should be_kind_of(IpidSequence)
@@ -55,7 +55,7 @@ end
 describe TcpTsSequence do
   let(:xml) { XML.new(Helpers::SCAN_FILE) }
 
-  subject { xml.hosts.first.tcptssequence }
+  subject { xml.hosts.first.tcp_ts_sequence }
 
   it "should be accessible from host objects" do
     subject.should be_kind_of(TcpTsSequence)
