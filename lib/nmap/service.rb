@@ -47,6 +47,18 @@ module Nmap
     end
 
     #
+    # The extra information from the service scan.
+    #
+    # @return [String]
+    #   The `extrainfo` XML attribute.
+    #
+    # @since 0.7.0
+    #
+    def extra_info
+      @extra_info ||= @node['extrainfo']
+    end
+
+    #
     # The hostname reported by the service.
     #
     # @return [String]
