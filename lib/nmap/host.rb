@@ -226,10 +226,13 @@ module Nmap
     # @return [OS]
     #   The OS guessing information.
     #
-    def os(&block)
-      if (os = @node.at('os'))
-        @os = OS.new(os,&block)
-      end
+    def os
+      @os ||= if (os = @node.at('os'))
+                OS.new(os)
+              end
+
+      yield @os if (@os && block_given?)
+      return @os
     end
 
     #
@@ -244,10 +247,13 @@ module Nmap
     # @return [TcpSequence]
     #   The parsed object.
     #
-    def tcp_sequence(&block)
-      if (seq = @node.at('tcpsequence'))
-        @tcpsequence = TcpSequence.new(seq,&block)
-      end
+    def tcp_sequence
+      @tcp_sequence ||= if (seq = @node.at('tcpsequence'))
+                          TcpSequence.new(seq)
+                        end
+
+      yield @tcp_sequence if (@tcp_sequence && block_given?)
+      return @tcp_sequence
     end
 
     #
@@ -271,10 +277,13 @@ module Nmap
     # @return [IpIdSequence]
     #   The parsed object.
     #
-    def ip_id_sequence(&block)
-      if (seq = @node.at('ipidsequence'))
-        @ipidsequence = IpIdSequence.new(seq,&block)
-      end
+    def ip_id_sequence
+      @ip_id_sequence ||= if (seq = @node.at('ipidsequence'))
+                            IpIdSequence.new(seq)
+                          end
+
+      yield @ip_id_sequence if (@ip_id_sequence && block_given?)
+      return @ip_id_sequence
     end
 
     #
@@ -298,10 +307,13 @@ module Nmap
     # @return [TcpTsSequence]
     #   The parsed object.
     #
-    def tcp_ts_sequence(&block)
-      if (seq = @node.at('tcptssequence'))
-        @tcptssequence = TcpTsSequence.new(seq,&block)
-      end
+    def tcp_ts_sequence
+      @tcp_ts_sequence ||= if (seq = @node.at('tcptssequence'))
+                             TcpTsSequence.new(seq)
+                           end
+
+      yield @tcp_ts_sequence if (@tcp_ts_sequence && block_given?)
+      return @tcp_ts_sequence
     end
 
     #
@@ -359,7 +371,7 @@ module Nmap
     #   The host.
     #   If no block was given, an enumerator will be returned.
     #
-    def each_open_port(&block)
+    def each_open_port
       return enum_for(:each_open_port) unless block_given?
 
       @node.xpath("ports/port[state/@state='open']").each do |port|
