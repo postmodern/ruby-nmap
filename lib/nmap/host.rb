@@ -232,23 +232,34 @@ module Nmap
       end
     end
 
+    #
     # Parses the Tcp Sequence number analysis of the host.
     #
-    # @yield [tcpsequence]
+    # @yield [sequence]
     #   If a block is given, it will be passed the resulting object
     #
-    # @yieldparam [TcpSequence] tcpsequence
+    # @yieldparam [TcpSequence] sequence
     #   Tcp Sequence number analysis.
     #
     # @return [TcpSequence]
     #   The parsed object.
     #
-    def tcpsequence(&block)
+    def tcp_sequence(&block)
       if (seq = @node.at('tcpsequence'))
         @tcpsequence = TcpSequence.new(seq,&block)
       end
     end
 
+    #
+    # @deprecated Use {#tcp_sequence} instead.
+    #
+    def tcpsequence(&block)
+      warn "DEPRECATION: use #{self.class}#tcp_sequence instead"
+
+      tcp_sequence(&block)
+    end
+
+    #
     # Parses the IPID sequence number analysis of the host.
     #
     # @yield [ipidsequence]
@@ -260,12 +271,22 @@ module Nmap
     # @return [IpidSequence]
     #   The parsed object.
     #
-    def ipidsequence(&block)
+    def ip_id_sequence(&block)
       if (seq = @node.at('ipidsequence'))
         @ipidsequence = IpidSequence.new(seq,&block)
       end
     end
 
+    #
+    # @deprecated Use {#ip_id_sequence} instead.
+    #
+    def ipidsequence(&block)
+      warn "DEPRECATION: use #{self.class}#ip_id_sequence instead"
+
+      ip_id_sequence(&block)
+    end
+
+    #
     # Parses the TCP Timestamp sequence number analysis of the host.
     #
     # @yield [tcptssequence]
@@ -277,10 +298,19 @@ module Nmap
     # @return [TcpTsSequence]
     #   The parsed object.
     #
-    def tcptssequence(&block)
+    def tcp_ts_sequence(&block)
       if (seq = @node.at('tcptssequence'))
         @tcptssequence = TcpTsSequence.new(seq,&block)
       end
+    end
+
+    #
+    # @deprecated Use {#tcp_ts_sequence} instead.
+    #
+    def tcptssequence(&block)
+      warn "DEPRECATION: use #{self.class}#tcp_ts_sequence instead"
+
+      tcp_ts_sequence(&block)
     end
 
     #
