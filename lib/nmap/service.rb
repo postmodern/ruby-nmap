@@ -27,6 +27,18 @@ module Nmap
     end
 
     #
+    # Determines if the service requires SSL.
+    #
+    # @return [Boolean]
+    #   Checks whether the `tunnel` XML attribute is `ssl`.
+    #
+    # @since 0.7.0
+    #
+    def ssl?
+      @node['tunnel'] == 'ssl'
+    end
+
+    #
     # The product of the service.
     #
     # @return [String]
