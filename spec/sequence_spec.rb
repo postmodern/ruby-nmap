@@ -3,7 +3,6 @@ require 'spec_helper'
 require 'nmap/tcp_sequence'
 require 'nmap/tcp_ts_sequence'
 require 'nmap/ip_id_sequence'
-require 'cgi'
 
 describe TcpSequence do
   let(:xml) { XML.new(Helpers::SCAN_FILE) }
