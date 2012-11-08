@@ -1,25 +1,5 @@
 module Nmap
-  class OSMatch
-
-    # The name of the OS
-    attr_reader :name
-
-    # The accuracy of the OS guess
-    attr_reader :accuracy
-
-    #
-    # Creates a OSMatch object.
-    #
-    # @param [String] name
-    #   The name of the OS.
-    #
-    # @param [Integer] accuracy
-    #   The accuracy of the OS guess.
-    #
-    def initialize(name,accuracy)
-      @name = name
-      @accuracy = accuracy
-    end
+  class OSMatch < Struct.new(:name, :accuracy)
 
     #
     # Converts the OS match to a String.
@@ -28,7 +8,7 @@ module Nmap
     #   The String form of the OS match.
     #
     def to_s
-      "#{@name} (#{@accuracy}%)"
+      "#{self.name} (#{self.accuracy}%)"
     end
 
   end

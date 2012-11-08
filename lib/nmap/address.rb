@@ -1,25 +1,5 @@
 module Nmap
-  class Address
-
-    # Type of the address
-    attr_reader :type
-
-    # Address
-    attr_reader :addr
-
-    #
-    # Creates a new Address object.
-    #
-    # @param [Symbol] type
-    #   The type of the address.
-    #
-    # @param [String] addr
-    #   The address.
-    #
-    def initialize(type,addr)
-      @type = type
-      @addr = addr
-    end
+  class Address < Struct.new(:type, :addr)
 
     #
     # Converts the address to a String.
@@ -28,7 +8,7 @@ module Nmap
     #   The address.
     #
     def to_s
-      @addr.to_s
+      self.addr.to_s
     end
 
   end

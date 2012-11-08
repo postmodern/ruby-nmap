@@ -1,14 +1,5 @@
 module Nmap
-  class Scan
-
-    # The type of scan
-    attr_reader :type
-
-    # The protocol used for the scan
-    attr_reader :protocol
-
-    # The port numbers that were scanned
-    attr_reader :services
+  class Scan < Struct.new(:type, :protocol, :services)
 
     #
     # Creates a new Scan object.
@@ -23,9 +14,7 @@ module Nmap
     #   The port numbers scanned.
     #
     def initialize(type,protocol,services=[])
-      @type = type
-      @protocol = protocol
-      @services = services
+      super(type,protocol,services)
     end
 
     #
@@ -35,7 +24,7 @@ module Nmap
     #   The String form of the scan.
     #
     def to_s
-      "#{@protocol} #{@type}"
+      "#{self.protocol} #{self.type}"
     end
 
   end

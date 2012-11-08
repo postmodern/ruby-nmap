@@ -1,25 +1,5 @@
 module Nmap
-  class Status
-
-    # The state of a host
-    attr_reader :state
-
-    # The reason for the state
-    attr_reader :reason
-
-    #
-    # Creates a new Status object.
-    #
-    # @param [Symbol] state
-    #   The state of a host.
-    #
-    # @param [String] reason
-    #   The reason for the state.
-    #
-    def initialize(state,reason)
-      @state = state
-      @reason = reason
-    end
+  class Status < Struct.new(:state, :reason)
 
     #
     # Converts the status to a String.
@@ -28,7 +8,7 @@ module Nmap
     #   The state.
     #
     def to_s
-      @state.to_s
+      self.state.to_s
     end
 
   end
