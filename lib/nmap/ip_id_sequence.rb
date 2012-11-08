@@ -4,6 +4,8 @@ module Nmap
   #
   # Represents an IP ID.
   #
+  # @since 0.5.0
+  #
   class IpIdSequence < Sequence
 
     #

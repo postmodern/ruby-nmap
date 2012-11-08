@@ -4,6 +4,8 @@ module Nmap
   #
   # Represents a TCP sequence number.
   #
+  # @since 0.5.0
+  #
   class TcpSequence < Sequence
 
     #
