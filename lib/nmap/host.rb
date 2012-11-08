@@ -7,6 +7,7 @@ require 'nmap/ip_id_sequence'
 require 'nmap/tcp_sequence'
 require 'nmap/tcp_ts_sequence'
 require 'nmap/uptime'
+require 'nmap/traceroute'
 
 require 'nokogiri'
 
@@ -498,6 +499,29 @@ module Nmap
       end
 
       return @scripts
+    end
+
+    #
+    # Parses the traceroute information, if present.
+    #
+    # @yield [traceroute]
+    #   If a block is given, it will be passed the traceroute information.
+    #
+    # @yieldparam [Traceroute] traceroute
+    #   The traceroute information.
+    #
+    # @return [Traceroute]
+    #   The traceroute information.
+    #
+    # @since 0.7.0
+    #
+    def traceroute
+      @traceroute ||= if (trace = @node.at('trace'))
+                        Traceroute.new(trace)
+                      end
+
+      yield @traceroute if (@traceroute && block_given?)
+      return @traceroute
     end
 
     #
