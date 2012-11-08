@@ -81,6 +81,18 @@ module Nmap
     end
 
     #
+    # The reported device type.
+    #
+    # @return [String]
+    #   The `devicetype` XML attribute.
+    #
+    # @since 0.7.0
+    #
+    def device_type
+      @device_type ||= @node['devicetype']
+    end
+
+    #
     # The fingerprint method used to identify the service.
     #
     # @return [Symbol]
