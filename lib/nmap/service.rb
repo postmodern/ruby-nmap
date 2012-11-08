@@ -39,6 +39,18 @@ module Nmap
     end
 
     #
+    # The application protocol used by the service.
+    #
+    # @return [String]
+    #   The `proto` XML attribute.
+    #
+    # @since 0.7.0
+    #
+    def protocol
+      @protocol ||= @node['proto']
+    end
+
+    #
     # The product of the service.
     #
     # @return [String]
