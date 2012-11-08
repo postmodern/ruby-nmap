@@ -1,7 +1,7 @@
 require 'nmap/sequence'
 
 module Nmap
-  class IpidSequence < Sequence
+  class IpIdSequence < Sequence
 
     #
     # Converts the IpidSequence class to a String.

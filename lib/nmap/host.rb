@@ -265,15 +265,15 @@ module Nmap
     # @yield [ipidsequence]
     #   If a block is given, it will be passed the resulting object
     #
-    # @yieldparam [IpidSequence] ipidsequence
+    # @yieldparam [IpIdSequence] ipidsequence
     #   IPID Sequence number analysis.
     #
-    # @return [IpidSequence]
+    # @return [IpIdSequence]
     #   The parsed object.
     #
     def ip_id_sequence(&block)
       if (seq = @node.at('ipidsequence'))
-        @ipidsequence = IpidSequence.new(seq,&block)
+        @ipidsequence = IpIdSequence.new(seq,&block)
       end
     end
 
