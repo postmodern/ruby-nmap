@@ -1,3 +1,11 @@
+### 0.6.0 / 2012-11-07
+
+* Added {Nmap::Service}.
+* Renamed `Nmap::IpidSequence` to {Nmap::IpIdSequence}.
+* Renamed {Nmap::Host#ipidsequence} to {Nmap::Host#ip_id_sequence}.
+* Renamed {Nmap::Host#tcpsequence} to {Nmap::Host#tcp_sequence}.
+* Renamed {Nmap::Host#tcptssequence} to {Nmap::Host#tcp_ts_sequence}.
+
 ### 0.5.1 / 2012-05-27
 
 * Replaced ore-tasks with
