@@ -134,7 +134,7 @@ module Nmap
     #   be returned.
     #
     def each_host(&block)
-      return enum_for(:each_host) unless block
+      return enum_for(__method__) unless block
 
       @doc.xpath('/nmaprun/host').each do |host|
         Host.new(host,&block)
@@ -167,7 +167,7 @@ module Nmap
     #   be returned.
     #
     def each_up_host(&block)
-      return enum_for(:each_up_host) unless block
+      return enum_for(__method__) unless block
 
       @doc.xpath("/nmaprun/host[status[@state='up']]").each do |host|
         Host.new(host,&block)

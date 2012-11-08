@@ -38,7 +38,7 @@ module Nmap
     #   will be returned.
     #
     def each_class
-      return enum_for(:each_class) unless block_given?
+      return enum_for(__method__) unless block_given?
 
       @node.xpath("osclass").map do |osclass|
         os_class = OSClass.new(
@@ -78,7 +78,7 @@ module Nmap
     #   will be returned.
     #
     def each_match
-      return enum_for(:each_match) unless block_given?
+      return enum_for(__method__) unless block_given?
 
       @node.xpath("osmatch").map do |osclass|
         os_match = OSMatch.new(

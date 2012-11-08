@@ -89,7 +89,7 @@ module Nmap
     #   If no block was given, an enumerator will be returned.
     #
     def each_address
-      return enum_for(:each_address) unless block_given?
+      return enum_for(__method__) unless block_given?
 
       @node.xpath("address[@addr]").each do |addr|
         address = Address.new(
@@ -183,7 +183,7 @@ module Nmap
     #   If no block was given, an enumerator will be returned.
     #
     def each_hostname
-      return enum_for(:each_hostname) unless block_given?
+      return enum_for(__method__) unless block_given?
 
       @node.xpath("hostnames/hostname[@name]").each do |host|
         yield host['name']
@@ -327,7 +327,7 @@ module Nmap
     #   If no block was given, an enumerator will be returned.
     #
     def each_port
-      return enum_for(:each_port) unless block_given?
+      return enum_for(__method__) unless block_given?
 
       @node.xpath("ports/port").each do |port|
         yield Port.new(port)
@@ -360,7 +360,7 @@ module Nmap
     #   If no block was given, an enumerator will be returned.
     #
     def each_open_port
-      return enum_for(:each_open_port) unless block_given?
+      return enum_for(__method__) unless block_given?
 
       @node.xpath("ports/port[state/@state='open']").each do |port|
         yield Port.new(port)
@@ -393,7 +393,7 @@ module Nmap
     #   If no block was given, an enumerator will be returned.
     #
     def each_tcp_port
-      return enum_for(:each_tcp_port) unless block_given?
+      return enum_for(__method__) unless block_given?
 
       @node.xpath("ports/port[@protocol='tcp']").each do |port|
         yield Port.new(port)
@@ -426,7 +426,7 @@ module Nmap
     #   If no block was given, an enumerator will be returned.
     #
     def each_udp_port
-      return enum_for(:each_udp_port) unless block_given?
+      return enum_for(__method__) unless block_given?
 
       @node.xpath("ports/port[@protocol='udp']").each do |port|
         yield Port.new(port)
