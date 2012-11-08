@@ -120,13 +120,9 @@ module Nmap
     #   The MAC address of the host.
     #
     def mac
-      unless @mac
-        addr = @node.xpath("address[@addr][@addrtype='mac']").first
-
-        @mac = addr['addr'] if addr
-      end
-
-      return @mac
+      @mac ||= if (addr = @node.xpath("address[@addrtype='mac']").first)
+                 addr['addr']
+               end
     end
 
     #
@@ -136,13 +132,9 @@ module Nmap
     #   The IPv4 address of the host.
     #
     def ipv4
-      unless @ipv4
-        addr = @node.xpath("address[@addr][@addrtype='ipv4']").first
-
-        @ipv4 = addr['addr'] if addr
-      end
-
-      return @ipv4
+      @ipv4 ||= if (addr = @node.xpath("address[@addrtype='ipv4']").first)
+                  addr['addr']
+                end
     end
 
     #
@@ -152,13 +144,9 @@ module Nmap
     #   The IPv6 address of the host.
     #
     def ipv6
-      unless @ipv6
-        addr = @node.xpath("address[@addr][@addrtype='ipv6']").first
-
-        @ipv6 = addr['addr'] if addr
-      end
-
-      return @ipv6
+      @ipv6 ||= if (@node.xpath("address[@addrtype='ipv6']").first)
+                  addr['addr']
+                end
     end
 
     #
