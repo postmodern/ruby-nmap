@@ -1,5 +1,7 @@
 module Nmap
   #
+  # Wraps a `service` XML element.
+  #
   # @since 0.6.0
   #
   class Service

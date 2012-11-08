@@ -1,4 +1,7 @@
 module Nmap
+  #
+  # Describes the `nmap` command.
+  #
   class Scanner < Struct.new(:name, :version, :arguments, :start_time)
 
     #

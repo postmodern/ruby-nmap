@@ -1,4 +1,7 @@
 module Nmap
+  #
+  # Represents an Nmap scan.
+  #
   class Scan < Struct.new(:type, :protocol, :services)
 
     #

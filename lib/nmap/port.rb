@@ -1,6 +1,9 @@
 require 'nmap/service'
 
 module Nmap
+  #
+  # Wraps a `port` XML element.
+  #
   class Port
 
     #

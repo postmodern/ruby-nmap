@@ -3,6 +3,9 @@ require 'nmap/task'
 require 'rprogram/program'
 
 module Nmap
+  #
+  # Represents the `nmap` program.
+  #
   class Program < RProgram::Program
 
     name_program 'nmap'

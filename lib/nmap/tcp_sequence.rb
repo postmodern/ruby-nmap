@@ -1,6 +1,9 @@
 require 'nmap/sequence'
 
 module Nmap
+  #
+  # Represents a TCP sequence number.
+  #
   class TcpSequence < Sequence
 
     #

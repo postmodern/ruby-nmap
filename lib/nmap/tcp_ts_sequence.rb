@@ -1,6 +1,9 @@
 require 'nmap/sequence'
 
 module Nmap
+  #
+  # Represents a TCP timestamp.
+  #
   class TcpTsSequence < Sequence
 
     #

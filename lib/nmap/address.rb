@@ -1,4 +1,7 @@
 module Nmap
+  #
+  # Represents a IP or MAC address.
+  #
   class Address < Struct.new(:type, :addr)
 
     #

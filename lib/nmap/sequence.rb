@@ -1,4 +1,7 @@
 module Nmap
+  #
+  # Base class for all Sequence classes.
+  #
   class Sequence
 
     #

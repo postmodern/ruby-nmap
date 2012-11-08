@@ -9,6 +9,9 @@ require 'nmap/tcp_ts_sequence'
 require 'nokogiri'
 
 module Nmap
+  #
+  # Wraps a `host` XML element.
+  #
   class Host
 
     include Enumerable

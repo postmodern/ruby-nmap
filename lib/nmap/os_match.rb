@@ -1,4 +1,7 @@
 module Nmap
+  #
+  # Represents a match for a specific {OS}.
+  #
   class OSMatch < Struct.new(:name, :accuracy)
 
     #

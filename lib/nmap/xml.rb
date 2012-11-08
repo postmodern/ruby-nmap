@@ -6,6 +6,9 @@ require 'nmap/host'
 require 'nokogiri'
 
 module Nmap
+  #
+  # Represents an Nmap XML file.
+  #
   class XML
 
     include Enumerable

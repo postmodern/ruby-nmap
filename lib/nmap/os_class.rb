@@ -1,6 +1,6 @@
 module Nmap
   #
-  # Represents an OS class.
+  # Represents an {OS} class.
   #
   class OSClass < Struct.new(:type, :vendor, :family, :accuracy)
 

@@ -2,6 +2,9 @@ require 'nmap/os_class'
 require 'nmap/os_match'
 
 module Nmap
+  #
+  # Wraps the `os` XML element.
+  #
   class OS
 
     include Enumerable

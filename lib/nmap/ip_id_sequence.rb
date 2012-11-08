@@ -1,6 +1,9 @@
 require 'nmap/sequence'
 
 module Nmap
+  #
+  # Represents an IP ID.
+  #
   class IpIdSequence < Sequence
 
     #
