@@ -27,7 +27,7 @@ module Nmap
     #
     def initialize(path)
       @path = File.expand_path(path)
-      @doc = Nokogiri::XML(File.new(@path))
+      @doc = Nokogiri::XML(open(@path))
 
       yield self if block_given?
     end
