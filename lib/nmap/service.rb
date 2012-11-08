@@ -69,6 +69,18 @@ module Nmap
     end
 
     #
+    # The reported OS type.
+    #
+    # @return [String]
+    #   The `ostype` XML attribute.
+    #
+    # @since 0.7.0
+    #
+    def os_type
+      @os_type ||= @node['ostype']
+    end
+
+    #
     # The fingerprint method used to identify the service.
     #
     # @return [Symbol]
