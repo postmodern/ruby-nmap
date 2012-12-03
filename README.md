@@ -21,8 +21,6 @@ Run Nmap from Ruby:
     require 'nmap/program'
     
     Nmap::Program.scan do |nmap|
-      nmap.sudo = true
-
       nmap.syn_scan = true
       nmap.service_scan = true
       nmap.os_fingerprint = true
