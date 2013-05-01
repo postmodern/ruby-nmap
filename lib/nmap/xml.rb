@@ -2,6 +2,7 @@ require 'nmap/scanner'
 require 'nmap/scan_task'
 require 'nmap/scan'
 require 'nmap/host'
+require 'nmap/runstats'
 
 require 'nokogiri'
 
@@ -81,7 +82,20 @@ module Nmap
         )
       end
     end
-
+    
+    # 
+    # Parses the essential runstats information
+    #
+    # @return [RunStats]
+    def runstats
+      @doc.xpath('/nmaprun/runstats/finished').map do |run_stats|
+        RunStats.new(
+          Time.at(run_stats['time'].to_i),
+          run_stats['elapsed'],
+          run_stats['exit']
+        )
+      end
+    end
     #
     # Parses the verbose level.
     #
