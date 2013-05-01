@@ -67,6 +67,16 @@ module Nmap
     end
 
     #
+    # The actual fingerprint
+    #
+    # @return [String]
+    #   The fingerprint
+    #
+    def fingerprint
+      @fingerprint ||= @node.get_attribute('serficefp')
+    end
+      
+    #
     # The confidence score of the service fingerprinting.
     #
     # @return [Integer]
