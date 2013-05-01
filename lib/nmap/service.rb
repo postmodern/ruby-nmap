@@ -73,7 +73,7 @@ module Nmap
     #   The fingerprint
     #
     def fingerprint
-      @fingerprint ||= @node.get_attribute('serficefp')
+      @fingerprint ||= @node.get_attribute('servicefp')
     end
       
     #
