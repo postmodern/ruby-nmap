@@ -86,6 +86,17 @@ module Nmap
       @confidence ||= @node.get_attribute('conf').to_i
     end
 
+    #
+    # The extra_info about the service.
+    #
+    # @return [String]
+    #   The service extra_info.
+    #
+    def extra_info
+      @extra_info ||= @node.get_attribute('extrainfo')
+    end
+
+
     alias to_s name
 
   end
