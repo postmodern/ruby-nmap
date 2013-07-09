@@ -27,11 +27,11 @@ module Nmap
     #
     # The lastboot date.
     #
-    # @return [String]
+    # @return [DateTime]
     #   The date of the last boot.
     #
     def lastboot
-      @lastboot ||= @node['lastboot'].to_s
+      @lastboot ||= Time.parse(@node['lastboot'])   
     end
 
     #
