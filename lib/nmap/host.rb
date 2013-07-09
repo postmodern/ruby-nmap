@@ -5,6 +5,7 @@ require 'nmap/port'
 require 'nmap/ip_id_sequence'
 require 'nmap/tcp_sequence'
 require 'nmap/tcp_ts_sequence'
+require 'nmap/uptime'
 
 require 'nokogiri'
 
@@ -224,6 +225,27 @@ module Nmap
 
       yield @os if (@os && block_given?)
       return @os
+    end
+      
+    #
+    # Parses the UpTime analysis of the host.
+    #
+    # @yield [uptime]
+    #   If a block is given, it will be passed the resulting object
+    #
+    # @yieldparam [UpTime] 
+    #   UpTime value.
+    #
+    # @return [UpTime]
+    #   The parsed object.
+    #
+    def uptime
+      @uptime ||= if (upt = @node.at('uptime'))
+                            UpTime.new(upt)
+                          end
+
+      yield @uptime if (@uptime && block_given?)
+      return @uptime
     end
 
     #
