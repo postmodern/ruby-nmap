@@ -2,6 +2,9 @@
 
 require 'rubygems'
 require 'rake'
+require 'rake/clean'
+
+CLEAN.include('spec/*.xml')
 
 begin
   gem 'rubygems-tasks', '~> 0.1'
