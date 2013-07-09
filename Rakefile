@@ -24,6 +24,7 @@ rescue LoadError => e
   end
 end
 
+task :spec    => 'spec/scan.xml'
 task :test    => :spec
 task :default => :spec
 
@@ -40,5 +41,6 @@ end
 task :doc => :yard
 
 file 'spec/scan.xml' do
+  puts ">>> Scanning scanme.nmap.org ..."
   sh 'sudo nmap -v -A -O -oX spec/scan.xml scanme.nmap.org'
 end
