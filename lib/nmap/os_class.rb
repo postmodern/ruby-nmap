@@ -2,7 +2,7 @@ module Nmap
   #
   # Represents an {OS} class.
   #
-  class OSClass < Struct.new(:type, :vendor, :family, :accuracy)
+  class OSClass < Struct.new(:type, :vendor, :family, :gen, :accuracy)
 
     #
     # Converts the OS class to a String.
