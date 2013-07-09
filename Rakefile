@@ -38,3 +38,7 @@ rescue LoadError => e
   end
 end
 task :doc => :yard
+
+file 'spec/scan.xml' do
+  sh 'sudo nmap -v -A -O -oX spec/scan.xml scanme.nmap.org'
+end

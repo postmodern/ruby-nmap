@@ -9,4 +9,8 @@ require 'helpers/xml'
 
 RSpec.configure do |spec|
   spec.include Helpers
+
+  spec.before(:all) do
+    @xml = XML.new('spec/scan.xml')
+  end
 end

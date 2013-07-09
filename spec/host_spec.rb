@@ -4,9 +4,7 @@ require 'nmap/xml'
 require 'nmap/host'
 
 describe Host do
-  let(:xml) { XML.new(Helpers::SCAN_FILE) }
-
-  subject { xml.hosts.first }
+  subject { @xml.hosts.first }
 
   it "should parse the start_time" do
     subject.start_time.should > Time.at(0)
@@ -21,27 +19,20 @@ describe Host do
     status = subject.status
     
     status.state.should == :up
-    status.reason.should == 'arp-response'
+    status.reason.should == 'timestamp-reply'
   end
 
   it "should parse the addresses" do
     addresses = subject.addresses
     
-    addresses.length.should == 2
+    addresses.length.should == 1
 
     addresses[0].type.should == :ipv4
-    addresses[0].addr.should == '192.168.5.1'
-
-    addresses[1].type.should == :mac
-    addresses[1].addr.should == '00:1D:7E:EF:2A:E5'
-  end
-
-  it "should parse the MAC address" do
-    subject.mac.should == '00:1D:7E:EF:2A:E5'
+    addresses[0].addr.should == '74.207.244.221'
   end
 
   it "should parse the IPv4 address" do
-    subject.ipv4.should == '192.168.5.1'
+    subject.ipv4.should == '74.207.244.221'
   end
 
   it "should parse the IPv6 address" do
@@ -49,11 +40,11 @@ describe Host do
   end
 
   it "should have an IP" do
-    subject.ip.should == '192.168.5.1'
+    subject.ip.should == '74.207.244.221'
   end
 
   it "should have an address" do
-    subject.address.should == '192.168.5.1'
+    subject.address.should == '74.207.244.221'
   end
 
   it "should parse the hostnames" do
@@ -67,20 +58,18 @@ describe Host do
   it "should parse the ports" do
     ports = subject.ports
     
-    ports.length.should == 3
+    ports.should_not be_empty
   end
 
   it "should list the open ports" do
     ports = subject.open_ports
     
-    ports.length.should == 1
     ports.all? { |port| port.state == :open }.should == true
   end
 
   it "should list TCP ports" do
     ports = subject.tcp_ports
     
-    ports.length.should == 3
     ports.all? { |port| port.protocol == :tcp }.should == true
   end
 
@@ -89,19 +78,13 @@ describe Host do
   end
 
   it "should convert to a String" do
-    subject.to_s.should == '192.168.5.1'
+    subject.to_s.should == '74.207.244.221'
   end
 
-  context "when NSE scripts are ran" do
-    let(:xml) { XML.new(Helpers::NSE_FILE) }
+  it "should list output of the scripts" do
+    subject.scripts.should_not be_empty
 
-    subject { xml.hosts.first }
-
-    it "should list output of the scripts" do
-      subject.scripts.should_not be_empty
-
-      subject.scripts.keys.should_not include(nil)
-      subject.scripts.values.should_not include(nil)
-    end
+    subject.scripts.keys.should_not include(nil)
+    subject.scripts.values.should_not include(nil)
   end
 end
