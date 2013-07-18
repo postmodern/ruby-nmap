@@ -102,5 +102,15 @@ module Nmap
       number.to_s
     end
 
+    #
+    # Inspects the port.
+    #
+    # @return [String]
+    #   The inspected port.
+    #
+    def inspect
+      "#<#{self.class}: #{self}>"
+    end
+
   end
 end

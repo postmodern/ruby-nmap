@@ -26,6 +26,12 @@ describe Port do
     subject.service.name.should == 'ftp'
   end
 
+  describe "#inspect" do
+    it "should include the number" do
+      subject.inspect.should include(subject.number.to_s)
+    end
+  end
+
   context "when NSE scripts are ran" do
     let(:xml) { XML.new(Helpers::NSE_FILE) }
 
