@@ -222,5 +222,15 @@ module Nmap
       @path.to_s
     end
 
+    #
+    # Inspects the XML file.
+    #
+    # @return [String]
+    #   The inspected XML file.
+    #
+    def inspect
+      "#<#{self.class}: #{self}>"
+    end
+
   end
 end
