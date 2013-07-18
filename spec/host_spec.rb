@@ -81,6 +81,12 @@ describe Host do
     subject.to_s.should == '74.207.244.221'
   end
 
+  describe "#inspect" do
+    it "should include the address" do
+      subject.inspect.should include(subject.address)
+    end
+  end
+
   it "should list output of the scripts" do
     subject.scripts.should_not be_empty
 

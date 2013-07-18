@@ -536,5 +536,15 @@ module Nmap
       address.to_s
     end
 
+    #
+    # Inspects the host.
+    #
+    # @return [String]
+    #   The inspected host.
+    #
+    def inspect
+      "#<#{self.class}: #{self}>"
+    end
+
   end
 end
