@@ -19,7 +19,7 @@ describe Host do
     status = subject.status
     
     status.state.should == :up
-    status.reason.should == 'timestamp-reply'
+    %w[timestamp-reply echo-reply reset].should include(status.reason)
   end
 
   it "should parse the addresses" do
