@@ -230,20 +230,20 @@ module Nmap
     end
       
     #
-    # Parses the UpTime analysis of the host.
+    # Parses the Uptime analysis of the host.
     #
     # @yield [uptime]
     #   If a block is given, it will be passed the resulting object
     #
-    # @yieldparam [UpTime] 
-    #   UpTime value.
+    # @yieldparam [Uptime] 
+    #   Uptime value.
     #
-    # @return [UpTime]
+    # @return [Uptime]
     #   The parsed object.
     #
     def uptime
       @uptime ||= if (upt = @node.at('uptime'))
-                            UpTime.new(upt)
+                            Uptime.new(upt)
                           end
 
       yield @uptime if (@uptime && block_given?)

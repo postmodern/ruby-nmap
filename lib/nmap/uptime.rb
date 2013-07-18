@@ -2,10 +2,10 @@ module Nmap
   #
   # Wraps a `uptime` XML element.
   #
-  class UpTime
+  class Uptime
 
     #
-    # Creates a new UpTime object.
+    # Creates a new Uptime object.
     #
     # @param [Nokogiri::XML::Element] node
     #   The XML `uptime` element.
@@ -38,7 +38,7 @@ module Nmap
     # Converts the uptime object to a String.
     #
     # @return [String]
-    #   The String form of the UpTime.
+    #   The String form of the Uptime.
     #
     # @since 0.6.1
     #
