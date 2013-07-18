@@ -1,6 +1,6 @@
 language: ruby
 before_install:
-  - sudo apt-get install libxml2-dev libxslt-dev nmap
+  - sudo apt-get install libxml2-dev libxslt1-dev nmap
 rvm:
   - 1.9.3
   - 2.0.0
