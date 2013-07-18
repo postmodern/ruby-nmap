@@ -15,6 +15,22 @@ describe Host do
     subject.end_time.should > subject.start_time
   end
 
+  describe "#uptime" do
+    subject { super().uptime }
+
+    it "should return an Uptime object" do
+      subject.should be_kind_of(Uptime)
+    end
+
+    it "should parse the seconds attribute" do
+      subject.seconds.should be > 0
+    end
+
+    it "should parse the lastboot attribute" do
+      subject.lastboot.should be_kind_of(Time)
+    end
+  end
+
   it "should parse the status" do
     status = subject.status
     

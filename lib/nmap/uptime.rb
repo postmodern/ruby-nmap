@@ -2,37 +2,7 @@ module Nmap
   #
   # Wraps a `uptime` XML element.
   #
-  class Uptime
-
-    #
-    # Creates a new Uptime object.
-    #
-    # @param [Nokogiri::XML::Element] node
-    #   The XML `uptime` element.
-    #
-    def initialize(node)
-      @node = node
-    end
-
-    #
-    # The uptime of the host
-    #
-    # @return [Integer]
-    #   The seconds of uptime.
-    #
-    def seconds
-      @seconds ||= @node['seconds'].to_i
-    end
-
-    #
-    # The lastboot date.
-    #
-    # @return [DateTime]
-    #   The date of the last boot.
-    #
-    def lastboot
-      @lastboot ||= Time.parse(@node['lastboot'])   
-    end
+  class Uptime < Struct.new(:seconds, :lastboot)
 
     #
     # Converts the uptime object to a String.

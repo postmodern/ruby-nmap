@@ -242,9 +242,12 @@ module Nmap
     #   The parsed object.
     #
     def uptime
-      @uptime ||= if (upt = @node.at('uptime'))
-                            Uptime.new(upt)
-                          end
+      @uptime ||= if (uptime = @node.at('uptime'))
+                    Uptime.new(
+                      uptime['seconds'].to_i,
+                      Time.parse(uptime['lastboot'])
+                    )
+                  end
 
       yield @uptime if (@uptime && block_given?)
       return @uptime
