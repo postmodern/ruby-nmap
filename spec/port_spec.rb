@@ -22,8 +22,16 @@ describe Port do
     subject.reason.should == 'reset'
   end
 
-  it "should parse the detected service" do
-    subject.service.name.should == 'ftp'
+  describe "#service" do
+    subject { super().service }
+
+    it "should return a Service object" do
+      subject.should be_kind_of(Service)
+    end
+
+    it "should parse the service name" do
+      subject.name.should == 'ftp'
+    end
   end
 
   describe "#inspect" do
