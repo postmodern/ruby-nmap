@@ -48,7 +48,7 @@ module Nmap
           osclass['type'].to_sym,
           osclass['vendor'],
           osclass['osfamily'].to_sym,
-          osclass['osgen'].to_sym,
+          (osclass['osgen'].to_sym if osclass['osgen']),
           osclass['accuracy'].to_i
         )
 
