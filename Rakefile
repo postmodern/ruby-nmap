@@ -1,46 +1,33 @@
 # encoding: utf-8
 
 require 'rubygems'
+
+begin
+  require 'bundler/setup'
+rescue LoadError => e
+  warn e.message
+  warn "Run `gem install bundler` to install Bundler"
+  exit -1
+end
+
 require 'rake'
 require 'rake/clean'
 
 CLEAN.include('spec/*.xml')
 
-begin
-  gem 'rubygems-tasks', '~> 0.1'
-  require 'rubygems/tasks'
+require 'rubygems/tasks'
 
-  Gem::Tasks.new
-rescue LoadError => e
-  warn e.message
-  warn "Run `gem install rubygems-tasks` to install 'rubygems/tasks'."
-end
+Gem::Tasks.new
 
-begin
-  gem 'rspec', '~> 2.4'
-  require 'rspec/core/rake_task'
-
-  RSpec::Core::RakeTask.new
-rescue LoadError => e
-  task :spec do
-    abort "Please run `gem install rspec` to install RSpec."
-  end
-end
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new
 
 task :spec    => 'spec/scan.xml'
 task :test    => :spec
 task :default => :spec
 
-begin
-  gem 'yard', '~> 0.7'
-  require 'yard'
-
-  YARD::Rake::YardocTask.new  
-rescue LoadError => e
-  task :yard do
-    abort "Please run `gem install yard` to install YARD."
-  end
-end
+require 'yard'
+YARD::Rake::YardocTask.new  
 task :doc => :yard
 
 file 'spec/scan.xml' do
