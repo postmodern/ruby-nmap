@@ -36,5 +36,9 @@ describe Service do
     it "should have a version" do
       subject.version.should == '5.1p1 Debian 6ubuntu2'
     end
+
+    it "should have extra info" do
+      subject.extra_info == '(Ubuntu)'
+    end
   end
 end
