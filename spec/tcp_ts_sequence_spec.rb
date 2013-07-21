@@ -9,10 +9,17 @@ describe TcpTsSequence do
   end
 
   it "should parse the description" do
-    subject.description.should == "2HZ"
+    subject.description.should == "1000HZ"
   end
 
   it "should parse the values" do
-    subject.values.should == [0x1858, 0x1858, 0x1859, 0x1859, 0x1859, 0x1859]
+    subject.values.should == [
+      0x35FAF70B,
+      0x35FAF76E,
+      0x35FAF7D4,
+      0x35FAF838,
+      0x35FAF89C,
+      0x35FAF900
+    ]
   end
 end
