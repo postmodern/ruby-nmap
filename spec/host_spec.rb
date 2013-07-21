@@ -81,8 +81,26 @@ describe Host do
     subject.address.should == '74.207.244.221'
   end
 
-  it "should parse the hostnames" do
-    pending "generate a Nmap XML scan file including hostnames"
+  describe "#hostnames" do
+    subject { super().hostnames }
+
+    it { should_not be_empty }
+
+    it "should parse the type" do
+      subject.all? { |hostname| hostname.type }.should be_true
+    end
+
+    it "should parse the name" do
+      subject.all? { |hostname| hostname.name }.should be_true
+    end
+
+    it "should include a user hostname" do
+      subject.any? { |hostname| hostname.type == 'user' }.should be_true
+    end
+
+    it "should include a PTR hostname" do
+      subject.any? { |hostname| hostname.type == 'PTR' }.should be_true
+    end
   end
 
   it "should parse the OS guessing information" do
