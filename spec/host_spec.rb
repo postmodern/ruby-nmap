@@ -32,11 +32,28 @@ describe Host do
     end
   end
 
+  describe "#status" do
+    subject { super().status }
+
+    it "should parse the state" do
+      subject.state.should be_one_of(:up, :down)
+    end
+
+    it "should parse the reason" do
+      subject.reason.should be_one_of(
+        'syn-ack',
+        'timestamp-reply',
+        'echo-reply',
+        'reset'
+      )
+    end
+  end
+
   it "should parse the status" do
     status = subject.status
     
     status.state.should == :up
-    %w[timestamp-reply echo-reply reset].should include(status.reason)
+    status.reason
   end
 
   it "should parse the addresses" do
