@@ -2,10 +2,12 @@ require 'spec_helper'
 require 'nmap/xml'
 
 describe XML do
-  subject { XML.new(Helpers::SCAN_FILE) }
+  let(:path) { File.expand_path('spec/scan.xml') }
+
+  subject { described_class.new(path) }
 
   it "should have a version" do
-    subject.version.should == '1.02'
+    subject.version.should == '1.04'
   end
 
   it "should parse the scanner version" do
@@ -17,11 +19,11 @@ describe XML do
   end
 
   it "should parse the scanner arguments" do
-    subject.scanner.arguments.should == 'nmap -v -oX samples/backspace.xml -O -P0 -sS 192.168.5.*'
+    subject.scanner.arguments.should == 'nmap -v -sS -A -O -oX spec/scan.xml scanme.nmap.org'
   end
 
   it "should parse the scanner start time" do
-    subject.scanner.start_time.should == Time.at(1218934249)
+    subject.scanner.start_time.should be_kind_of(Time)
   end
 
   it "should parse the scan information" do
@@ -56,8 +58,14 @@ describe XML do
     end
   end
 
-  it "should parse the hosts" do
-    subject.hosts.length.should == 10
+  describe "#hosts" do
+    subject { super().hosts }
+
+    it { should_not be_empty }
+
+    it "should contain Host objects" do
+      subject.all? { |host| host.kind_of?(Host) }.should be_true
+    end
   end
 
   it "should iterate over each up host" do
@@ -65,6 +73,6 @@ describe XML do
   end
 
   it "should convert to a String" do
-    subject.to_s.should == Helpers::SCAN_FILE
+    subject.to_s.should == path
   end
 end
