@@ -139,5 +139,7 @@ describe Host do
     end
   end
 
-  include_examples "#scripts"
+  pending "scan.xml does not currently include any hostscripts" do
+    include_examples "#scripts"
+  end
 end
