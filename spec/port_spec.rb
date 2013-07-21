@@ -28,12 +28,7 @@ describe Port do
     end
   end
 
-  describe "#scripts" do
-    subject { super().scripts }
-
-    it { should_not be_empty     }
-    it { should be_kind_of(Hash) }
-  end
+  include_examples "#scripts"
 
   describe "#inspect" do
     it "should include the number" do

@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'scripts_examples'
 
 require 'nmap/xml'
 require 'nmap/host'
@@ -103,10 +104,5 @@ describe Host do
     end
   end
 
-  it "should list output of the scripts" do
-    subject.scripts.should_not be_empty
-
-    subject.scripts.keys.should_not include(nil)
-    subject.scripts.values.should_not include(nil)
-  end
+  include_examples "#scripts"
 end
