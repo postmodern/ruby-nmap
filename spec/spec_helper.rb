@@ -23,6 +23,8 @@ RSpec::Matchers.define :be_one_of do |*values|
   match do |value|
     values.include?(value)
   end
+
+  description { "be one of: #{expected.join(', ')}" }
 end
 
 RSpec.configure do |spec|
