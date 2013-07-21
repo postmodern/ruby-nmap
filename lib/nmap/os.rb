@@ -15,16 +15,8 @@ module Nmap
     # @param [Nokogiri::XML::Node] node
     #   The node that contains the OS guessing information.
     #
-    # @yield [os]
-    #   If a block is given, it will passed the newly created OS object.
-    #
-    # @yieldparam [OS] os
-    #   The newly created OS object.
-    #
     def initialize(node)
       @node = node
-
-      yield self if block_given?
     end
 
     #

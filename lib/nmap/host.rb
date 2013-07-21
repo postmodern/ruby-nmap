@@ -25,17 +25,8 @@ module Nmap
     # @param [Nokogiri::XML::Node] node
     #   The XML node that contains the host information.
     #
-    # @yield [host]
-    #   If a block is given, it will be passed the newly created Host
-    #   object.
-    #
-    # @yieldparam [Host] host
-    #   The newly created Host object.
-    #
     def initialize(node)
       @node = node
-
-      yield self if block_given?
     end
 
     #
