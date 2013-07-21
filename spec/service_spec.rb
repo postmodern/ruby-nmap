@@ -5,36 +5,25 @@ require 'nmap/xml'
 require 'nmap/service'
 
 describe Service do
-  include Helpers
-
-  before(:all) do
-    @xml = XML.new(Helpers::SCAN_FILE)
-    @nse_xml = XML.new(Helpers::NSE_FILE)
-  end
-
   subject { @xml.hosts.first.ports.first.service }
 
-  it "should have a name" do
-    subject.name.should == 'ftp'
+  it "should parse the name" do
+    subject.name.should == 'ssh'
   end
 
-  it "should have a fingerprint method" do
-    subject.fingerprint_method.should == :table
+  it "should parse the fingerprint method" do
+    subject.fingerprint_method.should == :probed
   end
 
-  it "should have a confidence" do
-    subject.confidence.should == 3
+  it "should parse the confidence" do
+    subject.confidence.should be_between(0,10)
   end
 
-  context "with improved detection" do
-    subject { @nse_xml.hosts.first.ports.first.service }
+  it "should parse the product name" do
+    subject.product.should == 'OpenSSH'
+  end
 
-    it "should have a product name" do
-      subject.product.should == 'OpenSSH'
-    end
-
-    it "should have a version" do
-      subject.version.should == '5.1p1 Debian 6ubuntu2'
-    end
+  it "should parse the version" do
+    subject.version.should == '5.3p1 Debian 3ubuntu7'
   end
 end
