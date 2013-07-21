@@ -2,16 +2,14 @@ require 'spec_helper'
 require 'nmap/tcp_sequence'
 
 describe TcpSequence do
-  let(:xml) { XML.new(Helpers::SCAN_FILE) }
-
-  subject { xml.hosts.first.tcp_sequence }
+  subject { @xml.hosts.first.tcp_sequence }
 
   it "should be accessible from host objects" do
     subject.should be_kind_of(TcpSequence)
   end
 
   it "should parse the index" do
-    subject.index.should == 25
+    subject.index.should == 195
   end
 
   it "should parse the difficulty description" do
@@ -20,12 +18,12 @@ describe TcpSequence do
 
   it "should parse the values" do
     subject.values.should == [
-      0xAF1B39BD,
-      0xAF1C33BD,
-      0xAF1F21BD,
-      0xAF201BBD,
-      0xAF2115BD,
-      0xAF220FBD
+      0x48496039,
+      0x4823E13C,
+      0x487362E9,
+      0x489580F0,
+      0x4906414A,
+      0x48C579D8
     ]
   end
 end
