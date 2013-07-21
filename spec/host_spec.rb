@@ -125,8 +125,14 @@ describe Host do
     ports.all? { |port| port.protocol == :tcp }.should == true
   end
 
-  it "should list the UDP ports" do
-    pending "generate a Nmap XML scan file including scanned UDP ports"
+  describe "#udp_ports" do
+    subject { super().udp_ports }
+
+    it { should_not be_empty }
+
+    it "should contain UDP ports" do
+      subject.all? { |port| port.protocol == :udp }.should be_true
+    end
   end
 
   it "should convert to a String" do

@@ -19,7 +19,7 @@ describe XML do
   end
 
   it "should parse the scanner arguments" do
-    subject.scanner.arguments.should == 'nmap -v -sS -A -O -oX spec/scan.xml scanme.nmap.org'
+    subject.scanner.arguments.should == 'nmap -v -sS -sU -A -O -oX spec/scan.xml scanme.nmap.org'
   end
 
   it "should parse the scanner start time" do
