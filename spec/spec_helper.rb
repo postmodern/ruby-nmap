@@ -5,8 +5,6 @@ require 'nmap/version'
 require 'nmap/xml'
 include Nmap
 
-require 'helpers/xml'
-
 RSpec::Matchers.define :be_between do |min,max|
   match do |value|
     (value >= min) && (value <= max)
@@ -28,8 +26,6 @@ RSpec::Matchers.define :be_one_of do |*values|
 end
 
 RSpec.configure do |spec|
-  spec.include Helpers
-
   spec.before(:all) do
     @xml = XML.new('spec/scan.xml')
   end

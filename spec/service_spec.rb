@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'helpers/xml'
 
 require 'nmap/xml'
 require 'nmap/service'
