@@ -11,7 +11,7 @@ describe TcpSequence do
   end
 
   it "should parse the index" do
-    subject.index.should == 195
+    subject.index.should be > 0
   end
 
   it "should parse the difficulty description" do

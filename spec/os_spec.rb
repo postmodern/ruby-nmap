@@ -38,8 +38,11 @@ describe OS do
     end
   end
 
-  it "should parse the ports used" do
-    subject.ports_used.should == [22, 1, 31542]
+  describe "#ports_used" do
+    subject { super().ports_used }
+
+    it { subject.should_not be_empty }
+    it { subject.should all_be_between(0,65535) }
   end
 
   it "should parse the OS fingerprints" do
