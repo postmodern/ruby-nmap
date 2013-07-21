@@ -1,8 +1,12 @@
+require 'nmap/cpe'
+
 module Nmap
   #
   # Represents an {OS} class.
   #
   class OSClass
+
+    include CPE
 
     #
     # Initializes the os class.

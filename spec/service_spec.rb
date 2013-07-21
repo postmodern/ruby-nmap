@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'cpe_examples'
 
 require 'nmap/xml'
 require 'nmap/service'
@@ -25,4 +26,6 @@ describe Service do
   it "should parse the version" do
     subject.version.should == '5.3p1 Debian 3ubuntu7'
   end
+
+  it_should_behave_like "CPE"
 end

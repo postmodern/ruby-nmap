@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'cpe_examples'
 
 require 'nmap/os'
 require 'cgi'
@@ -21,4 +22,6 @@ describe OS do
   it "should parse the accuracy" do
     subject.accuracy.should be_between(0,100)
   end
+
+  it_should_behave_like "CPE"
 end

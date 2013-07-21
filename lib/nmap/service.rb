@@ -1,3 +1,5 @@
+require 'nmap/cpe'
+
 module Nmap
   #
   # Wraps a `service` XML element.
@@ -5,6 +7,8 @@ module Nmap
   # @since 0.6.0
   #
   class Service
+
+    include CPE
 
     #
     # Creates a new OS object.
