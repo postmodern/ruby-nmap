@@ -2,9 +2,7 @@ require 'spec_helper'
 require 'nmap/tcp_ts_sequence'
 
 describe TcpTsSequence do
-  let(:xml) { XML.new(Helpers::SCAN_FILE) }
-
-  subject { xml.hosts.first.tcp_ts_sequence }
+  subject { @xml.hosts.first.tcp_ts_sequence }
 
   it "should be accessible from host objects" do
     subject.should be_kind_of(TcpTsSequence)
