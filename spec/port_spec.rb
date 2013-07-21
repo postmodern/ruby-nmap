@@ -2,24 +2,22 @@ require 'spec_helper'
 require 'nmap/port'
 
 describe Port do
-  let(:xml) { XML.new(Helpers::SCAN_FILE) }
-
-  subject { xml.hosts.first.ports.first }
+  subject { @xml.hosts.first.ports.first }
 
   it "should parse the protocol" do
     subject.protocol.should == :tcp
   end
 
   it "should parse the port number" do
-    subject.number.should == 21
+    subject.number.should == 22
   end
 
   it "should parse the state" do
-    subject.state.should == :closed
+    subject.state.should == :open
   end
 
   it "should parse the reason" do
-    subject.reason.should == 'reset'
+    subject.reason.should == 'syn-ack'
   end
 
   describe "#service" do
@@ -30,7 +28,7 @@ describe Port do
     end
 
     it "should parse the service name" do
-      subject.name.should == 'ftp'
+      subject.name.should == 'ssh'
     end
   end
 
