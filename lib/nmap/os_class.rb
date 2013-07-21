@@ -31,7 +31,7 @@ module Nmap
     # @return [String]
     #
     def vendor
-      @node['vendor']
+      @vendor ||= @node.get_attribute('vendor')
     end
 
     #
@@ -40,9 +40,7 @@ module Nmap
     # @return [Symbol, nil]
     #
     def family
-      @family ||= if @node['osfamily']
-                    @node['osfamily'].to_sym
-                  end
+      @family ||= @node.get_attribute('osfamily').to_sym
     end
 
     #
@@ -63,7 +61,7 @@ module Nmap
     #   Returns a number between 0 and 10.
     #
     def accuracy
-      @accuracy ||= @node['accuracy'].to_i
+      @accuracy ||= @node.get_attribute('accuracy').to_i
     end
 
     #
