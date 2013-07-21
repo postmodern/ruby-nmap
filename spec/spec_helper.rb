@@ -7,6 +7,12 @@ include Nmap
 
 require 'helpers/xml'
 
+RSpec::Matchers.define :be_between do |min,max|
+  match do |value|
+    (value >= min) && (value <= max)
+  end
+end
+
 RSpec.configure do |spec|
   spec.include Helpers
 
