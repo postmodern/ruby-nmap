@@ -19,6 +19,12 @@ RSpec::Matchers.define :all_be_between do |min,max|
   end
 end
 
+RSpec::Matchers.define :be_one_of do |*values|
+  match do |value|
+    values.include?(value)
+  end
+end
+
 RSpec.configure do |spec|
   spec.include Helpers
 
