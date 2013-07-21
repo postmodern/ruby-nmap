@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'sequence_examples'
+
 require 'nmap/tcp_sequence'
 
 describe TcpSequence do
@@ -16,14 +18,5 @@ describe TcpSequence do
     subject.difficulty.should == "Good luck!"
   end
 
-  it "should parse the values" do
-    subject.values.should == [
-      0x48496039,
-      0x4823E13C,
-      0x487362E9,
-      0x489580F0,
-      0x4906414A,
-      0x48C579D8
-    ]
-  end
+  it_should_behave_like "Sequence"
 end

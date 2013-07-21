@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'sequence_examples'
+
 require 'nmap/ip_id_sequence'
 
 describe IpIdSequence do
@@ -12,7 +14,5 @@ describe IpIdSequence do
     subject.description.should == "All zeros"
   end
 
-  it "should parse the values" do
-    subject.values.should == [0, 0, 0, 0, 0, 0]
-  end
+  it_should_behave_like "Sequence"
 end
