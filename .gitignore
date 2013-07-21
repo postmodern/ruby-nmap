@@ -7,4 +7,3 @@ pkg
 *.swp
 *~
 *.gem
-spec/*.xml
