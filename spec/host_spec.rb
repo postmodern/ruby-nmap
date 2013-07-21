@@ -49,20 +49,16 @@ describe Host do
     end
   end
 
-  it "should parse the status" do
-    status = subject.status
-    
-    status.state.should == :up
-    status.reason
-  end
+  describe "#addresses" do
+    subject { super().addresses.first }
 
-  it "should parse the addresses" do
-    addresses = subject.addresses
-    
-    addresses.length.should == 1
+    it "should parse the type" do
+      subject.type.should == :ipv4
+    end
 
-    addresses[0].type.should == :ipv4
-    addresses[0].addr.should == '74.207.244.221'
+    it "should parser the addr" do
+      subject.addr.should == '74.207.244.221'
+    end
   end
 
   it "should parse the IPv4 address" do
@@ -103,26 +99,37 @@ describe Host do
     end
   end
 
-  it "should parse the OS guessing information" do
-    subject.os.should_not be_nil
+  describe "#os" do
+    subject { super().os }
+
+    it { should_not be_nil }
+    it { should be_kind_of(OS) }
   end
 
-  it "should parse the ports" do
-    ports = subject.ports
-    
-    ports.should_not be_empty
+  describe "#ports" do
+    subject { super().ports }
+
+    it { should_not be_empty }
   end
 
-  it "should list the open ports" do
-    ports = subject.open_ports
-    
-    ports.all? { |port| port.state == :open }.should == true
+  describe "#open_ports" do
+    subject { super().open_ports }
+
+    it { should_not be_empty }
+
+    it "should list the open ports" do
+      subject.all? { |port| port.state == :open }.should be_true
+    end
   end
 
-  it "should list TCP ports" do
-    ports = subject.tcp_ports
-    
-    ports.all? { |port| port.protocol == :tcp }.should == true
+  describe "#tcp_ports" do
+    subject { super().tcp_ports }
+
+    it { should_not be_empty }
+
+    it "should contain TCP ports" do
+      subject.all? { |port| port.protocol == :tcp }.should be_true
+    end
   end
 
   describe "#udp_ports" do
