@@ -7,22 +7,12 @@ describe OS do
   subject { @xml.hosts.first.os }
 
   describe "#classes" do
-    subject { super().classes.first }
+    subject { super().classes }
 
-    it "should parse the type" do
-      subject.type.should == :"general purpose"
-    end
+    it { should_not be_empty }
 
-    it "should parse the vendor" do
-      subject.vendor.should == 'Linux'
-    end
-
-    it "should parse the family" do
-      subject.family.should == :Linux
-    end
-
-    it "should parse the accuracy" do
-      subject.accuracy.should be_between(0,100)
+    it "should return OSClass objects" do
+      subject.all? { |osclass| osclass.kind_of?(OSClass) }.should be_true
     end
   end
 

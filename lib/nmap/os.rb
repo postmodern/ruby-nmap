@@ -35,16 +35,8 @@ module Nmap
     def each_class
       return enum_for(__method__) unless block_given?
 
-      @node.xpath("osmatch/osclass").map do |osclass|
-        os_class = OSClass.new(
-          osclass['type'].to_sym,
-          osclass['vendor'],
-          osclass['osfamily'].to_sym,
-          (osclass['osgen'].to_sym if osclass['osgen']),
-          osclass['accuracy'].to_i
-        )
-
-        yield os_class
+      @node.xpath("osmatch/osclass").each do |osclass|
+        yield OSClass.new(osclass)
       end
 
       return self
