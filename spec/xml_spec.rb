@@ -26,12 +26,20 @@ describe XML do
     subject.scanner.start_time.should be_kind_of(Time)
   end
 
-  it "should parse the scan information" do
-    scan_info = subject.scan_info
+  describe "#scan_info" do
+    subject { super().scan_info.first }
 
-    scan_info.length.should == 1
-    scan_info.first.type.should == :syn
-    scan_info.first.protocol.should == :tcp
+    it "should parse the type" do
+      subject.type.should == :syn
+    end
+
+    it "should parse the protocol" do
+      subject.protocol.should == :tcp
+    end
+
+    it "should parse the services" do
+      subject.services.should_not be_empty
+    end
   end
 
   it "should parse the verbose level" do
