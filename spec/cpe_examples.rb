@@ -6,6 +6,6 @@ shared_examples_for "CPE" do
   it { should_not be_empty }
 
   it "should contain CPE URLs" do
-    subject.all? { |url| url.kind_of?(CPE::URL) }.should be_true
+    subject.should all_be_kind_of(CPE::URL)
   end
 end

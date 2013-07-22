@@ -26,6 +26,12 @@ RSpec::Matchers.define :be_one_of do |*values|
   description { "be one of: #{expected.join(', ')}" }
 end
 
+RSpec::Matchers.define :all_be_kind_of do |base_class|
+  match do |values|
+    values.all? { |value| value.kind_of?(base_class) }
+  end
+end
+
 RSpec.configure do |spec|
   spec.before(:all) do
     @xml = XML.new('spec/scan.xml')

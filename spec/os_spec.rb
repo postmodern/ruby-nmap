@@ -12,7 +12,7 @@ describe OS do
     it { should_not be_empty }
 
     it "should return OSClass objects" do
-      subject.all? { |osclass| osclass.kind_of?(OSClass) }.should be_true
+      subject.should all_be_kind_of(OSClass)
     end
   end
 

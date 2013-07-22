@@ -72,7 +72,7 @@ describe XML do
     it { should_not be_empty }
 
     it "should contain Host objects" do
-      subject.all? { |host| host.kind_of?(Host) }.should be_true
+      subject.should all_be_kind_of(Host)
     end
   end
 
