@@ -247,11 +247,11 @@ module Nmap
     #   The XML parser. If no block was given, an enumerator object will
     #   be returned.
     #
-    def each_up_host(&block)
-      return enum_for(__method__) unless block
+    def each_up_host
+      return enum_for(__method__) unless block_given?
 
       @doc.xpath("/nmaprun/host[status[@state='up']]").each do |host|
-        Host.new(host,&block)
+        yield Host.new(host)
       end
 
       return self
