@@ -109,11 +109,42 @@ describe XML do
     it { should all_be_kind_of(ScanTask) }
   end
 
+  describe "#each_host" do
+    subject { super().each_host.first }
+
+    it "should yield Host objects" do
+      subject.should be_kind_of(Host)
+    end
+  end
+
   describe "#hosts" do
     subject { super().hosts }
 
     it { should_not be_empty }
     it { subject.should all_be_kind_of(Host) }
+  end
+
+  describe "#each_up_host" do
+    subject { super().each_up_host.first }
+
+    it "should yield Host objects" do
+      subject.should be_kind_of(Host)
+    end
+
+    it "should be up" do
+      subject.status.state.should be == :up
+    end
+  end
+
+  describe "#up_hosts" do
+    subject { super().up_hosts }
+
+    it { should_not be_empty }
+    it { should all_be_kind_of(Host) }
+
+    it "should contain only up hosts" do
+      subject.all? { |host| host.status.state == :up }.should be_true
+    end
   end
 
   it "should iterate over each up host" do
