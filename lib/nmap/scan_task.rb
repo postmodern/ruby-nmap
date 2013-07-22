@@ -43,7 +43,7 @@ module Nmap
     # @since 0.1.2
     #
     def to_s
-      "#{self.start}: #{self.name} (#{self.extrainfo})"
+      "#{self.start_time}: #{self.name} (#{self.extrainfo})"
     end
 
   end
