@@ -1,17 +1,5 @@
 module Nmap
-  class ScanTask
-
-    # The name of the scan task
-    attr_reader :name
-
-    # The time the scan task begun
-    attr_reader :start_time
-
-    # The time the scan task ended
-    attr_reader :end_time
-
-    # Extra information on the scan task
-    attr_reader :extrainfo
+  class ScanTask < Struct.new(:name, :start_time, :end_time, :extrainfo)
 
     #
     # Creates a new ScanTask object.
@@ -31,10 +19,7 @@ module Nmap
     # @since 0.1.2
     #
     def initialize(name,start_time,end_time,extrainfo=nil)
-      @name = name
-      @start_time = start_time
-      @end_time = end_time
-      @extrainfo = extrainfo
+      super
     end
 
     #
@@ -46,7 +31,7 @@ module Nmap
     # @since 0.1.2
     #
     def duration
-      (@end_time - @start_time)
+      (self.end_time - self.start_time)
     end
 
     #
@@ -58,7 +43,7 @@ module Nmap
     # @since 0.1.2
     #
     def to_s
-      "#{@start}: #{@name} (#{@extrainfo})"
+      "#{self.start}: #{self.name} (#{self.extrainfo})"
     end
 
   end
