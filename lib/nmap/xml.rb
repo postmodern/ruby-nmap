@@ -2,7 +2,7 @@ require 'nmap/scanner'
 require 'nmap/scan_task'
 require 'nmap/scan'
 require 'nmap/host'
-require 'nmap/runstats'
+require 'nmap/run_stats'
 
 require 'nokogiri'
 
