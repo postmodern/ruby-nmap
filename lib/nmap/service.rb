@@ -39,7 +39,7 @@ module Nmap
     # @since 0.7.0
     #
     def ssl?
-      @node['tunnel'] == 'ssl'
+      (@ssl ||= @node['tunnel']) == 'ssl'
     end
 
     #

@@ -27,7 +27,7 @@ module Nmap
     # @since 0.5.0
     #
     def difficulty
-      @node['difficulty']
+      @difficulty ||= @node['difficulty']
     end
 
     #
