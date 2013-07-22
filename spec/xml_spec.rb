@@ -147,11 +147,21 @@ describe XML do
     end
   end
 
-  it "should iterate over each up host" do
-    subject.each.all? { |host| host.status.state == :up }.should == true
+  describe "#each" do
+    it "should iterate over each up host" do
+      subject.each.all? { |host| host.status.state == :up }.should == true
+    end
   end
 
-  it "should convert to a String" do
-    subject.to_s.should == path
+  describe "#to_s" do
+    it "should convert to a String" do
+      subject.to_s.should == path
+    end
+  end
+
+  describe "#inspect" do
+    it "should include the class and path" do
+      subject.inspect.should == "#<#{described_class}: #{path}>"
+    end
   end
 end
