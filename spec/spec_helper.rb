@@ -1,5 +1,6 @@
-gem 'rspec', '~> 2.4'
 require 'rspec'
+require 'simplecov'
+SimpleCov.start
 
 require 'nmap/version'
 require 'nmap/xml'
