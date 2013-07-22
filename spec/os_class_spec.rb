@@ -19,6 +19,10 @@ describe OS do
     subject.family.should == :Linux
   end
 
+  it "should parse the gen" do
+    subject.gen.should == :'2.6.X'
+  end
+
   it "should parse the accuracy" do
     subject.accuracy.should be_between(0,100)
   end
