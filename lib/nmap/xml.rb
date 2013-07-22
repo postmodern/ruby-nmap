@@ -104,6 +104,7 @@ module Nmap
         yield RunStat.new(
           Time.at(run_stats['time'].to_i),
           run_stats['elapsed'],
+          run_stats['summary'],
           run_stats['exit']
         )
       end

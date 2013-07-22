@@ -2,7 +2,7 @@ module Nmap
   #
   # Represents the runstats of a scan.
   #
-  class RunStat < Struct.new(:end_time, :elapsed, :exit_status)
+  class RunStat < Struct.new(:end_time, :elapsed, :summary, :exit_status)
 
     #
     # Converts the stats to a String.
