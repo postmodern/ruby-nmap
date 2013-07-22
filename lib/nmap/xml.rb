@@ -82,20 +82,61 @@ module Nmap
         )
       end
     end
-    
-    # 
-    # Parses the essential runstats information
+
     #
-    # @return [RunStats]
-    def runstats
-      @doc.xpath('/nmaprun/runstats/finished').map do |run_stats|
-        RunStat.new(
+    # Parses the essential runstats information.
+    #
+    # @yield [run_stat]
+    #   The given block will be passed each runstat.
+    #
+    # @yieldparam [RunStat] run_stat
+    #   A runstat.
+    #
+    # @return [Enumerator]
+    #   If no block is given, an enumerator will be returned.
+    #
+    # @since 0.7.0
+    #
+    def each_run_stat
+      return enum_for(__method__) unless block_given?
+
+      @doc.xpath('/nmaprun/runstats/finished').each do |run_stat|
+        yield RunStat.new(
           Time.at(run_stats['time'].to_i),
           run_stats['elapsed'],
           run_stats['exit']
         )
       end
+
+      return self
     end
+
+    #
+    # Parses the essential runstats information.
+    #
+    # @return [Array<RunStat>]
+    #   The runstats.
+    #
+    # @since 0.7.0
+    #
+    def run_stats
+      each_run_stat.to_a
+    end
+    
+    # 
+    # Parses the essential runstats information
+    #
+    # @return [RunStats]
+    #   The runstats.
+    #
+    # @deprecated Use {#run_stats} instead.
+    #
+    def runstats
+      warn "DEPRECATION: use #{self.class}#run_stats instead"
+
+      return run_stats
+    end
+
     #
     # Parses the verbose level.
     #
