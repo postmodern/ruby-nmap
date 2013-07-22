@@ -50,6 +50,37 @@ describe XML do
     subject.debugging.should == 0
   end
 
+  describe "#each_run_stat" do
+    subject { super().each_run_stat.first }
+
+    it "should yield RunStat objects" do
+      subject.should be_kind_of(RunStat)
+    end
+
+    it "should parse the end time" do
+      subject.end_time.should be_kind_of(Time)
+    end
+
+    it "should parse the time elapsed" do
+      subject.elapsed.should_not be_nil
+    end
+
+    it "should parse the summary" do
+      subject.summary.should_not be_empty
+    end
+
+    it "should parse the exit status" do
+      subject.exit_status.should be_one_of('success', 'failure')
+    end
+  end
+
+  describe "#run_stats" do
+    subject { super().run_stats }
+
+    it { should_not be_empty }
+    it { should all_be_kind_of(RunStat) }
+  end
+
   describe "#each_task" do
     subject { super().each_task.first }
 
