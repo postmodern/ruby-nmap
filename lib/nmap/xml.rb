@@ -102,10 +102,10 @@ module Nmap
 
       @doc.xpath('/nmaprun/runstats/finished').each do |run_stat|
         yield RunStat.new(
-          Time.at(run_stats['time'].to_i),
-          run_stats['elapsed'],
-          run_stats['summary'],
-          run_stats['exit']
+          Time.at(run_stat['time'].to_i),
+          run_stat['elapsed'],
+          run_stat['summary'],
+          run_stat['exit']
         )
       end
 
