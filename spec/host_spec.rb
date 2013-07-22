@@ -32,6 +32,24 @@ describe Host do
     end
   end
 
+  describe "#tcp_sequence" do
+    subject { super().tcp_sequence }
+
+    it { should be_kind_of(TcpSequence) }
+  end
+
+  describe "#ip_ip_sequence" do
+    subject { super().ip_id_sequence }
+
+    it { should be_kind_of(IpIdSequence) }
+  end
+
+  describe "#tcp_ts_sequence" do
+    subject { super().tcp_ts_sequence }
+
+    it { should be_kind_of(TcpTsSequence) }
+  end
+
   describe "#status" do
     subject { super().status }
 

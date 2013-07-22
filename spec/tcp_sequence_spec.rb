@@ -6,10 +6,6 @@ require 'nmap/tcp_sequence'
 describe TcpSequence do
   subject { @xml.hosts.first.tcp_sequence }
 
-  it "should be accessible from host objects" do
-    subject.should be_kind_of(TcpSequence)
-  end
-
   it "should parse the index" do
     subject.index.should be > 0
   end
