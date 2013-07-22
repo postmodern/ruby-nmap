@@ -50,30 +50,39 @@ describe XML do
     subject.debugging.should == 0
   end
 
-  it "should parse the scan tasks" do
-    tasks = subject.tasks
+  describe "#each_task" do
+    subject { super().each_task.first }
 
-    tasks.should_not be_empty
-
-    tasks.each do |task|
-      task.name.should_not be_nil
-      task.name.should_not be_empty
-
-      task.start_time.should > Time.at(0)
-
-      task.end_time.should > Time.at(0)
-      task.end_time.should >= task.start_time
+    it "should parse task name" do
+      subject.name.should == 'Ping Scan'
     end
+
+    it "should parse the start time" do
+      subject.start_time.should be_kind_of(Time)
+    end
+
+    it "should parse the end time" do
+      subject.end_time.should be_kind_of(Time)
+      subject.end_time.should > subject.start_time
+    end
+
+    it "should parse the extrainfo" do
+      subject.extrainfo.should_not be_empty
+    end
+  end
+
+  describe "#tasks" do
+    subject { super().tasks }
+
+    it { should_not be_empty }
+    it { should all_be_kind_of(ScanTask) }
   end
 
   describe "#hosts" do
     subject { super().hosts }
 
     it { should_not be_empty }
-
-    it "should contain Host objects" do
-      subject.should all_be_kind_of(Host)
-    end
+    it { subject.should all_be_kind_of(Host) }
   end
 
   it "should iterate over each up host" do
