@@ -2,7 +2,7 @@ require 'nmap/scanner'
 require 'nmap/scan_task'
 require 'nmap/scan'
 require 'nmap/host'
-require 'nmap/run_stats'
+require 'nmap/run_stat'
 
 require 'nokogiri'
 
@@ -89,7 +89,7 @@ module Nmap
     # @return [RunStats]
     def runstats
       @doc.xpath('/nmaprun/runstats/finished').map do |run_stats|
-        RunStats.new(
+        RunStat.new(
           Time.at(run_stats['time'].to_i),
           run_stats['elapsed'],
           run_stats['exit']
