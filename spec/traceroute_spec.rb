@@ -20,8 +20,12 @@ describe Traceroute do
   end
 
   describe "#each" do
-    subject { super().each }
+    subject { super().each.first }
 
-    it { should all_be_kind_of(Hop) }
+    it { should be_kind_of(Hop) }
+
+    its(:addr) { should be_kind_of(String)  }
+    its(:ttl)  { should be_kind_of(String)  }
+    its(:rtt)  { should be_kind_of(String)  }
   end
 end
