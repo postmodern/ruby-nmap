@@ -10,6 +10,7 @@ require 'nmap/uptime'
 require 'nmap/traceroute'
 
 require 'nokogiri'
+require 'time'
 
 module Nmap
   #
