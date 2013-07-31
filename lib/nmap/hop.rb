@@ -13,7 +13,7 @@ module Nmap
     #   The IP address of the hop.
     #
     def to_s
-      self.ipaddr.to_s
+      self.addr.to_s
     end
 
   end
