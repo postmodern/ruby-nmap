@@ -13,7 +13,7 @@ module Nmap
     # @since 0.6.1
     #
     def to_s
-      "uptime: #{@seconds} (#{@lastboot})"
+      "uptime: #{self.seconds} (#{self.lastboot})"
     end
 
   end
