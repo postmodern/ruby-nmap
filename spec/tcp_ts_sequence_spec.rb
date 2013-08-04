@@ -18,7 +18,7 @@ describe TcpTsSequence do
     end
 
     let(:values_regexp) do
-      /\[\d{9}(, \d{9}){5}\]/
+      /\[\d+(, \d+){5}\]/
     end
 
     let(:regexp) do
