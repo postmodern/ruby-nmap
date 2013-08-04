@@ -79,20 +79,34 @@ describe Host do
     end
   end
 
-  it "should parse the IPv4 address" do
-    subject.ipv4.should == '74.207.244.221'
+  describe "#mac" do
+    it "should parse the first MAC address" do
+      pending "need a host with address[@addrtype='mac']"
+    end
   end
 
-  it "should parse the IPv6 address" do
-    pending "generate a Nmap XML scan file including IPv6 addresses"
+  describe "#ipv6" do
+    it "should parse the first IPv6 address" do
+      pending "need a host with address[@addrtype='ipv6']"
+    end
   end
 
-  it "should have an IP" do
-    subject.ip.should == '74.207.244.221'
+  describe "#ipv4" do
+    it "should parse the IPv4 address" do
+      subject.ipv4.should == '74.207.244.221'
+    end
   end
 
-  it "should have an address" do
-    subject.address.should == '74.207.244.221'
+  describe "#ip" do
+    it "should have an IP" do
+      subject.ip.should == '74.207.244.221'
+    end
+  end
+
+  describe "#address" do
+    it "should have an address" do
+      subject.address.should == '74.207.244.221'
+    end
   end
 
   describe "#hostnames" do
