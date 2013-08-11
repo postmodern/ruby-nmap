@@ -57,8 +57,8 @@ module Nmap
     #
     # @since 0.7.0
     #
-    def self.load(text, &block)
-      Nmap::XML.new(Nokogiri::XML(text), &block)
+    def self.load(text,&block)
+      new(Nokogiri::XML(text), &block)
     end
 
     #
