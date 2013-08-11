@@ -55,6 +55,8 @@ module Nmap
     # @yieldparam [XML] xml
     #   The newly created XML object.
     #
+    # @since 0.7.0
+    #
     def self.load(text, &block)
       Nmap::XML.new(Nokogiri::XML(text), &block)
     end
@@ -70,6 +72,8 @@ module Nmap
     #
     # @yieldparam [XML] xml
     #   The newly created XML object.
+    #
+    # @since 0.7.0
     #
     def self.open(path,&block)
       new(File.new(path),&block)
