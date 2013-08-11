@@ -20,8 +20,8 @@ module Nmap
     #
     # Creates a new XML object.
     #
-    # @param [String] path
-    #   The path to the Nmap XML scan file.
+    # @param [String] document
+    #   The path to the Nmap XML scan file or Nokogiri::XML::Document.
     #
     # @yield [xml]
     #   If a block is given, it will be passed the new XML object.
@@ -29,11 +29,30 @@ module Nmap
     # @yieldparam [XML] xml
     #   The newly created XML object.
     #
-    def initialize(path)
-      @path = File.expand_path(path)
-      @doc = Nokogiri::XML(open(@path))
-
+    def initialize(document)
+      if Nokogiri::XML::Document === document
+        @doc = document
+      else
+        @path = File.expand_path(document)
+        @doc = Nokogiri::XML(open(@path))
+      end
       yield self if block_given?
+    end
+
+    #
+    # Creates a new XML object from XML text.
+    #
+    # @param [String] text
+    #   XML text of the scan file
+    #
+    # @yield [xml]
+    #   If a block is given, it will be passed the new XML object.
+    #
+    # @yieldparam [XML] xml
+    #   The newly created XML object.
+    #
+    def self.load(text, &block)
+      Nmap::XML.new(Nokogiri::XML(text), &block)
     end
 
     #
@@ -123,8 +142,8 @@ module Nmap
     def run_stats
       each_run_stat.to_a
     end
-    
-    # 
+
+    #
     # Parses the essential runstats information
     #
     # @return [RunStats]

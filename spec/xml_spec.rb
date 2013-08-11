@@ -10,6 +10,10 @@ describe XML do
     subject.version.should == '1.04'
   end
 
+  it "should create object via #load" do
+    subject.version.should == described_class.load(File.read(path)).version
+  end
+
   it "should parse the scanner version" do
     subject.scanner.version == '4.68'
   end
