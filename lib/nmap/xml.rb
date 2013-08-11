@@ -20,7 +20,7 @@ module Nmap
     #
     # Creates a new XML object.
     #
-    # @param [String] document
+    # @param [Nokogiri::XML::Document, String] document
     #   The path to the Nmap XML scan file or Nokogiri::XML::Document.
     #
     # @yield [xml]
