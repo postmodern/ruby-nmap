@@ -6,6 +6,30 @@ describe XML do
 
   subject { described_class.new(path) }
 
+  describe "#initialize" do
+    context "when given a Nokogiri::XML::Document" do
+      let(:document) { Nokogiri::XML(File.read(path)) }
+
+      it "should use the document" do
+        described_class.new(document).version.should == subject.version
+      end
+    end
+
+    context "when given an IO object" do
+      let(:io) { File.new(path) }
+
+      it "should parse the IO object" do
+        described_class.new(io).version.should == subject.version
+      end
+    end
+
+    context "when given a String" do
+      it "should parse the file at the path" do
+        described_class.new(path).version.should == subject.version
+      end
+    end
+  end
+
   describe "load" do
     it "should parse the given text" do
       subject.version.should == described_class.load(File.read(path)).version
