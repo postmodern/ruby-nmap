@@ -6,32 +6,40 @@ describe XML do
 
   subject { described_class.new(path) }
 
-  it "should have a version" do
-    subject.version.should == '1.04'
+  describe "load" do
+    it "should parse the given text" do
+      subject.version.should == described_class.load(File.read(path)).version
+    end
   end
 
-  it "should create object via #load" do
-    subject.version.should == described_class.load(File.read(path)).version
+  describe "open" do
+    it "should parse the given file" do
+      subject.version.should == described_class.open(path).version
+    end
   end
 
-  it "should create object via #open" do
-    subject.version.should == described_class.open(path).version
+  describe "#version" do
+    it "should have a version" do
+      subject.version.should == '1.04'
+    end
   end
 
-  it "should parse the scanner version" do
-    subject.scanner.version == '4.68'
-  end
+  describe "#scanner" do
+    it "should parse the scanner version" do
+      subject.scanner.version == '4.68'
+    end
 
-  it "should parse the scanner name" do
-    subject.scanner.name.should == 'nmap'
-  end
+    it "should parse the scanner name" do
+      subject.scanner.name.should == 'nmap'
+    end
 
-  it "should parse the scanner arguments" do
-    subject.scanner.arguments.should == 'nmap -v -sS -sU -A -O -oX spec/scan.xml scanme.nmap.org'
-  end
+    it "should parse the scanner arguments" do
+      subject.scanner.arguments.should == 'nmap -v -sS -sU -A -O -oX spec/scan.xml scanme.nmap.org'
+    end
 
-  it "should parse the scanner start time" do
-    subject.scanner.start_time.should be_kind_of(Time)
+    it "should parse the scanner start time" do
+      subject.scanner.start_time.should be_kind_of(Time)
+    end
   end
 
   describe "#scan_info" do
