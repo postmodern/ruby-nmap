@@ -30,12 +30,14 @@ module Nmap
     #   The newly created XML object.
     #
     def initialize(document)
-      if Nokogiri::XML::Document === document
+      case document
+      when Nokogiri::XML::Document
         @doc = document
       else
         @path = File.expand_path(document)
-        @doc = Nokogiri::XML(open(@path))
+        @doc  = Nokogiri::XML(open(@path))
       end
+
       yield self if block_given?
     end
 
