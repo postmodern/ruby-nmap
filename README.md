@@ -7,12 +7,12 @@
 
 ## Description
 
-A Ruby interface to Nmap, the exploration tool and security / port scanner.
+A Ruby interface to [nmap], the exploration tool and security / port scanner.
 
 ## Features
 
-* Provides a Ruby interface for running Nmap.
-* Provides a Parser for enumerating Nmap XML scan files.
+* Provides a Ruby interface for running nmap.
+* Provides a Parser for enumerating nmap XML scan files.
 
 ## Examples
 
