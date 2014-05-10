@@ -71,9 +71,9 @@ Print NSE script output from an XML scan file:
 
 ## Requirements
 
-* [nmap](http://www.insecure.org/) >= 5.00
-* [nokogiri](http://nokogiri.rubyforge.org/) ~> 1.3
-* [rprogram](https://github.com/postmodern/rprogram#readme) ~> 0.3
+* [nmap] >= 5.00
+* [nokogiri] ~> 1.3
+* [rprogram] ~> 0.3
 
 ## Install
 
@@ -84,3 +84,7 @@ Print NSE script output from an XML scan file:
 Copyright (c) 2009-2013 Postmodern
 
 See {file:LICENSE.txt} for license information.
+
+[nmap]: http://www.insecure.org/
+[nokogiri]: http://nokogiri.rubyforge.org/
+[rprogram]: https://github.com/postmodern/rprogram#readme
