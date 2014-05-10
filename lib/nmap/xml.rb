@@ -76,7 +76,7 @@ module Nmap
     # @since 0.7.0
     #
     def self.open(path,&block)
-      new(File.new(path),&block)
+      new(path,&block)
     end
 
     #

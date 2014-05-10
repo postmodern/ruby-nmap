@@ -40,6 +40,10 @@ describe XML do
     it "should parse the given file" do
       subject.version.should == described_class.open(path).version
     end
+
+    it "should set the path" do
+      subject.path.should == path
+    end
   end
 
   describe "#version" do
