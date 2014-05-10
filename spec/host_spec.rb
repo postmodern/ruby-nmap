@@ -28,7 +28,7 @@ describe Host do
     end
 
     it "should parse the lastboot attribute" do
-      subject.lastboot.should be_kind_of(Time)
+      subject.last_boot.should be_kind_of(Time)
     end
   end
 
