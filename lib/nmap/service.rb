@@ -136,6 +136,8 @@ module Nmap
     # @return [String]
     #   The fingerprint
     #
+    # @since 0.7.0
+    #
     def fingerprint
       @fingerprint ||= @node.get_attribute('servicefp')
     end
