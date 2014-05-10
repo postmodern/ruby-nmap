@@ -233,6 +233,8 @@ module Nmap
     # @return [Uptime]
     #   The parsed object.
     #
+    # @since 0.7.0
+    #
     def uptime
       @uptime ||= if (uptime = @node.at('uptime'))
                     Uptime.new(
