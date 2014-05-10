@@ -2,6 +2,8 @@ module Nmap
   #
   # Represents the runstats of a scan.
   #
+  # @since 0.7.0
+  #
   class RunStat < Struct.new(:end_time, :elapsed, :summary, :exit_status)
 
     #
