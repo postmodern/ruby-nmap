@@ -2,6 +2,8 @@ module Nmap
   #
   # Wraps a `uptime` XML element.
   #
+  # @since 0.7.0
+  #
   class Uptime < Struct.new(:seconds, :lastboot)
 
     #
@@ -9,8 +11,6 @@ module Nmap
     #
     # @return [String]
     #   The String form of the Uptime.
-    #
-    # @since 0.6.1
     #
     def to_s
       "uptime: #{self.seconds} (#{self.lastboot})"
