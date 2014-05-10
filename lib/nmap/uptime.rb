@@ -4,7 +4,7 @@ module Nmap
   #
   # @since 0.7.0
   #
-  class Uptime < Struct.new(:seconds, :lastboot)
+  class Uptime < Struct.new(:seconds, :last_boot)
 
     #
     # Converts the uptime object to a String.
@@ -13,7 +13,7 @@ module Nmap
     #   The String form of the Uptime.
     #
     def to_s
-      "uptime: #{self.seconds} (#{self.lastboot})"
+      "uptime: #{self.seconds} (#{self.last_boot})"
     end
 
   end
