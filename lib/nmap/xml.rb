@@ -168,20 +168,6 @@ module Nmap
     end
 
     #
-    # Parses the essential runstats information
-    #
-    # @return [RunStats]
-    #   The runstats.
-    #
-    # @deprecated Use {#run_stats} instead.
-    #
-    def runstats
-      warn "DEPRECATION: use #{self.class}#run_stats instead"
-
-      return run_stats
-    end
-
-    #
     # Parses the verbose level.
     #
     # @return [Integer]
