@@ -15,6 +15,7 @@
 * Added {Nmap::Service#fingerprint}. (@roodee)
 * Added {Nmap::Uptime}. (@roodee)
 * Added {Nmap::RunStat}. (@roodee)
+* Added {Nmap::XML.open}.
 * Added {Nmap::XML.load}. (@vzctl)
 * Added {Nmap::XML#each_run_stat}.
 * Added {Nmap::XML#run_stats}.
