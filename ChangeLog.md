@@ -1,3 +1,26 @@
+### 0.7.0 / 2014-05-09
+
+* Added {Nmap::CPE}.
+* Added {Nmap::CPE::URL}.
+* Added {Nmap::Hop}.
+* Added {Nmap::Hostname}.
+* Added {Nmap::Traceroute}.
+* Added {Nmap::Host#traceroute}.
+* Added {Nmap::Host#uptime}. (@roodee)
+* Added {Nmap::Service#ssl?}.
+* Added {Nmap::Service#protocol}.
+* Added {Nmap::Service#extra_info}.
+* Added {Nmap::Service#os_type}.
+* Added {Nmap::Service#device_type}.
+* Added {Nmap::Service#fingerprint}. (@roodee)
+* Added {Nmap::Uptime}. (@roodee)
+* Added {Nmap::RunStat}. (@roodee)
+* Added {Nmap::XML.load}. (@vzctl)
+* Added {Nmap::XML#each_run_stat}.
+* Added {Nmap::XML#run_stats}.
+* Added {Nmap::XML#each_task}.
+* Fixed xpath bug in {Nmap::OS#each_class} (@roodee).
+
 ### 0.6.0 / 2012-11-07
 
 * Added {Nmap::Service}.
