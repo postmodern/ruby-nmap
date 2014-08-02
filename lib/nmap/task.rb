@@ -14,7 +14,7 @@ module Nmap
   # ### Host Discovery:
   #
   # * `-sL` - `nmap.list`
-  # * `-sP` - `nmap.ping`
+  # * `-sn` - `nmap.ping`
   # * `-PN` - `nmap.skip_discovery`
   # * `-PS` - `nmap.syn_discovery`
   # * `-PA` - `nmap.ack_discovery`
@@ -177,7 +177,7 @@ module Nmap
 
     # HOST DISCOVERY:
     short_option :flag => '-sL', :name => :list
-    short_option :flag => '-sP', :name => :ping
+    short_option :flag => '-sn', :name => :ping
     short_option :flag => '-PN', :name => :skip_discovery
     short_option :flag => '-PS', :name => :syn_discovery
     short_option :flag => '-PA', :name => :ack_discovery
