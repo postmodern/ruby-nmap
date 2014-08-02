@@ -264,6 +264,43 @@ module Nmap
     end
 
     #
+    # Parses the hosts that were found to be down during the scan.
+    #
+    # @yield [host]
+    #   Each host will be passed to a given block.
+    #
+    # @yieldparam [Host] host
+    #   A down host in the scan.
+    #
+    # @return [XML, Enumerator]
+    #   The XML parser. If no block was given, an enumerator object will
+    #   be returned.
+    #
+    # @since 0.8.0
+    #
+    def each_down_host
+      return enum_for(__method__) unless block_given?
+
+      @doc.xpath("/nmaprun/host[status[@state='down']]").each do |host|
+        yield Host.new(host)
+      end
+
+      return self
+    end
+
+    #
+    # Parses the hosts found to be down during the scan.
+    #
+    # @return [Array<Host>]
+    #   The down hosts in the scan.
+    #
+    # @since 0.8.0
+    #
+    def down_hosts
+      each_down_host.to_a
+    end
+
+    #
     # Parses the hosts that were found to be up during the scan.
     #
     # @yield [host]
