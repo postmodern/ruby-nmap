@@ -3,7 +3,7 @@ require 'nmap/hostname'
 
 describe Hostname do
   describe "#to_s" do
-    let(:type) { :user }
+    let(:type) { 'user' }
     let(:name) { 'scanme.nmap.org' }
 
     subject { described_class.new(type, name) }
