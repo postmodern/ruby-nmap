@@ -4,7 +4,7 @@ gemspec
 
 group :development do
   gem 'rake'
-  gem 'rubygems-tasks', '~> 0.1'
+  gem 'rubygems-tasks', '~> 0.2'
   gem 'rspec',          '~> 2.4'
   gem 'simplecov',      '~> 0.7'
   gem 'kramdown',       '~> 1.0'
