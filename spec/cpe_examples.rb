@@ -3,9 +3,9 @@ require 'rspec'
 shared_examples_for "CPE" do
   subject { super().cpe }
 
-  it { should_not be_empty }
+  it { is_expected.not_to be_empty }
 
   it "should contain CPE URLs" do
-    subject.should all_be_kind_of(CPE::URL)
+    expect(subject).to all_be_kind_of(CPE::URL)
   end
 end

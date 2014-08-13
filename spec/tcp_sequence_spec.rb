@@ -8,13 +8,13 @@ describe TcpSequence do
 
   describe "#index" do
     it "should parse the index" do
-      subject.index.should be > 0
+      expect(subject.index).to be > 0
     end
   end
 
   describe "#description" do
     it "should parse the difficulty description" do
-      subject.difficulty.should == "Good luck!"
+      expect(subject.difficulty).to eq("Good luck!")
     end
   end
 
@@ -36,7 +36,7 @@ describe TcpSequence do
     end
 
     it "should contain the description and values" do
-      subject.to_s.should =~ regexp
+      expect(subject.to_s).to match(regexp)
     end
   end
 

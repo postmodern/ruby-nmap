@@ -9,7 +9,7 @@ describe OSMatch do
     subject { described_class.new(name,accuracy) }
 
     it "should include the name and accuracy" do
-      subject.to_s.should == "#{name} (#{accuracy}%)"
+      expect(subject.to_s).to eq("#{name} (#{accuracy}%)")
     end
   end
 end

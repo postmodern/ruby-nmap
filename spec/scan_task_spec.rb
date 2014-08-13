@@ -19,17 +19,17 @@ describe ScanTask do
 
   describe "#duration" do
     it "should be > 0" do
-      subject.duration.should > 0
+      expect(subject.duration).to be > 0
     end
 
     it "should be the time between the start_time and end_time" do
-      (subject.start_time + subject.duration).should == subject.end_time
+      expect(subject.start_time + subject.duration).to eq(subject.end_time)
     end
   end
 
   describe "#to_s" do
     it "should include the start_time, name and extrainfo" do
-      subject.to_s.should == "#{start_time}: #{name} (#{extrainfo})"
+      expect(subject.to_s).to eq("#{start_time}: #{name} (#{extrainfo})")
     end
   end
 end

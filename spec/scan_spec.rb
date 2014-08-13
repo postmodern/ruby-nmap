@@ -9,12 +9,12 @@ describe Scan do
     subject { described_class.new(type,protocol) }
 
     it "should accept a type and protocol" do
-      subject.type.should == type
-      subject.protocol.should == protocol
+      expect(subject.type).to eq(type)
+      expect(subject.protocol).to eq(protocol)
     end
 
     it "should default services to []" do
-      subject.services.should == []
+      expect(subject.services).to eq([])
     end
   end
 
@@ -22,7 +22,7 @@ describe Scan do
     subject { described_class.new(type,protocol) }
 
     it "should include the type and protocol" do
-      subject.to_s.should == "#{protocol} #{type}"
+      expect(subject.to_s).to eq("#{protocol} #{type}")
     end
   end
 end

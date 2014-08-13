@@ -11,7 +11,7 @@ describe XML do
       let(:document) { Nokogiri::XML(File.read(path)) }
 
       it "should use the document" do
-        described_class.new(document).version.should == subject.version
+        expect(described_class.new(document).version).to eq(subject.version)
       end
     end
 
@@ -19,36 +19,36 @@ describe XML do
       let(:io) { File.new(path) }
 
       it "should parse the IO object" do
-        described_class.new(io).version.should == subject.version
+        expect(described_class.new(io).version).to eq(subject.version)
       end
     end
 
     context "when given a String" do
       it "should parse the file at the path" do
-        described_class.new(path).version.should == subject.version
+        expect(described_class.new(path).version).to eq(subject.version)
       end
     end
   end
 
   describe "load" do
     it "should parse the given text" do
-      subject.version.should == described_class.load(File.read(path)).version
+      expect(subject.version).to eq(described_class.load(File.read(path)).version)
     end
   end
 
   describe "open" do
     it "should parse the given file" do
-      subject.version.should == described_class.open(path).version
+      expect(subject.version).to eq(described_class.open(path).version)
     end
 
     it "should set the path" do
-      subject.path.should == path
+      expect(subject.path).to eq(path)
     end
   end
 
   describe "#version" do
     it "should have a version" do
-      subject.version.should == '1.04'
+      expect(subject.version).to eq('1.04')
     end
   end
 
@@ -58,15 +58,15 @@ describe XML do
     end
 
     it "should parse the scanner name" do
-      subject.scanner.name.should == 'nmap'
+      expect(subject.scanner.name).to eq('nmap')
     end
 
     it "should parse the scanner arguments" do
-      subject.scanner.arguments.should == 'nmap -v -sS -sU -A -O -oX spec/scan.xml scanme.nmap.org'
+      expect(subject.scanner.arguments).to eq('nmap -v -sS -sU -A -O -oX spec/scan.xml scanme.nmap.org')
     end
 
     it "should parse the scanner start time" do
-      subject.scanner.start_time.should be_kind_of(Time)
+      expect(subject.scanner.start_time).to be_kind_of(Time)
     end
   end
 
@@ -74,138 +74,138 @@ describe XML do
     subject { super().scan_info.first }
 
     it "should parse the type" do
-      subject.type.should == :syn
+      expect(subject.type).to eq(:syn)
     end
 
     it "should parse the protocol" do
-      subject.protocol.should == :tcp
+      expect(subject.protocol).to eq(:tcp)
     end
 
     it "should parse the services" do
-      subject.services.should_not be_empty
+      expect(subject.services).not_to be_empty
     end
   end
 
   it "should parse the verbose level" do
-    subject.verbose.should == 1
+    expect(subject.verbose).to eq(1)
   end
 
   it "should parse the debugging level" do
-    subject.debugging.should == 0
+    expect(subject.debugging).to eq(0)
   end
 
   describe "#each_run_stat" do
     subject { super().each_run_stat.first }
 
     it "should yield RunStat objects" do
-      subject.should be_kind_of(RunStat)
+      expect(subject).to be_kind_of(RunStat)
     end
 
     it "should parse the end time" do
-      subject.end_time.should be_kind_of(Time)
+      expect(subject.end_time).to be_kind_of(Time)
     end
 
     it "should parse the time elapsed" do
-      subject.elapsed.should_not be_nil
+      expect(subject.elapsed).not_to be_nil
     end
 
     it "should parse the summary" do
-      subject.summary.should_not be_empty
+      expect(subject.summary).not_to be_empty
     end
 
     it "should parse the exit status" do
-      subject.exit_status.should be_one_of('success', 'failure')
+      expect(subject.exit_status).to be_one_of('success', 'failure')
     end
   end
 
   describe "#run_stats" do
     subject { super().run_stats }
 
-    it { should_not be_empty }
-    it { should all_be_kind_of(RunStat) }
+    it { is_expected.not_to be_empty }
+    it { is_expected.to all_be_kind_of(RunStat) }
   end
 
   describe "#each_task" do
     subject { super().each_task.first }
 
     it "should parse task name" do
-      subject.name.should == 'Ping Scan'
+      expect(subject.name).to eq('Ping Scan')
     end
 
     it "should parse the start time" do
-      subject.start_time.should be_kind_of(Time)
+      expect(subject.start_time).to be_kind_of(Time)
     end
 
     it "should parse the end time" do
-      subject.end_time.should be_kind_of(Time)
-      subject.end_time.should > subject.start_time
+      expect(subject.end_time).to be_kind_of(Time)
+      expect(subject.end_time).to be > subject.start_time
     end
 
     it "should parse the extrainfo" do
-      subject.extrainfo.should_not be_empty
+      expect(subject.extrainfo).not_to be_empty
     end
   end
 
   describe "#tasks" do
     subject { super().tasks }
 
-    it { should_not be_empty }
-    it { should all_be_kind_of(ScanTask) }
+    it { is_expected.not_to be_empty }
+    it { is_expected.to all_be_kind_of(ScanTask) }
   end
 
   describe "#each_host" do
     subject { super().each_host.first }
 
     it "should yield Host objects" do
-      subject.should be_kind_of(Host)
+      expect(subject).to be_kind_of(Host)
     end
   end
 
   describe "#hosts" do
     subject { super().hosts }
 
-    it { should_not be_empty }
-    it { subject.should all_be_kind_of(Host) }
+    it { is_expected.not_to be_empty }
+    it { expect(subject).to all_be_kind_of(Host) }
   end
 
   describe "#each_up_host" do
     subject { super().each_up_host.first }
 
     it "should yield Host objects" do
-      subject.should be_kind_of(Host)
+      expect(subject).to be_kind_of(Host)
     end
 
     it "should be up" do
-      subject.status.state.should be == :up
+      expect(subject.status.state).to eq(:up)
     end
   end
 
   describe "#up_hosts" do
     subject { super().up_hosts }
 
-    it { should_not be_empty }
-    it { should all_be_kind_of(Host) }
+    it { is_expected.not_to be_empty }
+    it { is_expected.to all_be_kind_of(Host) }
 
     it "should contain only up hosts" do
-      subject.all? { |host| host.status.state == :up }.should be_true
+      expect(subject.all? { |host| host.status.state == :up }).to be_truthy
     end
   end
 
   describe "#each" do
     it "should iterate over each up host" do
-      subject.each.all? { |host| host.status.state == :up }.should == true
+      expect(subject.each.all? { |host| host.status.state == :up }).to eq(true)
     end
   end
 
   describe "#to_s" do
     it "should convert to a String" do
-      subject.to_s.should == path
+      expect(subject.to_s).to eq(path)
     end
   end
 
   describe "#inspect" do
     it "should include the class and path" do
-      subject.inspect.should == "#<#{described_class}: #{path}>"
+      expect(subject.inspect).to eq("#<#{described_class}: #{path}>")
     end
   end
 end

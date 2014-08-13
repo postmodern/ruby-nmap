@@ -6,25 +6,25 @@ describe Port do
 
   describe "#protocol" do
     it "should parse the protocol" do
-      subject.protocol.should == :tcp
+      expect(subject.protocol).to eq(:tcp)
     end
   end
 
   describe "#number" do
     it "should parse the port number" do
-      subject.number.should == 22
+      expect(subject.number).to eq(22)
     end
   end
 
   describe "#state" do
     it "should parse the state" do
-      subject.state.should == :open
+      expect(subject.state).to eq(:open)
     end
   end
 
   describe "#reason" do
     it "should parse the reason" do
-      subject.reason.should == 'syn-ack'
+      expect(subject.reason).to eq('syn-ack')
     end
   end
 
@@ -32,7 +32,7 @@ describe Port do
     subject { super().service }
 
     it "should return a Service object" do
-      subject.should be_kind_of(Service)
+      expect(subject).to be_kind_of(Service)
     end
   end
 
@@ -40,7 +40,7 @@ describe Port do
 
   describe "#inspect" do
     it "should include the number" do
-      subject.inspect.should include(subject.number.to_s)
+      expect(subject.inspect).to include(subject.number.to_s)
     end
   end
 end

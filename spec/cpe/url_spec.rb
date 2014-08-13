@@ -4,9 +4,9 @@ describe CPE::URL do
   describe "parse" do
     context "when the URL does not start with 'cpe:'" do
       it "should raise an ArgumentError" do
-        lambda {
+        expect {
           described_class.parse('foo:')
-        }.should raise_error(ArgumentError)
+        }.to raise_error(ArgumentError)
       end
     end
 
@@ -20,13 +20,13 @@ describe CPE::URL do
       end
 
       it "should leave them nil" do
-        subject.vendor.should == vendor
-        subject.product.should == product
-        subject.version.should == version
+        expect(subject.vendor).to eq(vendor)
+        expect(subject.product).to eq(product)
+        expect(subject.version).to eq(version)
 
-        subject.update.should be_nil
-        subject.edition.should be_nil
-        subject.language.should be_nil
+        expect(subject.update).to be_nil
+        expect(subject.edition).to be_nil
+        expect(subject.language).to be_nil
       end
     end
 
@@ -34,7 +34,7 @@ describe CPE::URL do
       subject { described_class.parse("cpe:/h:foo:bar:baz") }
 
       it "should parse it as :hardware" do
-        subject.part.should == :hardware
+        expect(subject.part).to eq(:hardware)
       end
     end
 
@@ -42,7 +42,7 @@ describe CPE::URL do
       subject { described_class.parse("cpe:/a:foo:bar:baz") }
 
       it "should parse it as :application" do
-        subject.part.should == :application
+        expect(subject.part).to eq(:application)
       end
     end
 
@@ -50,7 +50,7 @@ describe CPE::URL do
       subject { described_class.parse("cpe:/o:foo:bar:baz") }
 
       it "should parse it as :os" do
-        subject.part.should == :os
+        expect(subject.part).to eq(:os)
       end
     end
   end
@@ -61,14 +61,14 @@ describe CPE::URL do
     let(:version) { '2.6.39'      }
 
     it "should add the scheme 'cpe:'" do
-      subject.to_s.should start_with('cpe:')
+      expect(subject.to_s).to start_with('cpe:')
     end
 
     context "when fields are nil" do
       subject { described_class.new(:os,vendor,product,version) }
 
       it "should omit them" do
-        subject.to_s.should == "cpe:/o:#{vendor}:#{product}:#{version}"
+        expect(subject.to_s).to eq("cpe:/o:#{vendor}:#{product}:#{version}")
       end
     end
 
@@ -76,7 +76,7 @@ describe CPE::URL do
       subject { described_class.new(:hardware) }
 
       it "should map it to /h" do
-        subject.to_s.should == "cpe:/h"
+        expect(subject.to_s).to eq("cpe:/h")
       end
     end
 
@@ -84,7 +84,7 @@ describe CPE::URL do
       subject { described_class.new(:application) }
 
       it "should map it to /h" do
-        subject.to_s.should == "cpe:/a"
+        expect(subject.to_s).to eq("cpe:/a")
       end
     end
 
@@ -92,7 +92,7 @@ describe CPE::URL do
       subject { described_class.new(:os) }
 
       it "should map it to /h" do
-        subject.to_s.should == "cpe:/o"
+        expect(subject.to_s).to eq("cpe:/o")
       end
     end
   end

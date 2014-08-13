@@ -9,7 +9,7 @@ describe Status do
     subject { described_class.new(state,reason) }
 
     it "should return the state" do
-      subject.to_s.should == state.to_s
+      expect(subject.to_s).to eq(state.to_s)
     end
   end
 end

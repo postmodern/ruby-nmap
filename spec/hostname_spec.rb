@@ -8,7 +8,7 @@ describe Hostname do
     subject { described_class.new('user', name) }
 
     it "should check if type is 'user'" do
-      subject.user?.should == true
+      expect(subject.user?).to eq(true)
     end
   end
 
@@ -16,7 +16,7 @@ describe Hostname do
     subject { described_class.new('PTR', name) }
 
     it "should check if type is 'PTR'" do
-      subject.ptr?.should == true
+      expect(subject.ptr?).to eq(true)
     end
   end
 
@@ -26,7 +26,7 @@ describe Hostname do
     subject { described_class.new(type, name) }
 
     it "should return the hostname" do
-      subject.to_s.should == name
+      expect(subject.to_s).to eq(name)
     end
   end
 end

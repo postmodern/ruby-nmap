@@ -18,7 +18,7 @@ describe Scanner do
     end
 
     it "should return the scanner command" do
-      subject.to_s.should == "#{name} #{args}"
+      expect(subject.to_s).to eq("#{name} #{args}")
     end
   end
 end

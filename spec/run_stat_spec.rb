@@ -15,7 +15,7 @@ describe RunStat do
     subject { described_class.new(end_time,elapsed,summary,exit_status) }
 
     it "should convert the RunStat to a String" do
-      subject.to_s.should == "#{end_time} #{elapsed} #{exit_status}"
+      expect(subject.to_s).to eq("#{end_time} #{elapsed} #{exit_status}")
     end
   end
 end

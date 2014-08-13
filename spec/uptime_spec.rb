@@ -9,7 +9,7 @@ describe Uptime do
     subject { described_class.new(seconds,last_boot) }
 
     it "should convert the uptipe to a String" do
-      subject.to_s.should == "uptime: #{seconds} (#{last_boot})"
+      expect(subject.to_s).to eq("uptime: #{seconds} (#{last_boot})")
     end
   end
 end

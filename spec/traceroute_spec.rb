@@ -7,25 +7,36 @@ describe Traceroute do
   describe "#port" do
     subject { super().port }
 
-    it { should be_kind_of(Integer) }
-    it { should be > 0 }
-    it { should be < 65535 }
+    it { is_expected.to be_kind_of(Integer) }
+    it { is_expected.to be > 0 }
+    it { is_expected.to be < 65535 }
   end
 
   describe "#protocol" do
     subject { super().protocol }
 
-    it { should be_kind_of(Symbol) }
-    it { should be_one_of(:tcp, :udp) }
+    it { is_expected.to be_kind_of(Symbol) }
+    it { is_expected.to be_one_of(:tcp, :udp) }
   end
 
   describe "#each" do
     subject { super().each.first }
 
-    it { should be_kind_of(Hop) }
+    it { is_expected.to be_kind_of(Hop) }
 
-    its(:addr) { should be_kind_of(String)  }
-    its(:ttl)  { should be_kind_of(String)  }
-    its(:rtt)  { should be_kind_of(String)  }
+    describe '#addr' do
+      subject { super().addr }
+      it { is_expected.to be_kind_of(String)  }
+    end
+
+    describe '#ttl' do
+      subject { super().ttl }
+      it { is_expected.to be_kind_of(String)  }
+    end
+
+    describe '#rtt' do
+      subject { super().rtt }
+      it { is_expected.to be_kind_of(String)  }
+    end
   end
 end

@@ -9,31 +9,31 @@ describe OS do
 
   describe "#type" do
     it "should parse the type" do
-      subject.type.should == :"general purpose"
+      expect(subject.type).to eq(:"general purpose")
     end
   end
 
   describe "#vendor" do
     it "should parse the vendor" do
-      subject.vendor.should == 'Linux'
+      expect(subject.vendor).to eq('Linux')
     end
   end
 
   describe "#family" do
     it "should parse the family" do
-      subject.family.should == :Linux
+      expect(subject.family).to eq(:Linux)
     end
   end
 
   describe "#gen" do
     it "should parse the gen" do
-      subject.gen.should == :'2.6.X'
+      expect(subject.gen).to eq(:'2.6.X')
     end
   end
 
   describe "#accuracy" do
     it "should parse the accuracy" do
-      subject.accuracy.should be_between(0,100)
+      expect(subject.accuracy).to be_between(0,100)
     end
   end
 

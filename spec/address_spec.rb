@@ -8,7 +8,7 @@ describe Address do
     subject { described_class.new(:ipv4, addr) }
 
     it "should return the address" do
-      subject.to_s.should == addr
+      expect(subject.to_s).to eq(addr)
     end
   end
 end

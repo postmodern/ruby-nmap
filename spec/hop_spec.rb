@@ -8,7 +8,7 @@ describe Hop do
     end
 
     it "should return the addr" do
-      subject.to_s.should == subject.addr
+      expect(subject.to_s).to eq(subject.addr)
     end
   end
 end

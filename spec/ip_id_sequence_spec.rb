@@ -8,7 +8,7 @@ describe IpIdSequence do
 
   describe "#description" do
     it "should parse the description" do
-      subject.description.should == "All zeros"
+      expect(subject.description).to eq("All zeros")
     end
   end
 
@@ -26,7 +26,7 @@ describe IpIdSequence do
     end
 
     it "should contain the description and values" do
-      subject.to_s.should =~ regexp
+      expect(subject.to_s).to match(regexp)
     end
   end
 
