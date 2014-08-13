@@ -9,5 +9,5 @@ group :development do
 
   gem 'simplecov',      '~> 0.7'
   gem 'kramdown'
-  gem 'yard',           '~> 0.7'
+  gem 'yard',           '~> 0.8'
 end
