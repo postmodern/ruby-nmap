@@ -7,13 +7,17 @@ require 'nmap/host'
 describe Host do
   subject { @xml.hosts.first }
 
-  it "should parse the start_time" do
-    subject.start_time.should > Time.at(0)
+  describe "#start_time" do
+    it "should parse the start_time" do
+      subject.start_time.should > Time.at(0)
+    end
   end
 
-  it "should parse the end_time" do
-    subject.end_time.should > Time.at(0)
-    subject.end_time.should > subject.start_time
+  describe "#end_time" do
+    it "should parse the end_time" do
+      subject.end_time.should > Time.at(0)
+      subject.end_time.should > subject.start_time
+    end
   end
 
   describe "#uptime" do

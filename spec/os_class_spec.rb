@@ -7,24 +7,34 @@ require 'cgi'
 describe OS do
   subject { @xml.hosts.first.os.classes.first }
 
-  it "should parse the type" do
-    subject.type.should == :"general purpose"
+  describe "#type" do
+    it "should parse the type" do
+      subject.type.should == :"general purpose"
+    end
   end
 
-  it "should parse the vendor" do
-    subject.vendor.should == 'Linux'
+  describe "#vendor" do
+    it "should parse the vendor" do
+      subject.vendor.should == 'Linux'
+    end
   end
 
-  it "should parse the family" do
-    subject.family.should == :Linux
+  describe "#family" do
+    it "should parse the family" do
+      subject.family.should == :Linux
+    end
   end
 
-  it "should parse the gen" do
-    subject.gen.should == :'2.6.X'
+  describe "#gen" do
+    it "should parse the gen" do
+      subject.gen.should == :'2.6.X'
+    end
   end
 
-  it "should parse the accuracy" do
-    subject.accuracy.should be_between(0,100)
+  describe "#accuracy" do
+    it "should parse the accuracy" do
+      subject.accuracy.should be_between(0,100)
+    end
   end
 
   it_should_behave_like "CPE"

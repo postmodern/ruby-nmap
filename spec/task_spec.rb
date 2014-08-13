@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'nmap/task'
 
 describe Task do
-  describe "ports" do
+  describe "#ports=" do
     it "should ignore empty port Arrays" do
       subject.ports = []
 

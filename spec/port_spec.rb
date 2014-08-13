@@ -4,20 +4,28 @@ require 'nmap/port'
 describe Port do
   subject { @xml.hosts.first.ports.first }
 
-  it "should parse the protocol" do
-    subject.protocol.should == :tcp
+  describe "#protocol" do
+    it "should parse the protocol" do
+      subject.protocol.should == :tcp
+    end
   end
 
-  it "should parse the port number" do
-    subject.number.should == 22
+  describe "#number" do
+    it "should parse the port number" do
+      subject.number.should == 22
+    end
   end
 
-  it "should parse the state" do
-    subject.state.should == :open
+  describe "#state" do
+    it "should parse the state" do
+      subject.state.should == :open
+    end
   end
 
-  it "should parse the reason" do
-    subject.reason.should == 'syn-ack'
+  describe "#reason" do
+    it "should parse the reason" do
+      subject.reason.should == 'syn-ack'
+    end
   end
 
   describe "#service" do
