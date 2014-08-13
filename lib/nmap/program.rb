@@ -50,6 +50,18 @@ module Nmap
     end
 
     #
+    # Finds the `nmap` program and performs a scan, but runs `nmap` under
+    # `sudo`.
+    #
+    # @see scan
+    #
+    # @since 0.8.0
+    #
+    def self.sudo_scan(options={},exec_options={},&block)
+      find.sudo_scan(options,exec_options,&block)
+    end
+
+    #
     # Performs a scan.
     #
     # @param [Hash{Symbol => Object}] options
@@ -73,6 +85,17 @@ module Nmap
     #
     def scan(options={},exec_options={},&block)
       run_task(Task.new(options,&block),exec_options)
+    end
+
+    #
+    # Performs a scan and runs `nmap` under `sudo`.
+    #
+    # @see #scan
+    #
+    # @since 0.8.0
+    #
+    def sudo_scan(options={},exec_options={},&block)
+      sudo_task(Task.new(options,&block),exec_options)
     end
 
   end
