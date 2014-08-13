@@ -12,7 +12,7 @@ describe OS do
     it { is_expected.not_to be_empty }
 
     it "should return OSClass objects" do
-      expect(subject).to all_be_kind_of(OSClass)
+      expect(subject).to all(be_kind_of(OSClass))
     end
   end
 
@@ -32,7 +32,7 @@ describe OS do
     subject { super().ports_used }
 
     it { expect(subject).not_to be_empty }
-    it { expect(subject).to all_be_between(0,65535) }
+    it { expect(subject).to all(be_between(0,65535)) }
   end
 
   describe "#fingerprint" do

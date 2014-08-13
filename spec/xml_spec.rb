@@ -122,7 +122,7 @@ describe XML do
     subject { super().run_stats }
 
     it { is_expected.not_to be_empty }
-    it { is_expected.to all_be_kind_of(RunStat) }
+    it { is_expected.to all(be_kind_of(RunStat)) }
   end
 
   describe "#each_task" do
@@ -150,7 +150,7 @@ describe XML do
     subject { super().tasks }
 
     it { is_expected.not_to be_empty }
-    it { is_expected.to all_be_kind_of(ScanTask) }
+    it { is_expected.to all(be_kind_of(ScanTask)) }
   end
 
   describe "#each_host" do
@@ -165,7 +165,7 @@ describe XML do
     subject { super().hosts }
 
     it { is_expected.not_to be_empty }
-    it { expect(subject).to all_be_kind_of(Host) }
+    it { expect(subject).to all(be_kind_of(Host)) }
   end
 
   describe "#each_up_host" do
@@ -184,7 +184,7 @@ describe XML do
     subject { super().up_hosts }
 
     it { is_expected.not_to be_empty }
-    it { is_expected.to all_be_kind_of(Host) }
+    it { is_expected.to all(be_kind_of(Host)) }
 
     it "should contain only up hosts" do
       expect(subject.all? { |host| host.status.state == :up }).to be_truthy
