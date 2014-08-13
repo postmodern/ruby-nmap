@@ -115,7 +115,7 @@ module Nmap
     #
     # Parses the OS match information.
     #
-    # @see each_match
+    # @see #each_match
     #
     def each(&block)
       each_match(&block)
