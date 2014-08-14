@@ -114,7 +114,7 @@ describe XML do
     end
 
     it "should parse the exit status" do
-      expect(subject.exit_status).to be_one_of('success', 'failure')
+      expect(subject.exit_status).to eq('success').or eq('failure')
     end
   end
 

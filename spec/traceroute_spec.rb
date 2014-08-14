@@ -16,7 +16,7 @@ describe Traceroute do
     subject { super().protocol }
 
     it { is_expected.to be_kind_of(Symbol) }
-    it { is_expected.to be_one_of(:tcp, :udp) }
+    it { is_expected.to eq(:tcp).or eq(:udp) }
   end
 
   describe "#each" do

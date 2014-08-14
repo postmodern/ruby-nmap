@@ -58,16 +58,14 @@ describe Host do
     subject { super().status }
 
     it "should parse the state" do
-      expect(subject.state).to be_one_of(:up, :down)
+      expect(subject.state).to eq(:up).or eq(:down)
     end
 
     it "should parse the reason" do
-      expect(subject.reason).to be_one_of(
-        'syn-ack',
-        'timestamp-reply',
-        'echo-reply',
-        'reset'
-      )
+      expect(subject.reason).to eq('syn-ack').or \
+                                eq('timestamp-reply').or \
+                                eq('echo-reply').or \
+                                eq('reset')
     end
   end
 
