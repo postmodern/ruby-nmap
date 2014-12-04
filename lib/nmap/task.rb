@@ -323,7 +323,7 @@ module Nmap
     long_option :flag => '--versiondb'
     long_option :flag => '--send-eth', :name => :raw_ethernet
     long_option :flag => '--send-ip', :name => :raw_ip
-    long_option :flag => '--privledged'
+    long_option :flag => '--privileged'
     long_option :flag => '--unprivleged'
     long_option :flag => '--release-memory'
     long_option :flag => '--interactive'
