@@ -156,8 +156,8 @@ module Nmap
   # * `--versiondb` - `nmap.versiondb`
   # * `--send-eth` - `nmap.raw_ethernet`
   # * `--send-ip` - `nmap.raw_ip`
-  # * `--privledged` - `nmap.privledged`
-  # * `--unprivledged` - `nmap.unprivledged`
+  # * `--privileged` - `nmap.privileged`
+  # * `--unprivileged` - `nmap.unprivileged`
   # * `--release-memory` - `nmap.release_memory`
   # * `--interactive` - `nmap.interactive`
   # * `-V` - `nmap.version`
