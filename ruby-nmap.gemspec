@@ -66,7 +66,7 @@ Gem::Specification.new do |gemspec|
   gemspec.extra_rdoc_files = Array(metadata['extra_doc_files'])
 
   gemspec.post_install_message = metadata['post_install_message']
-  gemspec.requirements         = metadata['requirements']
+  gemspec.requirements         = Array(metadata['requirements'])
 
   if gemspec.respond_to?(:required_ruby_version=)
     gemspec.required_ruby_version = metadata['required_ruby_version']
