@@ -189,4 +189,11 @@ describe Host do
   skip "scan.xml does not currently include any hostscripts" do
     include_examples "#scripts"
   end
+
+  describe "#vendor" do
+    it "should include the vendor name" do
+      skip "need a host with address[@vendor]"
+    end
+  end
+
 end
