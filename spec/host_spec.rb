@@ -79,6 +79,11 @@ describe Host do
     it "should parser the addr" do
       expect(subject.addr).to eq('74.207.244.221')
     end
+
+    it "should parse the vendor name" do
+      skip "need a host with address[@vendor]"
+      expect(subject.vendor).to eq('')
+    end 
   end
 
   describe "#mac" do
@@ -188,12 +193,6 @@ describe Host do
 
   skip "scan.xml does not currently include any hostscripts" do
     include_examples "#scripts"
-  end
-
-  describe "#vendor" do
-    it "should include the vendor name" do
-      skip "need a host with address[@vendor]"
-    end
   end
 
 end
