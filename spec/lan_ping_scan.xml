@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 6.47 scan initiated Wed Dec 10 11:22:01 2014 as: /usr/bin/nmap -sP -&#45;scan-delay 1.0 -oX ping_scan.xml 192.168.1.1 -->
+<nmaprun scanner="nmap" args="/usr/bin/nmap -sP -&#45;scan-delay 1.0 -oX ping_scan.xml 192.168.1.1" start="1418232121" startstr="Wed Dec 10 11:22:01 2014" version="6.47" xmloutputversion="1.04">
+<verbose level="0"/>
+<debugging level="0"/>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.1.1" addrtype="ipv4"/>
+<address addr="AC:22:0B:8D:A9:11" addrtype="mac" vendor="Asustek Computer"/>
+<hostnames>
+<hostname name="DD-WRT" type="PTR"/>
+</hostnames>
+<times srtt="1172" rttvar="5000" to="1000000"/>
+</host>
+<runstats><finished time="1418232123" timestr="Wed Dec 10 11:22:03 2014" elapsed="2.07" summary="Nmap done at Wed Dec 10 11:22:03 2014; 1 IP address (1 host up) scanned in 2.07 seconds" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>
