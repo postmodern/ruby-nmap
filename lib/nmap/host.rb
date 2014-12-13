@@ -92,8 +92,7 @@ module Nmap
       @node.xpath("address[@addr]").each do |addr|
         address = Address.new(
           addr['addrtype'].to_sym,
-          addr['addr'],
-          addr['vendor']
+          addr['addr']
         )
 
         yield address
@@ -121,6 +120,18 @@ module Nmap
     def mac
       @mac ||= if (addr = @node.at("address[@addrtype='mac']"))
                  addr['addr']
+               end
+    end
+
+    #
+    # Parses the MAC vendor of the host.
+    #
+    # @return [String]
+    #   The Mac Vendor of the host.
+    #
+    def vendor
+      @vendor ||= if (vendor = @node.at("address[@vendor]"))
+                 vendor['vendor']
                end
     end
 

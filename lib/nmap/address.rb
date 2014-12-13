@@ -2,7 +2,7 @@ module Nmap
   #
   # Represents an IP or MAC address and Vendor name.
   #
-  class Address < Struct.new(:type, :addr, :vendor)
+  class Address < Struct.new(:type, :addr)
 
     #
     # Converts the address to a String.

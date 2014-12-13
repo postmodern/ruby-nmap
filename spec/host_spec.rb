@@ -80,10 +80,6 @@ describe Host do
       expect(subject.addr).to eq('74.207.244.221')
     end
 
-    it "should parse the vendor name" do
-      skip "need a host with address[@vendor]"
-      expect(subject.vendor).to eq('')
-    end 
   end
 
   describe "#mac" do
@@ -195,4 +191,10 @@ describe Host do
     include_examples "#scripts"
   end
 
+  describe "#vendor" do
+    it "should parse the vendor name" do
+      skip "need a host with address[@vendor]"
+      expect(subject.vendor).to eq('Asustek Computer')
+    end 
+  end
 end
