@@ -193,8 +193,7 @@ describe Host do
 
   describe "#vendor" do
     it "should parse the vendor name" do
-      skip "need a host with address[@vendor]"
-      expect(subject.vendor).to eq('Asustek Computer')
+      expect(subject.vendor).to eq('Cadmus Computer Systems')
     end 
   end
 end
