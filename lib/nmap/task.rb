@@ -241,7 +241,7 @@ module Nmap
 
     # SCRIPT SCAN:
     short_option :flag => '-sC', :name => :default_script
-    long_option :flag => '--script'
+    long_option :flag => '--script', :separator => ','
     long_option :flag => '--script-args',
                 :name => :script_params,
                 :separator => ','
