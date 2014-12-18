@@ -242,9 +242,9 @@ module Nmap
     # SCRIPT SCAN:
     short_option :flag => '-sC', :name => :default_script
     long_option :flag => '--script', :separator => ','
-    long_option :flag => '--script-args',
-                :name => :script_params,
-                :separator => ','
+    long_option :flag => '--script-args', :separator => ','
+    alias script_params script_args
+    alias script_params= script_args=
     long_option :flag => '--script-trace'
     long_option :flag => '--script-updatedb', :name => :update_scriptdb
 
