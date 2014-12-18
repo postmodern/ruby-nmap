@@ -168,6 +168,24 @@ describe XML do
     it { expect(subject).to all(be_kind_of(Host)) }
   end
 
+  describe "#host" do
+    subject { super().host }
+
+    it { expect(subject).to be_kind_of(Host) }
+  end
+
+  describe "#down_host" do
+    pending "need down hosts in scan.xml" do
+      subject { super().down_host }
+
+      it { is_expected.to be_kind_of(Host) }
+
+      it "should contain only up hosts" do
+        expect(subject.status.state).to be(:down)
+      end
+    end
+  end
+
   describe "#each_up_host" do
     subject { super().each_up_host.first }
 
@@ -188,6 +206,16 @@ describe XML do
 
     it "should contain only up hosts" do
       expect(subject.all? { |host| host.status.state == :up }).to be_truthy
+    end
+  end
+
+  describe "#up_host" do
+    subject { super().up_host }
+
+    it { is_expected.to be_kind_of(Host) }
+
+    it "should contain only up hosts" do
+      expect(subject.status.state).to be(:up)
     end
   end
 

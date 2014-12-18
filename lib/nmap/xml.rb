@@ -264,6 +264,17 @@ module Nmap
     end
 
     #
+    # Returns the first host.
+    #
+    # @return [Host]
+    #
+    # @since 0.8.0
+    #
+    def host
+      each_host.first
+    end
+
+    #
     # Parses the hosts that were found to be down during the scan.
     #
     # @yield [host]
@@ -301,6 +312,17 @@ module Nmap
     end
 
     #
+    # Returns the first host found to be down during the scan.
+    #
+    # @return [Host]
+    #
+    # @since 0.8.0
+    #
+    def down_host
+      each_down_host.first
+    end
+
+    #
     # Parses the hosts that were found to be up during the scan.
     #
     # @yield [host]
@@ -331,6 +353,17 @@ module Nmap
     #
     def up_hosts
       each_up_host.to_a
+    end
+
+    #
+    # Returns the first host found to be up during the scan.
+    #
+    # @return [Host]
+    #
+    # @since 0.8.0
+    #
+    def up_host
+      each_up_host.first
     end
 
     #
