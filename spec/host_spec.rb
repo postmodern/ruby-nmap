@@ -79,6 +79,7 @@ describe Host do
     it "should parser the addr" do
       expect(subject.addr).to eq('74.207.244.221')
     end
+
   end
 
   describe "#mac" do
@@ -188,5 +189,11 @@ describe Host do
 
   skip "scan.xml does not currently include any hostscripts" do
     include_examples "#scripts"
+  end
+
+  describe "#vendor" do
+    it "should parse the vendor name" do
+      expect(subject.vendor).to eq('Cadmus Computer Systems')
+    end 
   end
 end

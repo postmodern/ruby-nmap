@@ -124,6 +124,18 @@ module Nmap
     end
 
     #
+    # Parses the MAC vendor of the host.
+    #
+    # @return [String]
+    #   The Mac Vendor of the host.
+    #
+    def vendor
+      @vendor ||= if (vendor = @node.at("address[@vendor]"))
+                 vendor['vendor']
+               end
+    end
+
+    #
     # Parses the IPv4 address of the host.
     #
     # @return [String]

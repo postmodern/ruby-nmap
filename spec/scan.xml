@@ -44,6 +44,7 @@
 <taskend task="NSE" time="1374390873"/>
 <host starttime="1374389727" endtime="1374390873"><status state="up" reason="reset"/>
 <address addr="74.207.244.221" addrtype="ipv4"/>
+<address addr="08:00:27:7F:62:DC" addrtype="mac" vendor="Cadmus Computer Systems"/ >
 <hostnames>
 <hostname name="scanme.nmap.org" type="user"/>
 <hostname name="scanme.nmap.org" type="PTR"/>
