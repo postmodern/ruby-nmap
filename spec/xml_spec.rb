@@ -30,9 +30,17 @@ describe XML do
     end
   end
 
-  describe "load" do
-    it "should parse the given text" do
-      expect(subject.version).to eq(described_class.load(File.read(path)).version)
+  describe "parse" do
+    let(:xml) { File.read(path) }
+
+    subject { described_class.parse(xml) }
+
+    it "should return an XML object" do
+      expect(subject).to be_kind_of(described_class)
+    end
+
+    it "should parse the XML" do
+      expect(subject.version).to_not be_nil
     end
   end
 
