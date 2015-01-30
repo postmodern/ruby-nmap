@@ -55,10 +55,19 @@ module Nmap
     # @yieldparam [XML] xml
     #   The newly created XML object.
     #
+    # @since 0.8.0
+    #
+    def self.parse(text,&block)
+      new(Nokogiri::XML(text), &block)
+    end
+
+    #
+    # @deprecated Use {parse} instead.
+    #
     # @since 0.7.0
     #
     def self.load(text,&block)
-      new(Nokogiri::XML(text), &block)
+      parse(text,&block)
     end
 
     #
