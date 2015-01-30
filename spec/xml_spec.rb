@@ -45,12 +45,14 @@ describe XML do
   end
 
   describe "open" do
-    it "should parse the given file" do
-      expect(subject.version).to eq(described_class.open(path).version)
+    subject { described_class.open(path) }
+
+    it "should return an XML object" do
+      expect(subject).to be_kind_of(described_class)
     end
 
-    it "should set the path" do
-      expect(subject.path).to eq(path)
+    it "should parse the XML" do
+      expect(subject.version).to_not be_nil
     end
   end
 
