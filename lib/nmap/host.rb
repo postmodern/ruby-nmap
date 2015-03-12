@@ -213,6 +213,17 @@ module Nmap
     end
 
     #
+    # The primary hostname of the host.
+    #
+    # @return [Hostname, nil]
+    #
+    # @since 0.8.0
+    #
+    def hostname
+      each_hostname.first
+    end
+
+    #
     # Parses the OS guessing information of the host.
     #
     # @yield [os]

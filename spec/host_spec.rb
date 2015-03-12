@@ -134,6 +134,12 @@ describe Host do
     end
   end
 
+  describe "#hostname" do
+    it "should return the first hostname" do
+      expect(subject.hostname).to be == subject.hostnames.first
+    end
+  end
+
   describe "#os" do
     subject { super().os }
 
