@@ -548,12 +548,12 @@ module Nmap
     # Converts the host to a String.
     #
     # @return [String]
-    #   The address of the host.
+    #   The hostname or address of the host.
     #
     # @see address
     #
     def to_s
-      address.to_s
+      (hostname || address).to_s
     end
 
     #

@@ -183,13 +183,23 @@ describe Host do
     end
   end
 
-  it "should convert to a String" do
-    expect(subject.to_s).to eq('74.207.244.221')
+  describe "#to_s" do
+    it "should return the first hostname" do
+      expect(subject.to_s).to eq('scanme.nmap.org')
+    end
+
+    context "when #hostname returns nil" do
+      before { expect(subject).to receive(:hostname).and_return(nil) }
+
+      it "should return the first address" do
+        expect(subject.to_s).to eq('74.207.244.221')
+      end
+    end
   end
 
   describe "#inspect" do
-    it "should include the address" do
-      expect(subject.inspect).to include(subject.address)
+    it "should include the String representation of the host" do
+      expect(subject.inspect).to include(subject.to_s)
     end
   end
 
