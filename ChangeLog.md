@@ -1,3 +1,20 @@
+### 0.8.0 / 2014-04-16
+
+* Added {Nmap::XML#each_down_host}.
+* Added {Nmap::XML#down_hosts}.
+* Added {Nmap::XML#host}.
+* Added {Nmap::XML#up_host}.
+* Added {Nmap::XML#down_host}.
+* Added {Nmap::Host#hostname}.
+* Added {Nmap::Hostname#user?}.
+* Added {Nmap::Hostname#ptr?}.
+* Added {Nmap::Program.sudo_scan}.
+* Added {Nmap::Program#sudo_scan}.
+* Renamed {Nmap::XML.load} to {Nmap::XML.parse}.
+* Fixed a typo in the `--privileged` flag (@BrentonEarl)
+* Allow multiple values in the `--script` flag.
+* Alias {Nmap::Task#script_params} to `script_args`.
+
 ### 0.7.0 / 2014-05-09
 
 * Added {Nmap::CPE}.
