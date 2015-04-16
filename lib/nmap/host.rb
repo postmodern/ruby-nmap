@@ -129,6 +129,8 @@ module Nmap
     # @return [String]
     #   The Mac Vendor of the host.
     #
+    # @since 0.8.0
+    #
     def vendor
       @vendor ||= if (vendor = @node.at("address[@vendor]"))
                  vendor['vendor']
