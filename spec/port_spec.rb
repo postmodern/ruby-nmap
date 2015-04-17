@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'scripts_examples'
+
 require 'nmap/port'
 
 describe Port do
@@ -37,6 +39,7 @@ describe Port do
   end
 
   include_examples "#scripts"
+  include_examples "#script_data"
 
   describe "#inspect" do
     it "should include the number" do
