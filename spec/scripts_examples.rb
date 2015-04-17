@@ -28,16 +28,8 @@ shared_examples_for "#script_data" do
       expect(subject.keys).to all(be_kind_of(String))
     end
 
-    it "should contain Hash values" do
-      expect(subject.values).to all(be_kind_of(Hash))
-    end
-
-    it "should the Hash values should contain String keys" do
-      expect(subject.values.map(&:keys).flatten).to all(be_kind_of(String))
-    end
-
-    it "should the Hash values should contain Array<String> values" do
-      expect(subject.values.map(&:values).flatten).to all(be_kind_of(String))
+    it "should contain Arrays or Hashes" do
+      expect(subject.values).to all(be_kind_of(Array).or(be_kind_of(Hash)))
     end
   end
 end

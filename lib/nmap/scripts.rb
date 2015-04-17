@@ -32,18 +32,35 @@ module Nmap
       unless @script_data
         @script_data = {}
 
-        @node.xpath('script').each do |script|
-          id = script['id']
-          @script_data[id] = {}
+        traverse = lambda do |node|
+          case node.name
+          when 'script', 'table'
+            unless node.xpath('*[@key]').empty?
+              hash = {}
 
-          script.xpath('table').each do |table|
-            key = table['key']
-            @script_data[id][key] = []
+              node.elements.each do |element|
+                hash[element['key']] = traverse.call(element)
+              end
 
-            table.xpath('elem').each do |elem|
-              @script_data[id][key] << elem.inner_text
+              hash
+            else
+              array = []
+
+              node.elements.each do |element|
+                array << traverse.call(element)
+              end
+
+              array
             end
+          when 'elem'
+            node.inner_text
+          else
+            raise(NotImplementedError,"unrecognized XML NSE element: #{node}")
           end
+        end
+
+        @node.xpath('script').each do |script|
+          @script_data[script['id']] = traverse.call(script)
         end
       end
 
