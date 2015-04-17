@@ -8,7 +8,7 @@ describe TcpTsSequence do
 
   describe "#description" do
     it "should parse the description" do
-      expect(subject.description).to eq("1000HZ")
+      expect(subject.description).to eq("1000HZ").or(eq('other'))
     end
   end
 

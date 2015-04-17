@@ -5,11 +5,13 @@ require 'nmap/xml'
 require 'nmap/service'
 
 describe Service do
-  subject { @xml.hosts.first.ports.first.service }
+  let(:port) { @xml.host.open_ports.find { |port| port.number == 80 } }
+
+  subject { port.service }
 
   describe "#name" do
     it "should parse the name" do
-      expect(subject.name).to eq('ssh')
+      expect(subject.name).to eq('http')
     end
   end
 
@@ -27,19 +29,19 @@ describe Service do
 
   describe "#product" do
     it "should parse the product name attribute" do
-      expect(subject.product).to eq('OpenSSH')
+      expect(subject.product).to eq('Apache httpd')
     end
   end
 
   describe "#version" do
     it "should parse the version attribute" do
-      expect(subject.version).to eq('5.3p1 Debian 3ubuntu7')
+      expect(subject.version).to eq('2.4.7')
     end
   end
 
   describe "#extra_info" do
     it "should parse the extrainfo attribute" do
-      expect(subject.extra_info).to eq('protocol 2.0')
+      expect(subject.extra_info).to eq('(Ubuntu)')
     end
   end
 
@@ -51,7 +53,7 @@ describe Service do
 
   describe "#os_type" do
     it "should parse the ostype attribute" do
-      expect(subject.os_type).to eq('Linux')
+      skip "need a service with the ostype attribute"
     end
   end
 

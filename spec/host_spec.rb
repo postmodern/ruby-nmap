@@ -69,6 +69,8 @@ describe Host do
     end
   end
 
+  let(:ipv4) { '45.33.32.156' }
+
   describe "#addresses" do
     subject { super().addresses.first }
 
@@ -77,9 +79,8 @@ describe Host do
     end
 
     it "should parser the addr" do
-      expect(subject.addr).to eq('74.207.244.221')
+      expect(subject.addr).to eq(ipv4)
     end
-
   end
 
   describe "#mac" do
@@ -96,19 +97,19 @@ describe Host do
 
   describe "#ipv4" do
     it "should parse the IPv4 address" do
-      expect(subject.ipv4).to eq('74.207.244.221')
+      expect(subject.ipv4).to eq(ipv4)
     end
   end
 
   describe "#ip" do
     it "should have an IP" do
-      expect(subject.ip).to eq('74.207.244.221')
+      expect(subject.ip).to eq(ipv4)
     end
   end
 
   describe "#address" do
     it "should have an address" do
-      expect(subject.address).to eq('74.207.244.221')
+      expect(subject.address).to eq(ipv4)
     end
   end
 
@@ -192,7 +193,7 @@ describe Host do
       before { expect(subject).to receive(:hostname).and_return(nil) }
 
       it "should return the first address" do
-        expect(subject.to_s).to eq('74.207.244.221')
+        expect(subject.to_s).to eq(ipv4)
       end
     end
   end
@@ -208,8 +209,10 @@ describe Host do
   end
 
   describe "#vendor" do
+    subject { @local_xml.host }
+
     it "should parse the vendor name" do
-      expect(subject.vendor).to eq('Cadmus Computer Systems')
+      expect(subject.vendor).to eq('LG Electronics')
     end 
   end
 end

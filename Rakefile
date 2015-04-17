@@ -32,5 +32,5 @@ task :doc => :yard
 
 file 'spec/scan.xml' do
   puts ">>> Scanning scanme.nmap.org ..."
-  sh 'sudo nmap -v -sS -sU -A -O -oX spec/scan.xml scanme.nmap.org'
+  sh 'sudo nmap -v -sS -sU -A -O --script ssh2-enum-algos -oX spec/scan.xml scanme.nmap.org'
 end

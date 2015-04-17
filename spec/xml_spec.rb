@@ -72,7 +72,7 @@ describe XML do
     end
 
     it "should parse the scanner arguments" do
-      expect(subject.scanner.arguments).to eq('nmap -v -sS -sU -A -O -oX spec/scan.xml scanme.nmap.org')
+      expect(subject.scanner.arguments).to eq('nmap -v -sS -sU -A -O --script ssh2-enum-algos -oX spec/scan.xml scanme.nmap.org')
     end
 
     it "should parse the scanner start time" do
@@ -148,7 +148,7 @@ describe XML do
 
     it "should parse the end time" do
       expect(subject.end_time).to be_kind_of(Time)
-      expect(subject.end_time).to be > subject.start_time
+      expect(subject.end_time).to be >= subject.start_time
     end
 
     it "should parse the extrainfo" do

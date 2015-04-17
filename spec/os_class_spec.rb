@@ -27,7 +27,7 @@ describe OS do
 
   describe "#gen" do
     it "should parse the gen" do
-      expect(subject.gen).to eq(:'2.6.X')
+      expect(subject.gen).to eq(:'3.X')
     end
   end
 

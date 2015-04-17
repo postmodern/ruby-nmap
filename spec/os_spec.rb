@@ -20,7 +20,7 @@ describe OS do
     subject { super().matches.first }
 
     it "should parse the name" do
-      expect(subject.name).to eq('Linux 2.6.39')
+      expect(subject.name).to eq('Linux 3.0')
     end
 
     it "should parse the accuracy" do
