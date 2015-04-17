@@ -3,6 +3,8 @@ require 'nmap/scan_task'
 require 'nmap/scan'
 require 'nmap/host'
 require 'nmap/run_stat'
+require 'nmap/prescript'
+require 'nmap/postscript'
 
 require 'nokogiri'
 
@@ -237,6 +239,34 @@ module Nmap
     #
     def tasks
       each_task.to_a
+    end
+
+    #
+    # The NSE scripts ran before the scan.
+    #
+    # @return [Prescript]
+    #   Contains the script output and data.
+    #
+    # @since 0.9.0
+    #
+    def prescript
+      @prescript ||= if (prescript = @node.at('prescript'))
+                       Prescript.new(prescript)
+                     end
+    end
+
+    #
+    # The NSE scripts ran after the scan.
+    #
+    # @return [Postscript]
+    #   Contains the script output and data.
+    #
+    # @since 0.9.0
+    #
+    def postscript
+      @postscript ||= if (postscript = @node.at('postscript'))
+                        Postscript.new(postscript)
+                      end
     end
 
     #
