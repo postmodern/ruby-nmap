@@ -8,6 +8,7 @@ require 'nmap/tcp_sequence'
 require 'nmap/tcp_ts_sequence'
 require 'nmap/uptime'
 require 'nmap/traceroute'
+require 'nmap/host_script'
 
 require 'nokogiri'
 require 'time'
@@ -512,16 +513,28 @@ module Nmap
     #
     # @since 0.3.0
     #
+    # @deprecated Use {#host_script} instead.
+    #
     def scripts
-      unless @scripts
-        @scripts = {}
-
-        @node.xpath('hostscript/script').each do |script|
-          @scripts[script['id']] = script['output']
-        end
+      if host_script
+        host_script.scripts
+      else
+        {}
       end
+    end
 
-      return @scripts
+    #
+    # The NSE scripts ran against the host.
+    #
+    # @return [HostScript, nil]
+    #   Contains the host script output and data.
+    #
+    # @since 0.9.0
+    #
+    def host_script
+      @host_script ||= if (hostscript = @node.at('hostscript'))
+                         HostScript.new(hostscript)
+                       end
     end
 
     #
