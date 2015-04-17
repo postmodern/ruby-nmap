@@ -133,8 +133,8 @@ module Nmap
     # @since 0.8.0
     #
     def vendor
-      @vendor ||= if (vendor = @node.at("address[@vendor]"))
-                 vendor['vendor']
+      @vendor ||= if (vendor = @node.at("address/@vendor"))
+                 vendor.inner_text
                end
     end
 
