@@ -92,7 +92,8 @@ module Nmap
       @node.xpath("address[@addr]").each do |addr|
         address = Address.new(
           addr['addrtype'].to_sym,
-          addr['addr']
+          addr['addr'],
+          addr['vendor']
         )
 
         yield address
