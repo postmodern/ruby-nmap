@@ -34,14 +34,14 @@ module Nmap
 
         @node.xpath('script').each do |script|
           id = script['id']
-          @scripts[id] = {}
+          @script_data[id] = {}
 
           script.xpath('table').each do |table|
             key = table['key']
-            @scripts[id][key] = []
+            @script_data[id][key] = []
 
             table.xpath('elem').each do |elem|
-              @scripts[id][key] << elem.inner_text
+              @script_data[id][key] << elem.inner_text
             end
           end
         end
