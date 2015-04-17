@@ -204,8 +204,10 @@ describe Host do
     end
   end
 
-  skip "scan.xml does not currently include any hostscripts" do
-    include_examples "#scripts"
+  describe "#host_script" do
+    subject { super().host_script }
+
+    pending "scan.xml does not currently include any hostscript elements"
   end
 
   describe "#vendor" do

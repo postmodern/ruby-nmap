@@ -163,6 +163,18 @@ describe XML do
     it { is_expected.to all(be_kind_of(ScanTask)) }
   end
 
+  describe "#prescript" do
+    subject { super().prescript }
+
+    pending "scan.xml does not currently include any prescript elements"
+  end
+
+  describe "#postscript" do
+    subject { super().postscript }
+
+    pending "scan.xml does not currently include any postscript elements"
+  end
+
   describe "#each_host" do
     subject { super().each_host.first }
 
