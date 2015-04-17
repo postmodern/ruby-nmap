@@ -72,7 +72,7 @@ describe XML do
     end
 
     it "should parse the scanner arguments" do
-      expect(subject.scanner.arguments).to eq('nmap -v -sS -sU -A -O --script ssh2-enum-algos -oX spec/scan.xml scanme.nmap.org')
+      expect(subject.scanner.arguments).to eq('nmap -v -sS -sU -A -O --script ssh2-enum-algos,ssh-hostkey -oX spec/scan.xml scanme.nmap.org')
     end
 
     it "should parse the scanner start time" do
