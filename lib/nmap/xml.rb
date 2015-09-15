@@ -250,7 +250,7 @@ module Nmap
     # @since 0.9.0
     #
     def prescript
-      @prescript ||= if (prescript = @node.at('prescript'))
+      @prescript ||= if (prescript = @doc.at('prescript'))
                        Prescript.new(prescript)
                      end
     end
@@ -264,7 +264,7 @@ module Nmap
     # @since 0.9.0
     #
     def postscript
-      @postscript ||= if (postscript = @node.at('postscript'))
+      @postscript ||= if (postscript = @doc.at('postscript'))
                         Postscript.new(postscript)
                       end
     end
