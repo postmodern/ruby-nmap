@@ -25,7 +25,7 @@ module Nmap
     def each_cpe
       return enum_for(__method__) unless block_given?
 
-      @node.xpath('//cpe').each do |cpe|
+      @node.xpath('cpe').each do |cpe|
         yield URL.parse(cpe.inner_text)
       end
 
