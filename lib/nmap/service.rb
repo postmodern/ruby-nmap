@@ -152,7 +152,18 @@ module Nmap
       @confidence ||= @node.get_attribute('conf').to_i
     end
 
-    alias to_s name
+    #
+    # Converts the service to a String.
+    #
+    # @return [String]
+    #   String containing {#name}, {#product}, and/or {#version}.
+    #
+    def to_s
+      s = "#{name}"
+      s << " #{product}" if product
+      s << " #{version}" if version
+      return s
+    end
 
   end
 end

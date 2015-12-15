@@ -75,5 +75,11 @@ describe Service do
     end
   end
 
+  describe "#to_s" do
+    it "should include the name, product and version" do
+      expect(subject.to_s).to be == "#{subject.name} #{subject.product} #{subject.version}"
+    end
+  end
+
   it_should_behave_like "CPE"
 end
