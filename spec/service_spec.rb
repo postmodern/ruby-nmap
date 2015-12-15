@@ -76,8 +76,10 @@ describe Service do
   end
 
   describe "#to_s" do
-    it "should include the name, product and version" do
-      expect(subject.to_s).to be == "#{subject.name} #{subject.product} #{subject.version}"
+    context "when #product and #version are not nil" do
+      it "should include the product and version" do
+        expect(subject.to_s).to be == "#{subject.product} #{subject.version}"
+      end
     end
   end
 

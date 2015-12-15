@@ -156,13 +156,14 @@ module Nmap
     # Converts the service to a String.
     #
     # @return [String]
-    #   String containing {#name}, {#product}, and/or {#version}.
+    #   String containing {#product} and {#version}, or {#name}.
     #
     def to_s
-      s = "#{name}"
-      s << " #{product}" if product
-      s << " #{version}" if version
-      return s
+      if (product && version)
+        "#{product} #{version}"
+      else
+        name
+      end
     end
 
   end
