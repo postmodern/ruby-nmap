@@ -131,6 +131,7 @@ module Nmap
   # ### Verbosity and Debugging:
   #
   # * `-v` - `nmap.verbose`
+  # * `-v0` - `nmap.quiet`
   # * `-d` - `nmap.debug`
   # * `--reason` - `nmap.show_reason`
   # * `--stats-every` - `nmap.stats_every`
@@ -300,6 +301,7 @@ module Nmap
 
     # Verbosity and Debugging:
     short_option :flag => '-v', :name => :verbose
+    short_option :flag => '-v0', :name => :quiet
     short_option :flag => '-d', :name => :debug
     long_option :flag => '--reason', :name => :show_reason
     long_option :flag => '--stats-every'
