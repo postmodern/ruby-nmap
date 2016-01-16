@@ -158,7 +158,7 @@ module Nmap
     #   The IPv6 address of the host.
     #
     def ipv6
-      @ipv6 ||= if (@node.at("address[@addrtype='ipv6']"))
+      @ipv6 ||= if (addr = @node.at("address[@addrtype='ipv6']"))
                   addr['addr']
                 end
     end
