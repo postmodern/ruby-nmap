@@ -109,7 +109,9 @@ module Nmap
     #   The OS fingerprint.
     #
     def fingerprint
-      @fingerprint ||= @node.at("osfingerprint/@fingerprint").inner_text
+      node = @node.at("osfingerprint/@fingerprint")
+      return unless node
+      @fingerprint ||= node.inner_text
     end
 
     #
