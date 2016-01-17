@@ -27,7 +27,9 @@ module Nmap
     #   The `port` XML attribute.
     #
     def port
-      @port ||= @node['port'].to_i
+      node = @node['port']
+      return unless node
+      @port ||= node.to_i
     end
 
     #
@@ -37,7 +39,9 @@ module Nmap
     #   The `proto` XML element.
     #
     def protocol
-      @protocol ||= @node['proto'].to_sym
+      node = @node['proto']
+      return unless node
+      @protocol ||= node.to_sym
     end
 
     #
