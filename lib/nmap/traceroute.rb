@@ -23,21 +23,25 @@ module Nmap
     #
     # The port used for the traceroute.
     #
-    # @return [Integer]
+    # @return [Integer, nil]
     #   The `port` XML attribute.
     #
     def port
-      @port ||= @node['port'].to_i
+      @port ||= if @node['port']
+                  @node['port'].to_i
+                end
     end
 
     #
     # The protocol used for the traceroute.
     #
-    # @return [Symbol]
+    # @return [Symbol, nil]
     #   The `proto` XML element.
     #
     def protocol
-      @protocol ||= @node['proto'].to_sym
+      @protocol ||= if @node['proto']
+                      @node['proto'].to_sym
+                    end
     end
 
     #
