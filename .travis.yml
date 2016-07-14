@@ -2,14 +2,12 @@ language: ruby
 before_install:
   - sudo apt-get install libxml2-dev libxslt1-dev
 rvm:
-  - 1.9.3
   - 2.0.0
   - 2.3.0
   - jruby
   - rbx
 matrix:
   allow_failures:
-    - rvm: 1.9.3
     - rvm: jruby
     - rvm: rbx
 script: rake test
