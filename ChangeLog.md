@@ -8,12 +8,12 @@
 * Added {Nmap::XML#prescript}.
 * Added {Nmap::XML#postscript}.
 * Added `Nmap::Task#quiet` (aka `-v0`).
-* `#script_data` methods now can parse arbitrarily nested Arrays/Hashes.
-* {Nmap::CPE#each_cpe} now only matches child `cpe` nodes, not all `cpe` nodes
-  in the document.
+* `#script_data` methods can now parse arbitrarily nested Arrays/Hashes.
+* Fixed {Nmap::CPE#each_cpe} to only match child `cpe` elements, not all
+  `cpe` elements within the document.
 * Changed {Nmap::Service#to_s} to output product/version only if both are
   present.
-* Changed `Nmap::Target#skip_discovery` to use `-Pn` instead of `-PN`, which was
+* Changed `Nmap::Task#skip_discovery` to use `-Pn` instead of `-PN`, which was
   deprecated in nmap >= 7.00.
 
 ### 0.8.0 / 2014-04-16
