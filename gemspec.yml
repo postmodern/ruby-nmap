@@ -10,6 +10,8 @@ email: postmodern.mod3@gmail.com
 homepage: https://github.com/sophsec/ruby-nmap#readme
 has_yard: true
 
+required_ruby_version: ">= 2.0.0"
+
 requirements: nmap >= 5.00
 
 dependencies:
