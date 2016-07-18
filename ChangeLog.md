@@ -1,3 +1,8 @@
+### 0.9.1 / 2016-07-18
+
+* Fixed {Nmap::Host#ipv6} when there are no `ipv6` type addresses.
+* Fixed {Nmap::OS#fingerprint} when there is no `osfingerprint` element.
+
 ### 0.9.0 / 2016-07-14
 
 * Added {Nmap::Address#vendor}.
