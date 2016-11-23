@@ -36,10 +36,10 @@ module Nmap
       when Nokogiri::XML::Document
         @doc = document
       when IO, StringIO
-        @doc = Nokogiri::XML(document)
+        @doc = Nokogiri::XML document.read
       else
         @path = File.expand_path(document)
-        @doc  = Nokogiri::XML(open(@path))
+        @doc  = Nokogiri::XML File.read(@path)
       end
 
       yield self if block_given?
