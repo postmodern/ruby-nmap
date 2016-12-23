@@ -39,7 +39,7 @@ module Nmap
         @doc = Nokogiri::XML(document)
       else
         @path = File.expand_path(document)
-        @doc  = Nokogiri::XML(File.open(@path))
+        @doc  = File.open(@path) { |file| Nokogiri::XML(file) }
       end
 
       yield self if block_given?
