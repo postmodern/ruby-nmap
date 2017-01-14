@@ -1,3 +1,9 @@
+### 0.9.2 / 2017-01-13
+
+* Fix file descriptor leak in {Nmap::XML#initalize} by using
+  `File.open(path) { |file| ... }` instead of `File.new(path)`, which keeps the
+  file descriptor open until GC collects the `File` instance.
+
 ### 0.9.1 / 2016-07-18
 
 * Fixed {Nmap::Host#ipv6} when there are no `ipv6` type addresses.
