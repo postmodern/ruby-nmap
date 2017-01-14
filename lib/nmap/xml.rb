@@ -60,7 +60,7 @@ module Nmap
     # @since 0.8.0
     #
     def self.parse(text,&block)
-      new(Nokogiri::XML(text), &block)
+      new(Nokogiri::XML(text),&block)
     end
 
     #
