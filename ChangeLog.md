@@ -1,6 +1,6 @@
 ### 0.9.2 / 2017-01-13
 
-* Fix file descriptor leak in {Nmap::XML#initalize} by using
+* Fix file descriptor leak in {Nmap::XML#initialize} by using
   `File.open(path) { |file| ... }` instead of `File.new(path)`, which keeps the
   file descriptor open until GC collects the `File` instance.
 
