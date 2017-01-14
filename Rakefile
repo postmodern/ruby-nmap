@@ -12,11 +12,9 @@ end
 
 require 'rake'
 require 'rake/clean'
-
 CLEAN.include('spec/*.xml')
 
 require 'rubygems/tasks'
-
 Gem::Tasks.new
 
 require 'rspec/core/rake_task'
