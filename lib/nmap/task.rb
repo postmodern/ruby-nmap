@@ -169,6 +169,28 @@ module Nmap
   # @see http://nmap.org/book/man.html
   #
   class Task < RProgram::Task
+    def self.port_range_proc
+      proc do |opt,value|
+        unless value.empty?
+          [opt.flag, value.map { |port|
+            case port
+            when Range
+              "#{port.first}-#{port.last}"
+            else
+              port.to_s
+            end
+          }.join(',')].join
+        end
+      end
+    end
+
+    def self.proto_list_proc
+      proc do |opt,value|
+        unless value.empty?
+          [opt.flag, value.map { |proto| proto.to_s }.join(',')].join
+        end
+      end
+    end
 
     # TARGET SPECIFICATIONS:
     short_option :flag => '-iL', :name => :target_file
@@ -180,14 +202,14 @@ module Nmap
     short_option :flag => '-sL', :name => :list
     short_option :flag => '-sn', :name => :ping
     short_option :flag => '-Pn', :name => :skip_discovery
-    short_option :flag => '-PS', :name => :syn_discovery
-    short_option :flag => '-PA', :name => :ack_discovery
-    short_option :flag => '-PU', :name => :udp_discovery
-    short_option :flag => '-PY', :name => :sctp_init_ping
+    short_option(:flag => '-PS', :name => :syn_discovery, &port_range_proc)
+    short_option(:flag => '-PA', :name => :ack_discovery, &port_range_proc)
+    short_option(:flag => '-PU', :name => :udp_discovery, &port_range_proc)
+    short_option(:flag => '-PY', :name => :sctp_init_ping, &port_range_proc)
     short_option :flag => '-PE', :name => :icmp_echo_discovery
     short_option :flag => '-PP', :name => :icmp_timestamp_discovery
     short_option :flag => '-PM', :name => :icmp_netmask_discovery
-    short_option :flag => '-PO', :name => :ip_ping
+    short_option(:flag => '-PO', :name => :ip_ping, &proto_list_proc)
     short_option :flag => '-PR', :name => :arp_ping
     long_option :flag => '--traceroute', :name => :traceroute
     short_option :flag => '-n', :name => :disable_dns
@@ -213,18 +235,7 @@ module Nmap
     short_option :flag => '-b', :name => :ftp_bounce_scan
 
     # PORT SPECIFICATION AND SCAN ORDER:
-    short_option :flag => '-p', :name => :ports do |opt,value|
-      unless value.empty?
-        [opt.flag, value.map { |port|
-          case port
-          when Range
-            "#{port.first}-#{port.last}"
-          else
-            port.to_s
-          end
-        }.join(',')]
-      end
-    end
+    short_option(:flag => '-p', :name => :ports, &port_range_proc)
 
     short_option :flag => '-F', :name => :fast
     short_option :flag => '-r', :name => :consecutively
