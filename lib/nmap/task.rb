@@ -56,6 +56,7 @@ module Nmap
   # * `-r` - `nmap.consecutively`
   # * `--top-ports` - `nmap.top_ports`
   # * `--port-ratio` - `nmap.port_ratio`
+  # * `--exclude-ports` - `nmap.exclude_ports`
   #
   # ### Service/Version Detection:
   #
@@ -228,6 +229,7 @@ module Nmap
     short_option :flag => '-r', :name => :consecutively
     long_option :flag => '--top-ports'
     long_option :flag => '--port-ratio'
+    long_option :flag => '--exclude-ports', :name => :exclude_ports
 
     # SERVICE/VERSION DETECTION:
     short_option :flag => '-sV', :name => :service_scan
