@@ -183,7 +183,13 @@ module Nmap
     short_option :flag => '-PS', :name => :syn_discovery
     short_option :flag => '-PA', :name => :ack_discovery
     short_option :flag => '-PU', :name => :udp_discovery
-    short_option :flag => '-PY', :name => :sctp_init_ping
+    short_option :flag => '-PY', :name => :sctp_init_ping do |opt,value|
+      unless value.empty?
+        [opt.flag, format_ports(value)]
+      else
+        [opt.flag]
+      end
+    end
     short_option :flag => '-PE', :name => :icmp_echo_discovery
     short_option :flag => '-PP', :name => :icmp_timestamp_discovery
     short_option :flag => '-PM', :name => :icmp_netmask_discovery
