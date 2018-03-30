@@ -215,17 +215,9 @@ module Nmap
     # PORT SPECIFICATION AND SCAN ORDER:
     short_option :flag => '-p', :name => :ports do |opt,value|
       unless value.empty?
-        [opt.flag, value.map { |port|
-          case port
-          when Range
-            "#{port.first}-#{port.last}"
-          else
-            port.to_s
-          end
-        }.join(',')]
+        [opt.flag, format_ports(value)]
       end
     end
-
     short_option :flag => '-F', :name => :fast
     short_option :flag => '-r', :name => :consecutively
     long_option :flag => '--top-ports'
@@ -333,6 +325,28 @@ module Nmap
     short_option :flag => '-h', :name => :help
 
     non_option :tailing => true, :name => :targets
+
+    private
+
+    #
+    # Fomats a port list.
+    #
+    # @param [Array<Integer,Range>] ports
+    #   The port ranges.
+    #
+    # @return [String]
+    #   Comma separated string.
+    #
+    def self.format_ports(ports)
+      ports.map { |port|
+        case port
+        when Range
+          "#{port.first}-#{port.last}"
+        else
+          port.to_s
+        end
+      }.join(',')
+    end
 
   end
 end
