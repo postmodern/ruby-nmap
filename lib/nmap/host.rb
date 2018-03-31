@@ -63,7 +63,7 @@ module Nmap
     #
     def status
       unless @status
-        status = @node.at('status')
+        status = @node.at_xpath('status')
 
         @status = Status.new(
           status['state'].to_sym,
@@ -120,7 +120,7 @@ module Nmap
     #   The MAC address of the host.
     #
     def mac
-      @mac ||= if (addr = @node.at("address[@addrtype='mac']"))
+      @mac ||= if (addr = @node.at_xpath("address[@addrtype='mac']"))
                  addr['addr']
                end
     end
@@ -134,7 +134,7 @@ module Nmap
     # @since 0.8.0
     #
     def vendor
-      @vendor ||= if (vendor = @node.at("address/@vendor"))
+      @vendor ||= if (vendor = @node.at_xpath("address/@vendor"))
                  vendor.inner_text
                end
     end
@@ -146,7 +146,7 @@ module Nmap
     #   The IPv4 address of the host.
     #
     def ipv4
-      @ipv4 ||= if (addr = @node.at("address[@addrtype='ipv4']"))
+      @ipv4 ||= if (addr = @node.at_xpath("address[@addrtype='ipv4']"))
                   addr['addr']
                 end
     end
@@ -158,7 +158,7 @@ module Nmap
     #   The IPv6 address of the host.
     #
     def ipv6
-      @ipv6 ||= if (addr = @node.at("address[@addrtype='ipv6']"))
+      @ipv6 ||= if (addr = @node.at_xpath("address[@addrtype='ipv6']"))
                   addr['addr']
                 end
     end
@@ -240,7 +240,7 @@ module Nmap
     #   The OS guessing information.
     #
     def os
-      @os ||= if (os = @node.at('os'))
+      @os ||= if (os = @node.at_xpath('os'))
                 OS.new(os)
               end
 
@@ -263,7 +263,7 @@ module Nmap
     # @since 0.7.0
     #
     def uptime
-      @uptime ||= if (uptime = @node.at('uptime'))
+      @uptime ||= if (uptime = @node.at_xpath('uptime'))
                     Uptime.new(
                       uptime['seconds'].to_i,
                       Time.parse(uptime['lastboot'])
@@ -287,7 +287,7 @@ module Nmap
     #   The parsed object.
     #
     def tcp_sequence
-      @tcp_sequence ||= if (seq = @node.at('tcpsequence'))
+      @tcp_sequence ||= if (seq = @node.at_xpath('tcpsequence'))
                           TcpSequence.new(seq)
                         end
 
@@ -317,7 +317,7 @@ module Nmap
     #   The parsed object.
     #
     def ip_id_sequence
-      @ip_id_sequence ||= if (seq = @node.at('ipidsequence'))
+      @ip_id_sequence ||= if (seq = @node.at_xpath('ipidsequence'))
                             IpIdSequence.new(seq)
                           end
 
@@ -347,7 +347,7 @@ module Nmap
     #   The parsed object.
     #
     def tcp_ts_sequence
-      @tcp_ts_sequence ||= if (seq = @node.at('tcptssequence'))
+      @tcp_ts_sequence ||= if (seq = @node.at_xpath('tcptssequence'))
                              TcpTsSequence.new(seq)
                            end
 
@@ -532,7 +532,7 @@ module Nmap
     # @since 0.9.0
     #
     def host_script
-      @host_script ||= if (hostscript = @node.at('hostscript'))
+      @host_script ||= if (hostscript = @node.at_xpath('hostscript'))
                          HostScript.new(hostscript)
                        end
     end
@@ -552,7 +552,7 @@ module Nmap
     # @since 0.7.0
     #
     def traceroute
-      @traceroute ||= if (trace = @node.at('trace'))
+      @traceroute ||= if (trace = @node.at_xpath('trace'))
                         Traceroute.new(trace)
                       end
 

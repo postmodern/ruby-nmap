@@ -46,7 +46,7 @@ module Nmap
     #   The state of the port (`:open`, `:filtered` or `:closed`).
     #
     def state
-      @state ||= @node.at('state/@state').inner_text.to_sym
+      @state ||= @node.at_xpath('state/@state').inner_text.to_sym
     end
 
     #
@@ -56,7 +56,7 @@ module Nmap
     #   How the port was discovered.
     #
     def reason
-      @reason ||= @node.at('state/@reason').inner_text
+      @reason ||= @node.at_xpath('state/@reason').inner_text
     end
 
     #
@@ -68,7 +68,7 @@ module Nmap
     # @since 0.6.0
     #
     def service
-      @service_info ||= if (service = @node.at('service'))
+      @service_info ||= if (service = @node.at_xpath('service'))
                           Service.new(service)
                         end
     end
