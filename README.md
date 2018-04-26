@@ -32,6 +32,15 @@ Run Nmap from Ruby:
       nmap.targets = '192.168.1.*'
     end
 
+Run `sudo nmap` from Ruby:
+
+    require 'nmap/program'
+
+    Nmap::Program.sudo_scan do |nmap|
+      nmap.syn_scan = true
+      # ...
+    end
+
 Parse Nmap XML scan files:
 
     require 'nmap/xml'
