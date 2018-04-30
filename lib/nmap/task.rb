@@ -95,7 +95,7 @@ module Nmap
   # * `--max-scan-delay` - `nmap.max_scan_delay`
   # * `--min-rate` - `nmap.min_rate`
   # * `--max-rate` - `nmap.max_rate`
-  # * `--default-rst-ratelimit` - `nmap.default_rst_ratelimit`
+  # * `--defeat-rst-ratelimit` - `nmap.defeat_rst_ratelimit`
   # * `-T` - `nmap.timing_template`
   # * `-T0` - `nmap.paranoid_timing`
   # * `-T1` - `nmap.sneaky_timing`
@@ -266,7 +266,7 @@ module Nmap
     long_option :flag => '--max-scan-delay'
     long_option :flag => '--min-rate'
     long_option :flag => '--max-rate'
-    long_option :flag => '--default-rst-ratelimit'
+    long_option :flag => '--defeat-rst-ratelimit'
     short_option :flag => '-T', :name => :timing_template
     short_option :flag => '-T0', :name => :paranoid_timing
     short_option :flag => '-T1', :name => :sneaky_timing
