@@ -96,6 +96,7 @@ module Nmap
   # * `--min-rate` - `nmap.min_rate`
   # * `--max-rate` - `nmap.max_rate`
   # * `--defeat-rst-ratelimit` - `nmap.defeat_rst_ratelimit`
+  # * `--defeat-icmp-ratelimit` - `nmap.defeat_icmp_ratelimit`
   # * `-T` - `nmap.timing_template`
   # * `-T0` - `nmap.paranoid_timing`
   # * `-T1` - `nmap.sneaky_timing`
@@ -267,6 +268,7 @@ module Nmap
     long_option :flag => '--min-rate'
     long_option :flag => '--max-rate'
     long_option :flag => '--defeat-rst-ratelimit'
+    long_option :flag => '--defeat-icmp-ratelimit'
     short_option :flag => '-T', :name => :timing_template
     short_option :flag => '-T0', :name => :paranoid_timing
     short_option :flag => '-T1', :name => :sneaky_timing
