@@ -187,7 +187,7 @@ module Nmap
     short_option :flag => '-PU', :name => :udp_discovery
     short_option :flag => '-PY', :name => :sctp_init_ping do |opt,value|
       unless value.empty?
-        [opt.flag, format_ports(value)]
+        [opt.flag, format_port_list(value)]
       else
         [opt.flag]
       end
@@ -223,7 +223,7 @@ module Nmap
     # PORT SPECIFICATION AND SCAN ORDER:
     short_option :flag => '-p', :name => :ports do |opt,value|
       unless value.empty?
-        [opt.flag, format_ports(value)]
+        [opt.flag, format_port_list(value)]
       end
     end
     short_option :flag => '-F', :name => :fast
@@ -347,7 +347,7 @@ module Nmap
     # @return [String]
     #   Comma separated string.
     #
-    def self.format_ports(ports)
+    def self.format_port_list(ports)
       ports.map { |port|
         case port
         when Range
