@@ -109,4 +109,42 @@ describe Task do
   describe "#sctp_init_ping" do
     include_examples "optional port range", '-PY', :sctp_init_ping
   end
+
+  describe "#ip_ping" do
+    before { subject.ip_ping = protocols }
+
+    context "when given a Boolean" do
+      let(:protocols) { true }
+
+      it "should emit the '-PO' option flag" do
+        expect(subject.arguments).to eq(['-PO'])
+      end
+    end
+
+    context "when given an empty Array" do
+      let(:protocols) { [] }
+
+      it "should emit the '-PO' option flag" do
+        expect(subject.arguments).to eq(['-PO'])
+      end
+    end
+
+    context "when given an Array of Integers" do
+      let(:protocols) { [80, 21, 25] }
+
+      it "should emit the '-PO' option flag with the Integer ports" do
+        expect(subject.arguments).to eq(["-PO#{protocols.join(',')}"])
+      end
+    end
+
+    context "when given an Array containing a Range" do
+      let(:protocols) { [80, 21..25] }
+
+      it "should emit the '-PO' option flag with the Integer ports" do
+        expect(subject.arguments).to eq([
+          "-PO#{protocols[0]},#{protocols[1].begin}-#{protocols[1].end}"
+        ])
+      end
+    end
+  end
 end

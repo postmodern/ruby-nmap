@@ -197,7 +197,9 @@ module Nmap
     short_option :flag => '-PE', :name => :icmp_echo_discovery
     short_option :flag => '-PP', :name => :icmp_timestamp_discovery
     short_option :flag => '-PM', :name => :icmp_netmask_discovery
-    short_option :flag => '-PO', :name => :ip_ping
+    short_option :flag => '-PO', :name => :ip_ping do |opt,value|
+      ["#{opt.flag}#{format_protocol_list(value)}"]
+    end
     short_option :flag => '-PR', :name => :arp_ping
     long_option :flag => '--traceroute', :name => :traceroute
     short_option :flag => '-n', :name => :disable_dns
@@ -358,6 +360,21 @@ module Nmap
           port.to_s
         end
       }.join(',')
+    end
+
+    #
+    # Formats a protocol list.
+    #
+    # @param [Array<Integer,Range>] protocols
+    #   The IP protocol numbers.
+    #
+    # @return [String]
+    #   Comma separated string.
+    #
+    def self.format_protocol_list(protocols)
+      # NOTE: the man page says the protocol list is similar to the format of
+      # a port range.
+      format_port_list(protocols)
     end
 
   end
