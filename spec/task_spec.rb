@@ -4,6 +4,8 @@ require 'nmap/task'
 describe Task do
   describe "#ports=" do
     context "when given an empty Array" do
+      before { subject.ports = [] }
+
       it "should ignore empty port Arrays" do
         subject.ports = []
 
@@ -14,9 +16,9 @@ describe Task do
     context "when given a String" do
       let(:ports) { '80,21,25' }
 
-      it "should emit the String as is" do
-        subject.ports = ports
+      before { subject.ports = ports }
 
+      it "should emit the String as is" do
         expect(subject.arguments).to eq(['-p', ports])
       end
     end
@@ -24,9 +26,9 @@ describe Task do
     context "when given an Array of Strings" do
       let(:ports) { %w[80 21 25] }
 
-      it "should format an Array of String ports" do
-        subject.ports = ports
+      before { subject.ports = ports }
 
+      it "should format an Array of String ports" do
         expect(subject.arguments).to eq(['-p', ports.join(',')])
       end
     end
@@ -34,9 +36,9 @@ describe Task do
     context "when given an Array of Integers" do
       let(:ports) { [80, 21, 25] }
 
-      it "should format an Array of Integer ports" do
-        subject.ports = ports
+      before { subject.ports = ports }
 
+      it "should format an Array of Integer ports" do
         expect(subject.arguments).to eq(['-p', ports.join(',')])
       end
     end
@@ -44,9 +46,9 @@ describe Task do
     context "when given an Array containing a Range" do
       let(:ports) { [80, 21..25] }
 
-      it "should format the Range" do
-        subject.ports = ports
+      before { subject.ports = ports }
 
+      it "should format the Range" do
         expect(subject.arguments).to eq([
           '-p', "#{ports[0]},#{ports[1].begin}-#{ports[1].end}"
         ])
@@ -54,22 +56,30 @@ describe Task do
     end
   end
 
-  describe "#sctp_init_ping" do
-    context "when given a Boolean" do
-      it "should emit the -PY option flag" do
-        subject.sctp_init_ping = true
+  shared_examples "optional port range" do |flag,method|
+    before { subject.send(:"#{method}=",ports) }
 
-        expect(subject.arguments).to eq(%w[-PY])
+    context "when given a Boolean" do
+      let(:ports) { true }
+
+      it "should emit the #{flag} option flag" do
+        expect(subject.arguments).to eq([flag])
+      end
+    end
+
+    context "when given an empty Array" do
+      let(:ports) { [] }
+
+      it "should emit the #{flag} option flag" do
+        expect(subject.arguments).to eq([flag])
       end
     end
 
     context "when given an Array of Integers" do
       let(:ports) { [80, 21, 25] }
 
-      it "should emit the -PY option flag with the Integer ports" do
-        subject.sctp_init_ping = ports
-
-        expect(subject.arguments).to eq(['-PY', ports.join(',')])
+      it "should emit the -PS option flag with the Integer ports" do
+        expect(subject.arguments).to eq(["#{flag}#{ports.join(',')}"])
       end
     end
 
@@ -77,12 +87,26 @@ describe Task do
       let(:ports) { [80, 21..25] }
 
       it "should emit the -PY option flag with the Integer ports" do
-        subject.sctp_init_ping = ports
-
         expect(subject.arguments).to eq([
-          '-PY', "#{ports[0]},#{ports[1].begin}-#{ports[1].end}"
+          "#{flag}#{ports[0]},#{ports[1].begin}-#{ports[1].end}"
         ])
       end
     end
+  end
+
+  describe "#syn_discovery" do
+    include_examples "optional port range", '-PS', :syn_discovery
+  end
+
+  describe "#ack_discovery" do
+    include_examples "optional port range", '-PA', :ack_discovery
+  end
+
+  describe "#udp_discovery" do
+    include_examples "optional port range", '-PU', :udp_discovery
+  end
+
+  describe "#sctp_init_ping" do
+    include_examples "optional port range", '-PY', :sctp_init_ping
   end
 end
