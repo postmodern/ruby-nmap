@@ -1,3 +1,18 @@
+### 0.9.3 / 2018-05-01
+
+* Added missing `Nmap::Task#defeat_icmp_ratelimit` for the
+  `--defeat-icmp-ratelimit` option.
+* Added missing `Nmap::Task#nsock_engine` for the `--nsock-engine` option.
+* Added the {Nmap::XML#prescripts} alias.
+* Added the {Nmap::XML#postscripts} alias.
+* Allow `Task#sctp_init_ping` to accept a port Range object.
+* Fixed a typo in the `Task#defeat_rst_ratelimit` name.
+* Fixed the option formatting of `Nmap::Task#syn_discovery`.
+* Fixed the option formatting of `Nmap::Task#ack_discovery`.
+* Fixed the option formatting of `Nmap::Task#udp_discovery`.
+* Fixed the option formatting of `Nmap::Task#sctp_init_ping`.
+* Fixed the option formatting of `Nmap::Task#ip_ping`.
+
 ### 0.9.2 / 2017-01-13
 
 * Fix file descriptor leak in {Nmap::XML#initialize} by using
