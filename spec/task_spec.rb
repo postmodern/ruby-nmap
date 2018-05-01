@@ -62,7 +62,7 @@ describe Task do
     context "when given a Boolean" do
       let(:ports) { true }
 
-      it "should emit the #{flag} option flag" do
+      it "should emit the '#{flag}' option flag" do
         expect(subject.arguments).to eq([flag])
       end
     end
@@ -70,7 +70,7 @@ describe Task do
     context "when given an empty Array" do
       let(:ports) { [] }
 
-      it "should emit the #{flag} option flag" do
+      it "should emit the '#{flag}' option flag" do
         expect(subject.arguments).to eq([flag])
       end
     end
@@ -78,7 +78,7 @@ describe Task do
     context "when given an Array of Integers" do
       let(:ports) { [80, 21, 25] }
 
-      it "should emit the -PS option flag with the Integer ports" do
+      it "should emit the '#{flag}' option flag with the Integer ports" do
         expect(subject.arguments).to eq(["#{flag}#{ports.join(',')}"])
       end
     end
@@ -86,7 +86,7 @@ describe Task do
     context "when given an Array containing a Range" do
       let(:ports) { [80, 21..25] }
 
-      it "should emit the -PY option flag with the Integer ports" do
+      it "should emit the '#{flag}' option flag with the Integer ports" do
         expect(subject.arguments).to eq([
           "#{flag}#{ports[0]},#{ports[1].begin}-#{ports[1].end}"
         ])
