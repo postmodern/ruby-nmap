@@ -50,7 +50,17 @@ module Nmap
     end
 
     #
-    # The reason the port was discovered.
+    # The ttl of the port.
+    #
+    # @return [Number]
+    #   The ttl of the port.
+    #
+    def ttl
+      @ttl ||= @node.at_xpath('state/@reason_ttl').inner_text.to_i
+    end
+
+    #
+    # The reason the port was discoverd.
     #
     # @return [String]
     #   How the port was discovered.
