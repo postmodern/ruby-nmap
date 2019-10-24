@@ -2,7 +2,7 @@ module Nmap
   #
   # Represents the Status of a {Host}.
   #
-  class Status < Struct.new(:state, :reason)
+  class Status < Struct.new(:state, :reason, :reason_ttl)
 
     #
     # Converts the status to a String.

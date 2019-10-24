@@ -60,6 +60,17 @@ module Nmap
     end
 
     #
+    # The reason TTL.
+    #
+    # @return [Integer]
+    #
+    # @since 0.10.0
+    #
+    def reason_ttl
+      @reason ||= @node.at_xpath('state/@reason_ttl').inner_text.to_i
+    end
+
+    #
     # The fingerprinted service of the port.
     #
     # @return [Service]

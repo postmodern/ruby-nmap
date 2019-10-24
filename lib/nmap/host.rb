@@ -67,7 +67,8 @@ module Nmap
 
         @status = Status.new(
           status['state'].to_sym,
-          status['reason']
+          status['reason'],
+          status['reason_ttl'].to_i
         )
       end
 

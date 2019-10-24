@@ -30,6 +30,12 @@ describe Port do
     end
   end
 
+  describe "#reason_ttl" do
+    it "should parse the reason_ttl attribute" do
+      expect(subject.reason_ttl).to be_kind_of(Integer)
+    end
+  end
+
   describe "#service" do
     subject { super().service }
 

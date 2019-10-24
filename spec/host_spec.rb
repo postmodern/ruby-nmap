@@ -67,6 +67,10 @@ describe Host do
                                 eq('echo-reply').or \
                                 eq('reset')
     end
+
+    it "should parse the reason_ttl" do
+      expect(subject.reason_ttl).to be_kind_of(Integer)
+    end
   end
 
   let(:ipv4) { '45.33.32.156' }
