@@ -164,6 +164,24 @@ describe XML do
     it { is_expected.to all(be_kind_of(ScanTask)) }
   end
 
+  describe "#task" do
+    context "when the task with the given name exists" do
+      it "must return the matching task" do
+        name = "Parallel DNS resolution of 1 host."
+        task = subject.task(name)
+
+        expect(task).to be_kind_of(ScanTask)
+        expect(task.name).to be == name
+      end
+    end
+
+    context "when no task with the given name can be found" do
+      it "must return nil" do
+        expect(subject.task('Foo')).to be(nil)
+      end
+    end
+  end
+
   describe "#prescript" do
     subject { super().prescript }
 

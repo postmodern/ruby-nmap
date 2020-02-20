@@ -242,6 +242,21 @@ module Nmap
     end
 
     #
+    # Finds the task with the given name.
+    #
+    # @param [String] name
+    #   The task name to search for.
+    #
+    # @return [ScanTask, nil]
+    #   The scan task with the matching name or `nil`.
+    #
+    # @since 0.10.0
+    #
+    def task(name)
+      each_task.find { |scan_task| scan_task.name == name }
+    end
+
+    #
     # The NSE scripts ran before the scan.
     #
     # @return [Prescript]
