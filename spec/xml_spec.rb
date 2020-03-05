@@ -2,7 +2,8 @@ require 'spec_helper'
 require 'nmap/xml'
 
 describe XML do
-  let(:path) { File.expand_path('spec/scan.xml') }
+  let(:file) { 'spec/fixtures/scan.xml' }
+  let(:path) { File.expand_path(file) }
 
   subject { described_class.new(path) }
 
@@ -72,7 +73,7 @@ describe XML do
     end
 
     it "should parse the scanner arguments" do
-      expect(subject.scanner.arguments).to eq('nmap -v -sS -sU -A -O --script ssh2-enum-algos,ssh-hostkey -oX spec/scan.xml scanme.nmap.org')
+      expect(subject.scanner.arguments).to eq("nmap -v -sS -sU -A -O --script ssh2-enum-algos,ssh-hostkey -oX #{file} scanme.nmap.org")
     end
 
     it "should parse the scanner start time" do

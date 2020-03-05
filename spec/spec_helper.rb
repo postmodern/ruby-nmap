@@ -8,7 +8,7 @@ include Nmap
 
 RSpec.configure do |spec|
   spec.before(:all) do
-    @xml       = XML.open('spec/scan.xml')
-    @local_xml = XML.open('spec/local_scan.xml')
+    @xml       = XML.open('spec/fixtures/scan.xml')
+    @local_xml = XML.open('spec/fixtures/local_scan.xml')
   end
 end
