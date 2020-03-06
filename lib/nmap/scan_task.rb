@@ -22,6 +22,9 @@ module Nmap
       super
     end
 
+    # @since 0.10.0
+    alias extra_info extrainfo
+
     #
     # The duration of the scan task.
     #
