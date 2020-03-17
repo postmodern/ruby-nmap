@@ -19,4 +19,4 @@ dependencies:
   rprogram: ~> 0.3
 
 development_dependencies:
-  bundler: ~> 1.0
+  bundler: ~> 2.0
