@@ -2,7 +2,7 @@
 
 require 'yaml'
 
-Gem::Specification.new do |gemspec|
+Gem::Specification.new do |gem|
   gemspec = YAML.load_file('gemspec.yml')
 
   gem.name    = gemspec.fetch('name')
