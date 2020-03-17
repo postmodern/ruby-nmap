@@ -1,3 +1,11 @@
+### 0.10.0 / 2020-03-17
+
+* Added `Nmap::Task#exclude_ports` for the `--exclude-ports` option.
+* Added {Nmap::Status#reason_ttl}.
+* Added {Nmap::Port#reason_ttl}.
+* Added {Nmap::XML#task}.
+* Alias {Nmap::ScanTask#extra_info} to {Nmap::ScanTask#extrainfo}.
+
 ### 0.9.3 / 2018-05-01
 
 * Added missing `Nmap::Task#defeat_icmp_ratelimit` for the
