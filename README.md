@@ -1,10 +1,11 @@
 # ruby-nmap
 
+[![CI](https://github.com/sophsec/ruby-nmap/actions/workflows/ruby.yml/badge.svg)](https://github.com/sophsec/ruby-nmap/actions/workflows/ruby.yml)
+
 * [Source](https://github.com/sophsec/ruby-nmap/)
 * [Issues](https://github.com/sophsec/ruby-nmap/issues)
 * [Documentation](http://rubydoc.info/gems/ruby-nmap/frames)
 * [Email](mailto:postmodern.mod3 at gmail.com)
-* [![Build Status](https://travis-ci.org/sophsec/ruby-nmap.svg)](https://travis-ci.org/sophsec/ruby-nmap)
 
 ## Description
 
