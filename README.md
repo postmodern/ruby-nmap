@@ -1,6 +1,7 @@
 # ruby-nmap
 
 [![CI](https://github.com/sophsec/ruby-nmap/actions/workflows/ruby.yml/badge.svg)](https://github.com/sophsec/ruby-nmap/actions/workflows/ruby.yml)
+[![Code Climate](https://codeclimate.com/github/sophsec/ruby-nmap.svg)](https://codeclimate.com/github/sophsec/ruby-nmap)
 
 * [Source](https://github.com/sophsec/ruby-nmap/)
 * [Issues](https://github.com/sophsec/ruby-nmap/issues)
