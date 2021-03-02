@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/sophsec/ruby-nmap/actions/workflows/ruby.yml/badge.svg)](https://github.com/sophsec/ruby-nmap/actions/workflows/ruby.yml)
 [![Code Climate](https://codeclimate.com/github/sophsec/ruby-nmap.svg)](https://codeclimate.com/github/sophsec/ruby-nmap)
+[![Gem Version](https://badge.fury.io/rb/ruby-nmap.svg)](https://badge.fury.io/rb/ruby-nmap)
 
 * [Source](https://github.com/sophsec/ruby-nmap/)
 * [Issues](https://github.com/sophsec/ruby-nmap/issues)
@@ -22,65 +23,73 @@ Allows automating nmap and parsing nmap XML files.
 
 Run Nmap from Ruby:
 
-    require 'nmap/program'
-    
-    Nmap::Program.scan do |nmap|
-      nmap.syn_scan = true
-      nmap.service_scan = true
-      nmap.os_fingerprint = true
-      nmap.xml = 'scan.xml'
-      nmap.verbose = true
+```ruby
+require 'nmap/program'
 
-      nmap.ports = [20,21,22,23,25,80,110,443,512,522,8080,1080]
-      nmap.targets = '192.168.1.*'
-    end
+Nmap::Program.scan do |nmap|
+    nmap.syn_scan = true
+    nmap.service_scan = true
+    nmap.os_fingerprint = true
+    nmap.xml = 'scan.xml'
+    nmap.verbose = true
+
+    nmap.ports = [20,21,22,23,25,80,110,443,512,522,8080,1080]
+    nmap.targets = '192.168.1.*'
+end
+```
 
 Run `sudo nmap` from Ruby:
 
-    require 'nmap/program'
+```ruby
+require 'nmap/program'
 
-    Nmap::Program.sudo_scan do |nmap|
-      nmap.syn_scan = true
-      # ...
-    end
+Nmap::Program.sudo_scan do |nmap|
+    nmap.syn_scan = true
+    # ...
+end
+```
 
 Parse Nmap XML scan files:
 
-    require 'nmap/xml'
+```ruby
+require 'nmap/xml'
 
-    Nmap::XML.new('scan.xml') do |xml|
-      xml.each_host do |host|
-        puts "[#{host.ip}]"
-    
-        host.each_port do |port|
-          puts "  #{port.number}/#{port.protocol}\t#{port.state}\t#{port.service}"
-        end
-      end
+Nmap::XML.new('scan.xml') do |xml|
+    xml.each_host do |host|
+    puts "[#{host.ip}]"
+
+    host.each_port do |port|
+        puts "  #{port.number}/#{port.protocol}\t#{port.state}\t#{port.service}"
     end
+    end
+end
+```
 
 Print NSE script output from an XML scan file:
 
-    require 'nmap/xml'
+```ruby
+require 'nmap/xml'
 
-    Nmap::XML.new('nse.xml') do |xml|
-      xml.each_host do |host|
-        puts "[#{host.ip}]"
+Nmap::XML.new('nse.xml') do |xml|
+    xml.each_host do |host|
+    puts "[#{host.ip}]"
 
-        host.scripts.each do |name,output|
-          output.each_line { |line| puts "  #{line}" }
-        end
-
-        host.each_port do |port|
-          puts "  [#{port.number}/#{port.protocol}]"
-
-          port.scripts.each do |name,output|
-            puts "    [#{name}]"
-
-            output.each_line { |line| puts "      #{line}" }
-          end
-        end
-      end
+    host.scripts.each do |name,output|
+        output.each_line { |line| puts "  #{line}" }
     end
+
+    host.each_port do |port|
+        puts "  [#{port.number}/#{port.protocol}]"
+
+        port.scripts.each do |name,output|
+        puts "    [#{name}]"
+
+        output.each_line { |line| puts "      #{line}" }
+        end
+    end
+    end
+end
+```
 
 ## Requirements
 
@@ -91,11 +100,13 @@ Print NSE script output from an XML scan file:
 
 ## Install
 
-    $ gem install ruby-nmap
+```plaintext
+$ gem install ruby-nmap
+```
 
 ## License
 
-Copyright (c) 2009-2020 Postmodern
+Copyright (c) 2009-2021 Postmodern
 
 See {file:LICENSE.txt} for license information.
 
