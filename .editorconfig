@@ -6,6 +6,7 @@ insert_final_newline = true
 tab_width = 8
 trim_trailing_whitespace = true
 
-[{Gemfile,Rakefile,*.rb,*.gemspec,*.yml}]
+[{Gemfile,Rakefile,*.rb,*.gemspec,*.yml,*.md}]
+charset = utf-8
 indent_style = space
 indent_size = 2
