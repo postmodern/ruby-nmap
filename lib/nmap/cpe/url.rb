@@ -1,7 +1,7 @@
 module Nmap
   module CPE
     #
-    # Represets a [Common Platform Enumeration (CPE)][CPE] URL.
+    # Represents a [Common Platform Enumeration (CPE)][CPE] URL.
     #
     # [CPE]: http://nmap.org/book/output-formats-cpe.html
     #

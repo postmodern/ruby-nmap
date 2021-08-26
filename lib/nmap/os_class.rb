@@ -9,7 +9,7 @@ module Nmap
     include CPE
 
     #
-    # Initializes the os class.
+    # Initializes the OS.
     #
     # @param [Nokogiri::XML::Node] node
     #   The node that contains the OS Class information.

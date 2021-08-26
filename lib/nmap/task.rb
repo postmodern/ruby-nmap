@@ -349,7 +349,7 @@ module Nmap
     private
 
     #
-    # Fomats a port list.
+    # Formats a port list.
     #
     # @param [Array<Integer,Range>] ports
     #   The port ranges.

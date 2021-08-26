@@ -276,13 +276,13 @@ module Nmap
     end
 
     #
-    # Parses the Tcp Sequence number analysis of the host.
+    # Parses the TCP Sequence number analysis of the host.
     #
     # @yield [sequence]
     #   If a block is given, it will be passed the resulting object
     #
     # @yieldparam [TcpSequence] sequence
-    #   Tcp Sequence number analysis.
+    #   TCP Sequence number analysis.
     #
     # @return [TcpSequence]
     #   The parsed object.
