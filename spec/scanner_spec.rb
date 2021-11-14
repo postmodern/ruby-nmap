@@ -6,7 +6,7 @@ describe Scanner do
     let(:name)    { 'nmap' }
     let(:version) { '6.01' }
     let(:args)    { 'nmap -v -sS -sU -A -O -oX spec/scan.xml scanme.nmap.org' }
-    let(:start_time) { Time.new('Sat Jul 20 23:55:27 2013') }
+    let(:start_time) { Time.parse('Sat Jul 20 23:55:27 2013') }
 
     subject do
       described_class.new(
