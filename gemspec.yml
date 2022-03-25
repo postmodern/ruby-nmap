@@ -7,7 +7,7 @@ description:
 license: MIT
 authors: Postmodern
 email: postmodern.mod3@gmail.com
-homepage: https://github.com/sophsec/ruby-nmap#readme
+homepage: https://github.com/postmodern/ruby-nmap#readme
 has_yard: true
 
 required_ruby_version: ">= 2.0.0"
