@@ -62,7 +62,7 @@ describe Task do
     context "when given a Boolean" do
       let(:ports) { true }
 
-      it "should emit the '#{flag}' option flag" do
+      it "should only emit the '#{flag}' option flag" do
         expect(subject.arguments).to eq([flag])
       end
     end
@@ -70,7 +70,7 @@ describe Task do
     context "when given an empty Array" do
       let(:ports) { [] }
 
-      it "should emit the '#{flag}' option flag" do
+      it "should only emit the '#{flag}' option flag" do
         expect(subject.arguments).to eq([flag])
       end
     end
