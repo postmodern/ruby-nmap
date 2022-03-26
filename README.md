@@ -7,7 +7,6 @@
 * [Source](https://github.com/postmodern/ruby-nmap/)
 * [Issues](https://github.com/postmodern/ruby-nmap/issues)
 * [Documentation](http://rubydoc.info/gems/ruby-nmap/frames)
-* [Email](mailto:postmodern.mod3 at gmail.com)
 
 ## Description
 
