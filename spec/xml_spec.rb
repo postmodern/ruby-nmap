@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'nmap/xml'
 
-describe XML do
+describe Nmap::XML do
   let(:file) { 'spec/fixtures/scan.xml' }
   let(:path) { File.expand_path(file) }
 
@@ -109,7 +109,7 @@ describe XML do
     subject { super().each_run_stat.first }
 
     it "should yield RunStat objects" do
-      expect(subject).to be_kind_of(RunStat)
+      expect(subject).to be_kind_of(Nmap::XML::RunStat)
     end
 
     it "should parse the end time" do
@@ -133,7 +133,7 @@ describe XML do
     subject { super().run_stats }
 
     it { is_expected.not_to be_empty }
-    it { is_expected.to all(be_kind_of(RunStat)) }
+    it { is_expected.to all(be_kind_of(Nmap::XML::RunStat)) }
   end
 
   describe "#each_task" do
@@ -161,7 +161,7 @@ describe XML do
     subject { super().tasks }
 
     it { is_expected.not_to be_empty }
-    it { is_expected.to all(be_kind_of(ScanTask)) }
+    it { is_expected.to all(be_kind_of(Nmap::XML::ScanTask)) }
   end
 
   describe "#task" do
@@ -170,7 +170,7 @@ describe XML do
         name = "Parallel DNS resolution of 1 host."
         task = subject.task(name)
 
-        expect(task).to be_kind_of(ScanTask)
+        expect(task).to be_kind_of(Nmap::XML::ScanTask)
         expect(task.name).to be == name
       end
     end
@@ -198,7 +198,7 @@ describe XML do
     subject { super().each_host.first }
 
     it "should yield Host objects" do
-      expect(subject).to be_kind_of(Host)
+      expect(subject).to be_kind_of(Nmap::XML::Host)
     end
   end
 
@@ -206,20 +206,20 @@ describe XML do
     subject { super().hosts }
 
     it { is_expected.not_to be_empty }
-    it { expect(subject).to all(be_kind_of(Host)) }
+    it { expect(subject).to all(be_kind_of(Nmap::XML::Host)) }
   end
 
   describe "#host" do
     subject { super().host }
 
-    it { expect(subject).to be_kind_of(Host) }
+    it { expect(subject).to be_kind_of(Nmap::XML::Host) }
   end
 
   describe "#down_host" do
     pending "need down hosts in scan.xml" do
       subject { super().down_host }
 
-      it { is_expected.to be_kind_of(Host) }
+      it { is_expected.to be_kind_of(Nmap::XML::Host) }
 
       it "should contain only up hosts" do
         expect(subject.status.state).to be(:down)
@@ -231,7 +231,7 @@ describe XML do
     subject { super().each_up_host.first }
 
     it "should yield Host objects" do
-      expect(subject).to be_kind_of(Host)
+      expect(subject).to be_kind_of(Nmap::XML::Host)
     end
 
     it "should be up" do
@@ -243,7 +243,7 @@ describe XML do
     subject { super().up_hosts }
 
     it { is_expected.not_to be_empty }
-    it { is_expected.to all(be_kind_of(Host)) }
+    it { is_expected.to all(be_kind_of(Nmap::XML::Host)) }
 
     it "should contain only up hosts" do
       expect(subject.all? { |host| host.status.state == :up }).to be_truthy
@@ -253,7 +253,7 @@ describe XML do
   describe "#up_host" do
     subject { super().up_host }
 
-    it { is_expected.to be_kind_of(Host) }
+    it { is_expected.to be_kind_of(Nmap::XML::Host) }
 
     it "should contain only up hosts" do
       expect(subject.status.state).to be(:up)

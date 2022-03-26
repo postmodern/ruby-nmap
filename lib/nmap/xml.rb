@@ -1,10 +1,10 @@
-require 'nmap/scanner'
-require 'nmap/scan_task'
-require 'nmap/scan'
-require 'nmap/host'
-require 'nmap/run_stat'
-require 'nmap/prescript'
-require 'nmap/postscript'
+require 'nmap/xml/scanner'
+require 'nmap/xml/scan_task'
+require 'nmap/xml/scan'
+require 'nmap/xml/host'
+require 'nmap/xml/run_stat'
+require 'nmap/xml/prescript'
+require 'nmap/xml/postscript'
 
 require 'nokogiri'
 
