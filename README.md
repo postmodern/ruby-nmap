@@ -96,7 +96,7 @@ end
 * [ruby] >= 2.0.0
 * [nmap] >= 5.00
 * [nokogiri] ~> 1.3
-* [rprogram] ~> 0.3
+* [command_mapper] ~> 0.2, >= 0.2.1
 
 ## Install
 
@@ -111,4 +111,4 @@ See {file:LICENSE.txt} for license information.
 [nmap]: http://www.insecure.org/
 [ruby]: https://www.ruby-lang.org/
 [nokogiri]: http://nokogiri.rubyforge.org/
-[rprogram]: https://github.com/postmodern/rprogram#readme
+[command_mapper]: https://github.com/postmodern/command_mapper.rb#readme
