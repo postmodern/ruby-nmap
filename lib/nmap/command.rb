@@ -72,7 +72,7 @@ module Nmap
   #
   # * `-sC` - `nmap.default_script`
   # * `--script` - `nmap.script`
-  # * `--script-args` - `nmap.script_params`
+  # * `--script-args` - `nmap.script_args`
   # * `--script-trace` - `nmap.script_trace`
   # * `--script-updatedb` - `nmap.update_scriptdb`
   #
@@ -466,8 +466,6 @@ module Nmap
       option '-sC', name: :default_script
       option '--script', value: {type: List.new}
       option '--script-args', value: {type: KeyValueList.new}
-      alias script_params script_args
-      alias script_params= script_args=
       option '--script-trace'
       option '--script-updatedb', name: :update_scriptdb
 
