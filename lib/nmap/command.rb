@@ -465,7 +465,7 @@ module Nmap
       # SCRIPT SCAN:
       option '-sC', name: :default_script
       option '--script', value: {type: List.new}
-      option '--script-args', value: {type: List.new}
+      option '--script-args', value: {type: KeyValueList.new}
       alias script_params script_args
       alias script_params= script_args=
       option '--script-trace'
