@@ -100,6 +100,24 @@ end
 
 ## Install
 
+* Debian / Ubuntu:
+
+```shell
+$ sudo apt install nmap
+```
+
+* Fedora / RedHat:
+
+```shell
+$ sudo dnf install nmap
+```
+
+* Homebrew:
+
+```shell
+$ brew install nmap
+```
+
 ```shell
 $ gem install ruby-nmap
 ```
