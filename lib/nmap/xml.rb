@@ -16,14 +16,24 @@ module Nmap
 
     include Enumerable
 
+    # The parsed XML document.
+    #
+    # @api private
+    attr_reader :doc
+
     # Path of the Nmap XML scan file
+    #
+    # @return [String, nil]
     attr_reader :path
 
     #
     # Creates a new XML object.
     #
-    # @param [Nokogiri::XML::Document, IO, String] document
+    # @param [Nokogiri::XML::Document] doc
     #   The path to the Nmap XML scan file or Nokogiri::XML::Document.
+    #
+    # @param [String, nil] path
+    #   The optional path the XML was loaded from.
     #
     # @yield [xml]
     #   If a block is given, it will be passed the new XML object.
@@ -31,16 +41,9 @@ module Nmap
     # @yieldparam [XML] xml
     #   The newly created XML object.
     #
-    def initialize(document)
-      case document
-      when Nokogiri::XML::Document
-        @doc = document
-      when IO, StringIO
-        @doc = Nokogiri::XML(document)
-      else
-        @path = File.expand_path(document)
-        @doc  = File.open(@path) { |file| Nokogiri::XML(file) }
-      end
+    def initialize(doc, path: nil)
+      @doc  = doc
+      @path = File.expand_path(path) if path
 
       yield self if block_given?
     end
@@ -78,7 +81,10 @@ module Nmap
     # @since 0.7.0
     #
     def self.open(path,&block)
-      new(path,&block)
+      path = File.expand_path(path)
+      doc  = Nokogiri::XML(File.open(path))
+
+      new(doc, path: path, &block)
     end
 
     #
@@ -428,20 +434,12 @@ module Nmap
     # Converts the XML parser to a String.
     #
     # @return [String]
-    #   The path of the XML scan file.
+    #   The path of the XML file or the raw XML.
     #
     def to_s
-      @path.to_s
-    end
-
-    #
-    # Inspects the XML file.
-    #
-    # @return [String]
-    #   The inspected XML file.
-    #
-    def inspect
-      "#<#{self.class}: #{self}>"
+      if @path then @path.to_s
+      else          @doc.to_s
+      end
     end
 
   end

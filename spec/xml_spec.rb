@@ -4,34 +4,17 @@ require 'nmap/xml'
 describe Nmap::XML do
   let(:file) { 'spec/fixtures/scan.xml' }
   let(:path) { File.expand_path(file) }
+  let(:doc)  { Nokogiri::XML(File.open(path)) }
 
-  subject { described_class.new(path) }
+  subject { described_class.new(doc) }
 
   describe "#initialize" do
-    context "when given a Nokogiri::XML::Document" do
-      let(:document) { Nokogiri::XML(File.read(path)) }
-
-      it "should use the document" do
-        expect(described_class.new(document).version).to eq(subject.version)
-      end
-    end
-
-    context "when given an IO object" do
-      let(:io) { File.new(path) }
-
-      it "should parse the IO object" do
-        expect(described_class.new(io).version).to eq(subject.version)
-      end
-    end
-
-    context "when given a String" do
-      it "should parse the file at the path" do
-        expect(described_class.new(path).version).to eq(subject.version)
-      end
+    it "must set #doc" do
+      expect(described_class.new(doc).doc).to be(doc)
     end
   end
 
-  describe "parse" do
+  describe ".parse" do
     let(:xml) { File.read(path) }
 
     subject { described_class.parse(xml) }
@@ -45,7 +28,7 @@ describe Nmap::XML do
     end
   end
 
-  describe "open" do
+  describe ".open" do
     subject { described_class.open(path) }
 
     it "should return an XML object" do
@@ -267,14 +250,18 @@ describe Nmap::XML do
   end
 
   describe "#to_s" do
-    it "should convert to a String" do
-      expect(subject.to_s).to eq(path)
-    end
-  end
+    context "when #path is set" do
+      subject { described_class.new(doc, path: path) }
 
-  describe "#inspect" do
-    it "should include the class and path" do
-      expect(subject.inspect).to eq("#<#{described_class}: #{path}>")
+      it "must return #path" do
+        expect(subject.to_s).to eq(path)
+      end
+    end
+
+    context "when #path is not set" do
+      it "must return the raw XML" do
+        expect(subject.to_s).to eq(doc.to_s)
+      end
     end
   end
 end
