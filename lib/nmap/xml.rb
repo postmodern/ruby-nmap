@@ -64,15 +64,6 @@ module Nmap
     end
 
     #
-    # @deprecated Use {parse} instead.
-    #
-    # @since 0.7.0
-    #
-    def self.load(text,&block)
-      parse(text,&block)
-    end
-
-    #
     # Creates a new XML object from the file.
     #
     # @param [String] path
