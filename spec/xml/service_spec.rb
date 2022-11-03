@@ -79,6 +79,14 @@ describe Nmap::XML::Service do
     end
   end
 
+  describe "#fingerprint" do
+    let(:port) { @xml.host.open_ports.find { |port| port.number == 22 } }
+
+    it "should parse the servicefp attribute" do
+      expect(subject.fingerprint).to eq("SF-Port22-TCP:V=6.45%I=7%D=4/17%Time=55316FE1%P=x86_64-redhat-linux-gnu%r(NULL,29,\"SSH-2\\.0-OpenSSH_6\\.6\\.1p1\\x20Ubuntu-2ubuntu2\\r\\n\");")
+    end
+  end
+
   describe "#confidence" do
     it "should parse the conf attribute" do
       expect(subject.confidence).to be_between(0,10)
