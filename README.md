@@ -106,7 +106,7 @@ $ gem install ruby-nmap
 
 ## License
 
-Copyright (c) 2009-2021 Postmodern
+Copyright (c) 2009-2022 Postmodern
 
 See {file:LICENSE.txt} for license information.
 
