@@ -5,6 +5,8 @@ module Nmap
     #
     # Mixin that adds methods for parsing `<script>` XML elements.
     #
+    # @since 1.0.0
+    #
     module Scripts
       #
       # The output from the NSE script's output and structured data.
