@@ -198,6 +198,48 @@ describe Nmap::XML do
     it { expect(subject).to be_kind_of(Nmap::XML::Host) }
   end
 
+  describe "#each_down_host" do
+    let(:file) { 'spec/fixtures/down_host_scan.xml' }
+
+    context "when given a block" do
+      it "must yield Host objects" do
+        expect { |b|
+          subject.each_down_host(&b)
+        }.to yield_successive_args(Nmap::XML::Host)
+      end
+
+      it "status must be down" do
+        yielded_hosts = []
+
+        subject.each_down_host do |host|
+          yielded_hosts << host
+        end
+
+        expect(yielded_hosts).to_not be_empty
+        expect(yielded_hosts.map { |host| host.status.state }).to all(eq(:down))
+      end
+    end
+
+    context "when not given a block" do
+      it "must return an Enumerator for the method" do
+        expect(subject.each_down_host).to be_kind_of(Enumerator)
+      end
+    end
+  end
+
+  describe "#down_hosts" do
+    let(:file) { 'spec/fixtures/down_host_scan.xml' }
+
+    subject { super().down_hosts }
+
+    it { expect(subject).to_not be_empty }
+    it { expect(subject).to all(be_kind_of(Nmap::XML::Host)) }
+
+    it "should contain only up hosts" do
+      expect(subject.map { |host| host.status.state }).to all(eq(:down))
+    end
+  end
+
   describe "#down_host" do
     pending "need down hosts in scan.xml" do
       subject { super().down_host }

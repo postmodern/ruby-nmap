@@ -32,3 +32,8 @@ file 'spec/fixtures/scan.xml' do |t|
   puts ">>> Scanning scanme.nmap.org ..."
   sh "sudo nmap -v -sS -sU -A -O --script ssh2-enum-algos,ssh-hostkey -oX #{t.name} scanme.nmap.org"
 end
+
+file 'spec/fixtures/down_host_scan.xml' do |t|
+  puts ">>> Scanning 225.0.0.1 ..."
+  sh "sudo nmap -v -sS -oX #{t.name} 225.0.0.1"
+end
