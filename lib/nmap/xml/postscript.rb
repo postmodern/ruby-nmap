@@ -11,6 +11,12 @@ module Nmap
 
       include Scripts
 
+      #
+      # Initializes the Postscript object.
+      #
+      # @param [Nokogiri::XML::Node] node
+      #   The XML node that contains the host information.
+      #
       def initialize(node)
         @node = node
       end
