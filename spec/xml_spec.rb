@@ -267,11 +267,11 @@ describe Nmap::XML do
   describe "#up_hosts" do
     subject { super().up_hosts }
 
-    it { is_expected.not_to be_empty }
-    it { is_expected.to all(be_kind_of(Nmap::XML::Host)) }
+    it { expect(subject).not_to be_empty }
+    it { expect(subject).to all(be_kind_of(Nmap::XML::Host)) }
 
     it "should contain only up hosts" do
-      expect(subject.all? { |host| host.status.state == :up }).to be_truthy
+      expect(subject.map { |host| host.status.state }).to all(eq(:up))
     end
   end
 
