@@ -12,6 +12,7 @@ group :development do
   gem 'json'
   gem 'simplecov',      '~> 0.7'
   gem 'kramdown'
+  gem 'redcarpet',      platform: :mri
   gem 'yard',           '~> 0.9'
   gem 'yard-spellcheck', require: false
 end
