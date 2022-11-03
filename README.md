@@ -17,7 +17,7 @@ Allows automating nmap and parsing nmap XML files.
 
 * Provides a Ruby interface for running nmap.
 * Provides a Parser for enumerating nmap XML scan files.
-* Supports the full Nmap XML DTD.
+* Supports the full [Nmap XML DTD][nmap-dtd].
 
 ## Examples
 
@@ -114,3 +114,4 @@ See {file:LICENSE.txt} for license information.
 [ruby]: https://www.ruby-lang.org/
 [nokogiri]: http://nokogiri.rubyforge.org/
 [command_mapper]: https://github.com/postmodern/command_mapper.rb#readme
+[nmap-dtd]: https://nmap.org/book/nmap-dtd.html
