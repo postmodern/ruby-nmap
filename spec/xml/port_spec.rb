@@ -45,7 +45,6 @@ describe Nmap::XML::Port do
   end
 
   include_examples "#scripts"
-  include_examples "#script_data"
 
   describe "#inspect" do
     it "should include the number" do
