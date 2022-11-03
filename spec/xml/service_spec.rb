@@ -16,8 +16,18 @@ describe Nmap::XML::Service do
   end
 
   describe "#ssl?" do
-    it "should check the tunnel attribute" do
-      skip "need a service that uses SSL"
+    context "when the tunnel attribute equals 'ssl'" do
+      let(:port) { @xml.host.open_ports.find { |port| port.number == 31337 } }
+
+      it "must return true" do
+        expect(subject.ssl?).to be(true)
+      end
+    end
+
+    context "otherwise" do
+      it "must return false" do
+        expect(subject.ssl?).to be(false)
+      end
     end
   end
 
