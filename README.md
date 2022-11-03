@@ -81,10 +81,10 @@ Nmap::XML.new('nse.xml') do |xml|
     host.each_port do |port|
       puts "  [#{port.number}/#{port.protocol}]"
 
-      port.scripts.each do |name,output|
-        puts "    [#{name}]"
+      port.scripts.each do |id,script|
+        puts "    [#{id}]"
 
-        output.each_line { |line| puts "      #{line}" }
+        script.output.each_line { |line| puts "      #{line}" }
       end
     end
   end
