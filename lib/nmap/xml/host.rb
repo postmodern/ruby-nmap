@@ -300,15 +300,6 @@ module Nmap
       end
 
       #
-      # @deprecated Use {#tcp_sequence} instead.
-      #
-      def tcpsequence(&block)
-        warn "DEPRECATION: use #{self.class}#tcp_sequence instead"
-
-        tcp_sequence(&block)
-      end
-
-      #
       # Parses the IPID sequence number analysis of the host.
       #
       # @yield [ipidsequence]
@@ -330,15 +321,6 @@ module Nmap
       end
 
       #
-      # @deprecated Use {#ip_id_sequence} instead.
-      #
-      def ipidsequence(&block)
-        warn "DEPRECATION: use #{self.class}#ip_id_sequence instead"
-
-        ip_id_sequence(&block)
-      end
-
-      #
       # Parses the TCP Timestamp sequence number analysis of the host.
       #
       # @yield [tcptssequence]
@@ -357,15 +339,6 @@ module Nmap
 
         yield @tcp_ts_sequence if (@tcp_ts_sequence && block_given?)
         return @tcp_ts_sequence
-      end
-
-      #
-      # @deprecated Use {#tcp_ts_sequence} instead.
-      #
-      def tcptssequence(&block)
-        warn "DEPRECATION: use #{self.class}#tcp_ts_sequence instead"
-
-        tcp_ts_sequence(&block)
       end
 
       #
@@ -507,24 +480,6 @@ module Nmap
       #
       def each(&block)
         each_open_port(&block)
-      end
-
-      #
-      # The output from the NSE scripts ran against the host.
-      #
-      # @return [Hash{String => String}]
-      #   The NSE script names and output.
-      #
-      # @since 0.3.0
-      #
-      # @deprecated Use {#host_script} instead.
-      #
-      def scripts
-        if host_script
-          host_script.scripts
-        else
-          {}
-        end
       end
 
       #
