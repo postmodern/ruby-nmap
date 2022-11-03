@@ -24,9 +24,9 @@ Allows automating nmap and parsing nmap XML files.
 Run Nmap from Ruby:
 
 ```ruby
-require 'nmap/program'
+require 'nmap/command'
 
-Nmap::Program.scan do |nmap|
+Nmap::Command.run do |nmap|
   nmap.syn_scan = true
   nmap.service_scan = true
   nmap.os_fingerprint = true
@@ -41,9 +41,9 @@ end
 Run `sudo nmap` from Ruby:
 
 ```ruby
-require 'nmap/program'
+require 'nmap/command'
 
-Nmap::Program.sudo_scan do |nmap|
+Nmap::Command.sudo do |nmap|
   nmap.syn_scan = true
   # ...
 end
@@ -54,7 +54,7 @@ Parse Nmap XML scan files:
 ```ruby
 require 'nmap/xml'
 
-Nmap::XML.new('scan.xml') do |xml|
+Nmap::XML.open('scan.xml') do |xml|
   xml.each_host do |host|
     puts "[#{host.ip}]"
 
@@ -70,7 +70,7 @@ Print NSE script output from an XML scan file:
 ```ruby
 require 'nmap/xml'
 
-Nmap::XML.new('nse.xml') do |xml|
+Nmap::XML.open('nse.xml') do |xml|
   xml.each_host do |host|
     puts "[#{host.ip}]"
 
