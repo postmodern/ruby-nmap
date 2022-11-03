@@ -100,7 +100,9 @@ end
 
 ## Install
 
-    $ gem install ruby-nmap
+```shell
+$ gem install ruby-nmap
+```
 
 ## License
 
