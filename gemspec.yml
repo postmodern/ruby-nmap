@@ -1,7 +1,7 @@
 name: ruby-nmap
-summary: A Ruby interface to nmap.
+summary: A Ruby API to nmap.
 description:
-  A Ruby interface to nmap, the exploration tool and security / port
+  A Ruby API to nmap, the exploration tool and security / port
   scanner. Allows automating nmap and parsing nmap XML files.
 
 license: MIT
