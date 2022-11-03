@@ -99,6 +99,14 @@ describe Nmap::XML::Service do
         expect(subject.to_s).to be == "#{subject.product} #{subject.version}"
       end
     end
+
+    context "when #product and #version are nil" do
+      let(:port) { @xml.host.ports.find { |port| port.number == 68 } }
+
+      it "must return #name" do
+        expect(subject.to_s).to eq(subject.name)
+      end
+    end
   end
 
   it_should_behave_like "CPE"
