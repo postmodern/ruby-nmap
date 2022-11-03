@@ -18,6 +18,8 @@ module Nmap
 
     # The parsed XML document.
     #
+    # @return [Nokogiri::XML]
+    #
     # @api private
     attr_reader :doc
 
