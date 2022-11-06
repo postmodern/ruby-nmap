@@ -118,6 +118,7 @@ module Nmap
   # * `-e` - `nmap.interface`
   # * `-g` - `nmap.source_port`
   # * `--proxies` - `nmap.proxies`
+  # * `--data` - `nmap.data`
   # * `--data-string` - `nmap.data_string`
   # * `--data-length` - `nmap.data_length`
   # * `--ip-options` - `nmap.ip_options`
@@ -514,6 +515,7 @@ module Nmap
       option '-e', name: :interface, value: true
       option '-g', name: :source_port, value: {type: Num.new(range: 0..65535)}
       option '--proxies', value: {type: List.new}
+      option '--data', value: true
       option '--data-string', value: true
       option '--data-length', value: {type: Num.new}
       option '--ip-options', value: true
