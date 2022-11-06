@@ -510,7 +510,7 @@ module Nmap
       option '-D', name: :decoys, value: {type: List.new}
       option '-S', name: :spoof, value: true
       option '-e', name: :interface, value: true
-      option '-g', name: :source_port, value: {type: Num.new}
+      option '-g', name: :source_port, value: {type: Num.new(range: 0..65535)}
       option '--data-length', value: {type: Num.new}
       option '--ip-options', value: true
       option '--ttl', value: {type: Num.new}
