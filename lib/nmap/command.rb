@@ -165,7 +165,7 @@ module Nmap
   # * `--privileged` - `nmap.privileged`
   # * `--unprivileged` - `nmap.unprivileged`
   # * `--release-memory` - `nmap.release_memory`
-  # * `--interactive` - `nmap.interactive`
+  # * `--noninteractive` - `nmap.non_interactive`
   # * `-V` - `nmap.version`
   # * `-h` - `nmap.help`
   #
@@ -557,7 +557,7 @@ module Nmap
       option '--privileged'
       option '--unprivleged'
       option '--release-memory'
-      option '--interactive'
+      option '--noninteractive', name: :non_interactive
       option '-V', name: :version
       option '-h', name: :help
 
