@@ -28,6 +28,7 @@ module Nmap
   # * `--traceroute` - `nmap.traceroute`
   # * `-n` - `nmap.disable_dns`
   # * `-R` - `nmap.enable_dns`
+  # * `--resolve-all` - `nmap.resolve_all`
   # * `--systems-dns` - `nmap.systems_dns`
   # * `--dns-servers` - `nmap.dns_servers`
   #
@@ -425,6 +426,7 @@ module Nmap
       option '--traceroute', name: :traceroute
       option '-n', name: :disable_dns
       option '-R', name: :enable_dns
+      option '--resolve-all'
       option '--dns-servers', value: {type: List.new}
       option '--system-dns'
 
