@@ -27,9 +27,8 @@ Run Nmap from Ruby:
 require 'nmap/command'
 
 Nmap::Command.run do |nmap|
-  nmap.syn_scan       = true
+  nmap.connect_scan   = true
   nmap.service_scan   = true
-  nmap.os_fingerprint = true
   nmap.xml            = 'scan.xml'
   nmap.verbose        = true
 
@@ -44,7 +43,8 @@ Run `sudo nmap` from Ruby:
 require 'nmap/command'
 
 Nmap::Command.sudo do |nmap|
-  nmap.syn_scan = true
+  nmap.syn_scan       = true
+  nmap.os_fingerprint = true
   # ...
 end
 ```
