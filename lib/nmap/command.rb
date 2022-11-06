@@ -117,6 +117,7 @@ module Nmap
   # * `-S` - `nmap.spoof`
   # * `-e` - `nmap.interface`
   # * `-g` - `nmap.source_port`
+  # * `--proxies` - `nmap.proxies`
   # * `--data-length` - `nmap.data_length`
   # * `--ip-options` - `nmap.ip_options`
   # * `--ttl` - `nmap.ttl`
@@ -511,6 +512,7 @@ module Nmap
       option '-S', name: :spoof, value: true
       option '-e', name: :interface, value: true
       option '-g', name: :source_port, value: {type: Num.new(range: 0..65535)}
+      option '--proxies', value: {type: List.new}
       option '--data-length', value: {type: Num.new}
       option '--ip-options', value: true
       option '--ttl', value: {type: Num.new}
