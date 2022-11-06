@@ -394,10 +394,10 @@ module Nmap
 
     command 'nmap' do
       # TARGET SPECIFICATIONS:
-      option '-iL', name: :target_file
-      option '-iR', name: :random_targets
+      option '-iL', name: :target_file, value: {type: InputFile.new}
+      option '-iR', name: :random_targets, value: {type: Num.new}
       option '--exclude', name: :exclude, value: {type: List.new}
-      option '--excludefile', name: :exclude_file
+      option '--excludefile', name: :exclude_file, value: {type: InputFile.new}
 
       # HOST DISCOVERY:
       option '-sL', name: :list
@@ -439,24 +439,24 @@ module Nmap
       option '-sA', name: :ack_scan
       option '-sW', name: :window_scan
       option '-sM', name: :maimon_scan
-      option '--scanflags', name: :tcp_scan_flags
+      option '--scanflags', name: :tcp_scan_flags, value: true
       option '-sZ', name: :sctp_cookie_echo_scan
-      option '-sI', name: :idle_scan
+      option '-sI', name: :idle_scan, value: true
       option '-sO', name: :ip_scan
-      option '-b', name: :ftp_bounce_scan
+      option '-b', name: :ftp_bounce_scan, value: true
 
       # PORT SPECIFICATION AND SCAN ORDER:
       option '-p', name: :ports, value: {type: PortRangeList.new}
       option '--exclude-ports', value: {type: PortRangeList.new}
       option '-F', name: :fast
       option '-r', name: :consecutively
-      option '--top-ports'
-      option '--port-ratio'
+      option '--top-ports', value: {type: Num.new}
+      option '--port-ratio', value: {type: Dec.new(range: 0.0..1.0)}
 
       # SERVICE/VERSION DETECTION:
       option '-sV', name: :service_scan
       option '--allports', name: :all_ports
-      option '--version-intensity'
+      option '--version-intensity', value: {type: Num.new(range: 0..9)}
       option '--version-light'
       option '--version-all'
       option '--version-trace'
@@ -476,22 +476,23 @@ module Nmap
       option '--max-os-tries', name: :max_os_tries
 
       # TIMING AND PERFORMANCE:
-      option '--min-hostgroup', name: :min_host_group
-      option '--max-hostgroup', name: :max_host_group
-      option '--min-parallelism'
-      option '--max-parallelism'
-      option '--min-rtt-timeout'
-      option '--max-rtt-timeout'
-      option '--max-retries'
-      option '--host-timeout'
-      option '--scan-delay'
-      option '--max-scan-delay'
-      option '--min-rate'
-      option '--max-rate'
+      option '--min-hostgroup', name: :min_host_group, value: {type: Num.new}
+      option '--max-hostgroup', name: :max_host_group, value: {type: Num.new}
+      option '--min-parallelism', value: {type: Num.new}
+      option '--max-parallelism', value: {type: Num.new}
+      option '--min-rtt-timeout', value: true
+      option '--max-rtt-timeout', value: true
+      option '--max-retries', value: {type: Num.new}
+      option '--host-timeout', value: true
+      option '--scan-delay', value: true
+      option '--max-scan-delay', value: true
+      option '--min-rate', value: {type: Num.new}
+      option '--max-rate', value: {type: Num.new}
       option '--defeat-rst-ratelimit'
       option '--defeat-icmp-ratelimit'
-      option '--nsock-engine'
-      option '-T', name: :timing_template
+      option '--nsock-engine', value: {type: Enum[:iocp, :epoll, :kqueue, :poll, :select]}
+      option '-T', name: :timing_template,
+                   value: {type: Enum[:paranoid, :sneaky, :polite, :normal, :aggressive, :insane]}
       option '-T0', name: :paranoid_timing
       option '-T1', name: :sneaky_timing
       option '-T2', name: :polite_timing
@@ -503,30 +504,32 @@ module Nmap
       option '-f', name: :packet_fragments
       option '--mtu'
       option '-D', name: :decoys, value: {type: List.new}
-      option '-S', name: :spoof
-      option '-e', name: :interface
-      option '-g', name: :source_port
-      option '--data-length'
-      option '--ip-options'
-      option '--ttl'
+      option '-S', name: :spoof, value: true
+      option '-e', name: :interface, value: true
+      option '-g', name: :source_port, value: {type: Num.new}
+      option '--data-length', value: {type: Num.new}
+      option '--ip-options', value: true
+      option '--ttl', value: {type: Num.new}
       option '--randomize-hosts'
-      option '--spoof-mac'
+      option '--spoof-mac', value: true
       option '--badsum', name: :bad_checksum
       option '--adler32', name: :sctp_adler32
 
       # OUTPUT:
-      option '-oN', name: :save
-      option '-oX', name: :xml
-      option '-oS', name: :skiddie
-      option '-oG', name: :grepable
-      option '-oA', name: :output_all
+      option '-oN', name: :save, value: true
+      option '-oX', name: :xml, value: true
+      option '-oS', name: :skiddie, value: true
+      option '-oG', name: :grepable, value: true
+      option '-oA', name: :output_all, value: true
 
       # Verbosity and Debugging:
       option '-v', name: :verbose
       option '-v0', name: :quiet
-      option '-d', name: :debug
+      option '-d', name: :debug,
+                   value_in_flag: true,
+                   value: {type: Num.new, required: false}
       option '--reason', name: :show_reason
-      option '--stats-every'
+      option '--stats-every', value: true
       option '--packet-trace', name: :show_packets
       option '--open', name: :show_open_ports
       option '--iflist', name: :show_interfaces
@@ -534,17 +537,17 @@ module Nmap
 
       # Miscellaneous output:
       option '--append-output', name: :append
-      option '--resume'
-      option '--stylesheet'
+      option '--resume', value: true
+      option '--stylesheet', value: true
       option '--webxml', name: :nmap_stylesheet
       option '--no-stylesheet', name: :disable_stylesheet
 
       # MISC:
       option '-6', name: :ipv6
       option '-A', name: :all
-      option '--datadir', name: :nmap_datadir
-      option '--servicedb'
-      option '--versiondb'
+      option '--datadir', name: :nmap_datadir, value: {type: InputDir.new}
+      option '--servicedb', value: {type: InputFile.new}
+      option '--versiondb', value: {type: InputFile.new}
       option '--send-eth', name: :raw_ethernet
       option '--send-ip', name: :raw_ip
       option '--privileged'
