@@ -96,7 +96,7 @@ end
 * [ruby] >= 2.0.0
 * [nmap] >= 5.00
 * [nokogiri] ~> 1.3
-* [command_mapper] ~> 0.2, >= 0.2.1
+* [command_mapper] ~> 0.3
 
 ## Install
 
