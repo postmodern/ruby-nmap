@@ -440,6 +440,41 @@ module Nmap
 
     end
 
+    #
+    # @api private
+    #
+    class HexString < CommandMapper::Types::Str
+
+      REGEXP = /\A(?:(?:0x)?[0-9A-F]+|(?:\\x[0-9A-F]{2})+)\z/
+
+      #
+      # Validates a hex string value.
+      #
+      # @param [String, #to_s] value
+      #   The hex string value to validate.
+      #
+      # @return [true, (false, String)]
+      #   Returns true if the value is considered valid, or false and a
+      #   validation message if the value is not valid.
+      #
+      def validate(value)
+        valid, message = super(value)
+
+        unless valid
+          return [valid, message]
+        end
+
+        value = value.to_s
+
+        unless value =~ REGEXP
+          return [false, "must be of the format 0xAABBCCDDEEFF..., AABBCCDDEEFF..., or \\xAA\\xBB\\xCC\\xDD\\xEE\\xFF..."]
+        end
+
+        return true
+      end
+
+    end
+
     command 'nmap' do
       # TARGET SPECIFICATIONS:
       option '-iL', name: :target_file, value: {type: InputFile.new}
@@ -562,7 +597,7 @@ module Nmap
       option '-e', name: :interface, value: true
       option '-g', name: :source_port, value: {type: Num.new(range: 0..65535)}
       option '--proxies', value: {type: List.new}
-      option '--data', value: true
+      option '--data', value: {type: HexString.new}
       option '--data-string', value: true
       option '--data-length', value: {type: Num.new}
       option '--ip-options', value: true

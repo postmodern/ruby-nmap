@@ -458,4 +458,64 @@ describe Nmap::Command do
       end
     end
   end
+
+  describe described_class::HexString do
+    describe "#validate" do
+      context "when given nil" do
+        let(:value) { nil }
+
+        it "must return [false, \"cannot be nil\"]" do
+          expect(subject.validate(value)).to eq(
+            [false, "cannot be nil"]
+          )
+        end
+      end
+
+      context "when given a String" do
+        context "but it's empty" do
+          let(:value) { '' }
+
+          it "must return [false, \"does not allow an empty value\"]" do
+            expect(subject.validate(value)).to eq(
+              [false, "does not allow an empty value"]
+            )
+          end
+        end
+
+        context "and it's of the format 0xAABBCCDDEEFF" do
+          let(:value) { "0xAABBCCDDEEFF" }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
+        end
+
+        context "and it's of the format AABBCCDDEEFF" do
+          let(:value) { "AABBCCDDEEFF" }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
+        end
+
+        context "and it's of the format \\xAA\\xBB\\xCC\\xDD\\xEE\\xFF" do
+          let(:value) { "\\xAA\\xBB\\xCC\\xDD\\xEE\\xFF" }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
+        end
+
+        context "but it contains non-hex characters" do
+          let(:value) { "abcxyz123" }
+
+          it "must return [false, \"must be of the format 0xAABBCCDDEEFF..., AABBCCDDEEFF..., or \\\\xAA\\\\xBB\\\\xCC\\\\xDD\\\\xEE\\\\xFF...\"]" do
+            expect(subject.validate(value)).to eq(
+              [false,  "must be of the format 0xAABBCCDDEEFF..., AABBCCDDEEFF..., or \\xAA\\xBB\\xCC\\xDD\\xEE\\xFF..."]
+            )
+          end
+        end
+      end
+    end
+  end
 end
