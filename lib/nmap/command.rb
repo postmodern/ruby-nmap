@@ -426,7 +426,7 @@ module Nmap
           value = value.to_s
 
           unless value =~ REGEXP
-            return [false, "must be a number and end with 'h', 'm', 's', or 'ms'"]
+            return [false, "must be a number and end with 'ms', 's', 'm', or 'h'"]
           end
 
           return true

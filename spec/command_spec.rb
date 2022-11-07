@@ -449,9 +449,9 @@ describe Nmap::Command do
         context "when given a number that ends with an unrecognized unit" do
           let(:value) { "10x" }
 
-          it "must return [false, \"must be a number and end with 'h', 'm', 's', or 'ms'\"]" do
+          it "must return [false, \"must be a number and end with 'ms', 's', 'm', or 'h'\"]" do
             expect(subject.validate(value)).to eq(
-              [false, "must be a number and end with 'h', 'm', 's', or 'ms'"]
+              [false, "must be a number and end with 'ms', 's', 'm', or 'h'"]
             )
           end
         end
