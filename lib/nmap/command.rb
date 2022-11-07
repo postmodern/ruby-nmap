@@ -401,6 +401,9 @@ module Nmap
     #
     ProtocolList = PortRangeList
 
+    #
+    # @api private
+    #
     class Time < CommandMapper::Types::Str
 
       REGEXP = /\A\d+(?:h|m|s|ms)?\z/
