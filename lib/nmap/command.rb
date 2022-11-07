@@ -97,6 +97,7 @@ module Nmap
   # * `--initial-rtt-timeout` - `nmap.initial_rtt_timeout`
   # * `--max-retries` - `nmap.max_retries`
   # * `--host-timeout` - `nmap.host_timeout`
+  # * `--script-timeout` - `nmap.script_timeout`
   # * `--scan-delay` - `nmap.scan_delay`
   # * `--max-scan-delay` - `nmap.max_scan_delay`
   # * `--min-rate` - `nmap.min_rate`
@@ -533,6 +534,7 @@ module Nmap
       option '--initial-rtt-timeout', value: {type: Time.new}
       option '--max-retries', value: {type: Num.new}
       option '--host-timeout', value: {type: Time.new}
+      option '--script-timeout', value: {type: Time.new}
       option '--scan-delay', value: {type: Time.new}
       option '--max-scan-delay', value: {type: Time.new}
       option '--min-rate', value: {type: Num.new}
