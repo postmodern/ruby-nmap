@@ -595,7 +595,7 @@ module Nmap
       option '-D', name: :decoys, value: {type: List.new}
       option '-S', name: :spoof, value: true
       option '-e', name: :interface, value: true
-      option '-g', name: :source_port, value: {type: Num.new(range: 0..65535)}
+      option '-g', name: :source_port, value: {type: Port.new}
       option '--proxies', value: {type: List.new}
       option '--data', value: {type: HexString.new}
       option '--data-string', value: true
