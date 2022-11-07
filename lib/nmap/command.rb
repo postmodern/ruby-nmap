@@ -399,6 +399,42 @@ module Nmap
     #
     ProtocolList = PortRangeList
 
+    class Time < CommandMapper::Types::Str
+
+      REGEXP = /\A\d+(?:h|m|s|ms)?\z/
+
+      #
+      # Validates a time value.
+      #
+      # @param [String, Integer] value
+      #   The time value to validate.
+      #
+      # @return [true, (false, String)]
+      #   Returns true if the value is considered valid, or false and a
+      #   validation message if the value is not valid.
+      #
+      def validate(value)
+        case value
+        when Integer then true
+        else
+          valid, message = super(value)
+
+          unless valid
+            return [valid, message]
+          end
+
+          value = value.to_s
+
+          unless value =~ REGEXP
+            return [false, "must be a number and end with 'h', 'm', 's', or 'ms'"]
+          end
+
+          return true
+        end
+      end
+
+    end
+
     command 'nmap' do
       # TARGET SPECIFICATIONS:
       option '-iL', name: :target_file, value: {type: InputFile.new}
@@ -491,12 +527,12 @@ module Nmap
       option '--max-hostgroup', name: :max_host_group, value: {type: Num.new}
       option '--min-parallelism', value: {type: Num.new}
       option '--max-parallelism', value: {type: Num.new}
-      option '--min-rtt-timeout', value: true
-      option '--max-rtt-timeout', value: true
+      option '--min-rtt-timeout', value: {type: Time.new}
+      option '--max-rtt-timeout', value: {type: Time.new}
       option '--max-retries', value: {type: Num.new}
-      option '--host-timeout', value: true
-      option '--scan-delay', value: true
-      option '--max-scan-delay', value: true
+      option '--host-timeout', value: {type: Time.new}
+      option '--scan-delay', value: {type: Time.new}
+      option '--max-scan-delay', value: {type: Time.new}
       option '--min-rate', value: {type: Num.new}
       option '--max-rate', value: {type: Num.new}
       option '--defeat-rst-ratelimit'
@@ -543,7 +579,7 @@ module Nmap
                    value_in_flag: true,
                    value: {type: Num.new, required: false}
       option '--reason', name: :show_reason
-      option '--stats-every', value: true
+      option '--stats-every', value: {type: Time.new}
       option '--packet-trace', name: :show_packets
       option '--open', name: :show_open_ports
       option '--iflist', name: :show_interfaces
