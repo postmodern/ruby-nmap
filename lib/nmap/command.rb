@@ -94,6 +94,7 @@ module Nmap
   # * `--max-parallelism` - `nmap.max_parallelism`
   # * `--min-rtt-timeout` - `nmap.min_rtt_timeout`
   # * `--max-rtt-timeout` - `nmap.max_rtt_timeout`
+  # * `--initial-rtt-timeout` - `nmap.initial_rtt_timeout`
   # * `--max-retries` - `nmap.max_retries`
   # * `--host-timeout` - `nmap.host_timeout`
   # * `--scan-delay` - `nmap.scan_delay`
@@ -529,6 +530,7 @@ module Nmap
       option '--max-parallelism', value: {type: Num.new}
       option '--min-rtt-timeout', value: {type: Time.new}
       option '--max-rtt-timeout', value: {type: Time.new}
+      option '--initial-rtt-timeout', value: {type: Time.new}
       option '--max-retries', value: {type: Num.new}
       option '--host-timeout', value: {type: Time.new}
       option '--scan-delay', value: {type: Time.new}
