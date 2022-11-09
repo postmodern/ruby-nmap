@@ -159,7 +159,7 @@ module Nmap
   # * `--resume` - `nmap.resume = true`
   # * `--stylesheet path/to/stylesheet.xsl` - `nmap.stylesheet = "path/to/stylesheet.xsl"`
   # * `--webxml` - `nmap.nmap_stylesheet = true`
-  # * `--no-stylesheet` - `nmap.disable_stylesheet = true`
+  # * `--no-stylesheet` - `nmap.no_stylesheet = true`
   #
   # ### Misc:
   #
@@ -736,7 +736,7 @@ module Nmap
       option '--resume', value: true
       option '--stylesheet', value: true
       option '--webxml', name: :nmap_stylesheet
-      option '--no-stylesheet', name: :disable_stylesheet
+      option '--no-stylesheet'
 
       # MISC:
       option '-6', name: :ipv6
