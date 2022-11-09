@@ -158,7 +158,7 @@ module Nmap
   # * `--append-output` - `nmap.append = true`
   # * `--resume` - `nmap.resume = true`
   # * `--stylesheet path/to/stylesheet.xsl` - `nmap.stylesheet = "path/to/stylesheet.xsl"`
-  # * `--webxml` - `nmap.nmap_stylesheet = true`
+  # * `--webxml` - `nmap.webxml = true`
   # * `--no-stylesheet` - `nmap.no_stylesheet = true`
   #
   # ### Misc:
