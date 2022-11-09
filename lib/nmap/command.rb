@@ -134,7 +134,7 @@ module Nmap
   #
   # ### Output:
   #
-  # * `-oN path/to/file` - `nmap.save = "path/to/file"`
+  # * `-oN path/to/file` - `nmap.output_normal = "path/to/file"`
   # * `-oX path/to/file` - `nmap.output_xml = "path/to/file"`
   # * `-oS path/to/file` - `nmap.output_skiddie = "path/to/file"`
   # * `-oG path/to/file` - `nmap.output_grepable = "path/to/file"`
@@ -714,7 +714,7 @@ module Nmap
       option '--adler32', name: :sctp_adler32
 
       # OUTPUT:
-      option '-oN', name: :save, value: true
+      option '-oN', name: :output_normal, value: true
       option '-oX', name: :output_xml, value: true
       option '-oS', name: :output_skiddie, value: true
       option '-oG', name: :output_grepable, value: true
