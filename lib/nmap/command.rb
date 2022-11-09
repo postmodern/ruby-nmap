@@ -155,7 +155,7 @@ module Nmap
   #
   # ### Miscellaneous Output:
   #
-  # * `--append-output` - `nmap.append = true`
+  # * `--append-output` - `nmap.append_output = true`
   # * `--resume` - `nmap.resume = true`
   # * `--stylesheet path/to/stylesheet.xsl` - `nmap.stylesheet = "path/to/stylesheet.xsl"`
   # * `--webxml` - `nmap.webxml = true`
@@ -732,7 +732,7 @@ module Nmap
       option '--log-errors', name: :show_log_errors
 
       # Miscellaneous output:
-      option '--append-output', name: :append
+      option '--append-output'
       option '--resume', value: true
       option '--stylesheet', value: true
       option '--webxml', name: :nmap_stylesheet
