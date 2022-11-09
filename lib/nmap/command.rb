@@ -144,6 +144,7 @@ module Nmap
   #
   # * `-v` - `nmap.verbose = true`
   # * `-v3` - `nmap.verbose = 3`
+  # * `-vv` - `nmap.extra_verbose = true`
   # * `-v0` - `nmap.quiet = true`
   # * `-d` - `nmap.debug = true`
   # * `-d9` - `nmap.debug = 9`
@@ -723,6 +724,7 @@ module Nmap
       option '-v', name: :verbose,
                    value_in_flag: true,
                    value: {type: Num.new, required: false}
+      option '-vv', name: :extra_verbose
       option '-v0', name: :quiet
       option '-d', name: :debug,
                    value_in_flag: true,
