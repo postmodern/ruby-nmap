@@ -137,7 +137,7 @@ module Nmap
   # * `-oN path/to/file` - `nmap.save = "path/to/file"`
   # * `-oX path/to/file` - `nmap.xml = "path/to/file"`
   # * `-oS path/to/file` - `nmap.skiddie = "path/to/file"`
-  # * `-oG path/to/file` - `nmap.grepable = "path/to/file"`
+  # * `-oG path/to/file` - `nmap.output_grepable = "path/to/file"`
   # * `-oA path/to/basename` - `nmap.output_all = "path/to/basename"`
   #
   # ### Verbosity and Debugging:
@@ -717,7 +717,7 @@ module Nmap
       option '-oN', name: :save, value: true
       option '-oX', name: :xml, value: true
       option '-oS', name: :skiddie, value: true
-      option '-oG', name: :grepable, value: true
+      option '-oG', name: :output_grepable, value: true
       option '-oA', name: :output_all, value: true
 
       # Verbosity and Debugging:
