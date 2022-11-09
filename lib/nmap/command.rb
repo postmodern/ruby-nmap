@@ -45,7 +45,7 @@ module Nmap
   # * `-sA` - `nmap.ack_scan = true`
   # * `-sW` - `nmap.window_scan = true`
   # * `-sM` - `nmap.maimon_scan = true`
-  # * `--scanflags` - `nmap.tcp_scan_flags = {syn: true, ack: true, rst: true}` / `nmap.tcp_scan_flags = [:syn, :ack, :rst]` / `nmap.tcp_scan_flags = 9` / `nmap.tcp_scan_flags = "SYNACKRST"`
+  # * `--scanflags` - `nmap.scan_flags = {syn: true, ack: true, rst: true}` / `nmap.scan_flags = [:syn, :ack, :rst]` / `nmap.scan_flags = 9` / `nmap.scan_flags = "SYNACKRST"`
   # * `-sZ` - `nmap.sctp_cookie_echo_scan = true`
   # * `-sI zombiehost:probeport` - `nmap.idle_scan = "zombiehost:probeport"`
   # * `-sO` - `nmap.ip_scan = true`
@@ -630,7 +630,7 @@ module Nmap
       option '-sA', name: :ack_scan
       option '-sW', name: :window_scan
       option '-sM', name: :maimon_scan
-      option '--scanflags', name: :tcp_scan_flags, value: {type: ScanFlags.new}
+      option '--scanflags', name: :scan_flags, value: {type: ScanFlags.new}
       option '-sZ', name: :sctp_cookie_echo_scan
       option '-sI', name: :idle_scan, value: true
       option '-sO', name: :ip_scan
