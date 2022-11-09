@@ -169,7 +169,7 @@ module Nmap
   # * `--servicedb path/to/services.txt` - `nmap.servicedb = "path/to/services.txt"`
   # * `--versiondb path/to/versions.txt` - `nmap.versiondb = "path/to/versions.txt"`
   # * `--send-eth` - `nmap.raw_ethernet = true`
-  # * `--send-ip` - `nmap.raw_ip = true`
+  # * `--send-ip` - `nmap.send_ip = true`
   # * `--privileged` - `nmap.privileged = true`
   # * `--unprivileged` - `nmap.unprivileged = true`
   # * `--release-memory` - `nmap.release_memory = true`
@@ -745,7 +745,7 @@ module Nmap
       option '--servicedb', value: {type: InputFile.new}
       option '--versiondb', value: {type: InputFile.new}
       option '--send-eth', name: :raw_ethernet
-      option '--send-ip', name: :raw_ip
+      option '--send-ip'
       option '--privileged'
       option '--unprivleged'
       option '--release-memory'
