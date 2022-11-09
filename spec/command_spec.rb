@@ -518,4 +518,209 @@ describe Nmap::Command do
       end
     end
   end
+
+  describe described_class::ScanFlags do
+    describe "#validate" do
+      context "when given nil" do
+        let(:value) { nil }
+
+        it "must return [false, \"cannot be nil\"]" do
+          expect(subject.validate(value)).to eq(
+            [false, "cannot be nil"]
+          )
+        end
+      end
+
+      context "when given a String" do
+        context "but it's empty" do
+          let(:value) { '' }
+
+          it "must return [false, \"does not allow an empty value\"]" do
+            expect(subject.validate(value)).to eq(
+              [false, "does not allow an empty value"]
+            )
+          end
+        end
+
+        context "and it's made up of 'URG', 'ACK', 'PSH', 'RST', 'SYN', and 'FIN'" do
+          let(:value) { 'URGACKPSHRSTSYNFIN' }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
+        end
+
+        context "but it contains other sub-strings besides 'URG', 'ACK', 'PSH', 'RST', 'SYN', and 'FIN'" do
+          let(:value) { 'URGACKPSHRSTSYNFINXXX' }
+
+          it "must return [false, \"must only contain URG, ACK, PSH, RST, SYN, or FIN\"]" do
+            expect(subject.validate(value)).to eq(
+              [false, "must only contain URG, ACK, PSH, RST, SYN, or FIN"]
+            )
+          end
+        end
+
+        context "and it's numeric" do
+          let(:value) { '9' }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
+        end
+      end
+
+      context "when given an Integer" do
+        let(:value) { 9 }
+
+        it "must return true" do
+          expect(subject.validate(value)).to be(true)
+        end
+      end
+
+      context "when given an Array" do
+        context "but it's empty" do
+          let(:value) { [] }
+
+          it "must return [false, \"Array value cannot be empty\"]" do
+            expect(subject.validate(value)).to eq(
+              [false, "Array value cannot be empty"]
+            )
+          end
+        end
+
+        context "and it contains :urg, :ack, :psh, :rst, :syn, or :fin" do
+          let(:value) { [:urg, :ack, :psh, :rst, :syn, :fin] }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
+        end
+
+        context "but it contains other values besides :urg, :ack, :psh, :rst, :syn, and :fin" do
+          let(:other) { :foo }
+          let(:value) { [:urg, :ack, :psh, :rst, :syn, :fin, other] }
+
+          it "must return true" do
+            expect(subject.validate(value)).to eq(
+              [false, "Array must only contain the values :urg, :ack, :psh, :rst, :syn, or :fin"]
+            )
+          end
+        end
+      end
+
+      context "when given a Hash" do
+        context "but it's empty" do
+          let(:value) { {} }
+
+          it "must return [false, \"Hash value cannot be empty\"]" do
+            expect(subject.validate(value)).to eq(
+              [false, "Hash value cannot be empty"]
+            )
+          end
+        end
+
+        context "and it's keys contain :urg, :ack, :psh, :rst, :syn, or :fin" do
+          context "and it's values are all Boolean" do
+            let(:value) do
+              {
+                urg: true,
+                ack: true,
+                psh: false,
+                rst: nil,
+                syn: true,
+                fin: true
+              }
+            end
+
+            it "must return true" do
+              expect(subject.validate(value)).to be(true)
+            end
+          end
+
+          context "but one of it's values is not a Boolean value" do
+            let(:value) do
+              {
+                urg: true,
+                ack: true,
+                psh: false,
+                rst: nil,
+                syn: true,
+                fin: "foo"
+              }
+            end
+
+            it "must return [false, \"must only contain the Boolean values\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "Hash must only contain the values true, false, or nil"]
+              )
+            end
+          end
+        end
+
+        context "but it's keys contains other values besides :urg, :ack, :psh, :rst, :syn, and :fin" do
+          let(:other) { :foo }
+          let(:value) do
+            {
+              urg: true,
+              ack: true,
+              psh: true,
+              rst: true,
+              syn: true,
+              fin: true,
+              other => true
+            }
+          end
+
+          it "must return [false, \"must only contain the keys :urg, :ack, :psh, :rst, :syn, or :fin\"]" do
+            expect(subject.validate(value)).to eq(
+              [false, "Hash must only contain the keys :urg, :ack, :psh, :rst, :syn, or :fin"]
+            )
+          end
+        end
+      end
+    end
+
+    describe "#format" do
+      context "when given a String" do
+        let(:value) { 'PSHFIN' }
+
+        it "must return the String" do
+          expect(subject.format(value)).to eq(value)
+        end
+      end
+
+      context "when given an Integer" do
+        let(:value) { 9 }
+
+        it "must return the String version of the Integer" do
+          expect(subject.format(value)).to eq(value.to_s)
+        end
+      end
+
+      context "when given an Array" do
+        let(:value) { [:urg, :ack, :psh, :rst, :syn, :fin] }
+
+        it "must map each Symbol to their flag names value and join them together" do
+          expect(subject.format(value)).to eq("URGACKPSHRSTSYNFIN")
+        end
+      end
+
+      context "when given a Hash" do
+        let(:value) do
+          {
+            urg: true,
+            ack: true,
+            psh: false,
+            rst: nil,
+            syn: true,
+            fin: true
+          }
+        end
+
+        it "must map the keys with true values to their flag names and join them together" do
+          expect(subject.format(value)).to eq("URGACKSYNFIN")
+        end
+      end
+    end
+  end
 end

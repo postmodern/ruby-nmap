@@ -475,6 +475,109 @@ module Nmap
 
     end
 
+    #
+    # @api private
+    #
+    class ScanFlags < CommandMapper::Types::Str
+
+      FLAGS = {
+        urg: 'URG',
+        ack: 'ACK',
+        psh: 'PSH',
+        rst: 'RST',
+        syn: 'SYN',
+        fin: 'FIN'
+      }
+
+      REGEXP = /\A(?:\d+|(?:URG|ACK|PSH|RST|SYN|FIN)+)\z/
+
+      #
+      # Validates a scanflags value.
+      #
+      # @param [String, Hash{Symbol => Boolean}, #to_s] value
+      #   The scanflags value to validate.
+      #
+      # @return [true, (false, String)]
+      #   Returns true if the value is considered valid, or false and a
+      #   validation message if the value is not valid.
+      #
+      def validate(value)
+        case value
+        when Hash
+          if value.empty?
+            return [false, "Hash value cannot be empty"]
+          end
+
+          unless value.keys.all? { |key| FLAGS.has_key?(key) }
+            return [false, "Hash must only contain the keys :urg, :ack, :psh, :rst, :syn, or :fin"]
+          end
+
+          unless value.values.all? { |value| value == nil || value == false || value == true }
+            return [false, "Hash must only contain the values true, false, or nil"]
+          end
+
+          return true
+        when Array
+          if value.empty?
+            return [false, "Array value cannot be empty"]
+          end
+
+          unless value.all? { |flag| FLAGS.has_key?(flag) }
+            return [false, "Array must only contain the values :urg, :ack, :psh, :rst, :syn, or :fin"]
+          end
+
+          return true
+        else
+          valid, message = super(value)
+
+          unless valid
+            return [valid, message]
+          end
+
+          value = value.to_s
+
+          unless value =~ REGEXP
+            return [false, "must only contain URG, ACK, PSH, RST, SYN, or FIN"]
+          end
+
+          return true
+        end
+      end
+
+      #
+      # Formats a scanflags value.
+      #
+      # @param [Hash{Symbol => Boolean}, Array<String>, #to_s] value
+      #   The scanflags value to format.
+      #
+      # @return [String]
+      #   The formatted scanflags value.
+      #
+      def format(value)
+        case value
+        when Hash
+          string = String.new
+
+          value.each do |key,value|
+            string << FLAGS[key] if value
+          end
+
+          return string
+        when Array
+          string = String.new
+
+          value.each do |flag|
+            string << FLAGS[flag]
+          end
+
+          return string
+        else
+          super(value)
+        end
+      end
+
+    end
+
     command 'nmap' do
       # TARGET SPECIFICATIONS:
       option '-iL', name: :target_file, value: {type: InputFile.new}
@@ -524,7 +627,7 @@ module Nmap
       option '-sA', name: :ack_scan
       option '-sW', name: :window_scan
       option '-sM', name: :maimon_scan
-      option '--scanflags', name: :tcp_scan_flags, value: true
+      option '--scanflags', name: :tcp_scan_flags, value: {type: ScanFlags.new}
       option '-sZ', name: :sctp_cookie_echo_scan
       option '-sI', name: :idle_scan, value: true
       option '-sO', name: :ip_scan
