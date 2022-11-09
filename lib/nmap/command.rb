@@ -6,177 +6,178 @@ module Nmap
   #
   # ### Target Specifications:
   #
-  # * `-iL` - `nmap.target_file`
-  # * `-iR` - `nmap.random_targets`
-  # * `--exclude` - `nmap.exclude`
-  # * `--excludefile` - `nmap.exclude_file`
+  # * `-iL path/to/file` - `nmap.target_file = "path/to/file"`
+  # * `-iR 10` - `nmap.random_targets = 10`
+  # * `--exclude host1 --exclude host2` - `nmap.exclude = ["host1", "host2"`
+  # * `--excludefile path/to/file` - `nmap.exclude_file = "path/to/file"`
   #
   # ### Host Discovery:
   #
-  # * `-sL` - `nmap.list`
-  # * `-sn` - `nmap.ping`
-  # * `-Pn` - `nmap.skip_discovery`
-  # * `-PS` - `nmap.syn_discovery`
-  # * `-PA` - `nmap.ack_discovery`
-  # * `-PU` - `nmap.udp_discovery`
-  # * '-PY' - `nmap.sctp_init_ping`
-  # * `-PE` - `nmap.icmp_echo_discovery`
-  # * `-PP` - `nmap.icmp_timestamp_discovery`
-  # * `-PM` - `nmap.icmp_netmask_discovery`
-  # * `-PO` - `nmap.ip_ping`
-  # * `-PR` - `nmap.arp_ping`
-  # * `--traceroute` - `nmap.traceroute`
-  # * `-n` - `nmap.disable_dns`
-  # * `-R` - `nmap.enable_dns`
-  # * `--resolve-all` - `nmap.resolve_all`
-  # * `--unique` - `nmap.unique`
-  # * `--systems-dns` - `nmap.systems_dns`
-  # * `--dns-servers` - `nmap.dns_servers`
+  # * `-sL` - `nmap.list = true`
+  # * `-sn` - `nmap.ping = true`
+  # * `-Pn` - `nmap.skip_discovery = true`
+  # * `-PS` - `nmap.syn_discovery = [20..80, 443]`
+  # * `-PA` - `nmap.ack_discovery = [20..80, 443]`
+  # * `-PU` - `nmap.udp_discovery = [20..80, 443]`
+  # * '-PY' - `nmap.sctp_init_ping = [20..80, 443]`
+  # * `-PE` - `nmap.icmp_echo_discovery = true`
+  # * `-PP` - `nmap.icmp_timestamp_discovery = true`
+  # * `-PM` - `nmap.icmp_netmask_discovery = true`
+  # * `-PO` - `nmap.ip_ping = [1, 2, 3, 4, ...]`
+  # * `-PR` - `nmap.arp_ping = true`
+  # * `--traceroute` - `nmap.traceroute = true`
+  # * `-n` - `nmap.disable_dns = true`
+  # * `-R` - `nmap.enable_dns = true`
+  # * `--resolve-all` - `nmap.resolve_all = true`
+  # * `--unique` - `nmap.unique = true`
+  # * `--dns-servers nameserver1,nameserver2` - `nmap.dns_servers = ["nameserver1", "nameserver2"]`
+  # * `--systems-dns` - `nmap.systems_dns = true`
   #
   # ### Port Scanning Techniques:
   #
-  # * `-sS` - `nmap.syn_scan`
-  # * `-sT` - `nmap.connect_scan`
-  # * `-sU` - `nmap.udp_scan`
-  # * `-sY` - `nmap.sctp_init_scan`
-  # * `-sN` - `nmap.null_scan`
-  # * `-sF` - `nmap.fin_scan`
-  # * `-sX` - `nmap.xmas_scan`
-  # * `-sA` - `nmap.ack_scan`
-  # * `-sW` - `nmap.window_scan`
-  # * `-sM` - `nmap.maimon_scan`
-  # * `--scanflags` - `nmap.tcp_scan_flags`
-  # * `-sZ` - `nmap.sctp_cookie_echo_scan`
-  # * `-sI` - `nmap.idle_scan`
-  # * `-sO` - `nmap.ip_scan`
-  # * `-b` - `nmap.ftp_bounce_scan`
+  # * `-sS` - `nmap.syn_scan = true`
+  # * `-sT` - `nmap.connect_scan = true`
+  # * `-sU` - `nmap.udp_scan = true`
+  # * `-sY` - `nmap.sctp_init_scan = true`
+  # * `-sN` - `nmap.null_scan = true`
+  # * `-sF` - `nmap.fin_scan = true`
+  # * `-sX` - `nmap.xmas_scan = true`
+  # * `-sA` - `nmap.ack_scan = true`
+  # * `-sW` - `nmap.window_scan = true`
+  # * `-sM` - `nmap.maimon_scan = true`
+  # * `--scanflags` - `nmap.tcp_scan_flags = {syn: true, ack: true, rst: true}` / `nmap.tcp_scan_flags = [:syn, :ack, :rst]` / `nmap.tcp_scan_flags = 9` / `nmap.tcp_scan_flags = "SYNACKRST"`
+  # * `-sZ` - `nmap.sctp_cookie_echo_scan = true`
+  # * `-sI zombiehost:probeport` - `nmap.idle_scan = "zombiehost:probeport"`
+  # * `-sO` - `nmap.ip_scan = true`
+  # * `-b ftp.relay-host.com` - `nmap.ftp_bounce_scan = "ftp.relay-host.com"`
   #
   # ### Port Specification and Scan Order:
   #
-  # * `-p` - `nmap.ports`
-  # * `--exclude-ports` - `nmap.exclude_ports`
-  # * `-F` - `nmap.fast`
-  # * `-r` - `nmap.consecutively`
-  # * `--top-ports` - `nmap.top_ports`
-  # * `--port-ratio` - `nmap.port_ratio`
+  # * `-p 22,80,443,8000-9000` - `nmap.ports = [22, 80, 443, 8000..9000]`
+  # * `--exclude-ports 1-20,1024-2000` - `nmap.exclude_ports = [1..20, 1024..2000]`
+  # * `-F` - `nmap.fast = true`
+  # * `-r` - `nmap.consecutively = true`
+  # * `--top-ports 10` - `nmap.top_ports = 10`
+  # * `--port-ratio 0.5` - `nmap.port_ratio = 0.5`
   #
   # ### Service/Version Detection:
   #
-  # * `-sV` - `nmap.service_scan`
-  # * `--allports` - `nmap.all_ports`
-  # * `--version-intensity` - `nmap.version_intensity`
-  # * `--version-light` - `nmap.version_light`
-  # * `--version-all` - `nmap.version_all`
-  # * `--version-trace` - `nmap.version_trace`
-  # * `-sR` - `nmap.rpc_scan`
+  # * `-sV` - `nmap.service_scan = true`
+  # * `--allports` - `nmap.all_ports = true`
+  # * `--version-intensity 9` - `nmap.version_intensity = 9`
+  # * `--version-light` - `nmap.version_light = true`
+  # * `--version-all` - `nmap.version_all = true`
+  # * `--version-trace` - `nmap.version_trace = true`
+  # * `-sR` - `nmap.rpc_scan = true`
   #
   # ### Script Scan:
   #
-  # * `-sC` - `nmap.default_script`
-  # * `--script` - `nmap.script`
-  # * `--script-args` - `nmap.script_args`
-  # * `--script-args-file` - `nmap.script_args_file`
-  # * `--script-help` - `nmap.script_help`
-  # * `--script-trace` - `nmap.script_trace`
-  # * `--script-updatedb` - `nmap.update_scriptdb`
+  # * `-sC` - `nmap.default_script = true`
+  # * `--script script1,script2,script3` - `nmap.script = ["script1", "script2", "script3"]`
+  # * `--script-args=arg1=value,arg2=value2` - `nmap.script_args = {arg1: `value1", arg2: "value2"}`
+  # * `--script-args-file path/to/file` - `nmap.script_args_file = "path/to/file"`
+  # * `--script-help script1,script2,script3` - `nmap.script_help = ["script1", "script2", "script3"]`
+  # * `--script-trace` - `nmap.script_trace = true`
+  # * `--script-updatedb` - `nmap.update_scriptdb = treu`
   #
   # ### OS Detection:
   #
-  # * `-O` - `nmap.os_fingerprint`
-  # * `--osscan-limit` - `nmap.limit_os_scan`
-  # * `--osscan-guess` - `nmap.max_os_scan`
+  # * `-O` - `nmap.os_fingerprint = true`
+  # * `--osscan-limit` - `nmap.limit_os_scan = true`
+  # * `--osscan-guess` - `nmap.max_os_scan = true`
   #
   # ### Timing and Performance:
   #
-  # * `--min-hostgroup` - `nmap.min_host_group`
-  # * `--max-hostgroup` - `nmap.max_host_group`
-  # * `--min-parallelism` - `nmap.min_parallelism`
-  # * `--max-parallelism` - `nmap.max_parallelism`
-  # * `--min-rtt-timeout` - `nmap.min_rtt_timeout`
-  # * `--max-rtt-timeout` - `nmap.max_rtt_timeout`
-  # * `--initial-rtt-timeout` - `nmap.initial_rtt_timeout`
-  # * `--max-retries` - `nmap.max_retries`
-  # * `--host-timeout` - `nmap.host_timeout`
-  # * `--script-timeout` - `nmap.script_timeout`
-  # * `--scan-delay` - `nmap.scan_delay`
-  # * `--max-scan-delay` - `nmap.max_scan_delay`
-  # * `--min-rate` - `nmap.min_rate`
-  # * `--max-rate` - `nmap.max_rate`
-  # * `--defeat-rst-ratelimit` - `nmap.defeat_rst_ratelimit`
-  # * `--defeat-icmp-ratelimit` - `nmap.defeat_icmp_ratelimit`
-  # * `--nsock-engine` - `nmap.nsock_engine`
-  # * `-T` - `nmap.timing_template`
-  # * `-T0` - `nmap.paranoid_timing`
-  # * `-T1` - `nmap.sneaky_timing`
-  # * `-T2` - `nmap.polite_timing`
-  # * `-T3` - `nmap.normal_timing`
-  # * `-T4` - `nmap.aggressive_timing`
-  # * `-T5` - `nmap.insane_timing`
+  # * `--min-hostgroup 42` - `nmap.min_host_group = 42`
+  # * `--max-hostgroup 42` - `nmap.max_host_group = 42`
+  # * `--min-parallelism 42` - `nmap.min_parallelism = 42`
+  # * `--max-parallelism 42` - `nmap.max_parallelism = 42`
+  # * `--min-rtt-timeout 100ms` - `nmap.min_rtt_timeout = "100ms"`
+  # * `--max-rtt-timeout 500ms` - `nmap.max_rtt_timeout = "500ms"`
+  # * `--initial-rtt-timeout 100ms` - `nmap.initial_rtt_timeout = "100ms"`
+  # * `--max-retries 4` - `nmap.max_retries = 4`
+  # * `--host-timeout 10s` - `nmap.host_timeout = "10s"`
+  # * `--script-timeout 10s` - `nmap.script_timeout = "10s"`
+  # * `--scan-delay 1s` - `nmap.scan_delay = "1s"`
+  # * `--max-scan-delay 42s` - `nmap.max_scan_delay = "42s"`
+  # * `--min-rate 10` - `nmap.min_rate = 10`
+  # * `--max-rate 100` - `nmap.max_rate = 100`
+  # * `--defeat-rst-ratelimit` - `nmap.defeat_rst_ratelimit = true`
+  # * `--defeat-icmp-ratelimit` - `nmap.defeat_icmp_ratelimit = true`
+  # * `--nsock-engine kqueue` - `nmap.nsock_engine = :kqueue`
+  # * `-T polite` - `nmap.timing_template = :polite`
+  # * `-T0` - `nmap.paranoid_timing = true`
+  # * `-T1` - `nmap.sneaky_timing = true`
+  # * `-T2` - `nmap.polite_timing = true`
+  # * `-T3` - `nmap.normal_timing = true`
+  # * `-T4` - `nmap.aggressive_timing = true`
+  # * `-T5` - `nmap.insane_timing = true`
   #
   # ### Firewall/IDS Evasion and Spoofing:
   #
-  # * `-f` - `nmap.packet_fragments`
-  # * `--mtu` - `nmap.mtu`
-  # * `-D` - `nmap.decoys`
-  # * `-S` - `nmap.spoof`
-  # * `-e` - `nmap.interface`
-  # * `-g` - `nmap.source_port`
-  # * `--proxies` - `nmap.proxies`
-  # * `--data` - `nmap.data`
-  # * `--data-string` - `nmap.data_string`
-  # * `--data-length` - `nmap.data_length`
-  # * `--ip-options` - `nmap.ip_options`
-  # * `--ttl` - `nmap.ttl`
-  # * `--randomize-hosts` - `nmap.randomize_hosts`
-  # * `--spoof-mac` - `nmap.spoof_mac`
-  # * `--badsum` - `nmap.bad_checksum`
-  # * `--adler32` - `nmap.sctp_adler32`
+  # * `-f` - `nmap.packet_fragments = true`
+  # * `--mtu` - `nmap.mtu = true`
+  # * `-D decoy1,decoy2` - `nmap.decoys = ["decoy1", "decoy2"]`
+  # * `-S 8.8.8.8` - `nmap.spoof = "8.8.8.8"`
+  # * `-e eth0` - `nmap.interface = "eth0"`
+  # * `-g 1024` - `nmap.source_port = 1024`
+  # * `--proxies proxy1,proxy2` - `nmap.proxies = ["proxy1", "proxy2"]`
+  # * `--data AABBCCDDEEFF` - `nmap.data = "AABBCCDDEEFF"`
+  # * `--data-string foobar` - `nmap.data_string = "foobar"`
+  # * `--data-length 42` - `nmap.data_length = 42`
+  # * `--ip-options T` - `nmap.ip_options = 'T'`
+  # * `--ttl 42` - `nmap.ttl = 42`
+  # * `--randomize-hosts` - `nmap.randomize_hosts = true`
+  # * `--spoof-mac XX:XX:XX:XX:XX:XX` - `nmap.spoof_mac = "XX:XX:XX:XX:XX:XX"`
+  # * `--badsum` - `nmap.bad_checksum = true`
+  # * `--adler32` - `nmap.sctp_adler32 = true`
   #
   # ### Output:
   #
-  # * `-oN` - `nmap.save`
-  # * `-oX` - `nmap.xml`
-  # * `-oS` - `nmap.skiddie`
-  # * `-oG` - `nmap.grepable`
-  # * `-oA` - `nmap.output_all`
+  # * `-oN path/to/file` - `nmap.save = "path/to/file"`
+  # * `-oX path/to/file` - `nmap.xml = "path/to/file"`
+  # * `-oS path/to/file` - `nmap.skiddie = "path/to/file"`
+  # * `-oG path/to/file` - `nmap.grepable = "path/to/file"`
+  # * `-oA path/to/basename` - `nmap.output_all = "path/to/basename"`
   #
   # ### Verbosity and Debugging:
   #
-  # * `-v` - `nmap.verbose`
-  # * `-v0` - `nmap.quiet`
-  # * `-d` - `nmap.debug`
-  # * `--reason` - `nmap.show_reason`
-  # * `--stats-every` - `nmap.stats_every`
-  # * `--packet-trace` - `nmap.show_packets`
-  # * `--open` - `nmap.show_open_ports`
-  # * `--iflist` - `nmap.show_interfaces`
-  # * `--log-errors` - `nmap.show_log_errors`
+  # * `-v` - `nmap.verbose = true`
+  # * `-v0` - `nmap.quiet = true`
+  # * `-d` - `nmap.debug = true`
+  # * `-d9` - `nmap.debug = 9`
+  # * `--reason` - `nmap.show_reason = true`
+  # * `--stats-every 2s` - `nmap.stats_every = "2s"`
+  # * `--packet-trace` - `nmap.show_packets = true`
+  # * `--open` - `nmap.show_open_ports = true`
+  # * `--iflist` - `nmap.show_interfaces = true`
+  # * `--log-errors` - `nmap.show_log_errors = true`
   #
   # ### Miscellaneous Output:
   #
-  # * `--append-output` - `nmap.append`
-  # * `--resume` - `nmap.resume`
-  # * `--stylesheet` - `nmap.stylesheet`
-  # * `--webxml` - `nmap.nmap_stylesheet`
-  # * `--no-stylesheet` - `nmap.disable_stylesheet`
+  # * `--append-output` - `nmap.append = true`
+  # * `--resume` - `nmap.resume = true`
+  # * `--stylesheet path/to/stylesheet.xsl` - `nmap.stylesheet = "path/to/stylesheet.xsl"`
+  # * `--webxml` - `nmap.nmap_stylesheet = true`
+  # * `--no-stylesheet` - `nmap.disable_stylesheet = true`
   #
   # ### Misc:
   #
-  # * `-6` - `nmap.ipv6`
-  # * `-A` - `nmap.all`
-  # * `--datadir` - `nmap.nmap_datadir`
-  # * `--servicedb` - `nmap.servicedb`
-  # * `--versiondb` - `nmap.versiondb`
-  # * `--send-eth` - `nmap.raw_ethernet`
-  # * `--send-ip` - `nmap.raw_ip`
-  # * `--privileged` - `nmap.privileged`
-  # * `--unprivileged` - `nmap.unprivileged`
-  # * `--release-memory` - `nmap.release_memory`
-  # * `--noninteractive` - `nmap.non_interactive`
-  # * `-V` - `nmap.version`
-  # * `-h` - `nmap.help`
+  # * `-6` - `nmap.ipv6 = true`
+  # * `-A` - `nmap.all = true`
+  # * `--datadir path/to/nmap/dir` - `nmap.nmap_datadir = "path/to/nmap/dir"`
+  # * `--servicedb path/to/services.txt` - `nmap.servicedb = "path/to/services.txt"`
+  # * `--versiondb path/to/versions.txt` - `nmap.versiondb = "path/to/versions.txt"`
+  # * `--send-eth` - `nmap.raw_ethernet = true`
+  # * `--send-ip` - `nmap.raw_ip = true`
+  # * `--privileged` - `nmap.privileged = true`
+  # * `--unprivileged` - `nmap.unprivileged = true`
+  # * `--release-memory` - `nmap.release_memory = true`
+  # * `--noninteractive` - `nmap.non_interactive = true`
+  # * `-V` - `nmap.version = true`
+  # * `-h` - `nmap.help = true`
   #
-  # * `target specification` - `nmap.targets`
+  # * `google.com 1.1.1.1 192.168.1-2.*` - `nmap.targets = ["google.com", "1.1.1.1", "192.168.1-2.*"]`
   #
   # @see http://nmap.org/book/man.html
   #
