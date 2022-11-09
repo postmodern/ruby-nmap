@@ -168,7 +168,7 @@ module Nmap
   # * `--datadir path/to/nmap/dir` - `nmap.nmap_datadir = "path/to/nmap/dir"`
   # * `--servicedb path/to/services.txt` - `nmap.servicedb = "path/to/services.txt"`
   # * `--versiondb path/to/versions.txt` - `nmap.versiondb = "path/to/versions.txt"`
-  # * `--send-eth` - `nmap.raw_ethernet = true`
+  # * `--send-eth` - `nmap.send_eth = true`
   # * `--send-ip` - `nmap.send_ip = true`
   # * `--privileged` - `nmap.privileged = true`
   # * `--unprivileged` - `nmap.unprivileged = true`
@@ -744,7 +744,7 @@ module Nmap
       option '--datadir', name: :nmap_datadir, value: {type: InputDir.new}
       option '--servicedb', value: {type: InputFile.new}
       option '--versiondb', value: {type: InputFile.new}
-      option '--send-eth', name: :raw_ethernet
+      option '--send-eth'
       option '--send-ip'
       option '--privileged'
       option '--unprivleged'
