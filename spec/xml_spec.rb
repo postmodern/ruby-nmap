@@ -136,7 +136,7 @@ describe Nmap::XML do
     end
 
     it "should parse the extrainfo" do
-      expect(subject.extrainfo).not_to be_empty
+      expect(subject.extra_info).not_to be_empty
     end
   end
 

@@ -6,14 +6,14 @@ describe Nmap::XML::ScanTask do
   let(:end_time)   { Time.now }
   let(:duration)   { 10 }
   let(:start_time) { end_time - duration }
-  let(:extrainfo)  { '1000 total ports' }
+  let(:extra_info)  { '1000 total ports' }
 
   subject do
     described_class.new(
       name,
       start_time,
       end_time,
-      extrainfo
+      extra_info
     )
   end
 
@@ -28,8 +28,8 @@ describe Nmap::XML::ScanTask do
   end
 
   describe "#to_s" do
-    it "should include the start_time, name and extrainfo" do
-      expect(subject.to_s).to eq("#{start_time}: #{name} (#{extrainfo})")
+    it "should include the start_time, name and extra_info" do
+      expect(subject.to_s).to eq("#{start_time}: #{name} (#{extra_info})")
     end
   end
 end
