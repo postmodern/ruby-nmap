@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 gemspec
 
-gem 'command_mapper', '~> 0.3', github: 'postmodern/command_mapper.rb',
-                                branch: '0.3.0'
+# gem 'command_mapper', '~> 0.3', github: 'postmodern/command_mapper.rb',
+#                                 branch: '0.3.0'
 
 group :development do
   gem 'rake'
