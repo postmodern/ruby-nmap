@@ -269,8 +269,6 @@ module Nmap
                      end
     end
 
-    alias prescripts prescript
-
     #
     # The NSE scripts ran after the scan.
     #
@@ -284,8 +282,6 @@ module Nmap
                         Postscript.new(postscript)
                       end
     end
-
-    alias postscripts postscript
 
     #
     # Parses the hosts in the scan.
