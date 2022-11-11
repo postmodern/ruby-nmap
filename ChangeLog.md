@@ -1,3 +1,46 @@
+### 1.0.0 / 2022-11-11
+
+* Switched from [rprogram] to [command_mapper].
+* Replaced `Nmap::Program` and `Nmap::Task` with {Nmap::Command}.
+* Moved all XML classes under {Nmap::XML}.
+* See [UPGRADING] for more details on how to upgrade from 0.10.0 to 1.0.0.
+
+#### Nmap::Command
+
+* Added support for the `--unique` option as `nmap.unique`.
+* Added support for the `--resolve-all` option as `nmap.resolve_all`.
+* Added support for the `--noninteractive` option as `nmap.non_interactive`.
+* Added support for the `--proxies` option as `nmap.proxies`.
+* Added support for the `--data` option as `nmap.data`.
+* Added support for the `--data-string` option as `nmap.data_string`.
+* Added support for the `--script-help` option as `nmap.script_help`.
+* Added support for the `--script-args-file` option as `nmap.script_args_file`.
+* Added support for the `--script-timeout` option as `nmap.script_timeout`.
+* Added support for the `--initial-rtt-timeout` option as
+  `nmap.initial_rtt_timeout`.
+* Added support for the `-vv` option as `nmap.extra_verbose`.
+* Allow passing Integer values to `verbose:` or `nmap.verbose=` for
+  `-v`**level**.
+* Greatly improved the validation of input values.
+* Removed `#script_params` and `#script_params=` aliases for `#script_args` and
+  `#script_args=`.
+
+#### Nmap::XML
+
+* Removed the deprecated `Nmap::XML.load` method in favor of {Nmap::XML.parse}.
+* Removed the `Nmap::XML#prescripts` alias to `Nmap::XML#prescript`.
+* Removed the `Nmap::XML#postscripts` alias to `Nmap::XML#postscript`.
+* Removed `Nmap::XML::Host#tcpsequence` in favor of
+  {Nmap::XML::Host#tcp_sequence}.
+* Removed `Nmap::XML::Host#ipidsequence` in favor of
+  {Nmap::XML::Host#ip_id_sequence}.
+* Removed `Nmap::XML::Host#tcptssequence` in favor of
+  {Nmap::XML::Host#tcp_ts_sequence}.
+* Removed `Nmap::XML#inspect` method.
+* Added {Nmap::XML::Script}.
+* Removed `Nmap::XML::Scripts#script_data`.
+* Changed {Nmap::XML::Scripts#scripts} to return {Nmap::XML::Script} objects.
+
 ### 0.10.0 / 2020-03-17
 
 * Added `Nmap::Task#exclude_ports` for the `--exclude-ports` option.
@@ -173,3 +216,7 @@
   * Provides a Ruby interface for running Nmap.
   * Provides a Parser for enumerating Nmap XML scan files.
 
+[rprogram]: https://github.com/postmodern/rprogram#readme
+[command_mapper]: https://github.com/postmodern/command_mapper.rb#readme
+
+[UPGRADING]: https://github.com/postmodern/ruby-nmap/blob/main/UPGRADING.md
