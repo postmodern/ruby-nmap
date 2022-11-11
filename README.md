@@ -29,7 +29,7 @@ require 'nmap/command'
 Nmap::Command.run do |nmap|
   nmap.connect_scan   = true
   nmap.service_scan   = true
-  nmap.xml            = 'scan.xml'
+  nmap.output_xml     = 'scan.xml'
   nmap.verbose        = true
 
   nmap.ports   = [20, 21, 22, 23, 25, 80, 110, 443, 512, 522, 8080, 1080]
@@ -46,7 +46,7 @@ Nmap::Command.sudo do |nmap|
   nmap.syn_scan       = true
   nmap.os_fingerprint = true
   nmap.service_scan   = true
-  nmap.xml            = 'scan.xml'
+  nmap.output_xml     = 'scan.xml'
   nmap.verbose        = true
 
   nmap.ports   = [20, 21, 22, 23, 25, 80, 110, 443, 512, 522, 8080, 1080]
