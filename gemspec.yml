@@ -10,6 +10,13 @@ email: postmodern.mod3@gmail.com
 homepage: https://github.com/postmodern/ruby-nmap#readme
 has_yard: true
 
+metadata:
+  documentation_uri: https://rubydoc.info/gems/ruby-nmap
+  source_code_uri:   https://github.com/postmodern/ruby-nmap
+  bug_tracker_uri:   https://github.com/postmodern/ruby-nmap/issues
+  changelog_uri:     https://github.com/postmodern/ruby-nmap/blob/master/ChangeLog.md
+  rubygems_mfa_required: 'true'
+
 required_ruby_version: ">= 2.0.0"
 
 requirements: nmap >= 5.00
