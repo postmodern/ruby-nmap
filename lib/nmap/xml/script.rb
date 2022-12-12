@@ -57,7 +57,7 @@ module Nmap
       #   The parsed data.
       #
       def parse_tables(node)
-        if (tables = @node.xpath('table')).empty?
+        if (tables = node.xpath('table')).empty?
           return
         end
 
