@@ -1,3 +1,7 @@
+### 1.0.1 / 2022-12-12
+
+* Fixed an infinite loop in {Nmap::XML::Script#parse_tables}. (@myztique)
+
 ### 1.0.0 / 2022-11-11
 
 * Switched from [rprogram] to [command_mapper].
