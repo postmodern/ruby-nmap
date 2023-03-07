@@ -752,7 +752,7 @@ module Nmap
       option '--send-eth'
       option '--send-ip'
       option '--privileged'
-      option '--unprivleged'
+      option '--unprivileged'
       option '--release-memory'
       option '--noninteractive', name: :non_interactive
       option '-V', name: :version
