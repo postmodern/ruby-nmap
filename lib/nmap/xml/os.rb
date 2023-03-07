@@ -71,7 +71,7 @@ module Nmap
       def each_match
         return enum_for(__method__) unless block_given?
 
-        @node.xpath("osmatch").map do |osclass|
+        @node.xpath("osmatch").each do |osclass|
           os_match = OSMatch.new(
             osclass['name'],
             osclass['accuracy'].to_i
