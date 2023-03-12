@@ -19,6 +19,12 @@ describe Nmap::XML::OSMatch do
     end
   end
 
+  describe "#os_class" do
+    it "must return a Nmap::XML::OSClass object" do
+      expect(subject.os_class).to be_kind_of(Nmap::XML::OSClass)
+    end
+  end
+
   describe "#to_s" do
     it "should include the name and accuracy" do
       expect(subject.to_s).to eq("#{name} (#{accuracy}%)")

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'os_class'
+
 module Nmap
   class XML
     #
@@ -37,6 +39,17 @@ module Nmap
       #
       def accuracy
         @accuracy ||= @node['accuracy'].to_i
+      end
+
+      #
+      # The OS matches OS class.
+      #
+      # @return [OSClass]
+      #
+      # @since 1.1.0
+      #
+      def os_class
+        @os_class ||= OSClass.new(@node.at_xpath('osclass'))
       end
 
       #
