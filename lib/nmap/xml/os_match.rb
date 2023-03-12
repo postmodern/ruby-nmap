@@ -7,7 +7,37 @@ module Nmap
     #
     # @since 1.0.0
     #
-    class OSMatch < Struct.new(:name, :accuracy)
+    class OSMatch
+
+      #
+      # Initializes the OS match.
+      #
+      # @param [Nokogiri::XML::Node] node
+      #   The node that contains the OS match information.
+      #
+      # @since 1.1.0
+      #
+      def initialize(node)
+        @node = node
+      end
+
+      #
+      # The name of the OS match.
+      #
+      # @return [String]
+      #
+      def name
+        @name ||= @node['name']
+      end
+
+      #
+      # The accuracy of the OS match.
+      #
+      # @return [Integer]
+      #
+      def accuracy
+        @accuracy ||= @node['accuracy'].to_i
+      end
 
       #
       # Converts the OS match to a String.
@@ -16,7 +46,7 @@ module Nmap
       #   The String form of the OS match.
       #
       def to_s
-        "#{self.name} (#{self.accuracy}%)"
+        "#{name} (#{accuracy}%)"
       end
 
     end
