@@ -32,7 +32,10 @@ describe Nmap::XML::OS do
     subject { super().ports_used }
 
     it { expect(subject).not_to be_empty }
-    it { expect(subject).to all(be_between(0,65535)) }
+    it { expect(subject).to all(be_kind_of(Nmap::XML::PortUsed)) }
+    it { expect(subject.map(&:state)).to all(eq(:open).or(eq(:closed))) }
+    it { expect(subject.map(&:protocol)).to all(eq(:tcp).or(eq(:udp))) }
+    it { expect(subject.map(&:port)).to all(be_between(0,65535)) }
   end
 
   describe "#fingerprint" do

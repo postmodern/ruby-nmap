@@ -2,6 +2,7 @@
 
 require_relative 'os_class'
 require_relative 'os_match'
+require_relative 'port_used'
 
 module Nmap
   class XML
@@ -93,12 +94,16 @@ module Nmap
       #
       # Parses the ports used for guessing the OS.
       #
-      # @return [Array<Integer>]
+      # @return [Array<PortUsed>]
       #   The ports used.
       #
       def ports_used
-        @ports_used ||= @node.xpath("portused/@portid").map do |port|
-          port.inner_text.to_i
+        @ports_used ||= @node.xpath("portused").map do |portused|
+          PortUsed.new(
+            portused['state'].to_sym,
+            portused['proto'].to_sym,
+            portused['portid'].to_i
+          )
         end
       end
 
