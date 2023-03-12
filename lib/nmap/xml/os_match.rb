@@ -42,6 +42,17 @@ module Nmap
       end
 
       #
+      # The `line` attribute.
+      #
+      # @return [Integer]
+      #
+      # @since 1.1.0
+      #
+      def line
+        @line ||= @node['line'].to_i
+      end
+
+      #
       # The OS matches OS class.
       #
       # @return [OSClass]

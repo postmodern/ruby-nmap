@@ -19,6 +19,12 @@ describe Nmap::XML::OSMatch do
     end
   end
 
+  describe "#line" do
+    it "must return the parsed line attribute" do
+      expect(subject.line).to eq(48063)
+    end
+  end
+
   describe "#os_class" do
     it "must return a Nmap::XML::OSClass object" do
       expect(subject.os_class).to be_kind_of(Nmap::XML::OSClass)
