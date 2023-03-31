@@ -186,16 +186,22 @@ module Nmap
   class Command < CommandMapper::Command
 
     #
+    # Represents a port number.
+    #
     # @api private
     #
     class Port < CommandMapper::Types::Num
 
+      # Regular expression that validates a port number.
       PORT_NUMBER_REGEXP = /\d{1,5}/
 
+      # Regular expression that validates a service name.
       SERVICE_NAME_REGEXP = /[A-Za-z0-9]+(?:[\/_-][A-Za-z0-9]+)*\*?/
 
+      # Regular expression that validates either a port number or service name.
       PORT_REGEXP = /(?:#{PORT_NUMBER_REGEXP}|#{SERVICE_NAME_REGEXP})/
 
+      # Regular expression that validates either a port number or service name.
       REGEXP = /\A#{PORT_REGEXP}\z/
 
       #
@@ -206,11 +212,14 @@ module Nmap
       end
 
       #
-      # Validates the given value.
+      # Validates the given port number value.
       #
       # @param [Object] value
+      #   The value to validate.
       #
       # @return [true, (false, String)]
+      #   Returns true if the value is valid, or `false` and a validation error
+      #   message if the value is not compatible.
       #
       def validate(value)
         case value
@@ -232,8 +241,10 @@ module Nmap
       # Formats the given value.
       #
       # @param [Integer, String] value
+      #   The port number value to format.
       #
       # @return [String]
+      #   The formatted port number.
       #
       def format(value)
         case value
@@ -247,20 +258,27 @@ module Nmap
     end
 
     #
+    # Represents a port range.
+    #
     # @api private
     #
     class PortRange < Port
 
+      # Regular expression to validate either a port or a port range.
       PORT_RANGE_REGEXP = /(?:#{PORT_REGEXP}|#{PORT_REGEXP}?-#{PORT_REGEXP}?)/
 
+      # Regular expression to validate either a port or a port range.
       REGEXP = /\A#{PORT_RANGE_REGEXP}\z/
 
       #
-      # Validates the given value.
+      # Validates the given port or port range value.
       #
       # @param [Object] value
+      #   The port or port range value to validate.
       #
       # @return [true, (false, String)]
+      #   Returns true if the value is valid, or `false` and a validation error
+      #   message if the value is not compatible.
       #
       def validate(value)
         case value
@@ -290,11 +308,13 @@ module Nmap
       end
 
       #
-      # Formats the given value.
+      # Formats the given port or port range value.
       #
       # @param [Range, Integer, String] value
+      #   The port or port range value to format.
       #
       # @return [String]
+      #   The formatted port or port range.
       #
       def format(value)
         case value
@@ -308,12 +328,16 @@ module Nmap
     end
 
     #
+    # Represents a list of ports or port ranges.
+    #
     # @api private
     #
     class PortRangeList < CommandMapper::Types::List
 
+      # Regular expression for validating a port or port range.
       PORT_RANGE_REGEXP = PortRange::PORT_RANGE_REGEXP
 
+      # Regular expression for validating an nmap port range.
       REGEXP = /\A(?:[TUS]:)?#{PORT_RANGE_REGEXP}(?:,(?:[TUS]:)?#{PORT_RANGE_REGEXP})*\z/
 
       #
@@ -327,8 +351,11 @@ module Nmap
       # Validates the given port range list value.
       #
       # @param [Object] value
+      #   The given port range list value to validate.
       #
       # @return [true, (false, String)]
+      #   Returns true if the value is valid, or `false` and a validation error
+      #   message if the value is not compatible.
       #
       def validate(value)
         case value
@@ -371,11 +398,13 @@ module Nmap
       }
 
       #
-      # Formats the given value.
+      # Formats the given port range list value.
       #
       # @param [Hash, Range, String, Integer] value
+      #   The port range list value.
       #
       # @return [String]
+      #   The formatted port range list.
       #
       def format(value)
         case value
@@ -400,15 +429,20 @@ module Nmap
     end
 
     #
+    # Represents a list of protocols.
+    #
     # @api private
     #
     ProtocolList = PortRangeList
 
     #
+    # Represents a unit of time.
+    #
     # @api private
     #
     class Time < CommandMapper::Types::Str
 
+      # Regular expression for validating a unit of time.
       REGEXP = /\A\d+(?:h|m|s|ms)?\z/
 
       #
@@ -443,6 +477,8 @@ module Nmap
 
     end
 
+    #
+    # Represents a hex string.
     #
     # @api private
     #
@@ -479,10 +515,13 @@ module Nmap
     end
 
     #
+    # Represents one or more TCP scan flags.
+    #
     # @api private
     #
     class ScanFlags < CommandMapper::Types::Str
 
+      # Mapping of symbol scan flags to String values.
       FLAGS = {
         urg: 'URG',
         ack: 'ACK',
@@ -492,6 +531,7 @@ module Nmap
         fin: 'FIN'
       }
 
+      # Regular expression to validate the given scan flags.
       REGEXP = /\A(?:\d+|(?:URG|ACK|PSH|RST|SYN|FIN)+)\z/
 
       #
