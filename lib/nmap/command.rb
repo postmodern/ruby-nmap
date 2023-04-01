@@ -193,10 +193,10 @@ module Nmap
     class Port < CommandMapper::Types::Num
 
       # Regular expression that validates a port number.
-      PORT_NUMBER_REGEXP = /\d{1,5}/
+      PORT_NUMBER_REGEXP = /[1-9][0-9]{0,3}|[1-5][0-9][0-9][0-9][0-9]|6[0-4][0-9][0-9][0-9]|65[0-4][0-9][0-9]|655[0-2][0-9]|6553[0-5]/
 
       # Regular expression that validates a service name.
-      SERVICE_NAME_REGEXP = /[A-Za-z0-9]+(?:[\/_-][A-Za-z0-9]+)*\*?/
+      SERVICE_NAME_REGEXP = /[A-Za-z][A-Za-z0-9]*(?:[\/_-][A-Za-z0-9]+)*\*?/
 
       # Regular expression that validates either a port number or service name.
       PORT_REGEXP = /(?:#{PORT_NUMBER_REGEXP}|#{SERVICE_NAME_REGEXP})/
@@ -224,13 +224,10 @@ module Nmap
       def validate(value)
         case value
         when String
-          case value
-          when /\A#{PORT_NUMBER_REGEXP}\z/
-            super(value)
-          when /\A#{SERVICE_NAME_REGEXP}\z/
+          if value =~ REGEXP
             return true
           else
-            return [false, "must be a port number or service name (#{value.inspect})"]
+            return [false, "must be a valid port number or service name (#{value.inspect})"]
           end
         else
           super(value)
@@ -265,7 +262,7 @@ module Nmap
     class PortRange < Port
 
       # Regular expression to validate either a port or a port range.
-      PORT_RANGE_REGEXP = /(?:#{PORT_REGEXP}|#{PORT_REGEXP}?-#{PORT_REGEXP}?)/
+      PORT_RANGE_REGEXP = /(?:#{PORT_NUMBER_REGEXP})?-(?:#{PORT_NUMBER_REGEXP})?|#{PORT_REGEXP}/
 
       # Regular expression to validate either a port or a port range.
       REGEXP = /\A#{PORT_RANGE_REGEXP}\z/
@@ -297,11 +294,11 @@ module Nmap
 
           return true
         when String
-          unless value =~ REGEXP
-            return [false, "not a valid port range (#{value.inspect})"]
+          if value =~ REGEXP
+            return true
+          else
+            return [false, "must be a valid port number, port range, or service name (#{value.inspect})"]
           end
-
-          return true
         else
           super(value)
         end

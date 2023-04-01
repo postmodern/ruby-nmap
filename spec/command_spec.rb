@@ -43,9 +43,9 @@ describe Nmap::Command do
           context "but it's less than 1" do
             let(:value) { '0' }
 
-            it "must return [false, \"(...) not within the range of acceptable values (1..65535)\"]" do
+            it "must return [false, \"must be a valid port number or service name (...)\"]" do
               expect(subject.validate(value)).to eq(
-                [false, "(#{value.inspect}) not within the range of acceptable values (1..65535)"]
+                [false, "must be a valid port number or service name (#{value.inspect})"]
               )
             end
           end
@@ -53,9 +53,9 @@ describe Nmap::Command do
           context "but it's greater than 65535" do
             let(:value) { '65536' }
 
-            it "must return [false, \"(...) not within the range of acceptable values (1..65535)\"]" do
+            it "must return [false, \"must be a valid port number or service name (...)\"]" do
               expect(subject.validate(value)).to eq(
-                [false, "(#{value.inspect}) not within the range of acceptable values (1..65535)"]
+                [false, "must be a valid port number or service name (#{value.inspect})"]
               )
             end
           end
@@ -87,8 +87,10 @@ describe Nmap::Command do
           context "and it starts with digits" do
             let(:value) { "1ci-smcs" }
 
-            it "must return true" do
-              expect(subject.validate(value)).to be(true)
+            it "must return  [false, \"must be a valid port number or service name (...)\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "must be a valid port number or service name (#{value.inspect})"]
+              )
             end
           end
 
@@ -101,7 +103,7 @@ describe Nmap::Command do
           end
 
           context "and it contains a '-' character" do
-            let(:value) { "3gpp-cbsp" }
+            let(:value) { "iphone-sync" }
 
             it "must return true" do
               expect(subject.validate(value)).to be(true)
@@ -111,9 +113,9 @@ describe Nmap::Command do
           context "but it starts with a '-' character" do
             let(:value) { "-foo" }
 
-            it "must return [false, \"must be a port number or service name (...)\"]" do
+            it "must return [false, \"must be a valid port number or service name (...)\"]" do
               expect(subject.validate(value)).to eq(
-                [false, "must be a port number or service name (#{value.inspect})"]
+                [false, "must be a valid port number or service name (#{value.inspect})"]
               )
             end
           end
@@ -121,9 +123,9 @@ describe Nmap::Command do
           context "but it ends with a '-' character" do
             let(:value) { "foo-" }
 
-            it "must return [false, \"must be a port number or service name (...)\"]" do
+            it "must return [false, \"must be a valid port number or service name (...)\"]" do
               expect(subject.validate(value)).to eq(
-                [false, "must be a port number or service name (#{value.inspect})"]
+                [false, "must be a valid port number or service name (#{value.inspect})"]
               )
             end
           end
@@ -139,9 +141,9 @@ describe Nmap::Command do
           context "but it starts with a '_' character" do
             let(:value) { "_foo" }
 
-            it "must return [false, \"must be a port number or service name (...)\"]" do
+            it "must return [false, \"must be a valid port number or service name (...)\"]" do
               expect(subject.validate(value)).to eq(
-                [false, "must be a port number or service name (#{value.inspect})"]
+                [false, "must be a valid port number or service name (#{value.inspect})"]
               )
             end
           end
@@ -149,9 +151,9 @@ describe Nmap::Command do
           context "but it ends with a '_' character" do
             let(:value) { "foo_" }
 
-            it "must return [false, \"must be a port number or service name (...)\"]" do
+            it "must return [false, \"must be a valid port number or service name (...)\"]" do
               expect(subject.validate(value)).to eq(
-                [false, "must be a port number or service name (#{value.inspect})"]
+                [false, "must be a valid port number or service name (#{value.inspect})"]
               )
             end
           end
@@ -167,9 +169,9 @@ describe Nmap::Command do
           context "but it starts with a '/' character" do
             let(:value) { "/foo" }
 
-            it "must return [false, \"must be a port number or service name (...)\"]" do
+            it "must return [false, \"must be a valid port number or service name (...)\"]" do
               expect(subject.validate(value)).to eq(
-                [false, "must be a port number or service name (#{value.inspect})"]
+                [false, "must be a valid port number or service name (#{value.inspect})"]
               )
             end
           end
@@ -177,9 +179,9 @@ describe Nmap::Command do
           context "but it starts with a '/' character" do
             let(:value) { "foo/" }
 
-            it "must return [false, \"must be a port number or service name (...)\"]" do
+            it "must return [false, \"must be a valid port number or service name (...)\"]" do
               expect(subject.validate(value)).to eq(
-                [false, "must be a port number or service name (#{value.inspect})"]
+                [false, "must be a valid port number or service name (#{value.inspect})"]
               )
             end
           end
@@ -191,9 +193,187 @@ describe Nmap::Command do
   describe described_class::PortRange do
     describe "#validate" do
       context "when given an Integer value" do
+        let(:value) { 443 }
+
+        it "must return true" do
+          expect(subject.validate(value)).to be(true)
+        end
+
+        context "but it's less than 1" do
+          let(:value) { 0 }
+
+          it "must return [false, \"(...) not within the range of acceptable values (1..65535)\"]" do
+            expect(subject.validate(value)).to eq(
+              [false, "(#{value.inspect}) not within the range of acceptable values (1..65535)"]
+            )
+          end
+        end
+
+        context "but it's greater than 65535" do
+          let(:value) { 65536 }
+
+          it "must return [false, \"(...) not within the range of acceptable values (1..65535)\"]" do
+            expect(subject.validate(value)).to eq(
+              [false, "(#{value.inspect}) not within the range of acceptable values (1..65535)"]
+            )
+          end
+        end
       end
 
       context "when given a String value" do
+        context "and it's a number" do
+          let(:value) { '443' }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
+
+          context "but it's less than 1" do
+            let(:value) { '0' }
+
+            it "must return [false, \"must be a valid port number, port range, or service name (...)\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "must be a valid port number, port range, or service name (#{value.inspect})"]
+              )
+            end
+          end
+
+          context "but it's greater than 65535" do
+            let(:value) { '65536' }
+
+            it "must return [false, \"(...) not within the range of acceptable values (1..65535)\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "must be a valid port number, port range, or service name (#{value.inspect})"]
+              )
+            end
+          end
+        end
+
+        context "and it's a service name" do
+          let(:value) { "http" }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
+
+          context "and it ends with a '*' character" do
+            let(:value) { "http*" }
+
+            it "must return true" do
+              expect(subject.validate(value)).to be(true)
+            end
+          end
+
+          context "and it contains uppercase letters" do
+            let(:value) { "XmlIpcRegSvc" }
+
+            it "must return true" do
+              expect(subject.validate(value)).to be(true)
+            end
+          end
+
+          context "and it starts with digits" do
+            let(:value) { "1ci-smcs" }
+
+            it "must return  [false, \"must be a valid port number, port range, or service name (...)\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "must be a valid port number, port range, or service name (#{value.inspect})"]
+              )
+            end
+          end
+
+          context "and it contains digits" do
+            let(:value) { "neo4j" }
+
+            it "must return true" do
+              expect(subject.validate(value)).to be(true)
+            end
+          end
+
+          context "and it contains a '-' character" do
+            let(:value) { "iphone-sync" }
+
+            it "must return true" do
+              expect(subject.validate(value)).to be(true)
+            end
+          end
+
+          context "but it starts with a '-' character" do
+            let(:value) { "-foo" }
+
+            it "must return [false, \"must be a valid port number, port range, or service name (...)\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "must be a valid port number, port range, or service name (#{value.inspect})"]
+              )
+            end
+          end
+
+          context "but it ends with a '-' character" do
+            let(:value) { "foo-" }
+
+            it "must return [false, \"must be a valid port number, port range, or service name (...)\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "must be a valid port number, port range, or service name (#{value.inspect})"]
+              )
+            end
+          end
+
+          context "and it contains a '_' character" do
+            let(:value) { "kerberos_master" }
+
+            it "must return true" do
+              expect(subject.validate(value)).to be(true)
+            end
+          end
+
+          context "but it starts with a '_' character" do
+            let(:value) { "_foo" }
+
+            it "must return [false, \"must be a valid port number, port range, or service name (...)\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "must be a valid port number, port range, or service name (#{value.inspect})"]
+              )
+            end
+          end
+
+          context "but it ends with a '_' character" do
+            let(:value) { "foo_" }
+
+            it "must return [false, \"must be a valid port number, port range, or service name (...)\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "must be a valid port number, port range, or service name (#{value.inspect})"]
+              )
+            end
+          end
+
+          context "and it contain's a '/' character" do
+            let(:value) { "cl/1" }
+
+            it "must return true" do
+              expect(subject.validate(value)).to be(true)
+            end
+          end
+
+          context "but it starts with a '/' character" do
+            let(:value) { "/foo" }
+
+            it "must return [false, \"must be a valid port number, port range, or service name (...)\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "must be a valid port number, port range, or service name (#{value.inspect})"]
+              )
+            end
+          end
+
+          context "but it starts with a '/' character" do
+            let(:value) { "foo/" }
+
+            it "must return [false, \"must be a valid port number, port range, or service name (...)\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "must be a valid port number, port range, or service name (#{value.inspect})"]
+              )
+            end
+          end
+        end
       end
 
       context "when given a Range of port numbers" do
@@ -319,9 +499,9 @@ describe Nmap::Command do
             {tcp: [1,2,3,4], udp: [1, bad_port, 3], sctp: [1,2,3,4]}
           end
 
-          it "must return [false, \"element not a valid port range (...)\"]" do
+          it "must return [false, \"element element must be a valid port number, port range, or service name (...)\"]" do
             expect(subject.validate(value)).to eq(
-              [false, "element not a valid port range (#{bad_port.inspect})"]
+              [false, "element must be a valid port number, port range, or service name (#{bad_port.inspect})"]
             )
           end
         end
