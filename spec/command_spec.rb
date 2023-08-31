@@ -176,7 +176,7 @@ describe Nmap::Command do
             end
           end
 
-          context "but it starts with a '/' character" do
+          context "but it ends with a '/' character" do
             let(:value) { "foo/" }
 
             it "must return [false, \"must be a valid port number or service name (...)\"]" do
