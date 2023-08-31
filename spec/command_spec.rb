@@ -249,6 +249,30 @@ describe Nmap::Command do
           end
         end
 
+        context "and it's a range of two numbers" do
+          let(:value) { "1-1024" }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
+
+          context "but the first number is omitted" do
+            let(:value) { "-1024" }
+
+            it "must return true" do
+              expect(subject.validate(value)).to be(true)
+            end
+          end
+
+          context "but the last number is omitted" do
+            let(:value) { "1-" }
+
+            it "must return true" do
+              expect(subject.validate(value)).to be(true)
+            end
+          end
+        end
+
         context "and it's a service name" do
           let(:value) { "http" }
 
