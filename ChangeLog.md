@@ -1,3 +1,11 @@
+### 1.0.2 / 2023-09-01
+
+#### Nmap::Command
+
+* Fixed a typo in the `--unprivileged` option mapping.
+* Improved validations for port number, service name, port range, and
+  port list String values.
+
 ### 1.0.1 / 2022-12-12
 
 * Fixed an infinite loop in {Nmap::XML::Script#parse_tables}. (@myztique)
