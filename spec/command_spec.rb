@@ -430,11 +430,291 @@ describe Nmap::Command do
 
   describe described_class::PortRangeList do
     describe "#validate" do
-      context "when given a single port number" do
+      context "when given an Integer value" do
         let(:value) { 443 }
 
         it "must return true" do
           expect(subject.validate(value)).to be(true)
+        end
+
+        context "but it's less than 1" do
+          let(:value) { 0 }
+
+          it "must return [false, \"element (...) not within the range of acceptable values (1..65535)\"]" do
+            expect(subject.validate(value)).to eq(
+              [false, "element (#{value.inspect}) not within the range of acceptable values (1..65535)"]
+            )
+          end
+        end
+
+        context "but it's greater than 65535" do
+          let(:value) { 65536 }
+
+          it "must return [false, \"element (...) not within the range of acceptable values (1..65535)\"]" do
+            expect(subject.validate(value)).to eq(
+              [false, "element (#{value.inspect}) not within the range of acceptable values (1..65535)"]
+            )
+          end
+        end
+      end
+
+      context "when given a String value" do
+        context "and it's a number" do
+          let(:value) { '443' }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
+
+          context "but it's less than 1" do
+            let(:value) { '0' }
+
+            it "must return [false, \"not a valid port range list (...)\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "not a valid port range list (#{value.inspect})"]
+              )
+            end
+          end
+
+          context "but it's greater than 65535" do
+            let(:value) { '65536' }
+
+            it "must return [false, \"(...) not within the range of acceptable values (1..65535)\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "not a valid port range list (#{value.inspect})"]
+              )
+            end
+          end
+        end
+
+        context "and it's a range of two numbers" do
+          let(:value) { "1-1024" }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
+
+          context "but the first number is omitted" do
+            let(:value) { "-1024" }
+
+            it "must return true" do
+              expect(subject.validate(value)).to be(true)
+            end
+          end
+
+          context "but the last number is omitted" do
+            let(:value) { "1-" }
+
+            it "must return true" do
+              expect(subject.validate(value)).to be(true)
+            end
+          end
+        end
+
+        context "and it's a service name" do
+          let(:value) { "http" }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
+
+          context "and it ends with a '*' character" do
+            let(:value) { "http*" }
+
+            it "must return true" do
+              expect(subject.validate(value)).to be(true)
+            end
+          end
+
+          context "and it contains uppercase letters" do
+            let(:value) { "XmlIpcRegSvc" }
+
+            it "must return true" do
+              expect(subject.validate(value)).to be(true)
+            end
+          end
+
+          context "and it starts with digits" do
+            let(:value) { "1ci-smcs" }
+
+            it "must return  [false, \"not a valid port range list (...)\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "not a valid port range list (#{value.inspect})"]
+              )
+            end
+          end
+
+          context "and it contains digits" do
+            let(:value) { "neo4j" }
+
+            it "must return true" do
+              expect(subject.validate(value)).to be(true)
+            end
+          end
+
+          context "and it contains a '-' character" do
+            let(:value) { "iphone-sync" }
+
+            it "must return true" do
+              expect(subject.validate(value)).to be(true)
+            end
+          end
+
+          context "but it starts with a '-' character" do
+            let(:value) { "-foo" }
+
+            it "must return [false, \"not a valid port range list (...)\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "not a valid port range list (#{value.inspect})"]
+              )
+            end
+          end
+
+          context "but it ends with a '-' character" do
+            let(:value) { "foo-" }
+
+            it "must return [false, \"not a valid port range list (...)\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "not a valid port range list (#{value.inspect})"]
+              )
+            end
+          end
+
+          context "and it contains a '_' character" do
+            let(:value) { "kerberos_master" }
+
+            it "must return true" do
+              expect(subject.validate(value)).to be(true)
+            end
+          end
+
+          context "but it starts with a '_' character" do
+            let(:value) { "_foo" }
+
+            it "must return [false, \"not a valid port range list (...)\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "not a valid port range list (#{value.inspect})"]
+              )
+            end
+          end
+
+          context "but it ends with a '_' character" do
+            let(:value) { "foo_" }
+
+            it "must return [false, \"not a valid port range list (...)\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "not a valid port range list (#{value.inspect})"]
+              )
+            end
+          end
+
+          context "and it contain's a '/' character" do
+            let(:value) { "cl/1" }
+
+            it "must return true" do
+              expect(subject.validate(value)).to be(true)
+            end
+          end
+
+          context "but it starts with a '/' character" do
+            let(:value) { "/foo" }
+
+            it "must return [false, \"not a valid port range list (...)\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "not a valid port range list (#{value.inspect})"]
+              )
+            end
+          end
+
+          context "but it starts with a '/' character" do
+            let(:value) { "foo/" }
+
+            it "must return [false, \"not a valid port range list (...)\"]" do
+              expect(subject.validate(value)).to eq(
+                [false, "not a valid port range list (#{value.inspect})"]
+              )
+            end
+          end
+        end
+
+        context "and it's a comma separated list of port numbers" do
+          let(:value) { "1,22,80,443" }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
+        end
+
+        context "and it's a comma separated list of port ranges" do
+          let(:value) { "1-22,8000-9000" }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
+        end
+
+        context "and it's a comma separated list of port numbers and ranges" do
+          let(:value) { "1-22,80,443,8000-9000" }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
+        end
+
+        context "and it's a range of two numbers, with a protocol prefix" do
+          let(:value) { "T:1-1024" }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
+
+          context "but the first number is omitted" do
+            let(:value) { "T:-1024" }
+
+            it "must return true" do
+              expect(subject.validate(value)).to be(true)
+            end
+          end
+
+          context "but the last number is omitted" do
+            let(:value) { "T:1-" }
+
+            it "must return true" do
+              expect(subject.validate(value)).to be(true)
+            end
+          end
+        end
+
+        context "and it's a service name, with a protocol prefix" do
+          let(:value) { "T:http" }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
+        end
+
+        context "and it's a comma separated list of port numbers, with protocol prefixes" do
+          let(:value) { "T:1,T:22,T:80,T:443,U:9000" }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
+        end
+
+        context "and it's a comma separated list of port ranges, with protocol prefixes" do
+          let(:value) { "T:1-22,U:8000-9000" }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
+        end
+
+        context "and it's a comma separated list of port numbers and ranges, with protocol prefixes" do
+          let(:value) { "T:1-22,T:80,T:443,U:8000-9000" }
+
+          it "must return true" do
+            expect(subject.validate(value)).to be(true)
+          end
         end
       end
 
