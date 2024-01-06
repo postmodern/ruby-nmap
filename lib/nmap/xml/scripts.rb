@@ -27,7 +27,6 @@ module Nmap
 
         return @scripts
       end
-
     end
   end
 end
