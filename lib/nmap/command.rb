@@ -734,7 +734,7 @@ module Nmap
 
       # FIREWALL/IDS EVASION AND SPOOFING:
       option '-f', name: :packet_fragments
-      option '--mtu'
+      option '--mtu', value: {type: Num.new, required: false}
       option '-D', name: :decoys, value: {type: List.new}
       option '-S', name: :spoof, value: true
       option '-e', name: :interface, value: true
