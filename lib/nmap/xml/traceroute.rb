@@ -1,4 +1,4 @@
-require 'nmap/xml/hop'
+require_relative 'hop'
 
 module Nmap
   class XML

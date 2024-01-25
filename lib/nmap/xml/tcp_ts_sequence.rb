@@ -1,4 +1,4 @@
-require 'nmap/xml/sequence'
+require_relative 'sequence'
 
 module Nmap
   class XML

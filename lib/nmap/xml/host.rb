@@ -1,14 +1,14 @@
-require 'nmap/xml/status'
-require 'nmap/xml/address'
-require 'nmap/xml/hostname'
-require 'nmap/xml/os'
-require 'nmap/xml/port'
-require 'nmap/xml/ip_id_sequence'
-require 'nmap/xml/tcp_sequence'
-require 'nmap/xml/tcp_ts_sequence'
-require 'nmap/xml/uptime'
-require 'nmap/xml/traceroute'
-require 'nmap/xml/host_script'
+require_relative 'status'
+require_relative 'address'
+require_relative 'hostname'
+require_relative 'os'
+require_relative 'port'
+require_relative 'ip_id_sequence'
+require_relative 'tcp_sequence'
+require_relative 'tcp_ts_sequence'
+require_relative 'uptime'
+require_relative 'traceroute'
+require_relative 'host_script'
 
 require 'nokogiri'
 require 'time'
@@ -258,7 +258,7 @@ module Nmap
       # @yield [uptime]
       #   If a block is given, it will be passed the resulting object
       #
-      # @yieldparam [Uptime] 
+      # @yieldparam [Uptime]
       #   Uptime value.
       #
       # @return [Uptime]

@@ -1,4 +1,4 @@
-require 'nmap/xml/sequence'
+require_relative 'sequence'
 
 module Nmap
   class XML
@@ -14,7 +14,7 @@ module Nmap
       #   The difficulty index from nmap
       #
       # @since 0.5.0
-      #   
+      #
       def index
         @index ||= if (index_string = @node['index'])
                      index_string.to_i

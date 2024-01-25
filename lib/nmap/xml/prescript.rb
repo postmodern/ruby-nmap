@@ -1,4 +1,4 @@
-require 'nmap/xml/scripts'
+require_relative 'scripts'
 
 module Nmap
   class XML

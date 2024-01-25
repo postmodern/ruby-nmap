@@ -1,5 +1,5 @@
-require 'nmap/xml/os_class'
-require 'nmap/xml/os_match'
+require_relative 'os_class'
+require_relative 'os_match'
 
 module Nmap
   class XML

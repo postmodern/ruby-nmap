@@ -1,4 +1,4 @@
-require 'nmap/xml/cpe'
+require_relative 'cpe'
 
 module Nmap
   class XML
