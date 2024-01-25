@@ -129,8 +129,6 @@ $ gem install ruby-nmap
 
 ## License
 
-Copyright (c) 2009-2022 Postmodern
-
 See {file:LICENSE.txt} for license information.
 
 [nmap]: http://www.insecure.org/
