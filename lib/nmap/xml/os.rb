@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'os_class'
 require_relative 'os_match'
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'xml/scanner'
 require_relative 'xml/scan_task'
 require_relative 'xml/scan'

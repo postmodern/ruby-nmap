@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Nmap
   class XML
     #
@@ -24,7 +26,7 @@ module Nmap
       #
       # @return [String]
       #   The sequence class from nmap.
-      # 
+      #
       # @since 0.5.0
       #
       def description

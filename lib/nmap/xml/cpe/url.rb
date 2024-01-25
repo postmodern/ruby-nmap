@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Nmap
   class XML
     module CPE
