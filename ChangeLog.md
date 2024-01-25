@@ -1,3 +1,12 @@
+### 1.0.3 / 2024-01-25
+
+* Switched to using `require_relative` to improve load-times.
+* Added `# frozen_string_literal: true` to all files.
+
+#### Nmap::Command
+
+* The `--mtu` option now accepts an option numeric value.
+
 ### 1.0.2 / 2023-09-01
 
 #### Nmap::Command
